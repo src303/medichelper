@@ -8,8 +8,8 @@ local key = require "vkeys"
 local inicfg = require 'inicfg'
 local a = require 'samp.events'
 local sampev = require 'lib.samp.events'
-local imgui = require 'imgui' -- загружаем библиотеку/
-local encoding = require 'encoding' -- загружаем библиотеку
+local imgui = require 'imgui' -- Г§Г ГЈГ°ГіГ¦Г ГҐГ¬ ГЎГЁГЎГ«ГЁГ®ГІГҐГЄГі/
+local encoding = require 'encoding' -- Г§Г ГЈГ°ГіГ¦Г ГҐГ¬ ГЎГЁГЎГ«ГЁГ®ГІГҐГЄГі
 local wm = require 'lib.windows.message'
 local gk = require 'game.keys'
 local dlstatus = require('moonloader').download_status
@@ -28,7 +28,7 @@ local tEditData = {
 	id = -1,
 	inputActive = false
 }
-encoding.default = 'CP1251' -- указываем кодировку по умолчанию, она должна совпадать с кодировкой файла. CP1251 - это Windows-1251
+encoding.default = 'CP1251' -- ГіГЄГ Г§Г»ГўГ ГҐГ¬ ГЄГ®Г¤ГЁГ°Г®ГўГЄГі ГЇГ® ГіГ¬Г®Г«Г·Г Г­ГЁГѕ, Г®Г­Г  Г¤Г®Г«Г¦Г­Г  Г±Г®ГўГЇГ Г¤Г ГІГј Г± ГЄГ®Г¤ГЁГ°Г®ГўГЄГ®Г© ГґГ Г©Г«Г . CP1251 - ГЅГІГ® Windows-1251
 u8 = encoding.UTF8
 
 local checked_radio = imgui.ImInt(1)
@@ -45,8 +45,8 @@ end
 require 'lib.sampfuncs'
 seshsps = 1
 ctag = "{9966cc} Medick Helper {ffffff}|"
-players1 = {'{ffffff}Ник\t{ffffff}Ранг'}
-players2 = {'{ffffff}Дата принятия\t{ffffff}Ник\t{ffffff}Ранг\t{ffffff}Статус'}
+players1 = {'{ffffff}ГЌГЁГЄ\t{ffffff}ГђГ Г­ГЈ'}
+players2 = {'{ffffff}Г„Г ГІГ  ГЇГ°ГЁГ­ГїГІГЁГї\t{ffffff}ГЌГЁГЄ\t{ffffff}ГђГ Г­ГЈ\t{ffffff}Г‘ГІГ ГІГіГ±'}
 frak = nil
 rang = nil
 ttt = nil
@@ -155,8 +155,8 @@ local medick =
     wanted == false,
     clear == false,
     hud = false,
-    tar = 'Интерн',
-	tarr = 'тэг',
+    tar = 'Г€Г­ГІГҐГ°Г­',
+	tarr = 'ГІГЅГЈ',
 	tarb = false,
 	clistb = false,
 	clisto = false,
@@ -188,15 +188,15 @@ local libs = {'sphere.lua', 'rkeys.lua', 'imcustom/hotkey.lua', 'imgui.lua', 'Mo
 function main()
   while not isSampAvailable() do wait(1000) end
   if seshsps == 1 then
-	ftext('Medick Helper успешно загружен!',-1)
-	ftext('Функции скрипта команда: /mh (настройки скрипта), F2 (главное меню) или ПКМ + Z (отыгровки).',-1)
-	ftext('Перезагрузить скрипт если отключится, одновременно зажать CTRL + R.',-1)
+	ftext('Medick Helper ГіГ±ГЇГҐГёГ­Г® Г§Г ГЈГ°ГіГ¦ГҐГ­!',-1)
+	ftext('Г”ГіГ­ГЄГ¶ГЁГЁ Г±ГЄГ°ГЁГЇГІГ  ГЄГ®Г¬Г Г­Г¤Г : /mh (Г­Г Г±ГІГ°Г®Г©ГЄГЁ Г±ГЄГ°ГЁГЇГІГ ), F2 (ГЈГ«Г ГўГ­Г®ГҐ Г¬ГҐГ­Гѕ) ГЁГ«ГЁ ГЏГЉГЊ + Z (Г®ГІГ»ГЈГ°Г®ГўГЄГЁ).',-1)
+	ftext('ГЏГҐГ°ГҐГ§Г ГЈГ°ГіГ§ГЁГІГј Г±ГЄГ°ГЁГЇГІ ГҐГ±Г«ГЁ Г®ГІГЄГ«ГѕГ·ГЁГІГ±Гї, Г®Г¤Г­Г®ГўГ°ГҐГ¬ГҐГ­Г­Г® Г§Г Г¦Г ГІГј CTRL + R.',-1)
   end
   if not doesDirectoryExist('moonloader/config/medick/') then createDirectory('moonloader/config/medick/') end
   if cfg == nil then
-    sampAddChatMessage("{7e0059}Medick Help {7e0059}| Отсутсвует файл конфига, создаем.", -1)
+    sampAddChatMessage("{7e0059}Medick Help {7e0059}| ГЋГІГ±ГіГІГ±ГўГіГҐГІ ГґГ Г©Г« ГЄГ®Г­ГґГЁГЈГ , Г±Г®Г§Г¤Г ГҐГ¬.", -1)
     if inicfg.save(medick, 'medick/config.ini') then
-      sampAddChatMessage("{7e0059}Medick Help {7e0059}| Файл конфига успешно создан.", -1)
+      sampAddChatMessage("{7e0059}Medick Help {7e0059}| Г”Г Г©Г« ГЄГ®Г­ГґГЁГЈГ  ГіГ±ГЇГҐГёГ­Г® Г±Г®Г§Г¤Г Г­.", -1)
       cfg = inicfg.load(nil, 'medick/config.ini')
     end
   end
@@ -204,7 +204,7 @@ function main()
   for k, v in pairs(libs) do
         if not doesFileExist('moonloader/lib/'..v) then
             downloadUrlToFile('https://raw.githubusercontent.com/WhackerH/kirya/master/lib/'..v, getWorkingDirectory()..'\\lib\\'..v)
-            print('Загружается библиотека'..v)
+            print('Г‡Г ГЈГ°ГіГ¦Г ГҐГІГ±Гї ГЎГЁГЎГ«ГЁГ®ГІГҐГЄГ '..v)
         end
     end
 	if not doesFileExist("moonloader/config/medick/keys.json") then
@@ -229,9 +229,9 @@ function main()
   sampSendChat('/stats')
   while not sampIsDialogActive() do wait(0) end
   proverkk = sampGetDialogText()
-  local frakc = proverkk:match('.+Организация%s+(.+)%s+Должность')
-  local rang = proverkk:match('.+Должность%s+%d+ %((.+)%)%s+Работа')
-  local telephone = proverkk:match('.+Телефон%s+(.+)%s+Законопослушность')
+  local frakc = proverkk:match('.+ГЋГ°ГЈГ Г­ГЁГ§Г Г¶ГЁГї%s+(.+)%s+Г„Г®Г«Г¦Г­Г®Г±ГІГј')
+  local rang = proverkk:match('.+Г„Г®Г«Г¦Г­Г®Г±ГІГј%s+%d+ %((.+)%)%s+ГђГ ГЎГ®ГІГ ')
+  local telephone = proverkk:match('.+Г’ГҐГ«ГҐГґГ®Г­%s+(.+)%s+Г‡Г ГЄГ®Г­Г®ГЇГ®Г±Г«ГіГёГ­Г®Г±ГІГј')
   rank = rang
   ttt = nil
   frac = frakc
@@ -244,7 +244,7 @@ function main()
   update()
   sampCreate3dTextEx(641, '{ffffff}None', 4294927974, 2346.1362,1666.7819,3040.9387, 3, true, -1, -1)
   sampCreate3dTextEx(642, '{ffffff}None', 4294927974, 2337.5002,1657.4896,3040.9524, 3, true, -1, -1)
-  sampCreate3dTextEx(643, '{ffffff}None.{ff0000}угу!', 4294927974, 2337.8091,1669.0276,3040.9524, 3, true, -1, -1)
+  sampCreate3dTextEx(643, '{ffffff}None.{ff0000}ГіГЈГі!', 4294927974, 2337.8091,1669.0276,3040.9524, 3, true, -1, -1)
   local spawned = sampIsLocalPlayerSpawned()
   for k, v in pairs(tBindList) do
 		rkeys.registerHotKey(v.v, true, onHotKey)
@@ -274,45 +274,45 @@ function main()
         if cfg.main.givra then
             if not changetextpos then
                 changetextpos = true
-                ftext('По завершению введите команду еще раз.')
+                ftext('ГЏГ® Г§Г ГўГҐГ°ГёГҐГ­ГЁГѕ ГўГўГҐГ¤ГЁГІГҐ ГЄГ®Г¬Г Г­Г¤Гі ГҐГ№ГҐ Г°Г Г§.')
             else
                 changetextpos = false
-				inicfg.save(cfg, 'medick/config.ini') -- сохраняем все новые значения в конфиге
+				inicfg.save(cfg, 'medick/config.ini') -- Г±Г®ГµГ°Г Г­ГїГҐГ¬ ГўГ±ГҐ Г­Г®ГўГ»ГҐ Г§Г­Г Г·ГҐГ­ГЁГї Гў ГЄГ®Г­ГґГЁГЈГҐ
             end
         else
-            ftext('Для начала включите Худ.')
+            ftext('Г„Г«Гї Г­Г Г·Г Г«Г  ГўГЄГ«ГѕГ·ГЁГІГҐ Г•ГіГ¤.')
         end
     end)
   sampRegisterChatCommand('ystav', function() ystwindow.v = not ystwindow.v end)
   while true do wait(0)
      datetime = os.date("!*t",os.time()) 
 if datetime.min == 00 and datetime.sec == 10 then 
-sampAddChatMessage("Не забудьте оставить отчёт в теме на получение выплат.", -1) 
+sampAddChatMessage("ГЌГҐ Г§Г ГЎГіГ¤ГјГІГҐ Г®Г±ГІГ ГўГЁГІГј Г®ГІГ·ВёГІ Гў ГІГҐГ¬ГҐ Г­Г  ГЇГ®Г«ГіГ·ГҐГ­ГЁГҐ ГўГ»ГЇГ«Г ГІ.", -1) 
 wait(1000)
 end
     if #departament > 25 then table.remove(departament, 1) end
 	if #smslogs > 25 then table.remove(smslogs, 1) end
 	if #radio > 25 then table.remove(radio, 1) end
     if cfg == nil then
-      sampAddChatMessage("{9966cc}Medick Helper {ffffff}| Отсутсвует файл конфига, создаем.", -1)
+      sampAddChatMessage("{9966cc}Medick Helper {ffffff}| ГЋГІГ±ГіГІГ±ГўГіГҐГІ ГґГ Г©Г« ГЄГ®Г­ГґГЁГЈГ , Г±Г®Г§Г¤Г ГҐГ¬.", -1)
       if inicfg.save(medick, 'medick/config.ini') then
-        sampAddChatMessage("{9966cc}Medick Helper {ffffff}| Файл конфига успешно создан.", -1)
+        sampAddChatMessage("{9966cc}Medick Helper {ffffff}| Г”Г Г©Г« ГЄГ®Г­ГґГЁГЈГ  ГіГ±ГЇГҐГёГ­Г® Г±Г®Г§Г¤Г Г­.", -1)
         cfg = inicfg.load(nil, 'medick/config.ini')
       end
     end
 	    local myhp = getCharHealth(PLAYER_PED)
         local valid, ped = getCharPlayerIsTargeting(PLAYER_HANDLE)
     if wasKeyPressed(cfg.keys.fastmenu) and not sampIsDialogActive() and not sampIsChatInputActive() then
-    submenus_show(fastmenu(id), "{9966cc}Medick Helper {ffffff}| Быстрое меню")
+    submenus_show(fastmenu(id), "{9966cc}Medick Helper {ffffff}| ГЃГ»Г±ГІГ°Г®ГҐ Г¬ГҐГ­Гѕ")
     end
 	    local myhp = getCharHealth(PLAYER_PED)
         local valid, ped = getCharPlayerIsTargeting(PLAYER_HANDLE)
     if wasKeyPressed(cfg.keys.fastmenu) and not sampIsDialogActive() and not sampIsChatInputActive() then
-    submenus_show(fastmenu(id), "{9966cc}Medick Helper {ffffff}| Система повышений")
+    submenus_show(fastmenu(id), "{9966cc}Medick Helper {ffffff}| Г‘ГЁГ±ГІГҐГ¬Г  ГЇГ®ГўГ»ГёГҐГ­ГЁГ©")
 	end
           if valid and doesCharExist(ped) then
             local result, id = sampGetPlayerIdByCharHandle(ped)
-            if result and wasKeyPressed(key.VK_Z) then --- Тут менять клавишу быстрого меню
+            if result and wasKeyPressed(key.VK_Z) then --- Г’ГіГІ Г¬ГҐГ­ГїГІГј ГЄГ«Г ГўГЁГёГі ГЎГ»Г±ГІГ°Г®ГЈГ® Г¬ГҐГ­Гѕ
                 gmegafhandle = ped
                 gmegafid = id
                 gmegaflvl = sampGetPlayerScore(id)
@@ -339,7 +339,7 @@ end
             cfg.main.posX = CPX
             cfg.main.posY = CPY
         end
-		imgui.Process = second_window.v or third_window.v or bMainWindow.v or ystwindow.v or updwindows.v or updwindows.v or infbar.v
+		imgui.Process = second_window.v or third_window.v or bMainWindow.v or ystwindow.v or updwindows.v or infbar.v
   end
   function rkeys.onHotKey(id, keys)
 	if sampIsChatInputActive() or sampIsDialogActive() or isSampfuncsConsoleActive() then
@@ -374,14 +374,14 @@ end
 function dmb()
 	lua_thread.create(function()
 		status = true
-		players2 = {'{ffffff}Дата принятия\t{ffffff}Ник\t{ffffff}Ранг\t{ffffff}Статус'}
-		players1 = {'{ffffff}Ник\t{ffffff}Ранг'}
+		players2 = {'{ffffff}Г„Г ГІГ  ГЇГ°ГЁГ­ГїГІГЁГї\t{ffffff}ГЌГЁГЄ\t{ffffff}ГђГ Г­ГЈ\t{ffffff}Г‘ГІГ ГІГіГ±'}
+		players1 = {'{ffffff}ГЌГЁГЄ\t{ffffff}ГђГ Г­ГЈ'}
 		sampSendChat('/members')
 		while not gotovo do wait(0) end
 		if gosmb then
-			sampShowDialog(716, "{ffffff}В сети: "..gcount.." | {ae433d}Организация | {ffffff}Time: "..os.date("%H:%M:%S"), table.concat(players2, "\n"), "x", _, 5) -- Показываем информацию.
+			sampShowDialog(716, "{ffffff}Г‚ Г±ГҐГІГЁ: "..gcount.." | {ae433d}ГЋГ°ГЈГ Г­ГЁГ§Г Г¶ГЁГї | {ffffff}Time: "..os.date("%H:%M:%S"), table.concat(players2, "\n"), "x", _, 5) -- ГЏГ®ГЄГ Г§Г»ГўГ ГҐГ¬ ГЁГ­ГґГ®Г°Г¬Г Г¶ГЁГѕ.
 		elseif krimemb then
-			sampShowDialog(716, "{ffffff}В сети: "..gcount.." | {ae433d}Организация | {ffffff}Time: "..os.date("%H:%M:%S"), table.concat(players1, "\n"), "x", _, 5) -- Показываем информацию.
+			sampShowDialog(716, "{ffffff}Г‚ Г±ГҐГІГЁ: "..gcount.." | {ae433d}ГЋГ°ГЈГ Г­ГЁГ§Г Г¶ГЁГї | {ffffff}Time: "..os.date("%H:%M:%S"), table.concat(players1, "\n"), "x", _, 5) -- ГЏГ®ГЄГ Г§Г»ГўГ ГҐГ¬ ГЁГ­ГґГ®Г°Г¬Г Г¶ГЁГѕ.
 		end
 		gosmb = false
 		krimemb = false
@@ -395,21 +395,21 @@ function blg(pam)
     if id and frack and pric and sampIsPlayerConnected(id) then
         name = sampGetPlayerNickname(id)
         rpname = name:gsub('_', ' ')
-        sampSendChat(string.format("/d %s, благодарю %s за %s. Цените!", frack, rpname, pric))
+        sampSendChat(string.format("/d %s, ГЎГ«Г ГЈГ®Г¤Г Г°Гѕ %s Г§Г  %s. Г–ГҐГ­ГЁГІГҐ!", frack, rpname, pric))
     else
-        ftext("Введите: /blg [id] [Фракция] [Причина]", -1)
-		ftext("Пример: транспортировку, спасение жизни, и т.д. ", -1)
+        ftext("Г‚ГўГҐГ¤ГЁГІГҐ: /blg [id] [Г”Г°Г ГЄГ¶ГЁГї] [ГЏГ°ГЁГ·ГЁГ­Г ]", -1)
+		ftext("ГЏГ°ГЁГ¬ГҐГ°: ГІГ°Г Г­Г±ГЇГ®Г°ГІГЁГ°Г®ГўГЄГі, Г±ГЇГ Г±ГҐГ­ГЁГҐ Г¦ГЁГ§Г­ГЁ, ГЁ ГІ.Г¤. ", -1)
     end
 end
 
 function dmch()
 	lua_thread.create(function()
 		statusc = true
-		players3 = {'{ffffff}Ник\t{ffffff}Ранг\t{ffffff}Статус'}
+		players3 = {'{ffffff}ГЌГЁГЄ\t{ffffff}ГђГ Г­ГЈ\t{ffffff}Г‘ГІГ ГІГіГ±'}
 		sampSendChat('/members')
 		while not gotovo do wait(0) end
 		if gosmb then
-			sampShowDialog(716, "{9966cc}Medick Helper {ffffff}| {ae433d}Вне офиса {ffffff}| Time: "..os.date("%H:%M:%S"), table.concat(players3, "\n"), "x", _, 5) -- Показываем информацию.
+			sampShowDialog(716, "{9966cc}Medick Helper {ffffff}| {ae433d}Г‚Г­ГҐ Г®ГґГЁГ±Г  {ffffff}| Time: "..os.date("%H:%M:%S"), table.concat(players3, "\n"), "x", _, 5) -- ГЏГ®ГЄГ Г§Г»ГўГ ГҐГ¬ ГЁГ­ГґГ®Г°Г¬Г Г¶ГЁГѕ.
 		end
 		gosmb = false
 		krimemb = false
@@ -419,38 +419,38 @@ function dmch()
 end
 
 function dlog()
-    sampShowDialog(97987, '{9966cc}Medick Help{ffffff} | Лог сообщений департамента', table.concat(departament, '\n'), '»', 'x', 0)
+    sampShowDialog(97987, '{9966cc}Medick Help{ffffff} | Г‹Г®ГЈ Г±Г®Г®ГЎГ№ГҐГ­ГЁГ© Г¤ГҐГЇГ Г°ГІГ Г¬ГҐГ­ГІГ ', table.concat(departament, '\n'), 'В»', 'x', 0)
 end
 function slog()
-    sampShowDialog(97987, '{9966cc}Medick Help{ffffff} | Лог SMS', table.concat(smslogs, '\n'), '»', 'x', 0)
+    sampShowDialog(97987, '{9966cc}Medick Help{ffffff} | Г‹Г®ГЈ SMS', table.concat(smslogs, '\n'), 'В»', 'x', 0)
 end
 
 function rlog()
-    sampShowDialog(97988, '{9966cc}Medick Help{ffffff} | Лог Рации', table.concat(radio, '\n'), '»', 'x', 0)
+    sampShowDialog(97988, '{9966cc}Medick Help{ffffff} | Г‹Г®ГЈ ГђГ Г¶ГЁГЁ', table.concat(radio, '\n'), 'В»', 'x', 0)
 end
 
 function vig(pam)
   local id, pric = string.match(pam, '(%d+)%s+(.+)')
-  if rank == 'Психолог' or rank == 'Хирург' or rank == 'Зам.Глав.Врача' or  rank == 'Главный Врач' then
+  if rank == 'ГЏГ±ГЁГµГ®Г«Г®ГЈ' or rank == 'Г•ГЁГ°ГіГ°ГЈ' or rank == 'Г‡Г Г¬.ГѓГ«Г Гў.Г‚Г°Г Г·Г ' or  rank == 'ГѓГ«Г ГўГ­Г»Г© Г‚Г°Г Г·' then
   if id == nil then
-    sampAddChatMessage("{9966cc}Medick Helper {ffffff}| Введите: /vig [ID] [Причина]", -1)
+    sampAddChatMessage("{9966cc}Medick Helper {ffffff}| Г‚ГўГҐГ¤ГЁГІГҐ: /vig [ID] [ГЏГ°ГЁГ·ГЁГ­Г ]", -1)
   end
   if id ~=nil and not sampIsPlayerConnected(id) then
-    sampAddChatMessage("{9966cc}Medick Helper {ffffff}| Игрок с ID: "..id.." не подключен к серверу.", -1)
+    sampAddChatMessage("{9966cc}Medick Helper {ffffff}| Г€ГЈГ°Г®ГЄ Г± ID: "..id.." Г­ГҐ ГЇГ®Г¤ГЄГ«ГѕГ·ГҐГ­ ГЄ Г±ГҐГ°ГўГҐГ°Гі.", -1)
   end
   if id ~= nil and sampIsPlayerConnected(id) then
       if pric == nil then
-        sampAddChatMessage("{9966cc}Medick Helper {ffffff}| Введите: /vig [ID] [ПРИЧИНА]", -1)
+        sampAddChatMessage("{9966cc}Medick Helper {ffffff}| Г‚ГўГҐГ¤ГЁГІГҐ: /vig [ID] [ГЏГђГ€Г—Г€ГЌГЂ]", -1)
       end
       if pric ~= nil then
 	   if cfg.main.tarb then
         name = sampGetPlayerNickname(id)
         rpname = name:gsub('_', ' ')
-        sampSendChat(string.format("/r [%s]: %s - получает выговор по причине: %s.", cfg.main.tarr, rpname, pric))
+        sampSendChat(string.format("/r [%s]: %s - ГЇГ®Г«ГіГ·Г ГҐГІ ГўГ»ГЈГ®ГўГ®Г° ГЇГ® ГЇГ°ГЁГ·ГЁГ­ГҐ: %s.", cfg.main.tarr, rpname, pric))
 		else
 		name = sampGetPlayerNickname(id)
         rpname = name:gsub('_', ' ')
-		sampSendChat(string.format("/r %s - получает выговор по причине: %s.", rpname, pric))
+		sampSendChat(string.format("/r %s - ГЇГ®Г«ГіГ·Г ГҐГІ ГўГ»ГЈГ®ГўГ®Г° ГЇГ® ГЇГ°ГЁГ·ГЁГ­ГҐ: %s.", rpname, pric))
       end
   end
 end
@@ -458,26 +458,26 @@ end
 end
 function ivig(pam)
   local id, pric = string.match(pam, '(%d+)%s+(.+)')
-  if rank == 'Психолог' or rank == 'Хирург' or rank == 'Зам.Глав.Врача' or  rank == 'Глав.Врач' or  rank == 'Доктор' then
+  if rank == 'ГЏГ±ГЁГµГ®Г«Г®ГЈ' or rank == 'Г•ГЁГ°ГіГ°ГЈ' or rank == 'Г‡Г Г¬.ГѓГ«Г Гў.Г‚Г°Г Г·Г ' or  rank == 'ГѓГ«Г Гў.Г‚Г°Г Г·' or  rank == 'Г„Г®ГЄГІГ®Г°' then
   if id == nil then
-    sampAddChatMessage("{9966cc}Medick Helper {ffffff}| Введите: /ivig [ID] [Причина]", -1)
+    sampAddChatMessage("{9966cc}Medick Helper {ffffff}| Г‚ГўГҐГ¤ГЁГІГҐ: /ivig [ID] [ГЏГ°ГЁГ·ГЁГ­Г ]", -1)
   end
   if id ~=nil and not sampIsPlayerConnected(id) then
-    sampAddChatMessage("{9966cc}Medick Helper {ffffff}| Игрок с ID: "..id.." не подключен к серверу.", -1)
+    sampAddChatMessage("{9966cc}Medick Helper {ffffff}| Г€ГЈГ°Г®ГЄ Г± ID: "..id.." Г­ГҐ ГЇГ®Г¤ГЄГ«ГѕГ·ГҐГ­ ГЄ Г±ГҐГ°ГўГҐГ°Гі.", -1)
   end
   if id ~= nil and sampIsPlayerConnected(id) then
       if pric == nil then
-        sampAddChatMessage("{9966cc}Medick Helper {ffffff}| Введите: /ivig [ID] [ПРИЧИНА]", -1)
+        sampAddChatMessage("{9966cc}Medick Helper {ffffff}| Г‚ГўГҐГ¤ГЁГІГҐ: /ivig [ID] [ГЏГђГ€Г—Г€ГЌГЂ]", -1)
       end
       if pric ~= nil then
 	   if cfg.main.tarb then
         name = sampGetPlayerNickname(id)
         rpname = name:gsub('_', ' ')
-        sampSendChat(string.format("/r [%s]: %s - Получает строгий выговор по причине: %s.", cfg.main.tarr, rpname, pric))
+        sampSendChat(string.format("/r [%s]: %s - ГЏГ®Г«ГіГ·Г ГҐГІ Г±ГІГ°Г®ГЈГЁГ© ГўГ»ГЈГ®ГўГ®Г° ГЇГ® ГЇГ°ГЁГ·ГЁГ­ГҐ: %s.", cfg.main.tarr, rpname, pric))
 		else
 		name = sampGetPlayerNickname(id)
         rpname = name:gsub('_', ' ')
-		sampSendChat(string.format("/r %s - Получает строгий выговор по причине: %s.", rpname, pric))
+		sampSendChat(string.format("/r %s - ГЏГ®Г«ГіГ·Г ГҐГІ Г±ГІГ°Г®ГЈГЁГ© ГўГ»ГЈГ®ГўГ®Г° ГЇГ® ГЇГ°ГЁГ·ГЁГ­ГҐ: %s.", rpname, pric))
       end
   end
 end
@@ -486,68 +486,68 @@ end
 
 function unvig(pam)
   local id, pric = string.match(pam, '(%d+)%s+(.+)')
-  if rank == 'Психолог' or rank == 'Хирург' or rank == 'Зам.Глав.Врача' or  rank == 'Глав.Врач' then
+  if rank == 'ГЏГ±ГЁГµГ®Г«Г®ГЈ' or rank == 'Г•ГЁГ°ГіГ°ГЈ' or rank == 'Г‡Г Г¬.ГѓГ«Г Гў.Г‚Г°Г Г·Г ' or  rank == 'ГѓГ«Г Гў.Г‚Г°Г Г·' then
   if id == nil then
-    sampAddChatMessage("{9966cc}Medick Helper {ffffff}| Введите: /unvig [ID] [Причина]", -1)
+    sampAddChatMessage("{9966cc}Medick Helper {ffffff}| Г‚ГўГҐГ¤ГЁГІГҐ: /unvig [ID] [ГЏГ°ГЁГ·ГЁГ­Г ]", -1)
   end
   if id ~=nil and not sampIsPlayerConnected(id) then
-    sampAddChatMessage("{9966cc}Medick Helper {ffffff}| Игрок с ID: "..id.." не подключен к серверу.", -1)
+    sampAddChatMessage("{9966cc}Medick Helper {ffffff}| Г€ГЈГ°Г®ГЄ Г± ID: "..id.." Г­ГҐ ГЇГ®Г¤ГЄГ«ГѕГ·ГҐГ­ ГЄ Г±ГҐГ°ГўГҐГ°Гі.", -1)
   end
   if id ~= nil and sampIsPlayerConnected(id) then
   
       if pric == nil then
-        sampAddChatMessage("{9966cc}Medick Helper {ffffff}| Введите: /unvig [ID] [ПРИЧИНА]", -1)
+        sampAddChatMessage("{9966cc}Medick Helper {ffffff}| Г‚ГўГҐГ¤ГЁГІГҐ: /unvig [ID] [ГЏГђГ€Г—Г€ГЌГЂ]", -1)
       end
       if pric ~= nil then
 	   if cfg.main.tarb then
         name = sampGetPlayerNickname(id)
         rpname = name:gsub('_', ' ')
-        sampSendChat(string.format("/r [%s]: %s - Получает cнятие выговора по причине: %s.", cfg.main.tarr, rpname, pric))
+        sampSendChat(string.format("/r [%s]: %s - ГЏГ®Г«ГіГ·Г ГҐГІ cГ­ГїГІГЁГҐ ГўГ»ГЈГ®ГўГ®Г°Г  ГЇГ® ГЇГ°ГЁГ·ГЁГ­ГҐ: %s.", cfg.main.tarr, rpname, pric))
 		else
 		name = sampGetPlayerNickname(id)
         rpname = name:gsub('_', ' ')
-		sampSendChat(string.format("/r %s - Получает cнятие выговора по причине: %s.", rpname, pric))
+		sampSendChat(string.format("/r %s - ГЏГ®Г«ГіГ·Г ГҐГІ cГ­ГїГІГЁГҐ ГўГ»ГЈГ®ГўГ®Г°Г  ГЇГ® ГЇГ°ГЁГ·ГЁГ­ГҐ: %s.", rpname, pric))
       end
   end
 end
 end
 end
 
-function where(params) -- запрос местоположения
-   if rank == 'Психолог' or rank == 'Хирург' or rank == 'Зам.Глав.Врача' or  rank == 'Глав.Врач' then
+function where(params) -- Г§Г ГЇГ°Г®Г± Г¬ГҐГ±ГІГ®ГЇГ®Г«Г®Г¦ГҐГ­ГЁГї
+   if rank == 'ГЏГ±ГЁГµГ®Г«Г®ГЈ' or rank == 'Г•ГЁГ°ГіГ°ГЈ' or rank == 'Г‡Г Г¬.ГѓГ«Г Гў.Г‚Г°Г Г·Г ' or  rank == 'ГѓГ«Г Гў.Г‚Г°Г Г·' then
 	if params:match("^%d+") then
 		params = tonumber(params:match("^(%d+)"))
 		if sampIsPlayerConnected(params) then
 			local name = string.gsub(sampGetPlayerNickname(params), "_", " ")
 			 if cfg.main.tarb then
-			    sampSendChat(string.format("/r [%s]: %s, доложите свое местоположение. На ответ 20 секунд.", cfg.main.tarr, name))
+			    sampSendChat(string.format("/r [%s]: %s, Г¤Г®Г«Г®Г¦ГЁГІГҐ Г±ГўГ®ГҐ Г¬ГҐГ±ГІГ®ГЇГ®Г«Г®Г¦ГҐГ­ГЁГҐ. ГЌГ  Г®ГІГўГҐГІ 20 Г±ГҐГЄГіГ­Г¤.", cfg.main.tarr, name))
 			else
-			sampSendChat(string.format("/r %s, доложите свое местоположение. На ответ 20 секунд.", name))
+			sampSendChat(string.format("/r %s, Г¤Г®Г«Г®Г¦ГЁГІГҐ Г±ГўГ®ГҐ Г¬ГҐГ±ГІГ®ГЇГ®Г«Г®Г¦ГҐГ­ГЁГҐ. ГЌГ  Г®ГІГўГҐГІ 20 Г±ГҐГЄГіГ­Г¤.", name))
 			end
 			else
-			ftext('{FFFFFF} Игрок с данным ID не подключен к серверу или указан ваш ID.', 0x046D63)
+			ftext('{FFFFFF} Г€ГЈГ°Г®ГЄ Г± Г¤Г Г­Г­Г»Г¬ ID Г­ГҐ ГЇГ®Г¤ГЄГ«ГѕГ·ГҐГ­ ГЄ Г±ГҐГ°ГўГҐГ°Гі ГЁГ«ГЁ ГіГЄГ Г§Г Г­ ГўГ Гё ID.', 0x046D63)
 		end
 		else
-		ftext('{FFFFFF} Используйте: /where [ID].', 0x046D63)
+		ftext('{FFFFFF} Г€Г±ГЇГ®Г«ГјГ§ГіГ©ГІГҐ: /where [ID].', 0x046D63)
 		end
 		else
-		ftext('{FFFFFF}Данная команда доступна с 7 ранга.', 0x046D63)
+		ftext('{FFFFFF}Г„Г Г­Г­Г Гї ГЄГ®Г¬Г Г­Г¤Г  Г¤Г®Г±ГІГіГЇГ­Г  Г± 7 Г°Г Г­ГЈГ .', 0x046D63)
 	end
 end
 
 function getrang(rangg)
 local ranks = 
         {
-		['1'] = 'Интерн',
-		['2'] = 'Санитар',
-		['3'] = 'Мед.брат',
-		['4'] = 'Спасатель',
-		['5'] = 'Нарколог',
-		['6'] = 'Доктор',
-		['7'] = 'Психолог',
-		['8'] = 'Хирург',
-		['9'] = 'Зам.Глав.Врача',
-		['10'] = 'Глав.Врач'
+		['1'] = 'Г€Г­ГІГҐГ°Г­',
+		['2'] = 'Г‘Г Г­ГЁГІГ Г°',
+		['3'] = 'ГЊГҐГ¤.ГЎГ°Г ГІ',
+		['4'] = 'Г‘ГЇГ Г±Г ГІГҐГ«Гј',
+		['5'] = 'ГЌГ Г°ГЄГ®Г«Г®ГЈ',
+		['6'] = 'Г„Г®ГЄГІГ®Г°',
+		['7'] = 'ГЏГ±ГЁГµГ®Г«Г®ГЈ',
+		['8'] = 'Г•ГЁГ°ГіГ°ГЈ',
+		['9'] = 'Г‡Г Г¬.ГѓГ«Г Гў.Г‚Г°Г Г·Г ',
+		['10'] = 'ГѓГ«Г Гў.Г‚Г°Г Г·'
 		}
 	return ranks[rangg]
 end
@@ -556,7 +556,7 @@ function giverank(pam)
     lua_thread.create(function()
     local id, rangg, plus = pam:match('(%d+) (%d+)%s+(.+)')
 	if sampIsPlayerConnected(id) then
-	  if rank == 'Психолог' or rank == 'Хирург' or rank == 'Зам.Глав.Врача' or  rank == 'Глав.Врач' then
+	  if rank == 'ГЏГ±ГЁГµГ®Г«Г®ГЈ' or rank == 'Г•ГЁГ°ГіГ°ГЈ' or rank == 'Г‡Г Г¬.ГѓГ«Г Гў.Г‚Г°Г Г·Г ' or  rank == 'ГѓГ«Г Гў.Г‚Г°Г Г·' then
         if id and rangg then
 		if plus == '-' or plus == '+' then
 		ranks = getrang(rangg)
@@ -566,23 +566,23 @@ function giverank(pam)
 				local mx, my, mz = getCharCoordinates(PLAYER_PED)
 				local dist = getDistanceBetweenCoords3d(mx, my, mz, x, y, z)
 				if dist <= 5 then
-				if cfg.main.male == true then  --- Мужская отыгровка
-				sampSendChat('/me снял старый бейджик с человека напротив стоящего')
+				if cfg.main.male == true then  --- ГЊГіГ¦Г±ГЄГ Гї Г®ГІГ»ГЈГ°Г®ГўГЄГ 
+				sampSendChat('/me Г±Г­ГїГ« Г±ГІГ Г°Г»Г© ГЎГҐГ©Г¤Г¦ГЁГЄ Г± Г·ГҐГ«Г®ГўГҐГЄГ  Г­Г ГЇГ°Г®ГІГЁГў Г±ГІГ®ГїГ№ГҐГЈГ®')
 				wait(3000)
-				sampSendChat('/me убрал старый бейджик в карман')
+				sampSendChat('/me ГіГЎГ°Г Г« Г±ГІГ Г°Г»Г© ГЎГҐГ©Г¤Г¦ГЁГЄ Гў ГЄГ Г°Г¬Г Г­')
 				wait(3000)
-                sampSendChat(string.format('/me достал новый бейджик %s', ranks))
+                sampSendChat(string.format('/me Г¤Г®Г±ГІГ Г« Г­Г®ГўГ»Г© ГЎГҐГ©Г¤Г¦ГЁГЄ %s', ranks))
 				wait(3000)
-				sampSendChat('/me закрепил на рубашку человеку напротив новый бейджик')
+				sampSendChat('/me Г§Г ГЄГ°ГҐГЇГЁГ« Г­Г  Г°ГіГЎГ ГёГЄГі Г·ГҐГ«Г®ГўГҐГЄГі Г­Г ГЇГ°Г®ГІГЁГў Г­Г®ГўГ»Г© ГЎГҐГ©Г¤Г¦ГЁГЄ')
 				wait(3000)
 				else
-				sampSendChat('/me сняла старый бейджик с человека напротив стоящего')  --- Женская отыгровка
+				sampSendChat('/me Г±Г­ГїГ«Г  Г±ГІГ Г°Г»Г© ГЎГҐГ©Г¤Г¦ГЁГЄ Г± Г·ГҐГ«Г®ГўГҐГЄГ  Г­Г ГЇГ°Г®ГІГЁГў Г±ГІГ®ГїГ№ГҐГЈГ®')  --- Г†ГҐГ­Г±ГЄГ Гї Г®ГІГ»ГЈГ°Г®ГўГЄГ 
 				wait(3000)
-				sampSendChat('/me убрала старый бейджик в карман')
+				sampSendChat('/me ГіГЎГ°Г Г«Г  Г±ГІГ Г°Г»Г© ГЎГҐГ©Г¤Г¦ГЁГЄ Гў ГЄГ Г°Г¬Г Г­')
 				wait(3000)
-                sampSendChat(string.format('/me достала новый бейджик %s', ranks))
+                sampSendChat(string.format('/me Г¤Г®Г±ГІГ Г«Г  Г­Г®ГўГ»Г© ГЎГҐГ©Г¤Г¦ГЁГЄ %s', ranks))
 				wait(3000)
-				sampSendChat('/me закрепила на рубашку человеку напротив новый бейджик')
+				sampSendChat('/me Г§Г ГЄГ°ГҐГЇГЁГ«Г  Г­Г  Г°ГіГЎГ ГёГЄГі Г·ГҐГ«Г®ГўГҐГЄГі Г­Г ГЇГ°Г®ГІГЁГў Г­Г®ГўГ»Г© ГЎГҐГ©Г¤Г¦ГЁГЄ')
 				wait(3000)
 				end
 				end
@@ -590,23 +590,23 @@ function giverank(pam)
 				sampSendChat(string.format('/giverank %s %s', id, rangg))
 				wait(3000)
 				if cfg.main.tarb then
-                sampSendChat(string.format('/r [%s]: '..sampGetPlayerNickname(id):gsub('_', ' ')..' - %s в должности до %s%s.', cfg.main.tarr, plus == '+' and 'Повышен(а)' or 'Понижен(а)', ranks, plus == '+' and ', Поздравляем!' or ''))
+                sampSendChat(string.format('/r [%s]: '..sampGetPlayerNickname(id):gsub('_', ' ')..' - %s Гў Г¤Г®Г«Г¦Г­Г®Г±ГІГЁ Г¤Г® %s%s.', cfg.main.tarr, plus == '+' and 'ГЏГ®ГўГ»ГёГҐГ­(Г )' or 'ГЏГ®Г­ГЁГ¦ГҐГ­(Г )', ranks, plus == '+' and ', ГЏГ®Г§Г¤Г°Г ГўГ«ГїГҐГ¬!' or ''))
                 else
-				sampSendChat(string.format('/r '..sampGetPlayerNickname(id):gsub('_', ' ')..' - %s в должности до %s%s.', plus == '+' and 'Повышен(а)' or 'Понижен(а)', ranks, plus == '+' and ', Поздравляем!' or ''))
+				sampSendChat(string.format('/r '..sampGetPlayerNickname(id):gsub('_', ' ')..' - %s Гў Г¤Г®Г«Г¦Г­Г®Г±ГІГЁ Г¤Г® %s%s.', plus == '+' and 'ГЏГ®ГўГ»ГёГҐГ­(Г )' or 'ГЏГ®Г­ГЁГ¦ГҐГ­(Г )', ranks, plus == '+' and ', ГЏГ®Г§Г¤Г°Г ГўГ«ГїГҐГ¬!' or ''))
 				wait(3000)
-				sampSendChat('/b /time 1 + F8, обязательно.')
+				sampSendChat('/b /time 1 + F8, Г®ГЎГїГ§Г ГІГҐГ«ГјГ­Г®.')
             end
 			else
-			ftext('Вы ввели неверный тип [+/-]')
+			ftext('Г‚Г» ГўГўГҐГ«ГЁ Г­ГҐГўГҐГ°Г­Г»Г© ГІГЁГЇ [+/-]')
 		end
 		else
-			ftext('Введите: /giverank [id] [ранг] [+/-]')
+			ftext('Г‚ГўГҐГ¤ГЁГІГҐ: /giverank [id] [Г°Г Г­ГЈ] [+/-]')
 		end
 		else
-			ftext('Данная команда доступна с должности Психолог.')
+			ftext('Г„Г Г­Г­Г Гї ГЄГ®Г¬Г Г­Г¤Г  Г¤Г®Г±ГІГіГЇГ­Г  Г± Г¤Г®Г«Г¦Г­Г®Г±ГІГЁ ГЏГ±ГЁГµГ®Г«Г®ГЈ.')
 	  end
 	  else
-			ftext('Игрок с данным ID не подключен к серверу или указан ваш ID.')
+			ftext('Г€ГЈГ°Г®ГЄ Г± Г¤Г Г­Г­Г»Г¬ ID Г­ГҐ ГЇГ®Г¤ГЄГ«ГѕГ·ГҐГ­ ГЄ Г±ГҐГ°ГўГҐГ°Гі ГЁГ«ГЁ ГіГЄГ Г§Г Г­ ГўГ Гё ID.')
 	  end
    end)
  end
@@ -615,7 +615,7 @@ function fgiverank(pam)
     lua_thread.create(function()
     local id, rangg, plus = pam:match('(%d+) (%d+)%s+(.+)')
 	if sampIsPlayerConnected(id) then
-	  if rank == 'Психолог' or rank == 'Хирург' or rank == 'Зам.Глав.Врача' or  rank == 'Глав.Врач' then
+	  if rank == 'ГЏГ±ГЁГµГ®Г«Г®ГЈ' or rank == 'Г•ГЁГ°ГіГ°ГЈ' or rank == 'Г‡Г Г¬.ГѓГ«Г Гў.Г‚Г°Г Г·Г ' or  rank == 'ГѓГ«Г Гў.Г‚Г°Г Г·' then
         if id and rangg then
 		if plus == '-' or plus == '+' then
 		ranks = getrang(rangg)
@@ -626,37 +626,37 @@ function fgiverank(pam)
 				local dist = getDistanceBetweenCoords3d(mx, my, mz, x, y, z)
 				if dist <= 5 then
 				if cfg.main.male == true then
-				sampSendChat('/me снял старый бейджик с человека напротив стоящего')
+				sampSendChat('/me Г±Г­ГїГ« Г±ГІГ Г°Г»Г© ГЎГҐГ©Г¤Г¦ГЁГЄ Г± Г·ГҐГ«Г®ГўГҐГЄГ  Г­Г ГЇГ°Г®ГІГЁГў Г±ГІГ®ГїГ№ГҐГЈГ®')
 				wait(3000)
-				sampSendChat('/me убрал старый бейджик в карман')
+				sampSendChat('/me ГіГЎГ°Г Г« Г±ГІГ Г°Г»Г© ГЎГҐГ©Г¤Г¦ГЁГЄ Гў ГЄГ Г°Г¬Г Г­')
 				wait(3000)
-                sampSendChat(string.format('/me достал новый бейджик %s', ranks))
+                sampSendChat(string.format('/me Г¤Г®Г±ГІГ Г« Г­Г®ГўГ»Г© ГЎГҐГ©Г¤Г¦ГЁГЄ %s', ranks))
 				wait(3000)
-				sampSendChat('/me закрепил на рубашку человеку напротив новый бейджик')
+				sampSendChat('/me Г§Г ГЄГ°ГҐГЇГЁГ« Г­Г  Г°ГіГЎГ ГёГЄГі Г·ГҐГ«Г®ГўГҐГЄГі Г­Г ГЇГ°Г®ГІГЁГў Г­Г®ГўГ»Г© ГЎГҐГ©Г¤Г¦ГЁГЄ')
 				wait(3000)
 				else
-				sampSendChat('/me сняла старый бейджик с человека напротив стоящего')
+				sampSendChat('/me Г±Г­ГїГ«Г  Г±ГІГ Г°Г»Г© ГЎГҐГ©Г¤Г¦ГЁГЄ Г± Г·ГҐГ«Г®ГўГҐГЄГ  Г­Г ГЇГ°Г®ГІГЁГў Г±ГІГ®ГїГ№ГҐГЈГ®')
 				wait(3000)
-				sampSendChat('/me убрала старый бейджик в карман')
+				sampSendChat('/me ГіГЎГ°Г Г«Г  Г±ГІГ Г°Г»Г© ГЎГҐГ©Г¤Г¦ГЁГЄ Гў ГЄГ Г°Г¬Г Г­')
 				wait(3000)
-                sampSendChat(string.format('/me достала новый бейджик %s', ranks))
+                sampSendChat(string.format('/me Г¤Г®Г±ГІГ Г«Г  Г­Г®ГўГ»Г© ГЎГҐГ©Г¤Г¦ГЁГЄ %s', ranks))
 				wait(3000)
-				sampSendChat('/me закрепила на рубашку человеку напротив новый бейджик')
+				sampSendChat('/me Г§Г ГЄГ°ГҐГЇГЁГ«Г  Г­Г  Г°ГіГЎГ ГёГЄГі Г·ГҐГ«Г®ГўГҐГЄГі Г­Г ГЇГ°Г®ГІГЁГў Г­Г®ГўГ»Г© ГЎГҐГ©Г¤Г¦ГЁГЄ')
 				wait(3000)
 				end
 				end
 				end
 			else
-			ftext('Вы ввели неверный тип [+/-].')
+			ftext('Г‚Г» ГўГўГҐГ«ГЁ Г­ГҐГўГҐГ°Г­Г»Г© ГІГЁГЇ [+/-].')
 		end
 		else
-			ftext('Введите: /giverank [id] [ранг] [+/-]')
+			ftext('Г‚ГўГҐГ¤ГЁГІГҐ: /giverank [id] [Г°Г Г­ГЈ] [+/-]')
 		end
 		else
-			ftext('Данная команда доступна с должности Доктор.')
+			ftext('Г„Г Г­Г­Г Гї ГЄГ®Г¬Г Г­Г¤Г  Г¤Г®Г±ГІГіГЇГ­Г  Г± Г¤Г®Г«Г¦Г­Г®Г±ГІГЁ Г„Г®ГЄГІГ®Г°.')
 	  end
 	  else
-			ftext('Игрок с данным ID не подключен к серверу или указан ваш ID.')
+			ftext('Г€ГЈГ°Г®ГЄ Г± Г¤Г Г­Г­Г»Г¬ ID Г­ГҐ ГЇГ®Г¤ГЄГ«ГѕГ·ГҐГ­ ГЄ Г±ГҐГ°ГўГҐГ°Гі ГЁГ«ГЁ ГіГЄГ Г§Г Г­ ГўГ Гё ID.')
 	  end
    end)
  end
@@ -664,31 +664,31 @@ function fgiverank(pam)
  function invite(pam)
     lua_thread.create(function()
         local id = pam:match('(%d+)')
-	  if rank == 'Зам.Глав.Врача' or  rank == 'Глав.Врач' or  rank == 'Хирург' or rank == 'Психолог' then
+	  if rank == 'Г‡Г Г¬.ГѓГ«Г Гў.Г‚Г°Г Г·Г ' or  rank == 'ГѓГ«Г Гў.Г‚Г°Г Г·' or  rank == 'Г•ГЁГ°ГіГ°ГЈ' or rank == 'ГЏГ±ГЁГµГ®Г«Г®ГЈ' then
         if id then
 		if sampIsPlayerConnected(id) then
-                sampSendChat('/me достал(а) бейджик интерна и передал(а) его '..sampGetPlayerNickname(id):gsub('_', ' ')..'')
+                sampSendChat('/me Г¤Г®Г±ГІГ Г«(Г ) ГЎГҐГ©Г¤Г¦ГЁГЄ ГЁГ­ГІГҐГ°Г­Г  ГЁ ГЇГҐГ°ГҐГ¤Г Г«(Г ) ГҐГЈГ® '..sampGetPlayerNickname(id):gsub('_', ' ')..'')
 				wait(3000)
 				sampSendChat(string.format('/invite %s', id))
 				wait(2000)
-				sampSendChat(string.format('/r [%s]: '..sampGetPlayerNickname(id):gsub('_', ' ')..' - Принят(а) в Мининистерство Здравоохранения, Поздравляем', cfg.main.tarr))
+				sampSendChat(string.format('/r [%s]: '..sampGetPlayerNickname(id):gsub('_', ' ')..' - ГЏГ°ГЁГ­ГїГІ(Г ) Гў ГЊГЁГ­ГЁГ­ГЁГ±ГІГҐГ°Г±ГІГўГ® Г‡Г¤Г°Г ГўГ®Г®ГµГ°Г Г­ГҐГ­ГЁГї, ГЏГ®Г§Г¤Г°Г ГўГ«ГїГҐГ¬', cfg.main.tarr))
 			else
-			ftext('Игрок с данным ID не подключен к серверу или указан ваш ID.')
+			ftext('Г€ГЈГ°Г®ГЄ Г± Г¤Г Г­Г­Г»Г¬ ID Г­ГҐ ГЇГ®Г¤ГЄГ«ГѕГ·ГҐГ­ ГЄ Г±ГҐГ°ГўГҐГ°Гі ГЁГ«ГЁ ГіГЄГ Г§Г Г­ ГўГ Гё ID.')
 		end
 		else
-			ftext('Введите: /invite [id]')
+			ftext('Г‚ГўГҐГ¤ГЁГІГҐ: /invite [id]')
 		end
 		else
-			ftext('Данная команда доступна с должности Психолог.')
+			ftext('Г„Г Г­Г­Г Гї ГЄГ®Г¬Г Г­Г¤Г  Г¤Г®Г±ГІГіГЇГ­Г  Г± Г¤Г®Г«Г¦Г­Г®Г±ГІГЁ ГЏГ±ГЁГµГ®Г«Г®ГЈ.')
 	  end
    end)
  end
  function fixcar()
     lua_thread.create(function()
-	  if rank == 'Зам.Глав.Врача' or  rank == 'Глав.Врач' or  rank == 'Хирург' or  rank == 'Психолог' then
-        sampSendChat('/rb Спавн организационного транспорта через 15 секунд')
+	  if rank == 'Г‡Г Г¬.ГѓГ«Г Гў.Г‚Г°Г Г·Г ' or  rank == 'ГѓГ«Г Гў.Г‚Г°Г Г·' or  rank == 'Г•ГЁГ°ГіГ°ГЈ' or  rank == 'ГЏГ±ГЁГµГ®Г«Г®ГЈ' then
+        sampSendChat('/rb Г‘ГЇГ ГўГ­ Г®Г°ГЈГ Г­ГЁГ§Г Г¶ГЁГ®Г­Г­Г®ГЈГ® ГІГ°Г Г­Г±ГЇГ®Г°ГІГ  Г·ГҐГ°ГҐГ§ 15 Г±ГҐГЄГіГ­Г¤')
 		wait(1000)
-		sampSendChat('/rb  Займите свои кареты!')
+		sampSendChat('/rb  Г‡Г Г©Г¬ГЁГІГҐ Г±ГўГ®ГЁ ГЄГ Г°ГҐГІГ»!')
 		wait(1000)
 		sampSendChat('/ffixcar')
 	  end
@@ -697,24 +697,24 @@ function fgiverank(pam)
  function invitenarko(pam)
     lua_thread.create(function()
         local id = pam:match('(%d+)')
-	  if rank == 'Зам.Глав.Врача' or  rank == 'Глав.Врач' or  rank == 'Хирург' or rank == 'Психолог' then
+	  if rank == 'Г‡Г Г¬.ГѓГ«Г Гў.Г‚Г°Г Г·Г ' or  rank == 'ГѓГ«Г Гў.Г‚Г°Г Г·' or  rank == 'Г•ГЁГ°ГіГ°ГЈ' or rank == 'ГЏГ±ГЁГµГ®Г«Г®ГЈ' then
         if id then
 		if sampIsPlayerConnected(id) then
-                sampSendChat('/me достал(а) бейджик нарколога и передал(а) его '..sampGetPlayerNickname(id):gsub('_', ' ')..'')
+                sampSendChat('/me Г¤Г®Г±ГІГ Г«(Г ) ГЎГҐГ©Г¤Г¦ГЁГЄ Г­Г Г°ГЄГ®Г«Г®ГЈГ  ГЁ ГЇГҐГ°ГҐГ¤Г Г«(Г ) ГҐГЈГ® '..sampGetPlayerNickname(id):gsub('_', ' ')..'')
 				wait(3000)
 				sampSendChat(string.format('/invite %s', id))
 				wait(6000)
 				sampSendChat(string.format('/giverank %s 5', id))
 				wait(2000)
-				sampSendChat(string.format('/r [%s]: '..sampGetPlayerNickname(id):gsub('_', ' ')..' - Принят на должность нарколога по заявлению, Поздравляем', cfg.main.tarr))
+				sampSendChat(string.format('/r [%s]: '..sampGetPlayerNickname(id):gsub('_', ' ')..' - ГЏГ°ГЁГ­ГїГІ Г­Г  Г¤Г®Г«Г¦Г­Г®Г±ГІГј Г­Г Г°ГЄГ®Г«Г®ГЈГ  ГЇГ® Г§Г ГїГўГ«ГҐГ­ГЁГѕ, ГЏГ®Г§Г¤Г°Г ГўГ«ГїГҐГ¬', cfg.main.tarr))
 			else
-			ftext('Игрок с данным ID не подключен к серверу или указан ваш ID.')
+			ftext('Г€ГЈГ°Г®ГЄ Г± Г¤Г Г­Г­Г»Г¬ ID Г­ГҐ ГЇГ®Г¤ГЄГ«ГѕГ·ГҐГ­ ГЄ Г±ГҐГ°ГўГҐГ°Гі ГЁГ«ГЁ ГіГЄГ Г§Г Г­ ГўГ Гё ID.')
 		end
 		else
-			ftext('Введите: /invn [id]')
+			ftext('Г‚ГўГҐГ¤ГЁГІГҐ: /invn [id]')
 		end
 		else
-			ftext('Данная команда доступна с должности Психолог.')
+			ftext('Г„Г Г­Г­Г Гї ГЄГ®Г¬Г Г­Г¤Г  Г¤Г®Г±ГІГіГЇГ­Г  Г± Г¤Г®Г«Г¦Г­Г®Г±ГІГЁ ГЏГ±ГЁГµГ®Г«Г®ГЈ.')
 	  end
    end)
  end
@@ -723,27 +723,27 @@ function zheal(pam)
         local id = pam:match('(%d+)')
         if id then
 		if sampIsPlayerConnected(id) then
-		        if cfg.main.male == false then --- Женская отыгровка
-                sampSendChat("/do Через плечо врача накинута мед. сумка на ремне.")
+		        if cfg.main.male == false then --- Г†ГҐГ­Г±ГЄГ Гї Г®ГІГ»ГЈГ°Г®ГўГЄГ 
+                sampSendChat("/do Г—ГҐГ°ГҐГ§ ГЇГ«ГҐГ·Г® ГўГ°Г Г·Г  Г­Г ГЄГЁГ­ГіГІГ  Г¬ГҐГ¤. Г±ГіГ¬ГЄГ  Г­Г  Г°ГҐГ¬Г­ГҐ.")
                 wait(cfg.commands.zaderjka * 1000)
-				sampSendChat("/me достала из мед.сумки лекарство и бутылочку воды")
+				sampSendChat("/me Г¤Г®Г±ГІГ Г«Г  ГЁГ§ Г¬ГҐГ¤.Г±ГіГ¬ГЄГЁ Г«ГҐГЄГ Г°Г±ГІГўГ® ГЁ ГЎГіГІГ»Г«Г®Г·ГЄГі ГўГ®Г¤Г»")
                 wait(cfg.commands.zaderjka * 1000)
-				sampSendChat('/me передала лекарство и бутылочку воды '..sampGetPlayerNickname(id):gsub('_', ' ')..'')
+				sampSendChat('/me ГЇГҐГ°ГҐГ¤Г Г«Г  Г«ГҐГЄГ Г°Г±ГІГўГ® ГЁ ГЎГіГІГ»Г«Г®Г·ГЄГі ГўГ®Г¤Г» '..sampGetPlayerNickname(id):gsub('_', ' ')..'')
                 wait(cfg.commands.zaderjka * 1000)
 				sampSendChat(string.format('/heal %s', id))
 				end
-				if cfg.main.male == true then --- Мужская отыгровка
-				sampSendChat("/do Через плечо врача накинута мед. сумка на ремне.")
+				if cfg.main.male == true then --- ГЊГіГ¦Г±ГЄГ Гї Г®ГІГ»ГЈГ°Г®ГўГЄГ 
+				sampSendChat("/do Г—ГҐГ°ГҐГ§ ГЇГ«ГҐГ·Г® ГўГ°Г Г·Г  Г­Г ГЄГЁГ­ГіГІГ  Г¬ГҐГ¤. Г±ГіГ¬ГЄГ  Г­Г  Г°ГҐГ¬Г­ГҐ.")
                 wait(cfg.commands.zaderjka * 1000)
-				sampSendChat("/me достал из мед.сумки лекарство и бутылочку воды")
+				sampSendChat("/me Г¤Г®Г±ГІГ Г« ГЁГ§ Г¬ГҐГ¤.Г±ГіГ¬ГЄГЁ Г«ГҐГЄГ Г°Г±ГІГўГ® ГЁ ГЎГіГІГ»Г«Г®Г·ГЄГі ГўГ®Г¤Г»")
                 wait(cfg.commands.zaderjka * 1000)
-				sampSendChat('/me передал лекарство и бутылочку воды '..sampGetPlayerNickname(id):gsub('_', ' ')..'')
+				sampSendChat('/me ГЇГҐГ°ГҐГ¤Г Г« Г«ГҐГЄГ Г°Г±ГІГўГ® ГЁ ГЎГіГІГ»Г«Г®Г·ГЄГі ГўГ®Г¤Г» '..sampGetPlayerNickname(id):gsub('_', ' ')..'')
                 wait(cfg.commands.zaderjka * 1000)
 				sampSendChat(string.format('/heal %s', id))
 			    end
 				end
 		else
-			ftext('Введите: /z [id]')
+			ftext('Г‚ГўГҐГ¤ГЁГІГҐ: /z [id]')
 		end
    end)
 end
@@ -759,21 +759,21 @@ end
 	  if dist <= 5 then
 	  if cfg.main.tarb then
 		if sampIsPlayerConnected(id) then
-                submenus_show(ginvite(id), "{9966cc}Medick Helpers {ffffff}| Выбор отдела")
+                submenus_show(ginvite(id), "{9966cc}Medick Helpers {ffffff}| Г‚Г»ГЎГ®Г° Г®ГІГ¤ГҐГ«Г ")
 				else
-			ftext('Игрок с данным ID не подключен к серверу или указан ваш ID.')
+			ftext('Г€ГЈГ°Г®ГЄ Г± Г¤Г Г­Г­Г»Г¬ ID Г­ГҐ ГЇГ®Г¤ГЄГ«ГѕГ·ГҐГ­ ГЄ Г±ГҐГ°ГўГҐГ°Гі ГЁГ«ГЁ ГіГЄГ Г§Г Г­ ГўГ Гё ID.')
             end
 		else
-			ftext('Включите автотег в настройках.')
+			ftext('Г‚ГЄГ«ГѕГ·ГЁГІГҐ Г ГўГІГ®ГІГҐГЈ Гў Г­Г Г±ГІГ°Г®Г©ГЄГ Гµ.')
 		end
 		else
-			ftext('Рядом с вами нет данного игрока.')
+			ftext('ГђГїГ¤Г®Г¬ Г± ГўГ Г¬ГЁ Г­ГҐГІ Г¤Г Г­Г­Г®ГЈГ® ГЁГЈГ°Г®ГЄГ .')
 	  end
 	  else
-			ftext('Рядом с вами нет данного игрока.')
+			ftext('ГђГїГ¤Г®Г¬ Г± ГўГ Г¬ГЁ Г­ГҐГІ Г¤Г Г­Г­Г®ГЈГ® ГЁГЈГ°Г®ГЄГ .')
 	end
 	  else
-			ftext('Введите: /ginv [id]')
+			ftext('Г‚ГўГҐГ¤ГЁГІГҐ: /ginv [id]')
 	end
 	  end)
    end
@@ -790,21 +790,21 @@ end
 	  if dist <= 5 then
 	  if cfg.main.tarb then
 		if sampIsPlayerConnected(id) then
-                submenus_show(zinvite(id), "{9966cc}Medick Helpers {ffffff}| Выбор отдела")
+                submenus_show(zinvite(id), "{9966cc}Medick Helpers {ffffff}| Г‚Г»ГЎГ®Г° Г®ГІГ¤ГҐГ«Г ")
 				else
-			ftext('Игрок с данным ID не подключен к серверу или указан ваш ID.')
+			ftext('Г€ГЈГ°Г®ГЄ Г± Г¤Г Г­Г­Г»Г¬ ID Г­ГҐ ГЇГ®Г¤ГЄГ«ГѕГ·ГҐГ­ ГЄ Г±ГҐГ°ГўГҐГ°Гі ГЁГ«ГЁ ГіГЄГ Г§Г Г­ ГўГ Гё ID.')
             end
 		else
-			ftext('Включите автотег в настройках.')
+			ftext('Г‚ГЄГ«ГѕГ·ГЁГІГҐ Г ГўГІГ®ГІГҐГЈ Гў Г­Г Г±ГІГ°Г®Г©ГЄГ Гµ.')
 		end
 		else
-			ftext('Рядом с вами нет данного игрока.')
+			ftext('ГђГїГ¤Г®Г¬ Г± ГўГ Г¬ГЁ Г­ГҐГІ Г¤Г Г­Г­Г®ГЈГ® ГЁГЈГ°Г®ГЄГ .')
 	  end
 	  else
-			ftext('Рядом с вами нет данного игрока.')
+			ftext('ГђГїГ¤Г®Г¬ Г± ГўГ Г¬ГЁ Г­ГҐГІ Г¤Г Г­Г­Г®ГЈГ® ГЁГЈГ°Г®ГЄГ .')
 	end
 	  else
-			ftext('Введите: /zinv [id]')
+			ftext('Г‚ГўГҐГ¤ГЁГІГҐ: /zinv [id]')
 	end
 	  end)
    end
@@ -820,47 +820,47 @@ end
 	  if dist <= 5 then
 	  if cfg.main.tarb then
 		if sampIsPlayerConnected(id) then
-                submenus_show(oinvite(id), "{9966cc}Medick Helpers {ffffff}| Выбор отдела")
+                submenus_show(oinvite(id), "{9966cc}Medick Helpers {ffffff}| Г‚Г»ГЎГ®Г° Г®ГІГ¤ГҐГ«Г ")
 				else
-			ftext('Игрок с данным ID не подключен к серверу или указан ваш ID.')
+			ftext('Г€ГЈГ°Г®ГЄ Г± Г¤Г Г­Г­Г»Г¬ ID Г­ГҐ ГЇГ®Г¤ГЄГ«ГѕГ·ГҐГ­ ГЄ Г±ГҐГ°ГўГҐГ°Гі ГЁГ«ГЁ ГіГЄГ Г§Г Г­ ГўГ Гё ID.')
             end
 		else
-			ftext('Включите автотег в настройках.')
+			ftext('Г‚ГЄГ«ГѕГ·ГЁГІГҐ Г ГўГІГ®ГІГҐГЈ Гў Г­Г Г±ГІГ°Г®Г©ГЄГ Гµ.')
 		end
 		else
-			ftext('Рядом с вами нет данного игрока.')
+			ftext('ГђГїГ¤Г®Г¬ Г± ГўГ Г¬ГЁ Г­ГҐГІ Г¤Г Г­Г­Г®ГЈГ® ГЁГЈГ°Г®ГЄГ .')
 	  end
 	  else
-			ftext('Рядом с вами нет данного игрока.')
+			ftext('ГђГїГ¤Г®Г¬ Г± ГўГ Г¬ГЁ Г­ГҐГІ Г¤Г Г­Г­Г®ГЈГ® ГЁГЈГ°Г®ГЄГ .')
 	end
 	  else
-			ftext('Введите: /oinv [id]')
+			ftext('Г‚ГўГҐГ¤ГЁГІГҐ: /oinv [id]')
 	end
 	  end)
    end
 function uninvite(pam)
    lua_thread.create(function()
       local id, pri4ina = pam:match('(%d+)%s+(.+)')
-      if rank == 'Психолог' or rank == 'Хирург' or rank == 'Зам.Глав.Врача' or rank == 'Глав.Врач' then
+      if rank == 'ГЏГ±ГЁГµГ®Г«Г®ГЈ' or rank == 'Г•ГЁГ°ГіГ°ГЈ' or rank == 'Г‡Г Г¬.ГѓГ«Г Гў.Г‚Г°Г Г·Г ' or rank == 'ГѓГ«Г Гў.Г‚Г°Г Г·' then
         if id and pri4ina then
 		if sampIsPlayerConnected(id) then
-                sampSendChat('/me забрал(а) бейджик у '..sampGetPlayerNickname(id):gsub('_', ' ')..'')
+                sampSendChat('/me Г§Г ГЎГ°Г Г«(Г ) ГЎГҐГ©Г¤Г¦ГЁГЄ Гі '..sampGetPlayerNickname(id):gsub('_', ' ')..'')
 				wait(2000)
 				sampSendChat(string.format('/uninvite %s %s', id, pri4ina))
 				wait(2000)
 				if cfg.main.tarb then
-                sampSendChat(string.format('/r [%s]: '..sampGetPlayerNickname(id):gsub('_', ' ')..' - Уволен(а) по причине "%s".', cfg.main.tarr, pri4ina))
+                sampSendChat(string.format('/r [%s]: '..sampGetPlayerNickname(id):gsub('_', ' ')..' - Г“ГўГ®Г«ГҐГ­(Г ) ГЇГ® ГЇГ°ГЁГ·ГЁГ­ГҐ "%s".', cfg.main.tarr, pri4ina))
                 else
-				sampSendChat(string.format('/r '..sampGetPlayerNickname(id):gsub('_', ' ')..' - Уволен(а) по причине "%s".', pri4ina))
+				sampSendChat(string.format('/r '..sampGetPlayerNickname(id):gsub('_', ' ')..' - Г“ГўГ®Г«ГҐГ­(Г ) ГЇГ® ГЇГ°ГЁГ·ГЁГ­ГҐ "%s".', pri4ina))
             end
 			else 
-			ftext('Игрок с данным ID не подключен к серверу или указан ваш ID')
+			ftext('Г€ГЈГ°Г®ГЄ Г± Г¤Г Г­Г­Г»Г¬ ID Г­ГҐ ГЇГ®Г¤ГЄГ«ГѕГ·ГҐГ­ ГЄ Г±ГҐГ°ГўГҐГ°Гі ГЁГ«ГЁ ГіГЄГ Г§Г Г­ ГўГ Гё ID')
 		end
 		else 
-			ftext('Введите: /uninvite [id] [причина]')
+			ftext('Г‚ГўГҐГ¤ГЁГІГҐ: /uninvite [id] [ГЇГ°ГЁГ·ГЁГ­Г ]')
 		end
 		else 
-			ftext('Данная команда доступна с 7 ранга')
+			ftext('Г„Г Г­Г­Г Гї ГЄГ®Г¬Г Г­Г¤Г  Г¤Г®Г±ГІГіГЇГ­Г  Г± 7 Г°Г Г­ГЈГ ')
 	 end
   end)
 end
@@ -868,28 +868,28 @@ end
  return
 {
   {
-   title = "{80a4bf}» {FFFFFF}Отдел SES",
+   title = "{80a4bf}В» {FFFFFF}ГЋГІГ¤ГҐГ« SES",
     onclick = function()
-	sampSendChat('/me достал(а) бейджик Заместителя Главы Санитарно-Эпидемиологической-Станции и передал(а) его '..sampGetPlayerNickname(id):gsub('_', ' ')..'')
+	sampSendChat('/me Г¤Г®Г±ГІГ Г«(Г ) ГЎГҐГ©Г¤Г¦ГЁГЄ Г‡Г Г¬ГҐГ±ГІГЁГІГҐГ«Гї ГѓГ«Г ГўГ» Г‘Г Г­ГЁГІГ Г°Г­Г®-ГќГЇГЁГ¤ГҐГ¬ГЁГ®Г«Г®ГЈГЁГ·ГҐГ±ГЄГ®Г©-Г‘ГІГ Г­Г¶ГЁГЁ ГЁ ГЇГҐГ°ГҐГ¤Г Г«(Г ) ГҐГЈГ® '..sampGetPlayerNickname(id):gsub('_', ' ')..'')
 	wait(5000)
 	sampSendChat('/b /clist 12.')
 	wait(5000)
-	sampSendChat('/b Тег в /r [Зам.Главы.SES]:')
+	sampSendChat('/b Г’ГҐГЈ Гў /r [Г‡Г Г¬.ГѓГ«Г ГўГ».SES]:')
 	wait(5000)
-	sampSendChat(string.format('/r [%s]: '..sampGetPlayerNickname(id):gsub('_', ' ')..' - новый Заместитель Санитарно-Эпидемиологической-Станции.', cfg.main.tarr))
+	sampSendChat(string.format('/r [%s]: '..sampGetPlayerNickname(id):gsub('_', ' ')..' - Г­Г®ГўГ»Г© Г‡Г Г¬ГҐГ±ГІГЁГІГҐГ«Гј Г‘Г Г­ГЁГІГ Г°Г­Г®-ГќГЇГЁГ¤ГҐГ¬ГЁГ®Г«Г®ГЈГЁГ·ГҐГ±ГЄГ®Г©-Г‘ГІГ Г­Г¶ГЁГЁ.', cfg.main.tarr))
 	end
    },
    
    {
-   title = "{80a4bf}» {FFFFFF}Отдел ПСБ",
+   title = "{80a4bf}В» {FFFFFF}ГЋГІГ¤ГҐГ« ГЏГ‘ГЃ",
     onclick = function()
-	sampSendChat('/me достал(а) бейджик Заместителя Главы Поисково-Спасательной Бригады и передал(а) его '..sampGetPlayerNickname(id):gsub('_', ' ')..'')
+	sampSendChat('/me Г¤Г®Г±ГІГ Г«(Г ) ГЎГҐГ©Г¤Г¦ГЁГЄ Г‡Г Г¬ГҐГ±ГІГЁГІГҐГ«Гї ГѓГ«Г ГўГ» ГЏГ®ГЁГ±ГЄГ®ГўГ®-Г‘ГЇГ Г±Г ГІГҐГ«ГјГ­Г®Г© ГЃГ°ГЁГЈГ Г¤Г» ГЁ ГЇГҐГ°ГҐГ¤Г Г«(Г ) ГҐГЈГ® '..sampGetPlayerNickname(id):gsub('_', ' ')..'')
 	wait(4000)
 	sampSendChat('/b /clist 29.')
 	wait(4000)
-	sampSendChat('/b Тег в /r [Зам.Главы ПСБ]:')
+	sampSendChat('/b Г’ГҐГЈ Гў /r [Г‡Г Г¬.ГѓГ«Г ГўГ» ГЏГ‘ГЃ]:')
 	wait(4000)
-	sampSendChat(string.format('/r [%s]: '..sampGetPlayerNickname(id):gsub('_', ' ')..' - новый Заместитель Поисково-Спасательной Бригады.', cfg.main.tarr))
+	sampSendChat(string.format('/r [%s]: '..sampGetPlayerNickname(id):gsub('_', ' ')..' - Г­Г®ГўГ»Г© Г‡Г Г¬ГҐГ±ГІГЁГІГҐГ«Гј ГЏГ®ГЁГ±ГЄГ®ГўГ®-Г‘ГЇГ Г±Г ГІГҐГ«ГјГ­Г®Г© ГЃГ°ГЁГЈГ Г¤Г».', cfg.main.tarr))
 	end
    },
  }
@@ -898,52 +898,52 @@ function crpinv(id)
  return
 {
   {
-   title = "{80a4bf}» {FFFFFF}Начальник",
+   title = "{80a4bf}В» {FFFFFF}ГЌГ Г·Г Г«ГјГ­ГЁГЄ",
     onclick = function()
-	sampSendChat('/me достал(а) бейджик Начальника Control Room и передал(а) его '..sampGetPlayerNickname(id):gsub('_', ' ')..'')
+	sampSendChat('/me Г¤Г®Г±ГІГ Г«(Г ) ГЎГҐГ©Г¤Г¦ГЁГЄ ГЌГ Г·Г Г«ГјГ­ГЁГЄГ  Control Room ГЁ ГЇГҐГ°ГҐГ¤Г Г«(Г ) ГҐГЈГ® '..sampGetPlayerNickname(id):gsub('_', ' ')..'')
 	wait(7000)
 	sampSendChat('/b /clist 15.')
 	wait(7000)
-	sampSendChat('/b Тег в /r [Chief CR]:')
+	sampSendChat('/b Г’ГҐГЈ Гў /r [Chief CR]:')
 	wait(7000)
-	sampSendChat(string.format('/r [%s]: '..sampGetPlayerNickname(id):gsub('_', ' ')..' - новый Начальник Control Room.', cfg.main.tarr))
+	sampSendChat(string.format('/r [%s]: '..sampGetPlayerNickname(id):gsub('_', ' ')..' - Г­Г®ГўГ»Г© ГЌГ Г·Г Г«ГјГ­ГЁГЄ Control Room.', cfg.main.tarr))
 	end
    },
    
    {
-   title = "{80a4bf}» {FFFFFF}Ст.Диспетчер",
+   title = "{80a4bf}В» {FFFFFF}Г‘ГІ.Г„ГЁГ±ГЇГҐГІГ·ГҐГ°",
     onclick = function()
-	sampSendChat('/me достал(а) бейджик Старшего Диспетчера Control Room и передал(а) его '..sampGetPlayerNickname(id):gsub('_', ' ')..'')
+	sampSendChat('/me Г¤Г®Г±ГІГ Г«(Г ) ГЎГҐГ©Г¤Г¦ГЁГЄ Г‘ГІГ Г°ГёГҐГЈГ® Г„ГЁГ±ГЇГҐГІГ·ГҐГ°Г  Control Room ГЁ ГЇГҐГ°ГҐГ¤Г Г«(Г ) ГҐГЈГ® '..sampGetPlayerNickname(id):gsub('_', ' ')..'')
 	wait(7000)
 	sampSendChat('/b /clist 10.')
 	wait(7000)
-	sampSendChat('/b Тег в /r [Senior Dispatcher]:')
+	sampSendChat('/b Г’ГҐГЈ Гў /r [Senior Dispatcher]:')
 	wait(7000)
-	sampSendChat(string.format('/r [%s]: '..sampGetPlayerNickname(id):gsub('_', ' ')..' - новый Ст.Диспетчер Control Room.', cfg.main.tarr))
+	sampSendChat(string.format('/r [%s]: '..sampGetPlayerNickname(id):gsub('_', ' ')..' - Г­Г®ГўГ»Г© Г‘ГІ.Г„ГЁГ±ГЇГҐГІГ·ГҐГ° Control Room.', cfg.main.tarr))
 	end
    },
    {
-   title = "{80a4bf}» {FFFFFF}Диспетчер",
+   title = "{80a4bf}В» {FFFFFF}Г„ГЁГ±ГЇГҐГІГ·ГҐГ°",
     onclick = function()
-	sampSendChat('/me достал(а) бейджик Диспетчера Control Room и передал(а) его '..sampGetPlayerNickname(id):gsub('_', ' ')..'')
+	sampSendChat('/me Г¤Г®Г±ГІГ Г«(Г ) ГЎГҐГ©Г¤Г¦ГЁГЄ Г„ГЁГ±ГЇГҐГІГ·ГҐГ°Г  Control Room ГЁ ГЇГҐГ°ГҐГ¤Г Г«(Г ) ГҐГЈГ® '..sampGetPlayerNickname(id):gsub('_', ' ')..'')
 	wait(7000)
 	sampSendChat('/b /clist 11.')
 	wait(7000)
-	sampSendChat('/b Тег в /r [Dispatcher CR]:')
+	sampSendChat('/b Г’ГҐГЈ Гў /r [Dispatcher CR]:')
 	wait(7000)
-	sampSendChat(string.format('/r [%s]: '..sampGetPlayerNickname(id):gsub('_', ' ')..' - новый Диспетчер Control Room.', cfg.main.tarr))
+	sampSendChat(string.format('/r [%s]: '..sampGetPlayerNickname(id):gsub('_', ' ')..' - Г­Г®ГўГ»Г© Г„ГЁГ±ГЇГҐГІГ·ГҐГ° Control Room.', cfg.main.tarr))
 	end
    },
    {
-   title = "{80a4bf}» {FFFFFF}Сотрудник",
+   title = "{80a4bf}В» {FFFFFF}Г‘Г®ГІГ°ГіГ¤Г­ГЁГЄ",
     onclick = function()
-	sampSendChat('/me достал(а) бейджик Сотрудника Control Room и передал(а) его '..sampGetPlayerNickname(id):gsub('_', ' ')..'')
+	sampSendChat('/me Г¤Г®Г±ГІГ Г«(Г ) ГЎГҐГ©Г¤Г¦ГЁГЄ Г‘Г®ГІГ°ГіГ¤Г­ГЁГЄГ  Control Room ГЁ ГЇГҐГ°ГҐГ¤Г Г«(Г ) ГҐГЈГ® '..sampGetPlayerNickname(id):gsub('_', ' ')..'')
 	wait(7000)
 	sampSendChat('/b /clist 16.')
 	wait(7000)
-	sampSendChat('/b Тег в /r [Employee CR]:')
+	sampSendChat('/b Г’ГҐГЈ Гў /r [Employee CR]:')
 	wait(7000)
-	sampSendChat(string.format('/r [%s]: '..sampGetPlayerNickname(id):gsub('_', ' ')..' - новый Сотрудник Control Room.', cfg.main.tarr))
+	sampSendChat(string.format('/r [%s]: '..sampGetPlayerNickname(id):gsub('_', ' ')..' - Г­Г®ГўГ»Г© Г‘Г®ГІГ°ГіГ¤Г­ГЁГЄ Control Room.', cfg.main.tarr))
 	end
    },
  }
@@ -952,64 +952,64 @@ function oinvite(id)
  return
 {
   {
-   title = "{80a4bf}» {FFFFFF}Отдел SES [Инспектор SES]",
+   title = "{80a4bf}В» {FFFFFF}ГЋГІГ¤ГҐГ« SES [Г€Г­Г±ГЇГҐГЄГІГ®Г° SES]",
     onclick = function()
-	sampSendChat('/me достал(а) бейджик Инспектора Санитарно-Эпидемиологичесой-Станции и передал его '..sampGetPlayerNickname(id):gsub('_', ' ')..'')
+	sampSendChat('/me Г¤Г®Г±ГІГ Г«(Г ) ГЎГҐГ©Г¤Г¦ГЁГЄ Г€Г­Г±ГЇГҐГЄГІГ®Г°Г  Г‘Г Г­ГЁГІГ Г°Г­Г®-ГќГЇГЁГ¤ГҐГ¬ГЁГ®Г«Г®ГЈГЁГ·ГҐГ±Г®Г©-Г‘ГІГ Г­Г¶ГЁГЁ ГЁ ГЇГҐГ°ГҐГ¤Г Г« ГҐГЈГ® '..sampGetPlayerNickname(id):gsub('_', ' ')..'')
 	wait(5000)
 	sampSendChat('/b /clist 10.')
 	wait(5000)
-	sampSendChat('/b тег в /r [SES]:')
+	sampSendChat('/b ГІГҐГЈ Гў /r [SES]:')
 	wait(5000)
-	sampSendChat(string.format('/r [%s]: '..sampGetPlayerNickname(id):gsub('_', ' ')..' - повышается в долности на Инспектора Санитарно-Эпидемиологичесой-Станции.', cfg.main.tarr))
+	sampSendChat(string.format('/r [%s]: '..sampGetPlayerNickname(id):gsub('_', ' ')..' - ГЇГ®ГўГ»ГёГ ГҐГІГ±Гї Гў Г¤Г®Г«Г­Г®Г±ГІГЁ Г­Г  Г€Г­Г±ГЇГҐГЄГІГ®Г°Г  Г‘Г Г­ГЁГІГ Г°Г­Г®-ГќГЇГЁГ¤ГҐГ¬ГЁГ®Г«Г®ГЈГЁГ·ГҐГ±Г®Г©-Г‘ГІГ Г­Г¶ГЁГЁ.', cfg.main.tarr))
 	end
    },
   {
-   title = "{80a4bf}» {FFFFFF}Отдел SES",
+   title = "{80a4bf}В» {FFFFFF}ГЋГІГ¤ГҐГ« SES",
     onclick = function()
-	sampSendChat('/me достал(а) бейджик Стажера Санитарно-Эпидемиологичесой-Станции и передал его '..sampGetPlayerNickname(id):gsub('_', ' ')..'')
+	sampSendChat('/me Г¤Г®Г±ГІГ Г«(Г ) ГЎГҐГ©Г¤Г¦ГЁГЄ Г‘ГІГ Г¦ГҐГ°Г  Г‘Г Г­ГЁГІГ Г°Г­Г®-ГќГЇГЁГ¤ГҐГ¬ГЁГ®Г«Г®ГЈГЁГ·ГҐГ±Г®Г©-Г‘ГІГ Г­Г¶ГЁГЁ ГЁ ГЇГҐГ°ГҐГ¤Г Г« ГҐГЈГ® '..sampGetPlayerNickname(id):gsub('_', ' ')..'')
 	wait(5000)
 	sampSendChat('/b /clist 19.')
 	wait(5000)
-	sampSendChat('/b Тег в /r [Cтажер SES]:')
+	sampSendChat('/b Г’ГҐГЈ Гў /r [CГІГ Г¦ГҐГ° SES]:')
 	wait(5000)
-	sampSendChat(string.format('/r [%s]: '..sampGetPlayerNickname(id):gsub('_', ' ')..' - новый  сотрудник  Санитарно-Эпидемиологичесой-Станции.', cfg.main.tarr))
+	sampSendChat(string.format('/r [%s]: '..sampGetPlayerNickname(id):gsub('_', ' ')..' - Г­Г®ГўГ»Г©  Г±Г®ГІГ°ГіГ¤Г­ГЁГЄ  Г‘Г Г­ГЁГІГ Г°Г­Г®-ГќГЇГЁГ¤ГҐГ¬ГЁГ®Г«Г®ГЈГЁГ·ГҐГ±Г®Г©-Г‘ГІГ Г­Г¶ГЁГЁ.', cfg.main.tarr))
 	end
    },
 
    -- {
-   -- title = "{80a4bf}» {FFFFFF}Отдел УТУ",
+   -- title = "{80a4bf}В» {FFFFFF}ГЋГІГ¤ГҐГ« Г“Г’Г“",
     -- onclick = function()
-	-- sampSendChat('/me достал(а) бейджик Сотрудника(цы) Учебно-Тренингово отделения и передал его '..sampGetPlayerNickname(id):gsub('_', ' ')..'')
+	-- sampSendChat('/me Г¤Г®Г±ГІГ Г«(Г ) ГЎГҐГ©Г¤Г¦ГЁГЄ Г‘Г®ГІГ°ГіГ¤Г­ГЁГЄГ (Г¶Г») Г“Г·ГҐГЎГ­Г®-Г’Г°ГҐГ­ГЁГ­ГЈГ®ГўГ® Г®ГІГ¤ГҐГ«ГҐГ­ГЁГї ГЁ ГЇГҐГ°ГҐГ¤Г Г« ГҐГЈГ® '..sampGetPlayerNickname(id):gsub('_', ' ')..'')
 	-- wait(5000)
 	-- sampSendChat('/b /clist 15.')
 	-- wait(5000)
-	-- sampSendChat('/b Тег в /r [УТУ]:')
+	-- sampSendChat('/b Г’ГҐГЈ Гў /r [Г“Г’Г“]:')
 	-- wait(5000)
-	-- sampSendChat(string.format('/r [%s]: '..sampGetPlayerNickname(id):gsub('_', ' ')..' - новый  Сотрудник Отдела MA.', cfg.main.tarr))
+	-- sampSendChat(string.format('/r [%s]: '..sampGetPlayerNickname(id):gsub('_', ' ')..' - Г­Г®ГўГ»Г©  Г‘Г®ГІГ°ГіГ¤Г­ГЁГЄ ГЋГІГ¤ГҐГ«Г  MA.', cfg.main.tarr))
 	-- end
    -- },
    {
-   title = "{80a4bf}» {FFFFFF}Отдел ПСБ [Инспектор ПСБ]",
+   title = "{80a4bf}В» {FFFFFF}ГЋГІГ¤ГҐГ« ГЏГ‘ГЃ [Г€Г­Г±ГЇГҐГЄГІГ®Г° ГЏГ‘ГЃ]",
     onclick = function()
-	sampSendChat('/me достал(а) бейджик Инспектора Поисково-Спасательной Бригады и передал его '..sampGetPlayerNickname(id):gsub('_', ' ')..'')
+	sampSendChat('/me Г¤Г®Г±ГІГ Г«(Г ) ГЎГҐГ©Г¤Г¦ГЁГЄ Г€Г­Г±ГЇГҐГЄГІГ®Г°Г  ГЏГ®ГЁГ±ГЄГ®ГўГ®-Г‘ГЇГ Г±Г ГІГҐГ«ГјГ­Г®Г© ГЃГ°ГЁГЈГ Г¤Г» ГЁ ГЇГҐГ°ГҐГ¤Г Г« ГҐГЈГ® '..sampGetPlayerNickname(id):gsub('_', ' ')..'')
 	wait(5000)
 	sampSendChat('/b /clist 10.')
 	wait(5000)
-	sampSendChat('/b Тег в /r [ПСБ]:')
+	sampSendChat('/b Г’ГҐГЈ Гў /r [ГЏГ‘ГЃ]:')
 	wait(5000)
-	sampSendChat(string.format('/r [%s]: '..sampGetPlayerNickname(id):gsub('_', ' ')..' - повышается в долности на Инспектора Поисково-Спасательной Бригады.', cfg.main.tarr))
+	sampSendChat(string.format('/r [%s]: '..sampGetPlayerNickname(id):gsub('_', ' ')..' - ГЇГ®ГўГ»ГёГ ГҐГІГ±Гї Гў Г¤Г®Г«Г­Г®Г±ГІГЁ Г­Г  Г€Г­Г±ГЇГҐГЄГІГ®Г°Г  ГЏГ®ГЁГ±ГЄГ®ГўГ®-Г‘ГЇГ Г±Г ГІГҐГ«ГјГ­Г®Г© ГЃГ°ГЁГЈГ Г¤Г».', cfg.main.tarr))
 	end
    },
    {
-   title = "{80a4bf}» {FFFFFF}Отдел ПСБ",
+   title = "{80a4bf}В» {FFFFFF}ГЋГІГ¤ГҐГ« ГЏГ‘ГЃ",
     onclick = function()
-	sampSendChat('/me достал(а) бейджик Стажера Поисково-Спасательной Бригады и передал его '..sampGetPlayerNickname(id):gsub('_', ' ')..'')
+	sampSendChat('/me Г¤Г®Г±ГІГ Г«(Г ) ГЎГҐГ©Г¤Г¦ГЁГЄ Г‘ГІГ Г¦ГҐГ°Г  ГЏГ®ГЁГ±ГЄГ®ГўГ®-Г‘ГЇГ Г±Г ГІГҐГ«ГјГ­Г®Г© ГЃГ°ГЁГЈГ Г¤Г» ГЁ ГЇГҐГ°ГҐГ¤Г Г« ГҐГЈГ® '..sampGetPlayerNickname(id):gsub('_', ' ')..'')
 	wait(5000)
 	sampSendChat('/b /clist 2.')
 	wait(5000)
-	sampSendChat('/b Тег в /r [Cтажер ПСБ]:')
+	sampSendChat('/b Г’ГҐГЈ Гў /r [CГІГ Г¦ГҐГ° ГЏГ‘ГЃ]:')
 	wait(5000)
-	sampSendChat(string.format('/r [%s]: '..sampGetPlayerNickname(id):gsub('_', ' ')..' - новый  сотрудник  Поисково-Спасательной Бригады.', cfg.main.tarr))
+	sampSendChat(string.format('/r [%s]: '..sampGetPlayerNickname(id):gsub('_', ' ')..' - Г­Г®ГўГ»Г©  Г±Г®ГІГ°ГіГ¤Г­ГЁГЄ  ГЏГ®ГЁГ±ГЄГ®ГўГ®-Г‘ГЇГ Г±Г ГІГҐГ«ГјГ­Г®Г© ГЃГ°ГЁГЈГ Г¤Г».', cfg.main.tarr))
 	end
    },
  }
@@ -1018,34 +1018,34 @@ function ginvite(id)
  return
 {
   {
-   title = "{80a4bf}» {FFFFFF}Отдел ПСБ Глава.",
+   title = "{80a4bf}В» {FFFFFF}ГЋГІГ¤ГҐГ« ГЏГ‘ГЃ ГѓГ«Г ГўГ .",
     onclick = function()
-	if rank == 'Зам.Глав.Врача' or  rank == 'Главный Врач' or  rank == 'Хирург' or  rank == 'Доктор' or  rank == 'Психолог' then
-	sampSendChat('/me достал(а) бейджик Главы  Поисково-Спасательной Бригады и передал(а) его '..sampGetPlayerNickname(id):gsub('_', ' ')..'')
+	if rank == 'Г‡Г Г¬.ГѓГ«Г Гў.Г‚Г°Г Г·Г ' or  rank == 'ГѓГ«Г ГўГ­Г»Г© Г‚Г°Г Г·' or  rank == 'Г•ГЁГ°ГіГ°ГЈ' or  rank == 'Г„Г®ГЄГІГ®Г°' or  rank == 'ГЏГ±ГЁГµГ®Г«Г®ГЈ' then
+	sampSendChat('/me Г¤Г®Г±ГІГ Г«(Г ) ГЎГҐГ©Г¤Г¦ГЁГЄ ГѓГ«Г ГўГ»  ГЏГ®ГЁГ±ГЄГ®ГўГ®-Г‘ГЇГ Г±Г ГІГҐГ«ГјГ­Г®Г© ГЃГ°ГЁГЈГ Г¤Г» ГЁ ГЇГҐГ°ГҐГ¤Г Г«(Г ) ГҐГЈГ® '..sampGetPlayerNickname(id):gsub('_', ' ')..'')
 	wait(5000)
 	sampSendChat('/b /clist 21.')
 	wait(5000)
-	sampSendChat('/b Тег в /r [Глава ПСБ]:')
+	sampSendChat('/b Г’ГҐГЈ Гў /r [ГѓГ«Г ГўГ  ГЏГ‘ГЃ]:')
 	wait(5000)
-	sampSendChat(string.format('/r [%s]: '..sampGetPlayerNickname(id):gsub('_', ' ')..' - новый Глава Поисково-Спасательной Бригады ', cfg.main.tarr))
+	sampSendChat(string.format('/r [%s]: '..sampGetPlayerNickname(id):gsub('_', ' ')..' - Г­Г®ГўГ»Г© ГѓГ«Г ГўГ  ГЏГ®ГЁГ±ГЄГ®ГўГ®-Г‘ГЇГ Г±Г ГІГҐГ«ГјГ­Г®Г© ГЃГ°ГЁГЈГ Г¤Г» ', cfg.main.tarr))
 	else
-	ftext('Вы не можете назначить Главу данного отдела.')
+	ftext('Г‚Г» Г­ГҐ Г¬Г®Г¦ГҐГІГҐ Г­Г Г§Г­Г Г·ГЁГІГј ГѓГ«Г ГўГі Г¤Г Г­Г­Г®ГЈГ® Г®ГІГ¤ГҐГ«Г .')
 	end
 	end
    },
    {
-   title = "{80a4bf}» {FFFFFF}Отдел SES Глава.",
+   title = "{80a4bf}В» {FFFFFF}ГЋГІГ¤ГҐГ« SES ГѓГ«Г ГўГ .",
     onclick = function()
-	if rank == 'Зам.Глав.Врача' or  rank == 'Главный Врач' or  rank == 'Хирург' then
-	sampSendChat('/me достал(а) бейджик Главы  Санитарно-Эпидемиологической-Станции и передал(а) его '..sampGetPlayerNickname(id):gsub('_', ' ')..'')
+	if rank == 'Г‡Г Г¬.ГѓГ«Г Гў.Г‚Г°Г Г·Г ' or  rank == 'ГѓГ«Г ГўГ­Г»Г© Г‚Г°Г Г·' or  rank == 'Г•ГЁГ°ГіГ°ГЈ' then
+	sampSendChat('/me Г¤Г®Г±ГІГ Г«(Г ) ГЎГҐГ©Г¤Г¦ГЁГЄ ГѓГ«Г ГўГ»  Г‘Г Г­ГЁГІГ Г°Г­Г®-ГќГЇГЁГ¤ГҐГ¬ГЁГ®Г«Г®ГЈГЁГ·ГҐГ±ГЄГ®Г©-Г‘ГІГ Г­Г¶ГЁГЁ ГЁ ГЇГҐГ°ГҐГ¤Г Г«(Г ) ГҐГЈГ® '..sampGetPlayerNickname(id):gsub('_', ' ')..'')
 	wait(5000)
 	sampSendChat('/b /clist 8.')
 	wait(5000)
-	sampSendChat('/b Тег в /r [Глава SES]:')
+	sampSendChat('/b Г’ГҐГЈ Гў /r [ГѓГ«Г ГўГ  SES]:')
 	wait(5000)
-	sampSendChat(string.format('/r [%s]: '..sampGetPlayerNickname(id):gsub('_', ' ')..' - новый Глава Санитарно-Эпидемиологической-Станции ', cfg.main.tarr))
+	sampSendChat(string.format('/r [%s]: '..sampGetPlayerNickname(id):gsub('_', ' ')..' - Г­Г®ГўГ»Г© ГѓГ«Г ГўГ  Г‘Г Г­ГЁГІГ Г°Г­Г®-ГќГЇГЁГ¤ГҐГ¬ГЁГ®Г«Г®ГЈГЁГ·ГҐГ±ГЄГ®Г©-Г‘ГІГ Г­Г¶ГЁГЁ ', cfg.main.tarr))
 	else
-	ftext('Вы не можете назначить Главу данного отдела.')
+	ftext('Г‚Г» Г­ГҐ Г¬Г®Г¦ГҐГІГҐ Г­Г Г§Г­Г Г·ГЁГІГј ГѓГ«Г ГўГі Г¤Г Г­Г­Г®ГЈГ® Г®ГІГ¤ГҐГ«Г .')
 	end
 	end
    },
@@ -1055,58 +1055,58 @@ function fastmenu(id)
  return
 {
   {
-   title = "{80a4bf}»{FFFFFF} Лекции",
+   title = "{80a4bf}В»{FFFFFF} Г‹ГҐГЄГ¶ГЁГЁ",
     onclick = function()
-	submenus_show(fthmenu(id), "{9966cc}Medick Helper {0033cc}| Лекции")
+	submenus_show(fthmenu(id), "{9966cc}Medick Helper {0033cc}| Г‹ГҐГЄГ¶ГЁГЁ")
 	end
    },
     {
-   title = "{80a4bf}»{FFFFFF} Собеседование {ff0000}(Ст.Состав)",
+   title = "{80a4bf}В»{FFFFFF} Г‘Г®ГЎГҐГ±ГҐГ¤Г®ГўГ Г­ГЁГҐ {ff0000}(Г‘ГІ.Г‘Г®Г±ГІГ Гў)",
     onclick = function()
-	if rank == 'Психолог' or rank == 'Хирург' or rank == 'Зам.Глав.Врача' or rank == 'Глав.Врач' then
-	submenus_show(sobesedmenu(id), "{9966cc}Medick Helper {0033cc}| Собеседование")
+	if rank == 'ГЏГ±ГЁГµГ®Г«Г®ГЈ' or rank == 'Г•ГЁГ°ГіГ°ГЈ' or rank == 'Г‡Г Г¬.ГѓГ«Г Гў.Г‚Г°Г Г·Г ' or rank == 'ГѓГ«Г Гў.Г‚Г°Г Г·' then
+	submenus_show(sobesedmenu(id), "{9966cc}Medick Helper {0033cc}| Г‘Г®ГЎГҐГ±ГҐГ¤Г®ГўГ Г­ГЁГҐ")
 	else
-	ftext('Вы не находитесь в старшем составе.')
-	end
-	end
-   },
-    {
-   title = "{80a4bf}»{FFFFFF} Вопросы по уставу {ff0000}(Ст.Состав)",
-    onclick = function()
-	if rank == 'Психолог' or rank == 'Хирург' or rank == 'Зам.Глав.Врача' or rank == 'Глав.Врач' then
-	submenus_show(ustav(id), "{9966cc}Medick Helper {0033cc}| Вопросы по уставу")
-	else
-	ftext('Вы не находитесь в старшем составе.')
+	ftext('Г‚Г» Г­ГҐ Г­Г ГµГ®Г¤ГЁГІГҐГ±Гј Гў Г±ГІГ Г°ГёГҐГ¬ Г±Г®Г±ГІГ ГўГҐ.')
 	end
 	end
    },
     {
-   title = "{80a4bf}»{FFFFFF} Меню {ffffff}гос.новостей {ff0000}(Ст.Состав)",
+   title = "{80a4bf}В»{FFFFFF} Г‚Г®ГЇГ°Г®Г±Г» ГЇГ® ГіГ±ГІГ ГўГі {ff0000}(Г‘ГІ.Г‘Г®Г±ГІГ Гў)",
     onclick = function()
-	if rank == 'Психолог' or rank == 'Хирург' or rank == 'Зам.Глав.Врача' or rank == 'Глав.Врач' then
-	submenus_show(govmenu(id), "{9966cc}Medick Helper {0033cc}| Меню гос.новостей")
+	if rank == 'ГЏГ±ГЁГµГ®Г«Г®ГЈ' or rank == 'Г•ГЁГ°ГіГ°ГЈ' or rank == 'Г‡Г Г¬.ГѓГ«Г Гў.Г‚Г°Г Г·Г ' or rank == 'ГѓГ«Г Гў.Г‚Г°Г Г·' then
+	submenus_show(ustav(id), "{9966cc}Medick Helper {0033cc}| Г‚Г®ГЇГ°Г®Г±Г» ГЇГ® ГіГ±ГІГ ГўГі")
 	else
-	ftext('Вы не находитесь в старшем составе.')
+	ftext('Г‚Г» Г­ГҐ Г­Г ГµГ®Г¤ГЁГІГҐГ±Гј Гў Г±ГІГ Г°ГёГҐГ¬ Г±Г®Г±ГІГ ГўГҐ.')
+	end
+	end
+   },
+    {
+   title = "{80a4bf}В»{FFFFFF} ГЊГҐГ­Гѕ {ffffff}ГЈГ®Г±.Г­Г®ГўГ®Г±ГІГҐГ© {ff0000}(Г‘ГІ.Г‘Г®Г±ГІГ Гў)",
+    onclick = function()
+	if rank == 'ГЏГ±ГЁГµГ®Г«Г®ГЈ' or rank == 'Г•ГЁГ°ГіГ°ГЈ' or rank == 'Г‡Г Г¬.ГѓГ«Г Гў.Г‚Г°Г Г·Г ' or rank == 'ГѓГ«Г Гў.Г‚Г°Г Г·' then
+	submenus_show(govmenu(id), "{9966cc}Medick Helper {0033cc}| ГЊГҐГ­Гѕ ГЈГ®Г±.Г­Г®ГўГ®Г±ГІГҐГ©")
+	else
+	ftext('Г‚Г» Г­ГҐ Г­Г ГµГ®Г¤ГЁГІГҐГ±Гј Гў Г±ГІГ Г°ГёГҐГ¬ Г±Г®Г±ГІГ ГўГҐ.')
 	end
 	end
    },
    {
-   title = "{80a4bf}»{FFFFFF} Меню {ffffff}отделов  {ff0000}(Для глав отделов)",
+   title = "{80a4bf}В»{FFFFFF} ГЊГҐГ­Гѕ {ffffff}Г®ГІГ¤ГҐГ«Г®Гў  {ff0000}(Г„Г«Гї ГЈГ«Г Гў Г®ГІГ¤ГҐГ«Г®Гў)",
     onclick = function()
-	if rank == 'Психолог' or rank == 'Хирург' or rank == 'Зам.Глав.Врача' or rank == 'Глав.Врач' or rank == 'Доктор' or rank == 'Нарколог' then
-	submenus_show(otmenu(id), "{9966cc}Medick Helper {0033cc}| Меню отделов")
+	if rank == 'ГЏГ±ГЁГµГ®Г«Г®ГЈ' or rank == 'Г•ГЁГ°ГіГ°ГЈ' or rank == 'Г‡Г Г¬.ГѓГ«Г Гў.Г‚Г°Г Г·Г ' or rank == 'ГѓГ«Г Гў.Г‚Г°Г Г·' or rank == 'Г„Г®ГЄГІГ®Г°' or rank == 'ГЌГ Г°ГЄГ®Г«Г®ГЈ' then
+	submenus_show(otmenu(id), "{9966cc}Medick Helper {0033cc}| ГЊГҐГ­Гѕ Г®ГІГ¤ГҐГ«Г®Гў")
 	else
-	ftext('Данное меню доступно с должности Нарколог.')
+	ftext('Г„Г Г­Г­Г®ГҐ Г¬ГҐГ­Гѕ Г¤Г®Г±ГІГіГЇГ­Г® Г± Г¤Г®Г«Г¦Г­Г®Г±ГІГЁ ГЌГ Г°ГЄГ®Г«Г®ГЈ.')
 	end
 	end
    },
    {
-   title = "{80a4bf}»{FFFFFF} Вызвать сотрудника ПО в больницу (/d).",
+   title = "{80a4bf}В»{FFFFFF} Г‚Г»Г§ГўГ ГІГј Г±Г®ГІГ°ГіГ¤Г­ГЁГЄГ  ГЏГЋ Гў ГЎГ®Г«ГјГ­ГЁГ¶Гі (/d).",
     onclick = function()
-	if rank == 'Мед.брат' or rank =='Спасатель' or rank =='Нарколог' or rank == 'Доктор' or rank == 'Психолог' or rank == 'Хирург' or rank == 'Зам.Глав.Врача' or rank == 'Глав.Врач' then
-	sampSendChat(string.format('/d SAPD, вышлите сотрудника в больницу. Заранее спасибо.'))
+	if rank == 'ГЊГҐГ¤.ГЎГ°Г ГІ' or rank =='Г‘ГЇГ Г±Г ГІГҐГ«Гј' or rank =='ГЌГ Г°ГЄГ®Г«Г®ГЈ' or rank == 'Г„Г®ГЄГІГ®Г°' or rank == 'ГЏГ±ГЁГµГ®Г«Г®ГЈ' or rank == 'Г•ГЁГ°ГіГ°ГЈ' or rank == 'Г‡Г Г¬.ГѓГ«Г Гў.Г‚Г°Г Г·Г ' or rank == 'ГѓГ«Г Гў.Г‚Г°Г Г·' then
+	sampSendChat(string.format('/d SAPD, ГўГ»ГёГ«ГЁГІГҐ Г±Г®ГІГ°ГіГ¤Г­ГЁГЄГ  Гў ГЎГ®Г«ГјГ­ГЁГ¶Гі. Г‡Г Г°Г Г­ГҐГҐ Г±ГЇГ Г±ГЁГЎГ®.'))
 	else
-	ftext('Данная функция доступна с должности Мед.брат.')
+	ftext('Г„Г Г­Г­Г Гї ГґГіГ­ГЄГ¶ГЁГї Г¤Г®Г±ГІГіГЇГ­Г  Г± Г¤Г®Г«Г¦Г­Г®Г±ГІГЁ ГЊГҐГ¤.ГЎГ°Г ГІ.')
 	end
 	end
    },
@@ -1117,24 +1117,24 @@ function otmenu(id)
  return
 {
    {
-   title = "{80a4bf}»{FFFFFF} Агитация {ffffff}EMS{ff0000} (Для глав/замов отдела)",
+   title = "{80a4bf}В»{FFFFFF} ГЂГЈГЁГІГ Г¶ГЁГї {ffffff}EMS{ff0000} (Г„Г«Гї ГЈГ«Г Гў/Г§Г Г¬Г®Гў Г®ГІГ¤ГҐГ«Г )",
     onclick = function()
 	local _, myid = sampGetPlayerIdByCharHandle(PLAYER_PED)
-	sampSendChat(string.format('/r [%s]: Уважаемые коллеги, в отдел EMS проходит набор сотрудников.', cfg.main.tarr))
+	sampSendChat(string.format('/r [%s]: Г“ГўГ Г¦Г ГҐГ¬Г»ГҐ ГЄГ®Г«Г«ГҐГЈГЁ, Гў Г®ГІГ¤ГҐГ« EMS ГЇГ°Г®ГµГ®Г¤ГЁГІ Г­Г ГЎГ®Г° Г±Г®ГІГ°ГіГ¤Г­ГЁГЄГ®Гў.', cfg.main.tarr))
     wait(5000)
-    sampSendChat(string.format('/r [%s]: Чтобы попасть в отдел EMS вам нужна должность "Спасателя" и выше.', cfg.main.tarr))
+    sampSendChat(string.format('/r [%s]: Г—ГІГ®ГЎГ» ГЇГ®ГЇГ Г±ГІГј Гў Г®ГІГ¤ГҐГ« EMS ГўГ Г¬ Г­ГіГ¦Г­Г  Г¤Г®Г«Г¦Г­Г®Г±ГІГј "Г‘ГЇГ Г±Г ГІГҐГ«Гї" ГЁ ГўГ»ГёГҐ.', cfg.main.tarr))
     wait(5000)
-    sampSendChat(string.format('/r [%s]: В отделе вас ждут опытные наставники которые помогут с обучением.".', cfg.main.tarr))
+    sampSendChat(string.format('/r [%s]: Г‚ Г®ГІГ¤ГҐГ«ГҐ ГўГ Г± Г¦Г¤ГіГІ Г®ГЇГ»ГІГ­Г»ГҐ Г­Г Г±ГІГ ГўГ­ГЁГЄГЁ ГЄГ®ГІГ®Г°Г»ГҐ ГЇГ®Г¬Г®ГЈГіГІ Г± Г®ГЎГіГ·ГҐГ­ГЁГҐГ¬.".', cfg.main.tarr))
     wait(5000)
-    sampSendChat(string.format('/r [%s]: Будете проходить 3 этапа чтобы попасть в основной состав отдела.', cfg.main.tarr))
+    sampSendChat(string.format('/r [%s]: ГЃГіГ¤ГҐГІГҐ ГЇГ°Г®ГµГ®Г¤ГЁГІГј 3 ГЅГІГ ГЇГ  Г·ГІГ®ГЎГ» ГЇГ®ГЇГ Г±ГІГј Гў Г®Г±Г­Г®ГўГ­Г®Г© Г±Г®Г±ГІГ Гў Г®ГІГ¤ГҐГ«Г .', cfg.main.tarr))
     wait(5000)
-    sampSendChat(string.format('/r [%s]: За прохождение всех этапов будет выплачиваться 150.000$.', cfg.main.tarr))
+    sampSendChat(string.format('/r [%s]: Г‡Г  ГЇГ°Г®ГµГ®Г¦Г¤ГҐГ­ГЁГҐ ГўГ±ГҐГµ ГЅГІГ ГЇГ®Гў ГЎГіГ¤ГҐГІ ГўГ»ГЇГ«Г Г·ГЁГўГ ГІГјГ±Гї 150.000$.', cfg.main.tarr))
     wait(5000)
-    sampSendChat(string.format('/r [%s]: Научим вас как проводить СЛР, ИВЛ и первую медицинскую помощь.', cfg.main.tarr))
+    sampSendChat(string.format('/r [%s]: ГЌГ ГіГ·ГЁГ¬ ГўГ Г± ГЄГ ГЄ ГЇГ°Г®ГўГ®Г¤ГЁГІГј Г‘Г‹Гђ, Г€Г‚Г‹ ГЁ ГЇГҐГ°ГўГіГѕ Г¬ГҐГ¤ГЁГ¶ГЁГ­Г±ГЄГіГѕ ГЇГ®Г¬Г®Г№Гј.', cfg.main.tarr))
     wait(5000)
-    sampSendChat(string.format('/r [%s]: Если вы хотите к нам в отдел, сообщите это любому из руковдоства EMS.', cfg.main.tarr))
+    sampSendChat(string.format('/r [%s]: Г…Г±Г«ГЁ ГўГ» ГµГ®ГІГЁГІГҐ ГЄ Г­Г Г¬ Гў Г®ГІГ¤ГҐГ«, Г±Г®Г®ГЎГ№ГЁГІГҐ ГЅГІГ® Г«ГѕГЎГ®Г¬Гі ГЁГ§ Г°ГіГЄГ®ГўГ¤Г®Г±ГІГўГ  EMS.', cfg.main.tarr))
     wait(5000)
-	ftext("{FFFFFF}Вывод агитации завершен!")
+	ftext("{FFFFFF}Г‚Г»ГўГ®Г¤ Г ГЈГЁГІГ Г¶ГЁГЁ Г§Г ГўГҐГ°ГёГҐГ­!")
 	end
    },
 }
@@ -1144,334 +1144,334 @@ function operacia(id)
     return
     {
       {
-        title = '{ffffff}» Перелом руки/ноги №1.',
+        title = '{ffffff}В» ГЏГҐГ°ГҐГ«Г®Г¬ Г°ГіГЄГЁ/Г­Г®ГЈГЁ В№1.',
         onclick = function()
-		if cfg.main.male == false then --- Женская отыгровка
-        sampSendChat("/me помогает пациенту дойти до операционного стола")
+		if cfg.main.male == false then --- Г†ГҐГ­Г±ГЄГ Гї Г®ГІГ»ГЈГ°Г®ГўГЄГ 
+        sampSendChat("/me ГЇГ®Г¬Г®ГЈГ ГҐГІ ГЇГ Г¶ГЁГҐГ­ГІГі Г¤Г®Г©ГІГЁ Г¤Г® Г®ГЇГҐГ°Г Г¶ГЁГ®Г­Г­Г®ГЈГ® Г±ГІГ®Г«Г ")
         wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me надела перчатки на свои руки и закрыла шкаф")
+        sampSendChat("/me Г­Г Г¤ГҐГ«Г  ГЇГҐГ°Г·Г ГІГЄГЁ Г­Г  Г±ГўГ®ГЁ Г°ГіГЄГЁ ГЁ Г§Г ГЄГ°Г»Г«Г  ГёГЄГ Гґ")
         wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me включив рентген-аппарат в сеть, навёла излучатели на пациента")
+        sampSendChat("/me ГўГЄГ«ГѕГ·ГЁГў Г°ГҐГ­ГІГЈГҐГ­-Г ГЇГЇГ Г°Г ГІ Гў Г±ГҐГІГј, Г­Г ГўВёГ«Г  ГЁГ§Г«ГіГ·Г ГІГҐГ«ГЁ Г­Г  ГЇГ Г¶ГЁГҐГ­ГІГ ")
         wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/do Снимок был готов.")
+        sampSendChat("/do Г‘Г­ГЁГ¬Г®ГЄ ГЎГ»Г« ГЈГ®ГІГ®Гў.")
         wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me взяла в свои руки снимок и начала его рассматривать")
+        sampSendChat("/me ГўГ§ГїГ«Г  Гў Г±ГўГ®ГЁ Г°ГіГЄГЁ Г±Г­ГЁГ¬Г®ГЄ ГЁ Г­Г Г·Г Г«Г  ГҐГЈГ® Г°Г Г±Г±Г¬Г ГІГ°ГЁГўГ ГІГј")
         wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/todo Это закрытый перелом*показав пациенту пальцем на участок кости на рентгене.")
+        sampSendChat("/todo ГќГІГ® Г§Г ГЄГ°Г»ГІГ»Г© ГЇГҐГ°ГҐГ«Г®Г¬*ГЇГ®ГЄГ Г§Г Гў ГЇГ Г¶ГЁГҐГ­ГІГі ГЇГ Г«ГјГ¶ГҐГ¬ Г­Г  ГіГ·Г Г±ГІГ®ГЄ ГЄГ®Г±ГІГЁ Г­Г  Г°ГҐГ­ГІГЈГҐГ­ГҐ.")
         wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me уложила пациента на операционный стол")
+        sampSendChat("/me ГіГ«Г®Г¦ГЁГ«Г  ГЇГ Г¶ГЁГҐГ­ГІГ  Г­Г  Г®ГЇГҐГ°Г Г¶ГЁГ®Г­Г­Г»Г© Г±ГІГ®Г«")
         wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me достала из шкафа эластичный бинт и положила его рядом")
+        sampSendChat("/me Г¤Г®Г±ГІГ Г«Г  ГЁГ§ ГёГЄГ ГґГ  ГЅГ«Г Г±ГІГЁГ·Г­Г»Г© ГЎГЁГ­ГІ ГЁ ГЇГ®Г«Г®Г¦ГЁГ«Г  ГҐГЈГ® Г°ГїГ¤Г®Г¬")
         wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me зафиксировала руку в неподвижном состоянии")
+        sampSendChat("/me Г§Г ГґГЁГЄГ±ГЁГ°Г®ГўГ Г«Г  Г°ГіГЄГі Гў Г­ГҐГЇГ®Г¤ГўГЁГ¦Г­Г®Г¬ Г±Г®Г±ГІГ®ГїГ­ГЁГЁ")
         wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/do В руке медицинская шина.")
+        sampSendChat("/do Г‚ Г°ГіГЄГҐ Г¬ГҐГ¤ГЁГ¶ГЁГ­Г±ГЄГ Гї ГёГЁГ­Г .")
         wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me наложила шину на место перелома без давления на сосуды")
+        sampSendChat("/me Г­Г Г«Г®Г¦ГЁГ«Г  ГёГЁГ­Гі Г­Г  Г¬ГҐГ±ГІГ® ГЇГҐГ°ГҐГ«Г®Г¬Г  ГЎГҐГ§ Г¤Г ГўГ«ГҐГ­ГЁГї Г­Г  Г±Г®Г±ГіГ¤Г»")
         wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/try перевязала вокруг шины эластичный бинт прикладывая среднюю силу")
+        sampSendChat("/try ГЇГҐГ°ГҐГўГїГ§Г Г«Г  ГўГ®ГЄГ°ГіГЈ ГёГЁГ­Г» ГЅГ«Г Г±ГІГЁГ·Г­Г»Г© ГЎГЁГ­ГІ ГЇГ°ГЁГЄГ«Г Г¤Г»ГўГ Гї Г±Г°ГҐГ¤Г­ГѕГѕ Г±ГЁГ«Гі")
 		end
-		if cfg.main.male == true then --- Мужская отыгровка
-        sampSendChat("/me помогает пациенту дойти до операционного стола")
+		if cfg.main.male == true then --- ГЊГіГ¦Г±ГЄГ Гї Г®ГІГ»ГЈГ°Г®ГўГЄГ 
+        sampSendChat("/me ГЇГ®Г¬Г®ГЈГ ГҐГІ ГЇГ Г¶ГЁГҐГ­ГІГі Г¤Г®Г©ГІГЁ Г¤Г® Г®ГЇГҐГ°Г Г¶ГЁГ®Г­Г­Г®ГЈГ® Г±ГІГ®Г«Г ")
         wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me надел перчатки на свои руки и закрыл шкаф")
+        sampSendChat("/me Г­Г Г¤ГҐГ« ГЇГҐГ°Г·Г ГІГЄГЁ Г­Г  Г±ГўГ®ГЁ Г°ГіГЄГЁ ГЁ Г§Г ГЄГ°Г»Г« ГёГЄГ Гґ")
         wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me включив рентген-аппарат в сеть, навёл излучатели на пациента")
+        sampSendChat("/me ГўГЄГ«ГѕГ·ГЁГў Г°ГҐГ­ГІГЈГҐГ­-Г ГЇГЇГ Г°Г ГІ Гў Г±ГҐГІГј, Г­Г ГўВёГ« ГЁГ§Г«ГіГ·Г ГІГҐГ«ГЁ Г­Г  ГЇГ Г¶ГЁГҐГ­ГІГ ")
         wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/do Снимок был готов.")
+        sampSendChat("/do Г‘Г­ГЁГ¬Г®ГЄ ГЎГ»Г« ГЈГ®ГІГ®Гў.")
         wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me взял в свои руки снимок и начал его рассматривать")
+        sampSendChat("/me ГўГ§ГїГ« Гў Г±ГўГ®ГЁ Г°ГіГЄГЁ Г±Г­ГЁГ¬Г®ГЄ ГЁ Г­Г Г·Г Г« ГҐГЈГ® Г°Г Г±Г±Г¬Г ГІГ°ГЁГўГ ГІГј")
         wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/todo Это закрытый перелом*показав пациенту пальцем на участок кости на рентгене.")
+        sampSendChat("/todo ГќГІГ® Г§Г ГЄГ°Г»ГІГ»Г© ГЇГҐГ°ГҐГ«Г®Г¬*ГЇГ®ГЄГ Г§Г Гў ГЇГ Г¶ГЁГҐГ­ГІГі ГЇГ Г«ГјГ¶ГҐГ¬ Г­Г  ГіГ·Г Г±ГІГ®ГЄ ГЄГ®Г±ГІГЁ Г­Г  Г°ГҐГ­ГІГЈГҐГ­ГҐ.")
         wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me уложил пациента на операционный стол")
+        sampSendChat("/me ГіГ«Г®Г¦ГЁГ« ГЇГ Г¶ГЁГҐГ­ГІГ  Г­Г  Г®ГЇГҐГ°Г Г¶ГЁГ®Г­Г­Г»Г© Г±ГІГ®Г«")
         wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me достал из шкафа эластичный бинт и положил его рядом")
+        sampSendChat("/me Г¤Г®Г±ГІГ Г« ГЁГ§ ГёГЄГ ГґГ  ГЅГ«Г Г±ГІГЁГ·Г­Г»Г© ГЎГЁГ­ГІ ГЁ ГЇГ®Г«Г®Г¦ГЁГ« ГҐГЈГ® Г°ГїГ¤Г®Г¬")
         wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me зафиксировал руку в неподвижном состоянии")
+        sampSendChat("/me Г§Г ГґГЁГЄГ±ГЁГ°Г®ГўГ Г« Г°ГіГЄГі Гў Г­ГҐГЇГ®Г¤ГўГЁГ¦Г­Г®Г¬ Г±Г®Г±ГІГ®ГїГ­ГЁГЁ")
         wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/do В руке медицинская шина.")
+        sampSendChat("/do Г‚ Г°ГіГЄГҐ Г¬ГҐГ¤ГЁГ¶ГЁГ­Г±ГЄГ Гї ГёГЁГ­Г .")
         wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me наложил шину на место перелома без давления на сосуды")
+        sampSendChat("/me Г­Г Г«Г®Г¦ГЁГ« ГёГЁГ­Гі Г­Г  Г¬ГҐГ±ГІГ® ГЇГҐГ°ГҐГ«Г®Г¬Г  ГЎГҐГ§ Г¤Г ГўГ«ГҐГ­ГЁГї Г­Г  Г±Г®Г±ГіГ¤Г»")
         wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/try перевязал вокруг шины эластичный бинт прикладывая среднюю силу")
+        sampSendChat("/try ГЇГҐГ°ГҐГўГїГ§Г Г« ГўГ®ГЄГ°ГіГЈ ГёГЁГ­Г» ГЅГ«Г Г±ГІГЁГ·Г­Г»Г© ГЎГЁГ­ГІ ГЇГ°ГЁГЄГ«Г Г¤Г»ГўГ Гї Г±Г°ГҐГ¤Г­ГѕГѕ Г±ГЁГ«Гі")
 		end
 		end
       },
 	  {
-        title = '{5b83c2}« Если неудачно, то переходим к №2. »',
+        title = '{5b83c2}В« Г…Г±Г«ГЁ Г­ГҐГіГ¤Г Г·Г­Г®, ГІГ® ГЇГҐГ°ГҐГµГ®Г¤ГЁГ¬ ГЄ В№2. В»',
         onclick = function()
         end
       },
 	  {
-        title = '{ffffff}» Перелом руки/ноги №2.',
+        title = '{ffffff}В» ГЏГҐГ°ГҐГ«Г®Г¬ Г°ГіГЄГЁ/Г­Г®ГЈГЁ В№2.',
         onclick = function()
-		if cfg.main.male == false then --- Женская отыгровка
-        sampSendChat("/do У пациента были эмоции на лице, показывающие его боль.")
+		if cfg.main.male == false then --- Г†ГҐГ­Г±ГЄГ Гї Г®ГІГ»ГЈГ°Г®ГўГЄГ 
+        sampSendChat("/do Г“ ГЇГ Г¶ГЁГҐГ­ГІГ  ГЎГ»Г«ГЁ ГЅГ¬Г®Г¶ГЁГЁ Г­Г  Г«ГЁГ¶ГҐ, ГЇГ®ГЄГ Г§Г»ГўГ ГѕГ№ГЁГҐ ГҐГЈГ® ГЎГ®Г«Гј.")
         wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me ослабила немного бинт, сбавляя свою силу")
+        sampSendChat("/me Г®Г±Г«Г ГЎГЁГ«Г  Г­ГҐГ¬Г­Г®ГЈГ® ГЎГЁГ­ГІ, Г±ГЎГ ГўГ«ГїГї Г±ГўГ®Гѕ Г±ГЁГ«Гі")
         wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/try взглянула на лицо пациента и сила перевязки не доставляла ему боли")
+        sampSendChat("/try ГўГ§ГЈГ«ГїГ­ГіГ«Г  Г­Г  Г«ГЁГ¶Г® ГЇГ Г¶ГЁГҐГ­ГІГ  ГЁ Г±ГЁГ«Г  ГЇГҐГ°ГҐГўГїГ§ГЄГЁ Г­ГҐ Г¤Г®Г±ГІГ ГўГ«ГїГ«Г  ГҐГ¬Гі ГЎГ®Г«ГЁ")
 		end
-		if cfg.main.male == true then --- Мужская отыгровка
-        sampSendChat("/do У пациента были эмоции на лице, показывающие его боль.")
+		if cfg.main.male == true then --- ГЊГіГ¦Г±ГЄГ Гї Г®ГІГ»ГЈГ°Г®ГўГЄГ 
+        sampSendChat("/do Г“ ГЇГ Г¶ГЁГҐГ­ГІГ  ГЎГ»Г«ГЁ ГЅГ¬Г®Г¶ГЁГЁ Г­Г  Г«ГЁГ¶ГҐ, ГЇГ®ГЄГ Г§Г»ГўГ ГѕГ№ГЁГҐ ГҐГЈГ® ГЎГ®Г«Гј.")
         wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me ослабил немного бинт, сбавляя свою силу")
+        sampSendChat("/me Г®Г±Г«Г ГЎГЁГ« Г­ГҐГ¬Г­Г®ГЈГ® ГЎГЁГ­ГІ, Г±ГЎГ ГўГ«ГїГї Г±ГўГ®Гѕ Г±ГЁГ«Гі")
         wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/try взглянул на лицо пациента и сила перевязки не доставляла ему боли")
+        sampSendChat("/try ГўГ§ГЈГ«ГїГ­ГіГ« Г­Г  Г«ГЁГ¶Г® ГЇГ Г¶ГЁГҐГ­ГІГ  ГЁ Г±ГЁГ«Г  ГЇГҐГ°ГҐГўГїГ§ГЄГЁ Г­ГҐ Г¤Г®Г±ГІГ ГўГ«ГїГ«Г  ГҐГ¬Гі ГЎГ®Г«ГЁ")
 		end
 		end
       },
 	  {
-        title = '{ffffff}» Пулевое ранение №1.',
+        title = '{ffffff}В» ГЏГіГ«ГҐГўГ®ГҐ Г°Г Г­ГҐГ­ГЁГҐ В№1.',
         onclick = function()
-		if cfg.main.male == false then --- Женская отыгровка
-        sampSendChat("/me подошла к шкафу, достала из него перчатки")
+		if cfg.main.male == false then --- Г†ГҐГ­Г±ГЄГ Гї Г®ГІГ»ГЈГ°Г®ГўГЄГ 
+        sampSendChat("/me ГЇГ®Г¤Г®ГёГ«Г  ГЄ ГёГЄГ ГґГі, Г¤Г®Г±ГІГ Г«Г  ГЁГ§ Г­ГҐГЈГ® ГЇГҐГ°Г·Г ГІГЄГЁ")
         wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me помыла руки под краном, одела перчатки и закрыла шкаф")
+        sampSendChat("/me ГЇГ®Г¬Г»Г«Г  Г°ГіГЄГЁ ГЇГ®Г¤ ГЄГ°Г Г­Г®Г¬, Г®Г¤ГҐГ«Г  ГЇГҐГ°Г·Г ГІГЄГЁ ГЁ Г§Г ГЄГ°Г»Г«Г  ГёГЄГ Гґ")
         wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/todo Ложитесь, я вам окажу помощь*показав рукой на стол.")
+        sampSendChat("/todo Г‹Г®Г¦ГЁГІГҐГ±Гј, Гї ГўГ Г¬ Г®ГЄГ Г¦Гі ГЇГ®Г¬Г®Г№Гј*ГЇГ®ГЄГ Г§Г Гў Г°ГіГЄГ®Г© Г­Г  Г±ГІГ®Г«.")
         wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/do Кислородная маска висела перед лицом.")
+        sampSendChat("/do ГЉГЁГ±Г«Г®Г°Г®Г¤Г­Г Гї Г¬Г Г±ГЄГ  ГўГЁГ±ГҐГ«Г  ГЇГҐГ°ГҐГ¤ Г«ГЁГ¶Г®Г¬.")
         wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me прокрутила вентиль, подав тем самым наркоз")
+        sampSendChat("/me ГЇГ°Г®ГЄГ°ГіГІГЁГ«Г  ГўГҐГ­ГІГЁГ«Гј, ГЇГ®Г¤Г Гў ГІГҐГ¬ Г±Г Г¬Г»Г¬ Г­Г Г°ГЄГ®Г§")
         wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/do После подачи наркоза пациент уснул.")
+        sampSendChat("/do ГЏГ®Г±Г«ГҐ ГЇГ®Г¤Г Г·ГЁ Г­Г Г°ГЄГ®Г§Г  ГЇГ Г¶ГЁГҐГ­ГІ ГіГ±Г­ГіГ«.")
         wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me взяла со стола поднос с хирургическими инструментами")
+        sampSendChat("/me ГўГ§ГїГ«Г  Г±Г® Г±ГІГ®Г«Г  ГЇГ®Г¤Г­Г®Г± Г± ГµГЁГ°ГіГ°ГЈГЁГ·ГҐГ±ГЄГЁГ¬ГЁ ГЁГ­Г±ГІГ°ГіГ¬ГҐГ­ГІГ Г¬ГЁ")
         wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me поставила поднос на табурет рядом с операционным столом")
+        sampSendChat("/me ГЇГ®Г±ГІГ ГўГЁГ«Г  ГЇГ®Г¤Г­Г®Г± Г­Г  ГІГ ГЎГіГ°ГҐГІ Г°ГїГ¤Г®Г¬ Г± Г®ГЇГҐГ°Г Г¶ГЁГ®Г­Г­Г»Г¬ Г±ГІГ®Г«Г®Г¬")
         wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me вколола шприц с 2 процентами Дибазола и ввёла обезболивающее")
+        sampSendChat("/me ГўГЄГ®Г«Г®Г«Г  ГёГЇГ°ГЁГ¶ Г± 2 ГЇГ°Г®Г¶ГҐГ­ГІГ Г¬ГЁ Г„ГЁГЎГ Г§Г®Г«Г  ГЁ ГўГўВёГ«Г  Г®ГЎГҐГ§ГЎГ®Г«ГЁГўГ ГѕГ№ГҐГҐ")
         wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me взяла с подноса пинцет и пролезла им в рану")
+        sampSendChat("/me ГўГ§ГїГ«Г  Г± ГЇГ®Г¤Г­Г®Г±Г  ГЇГЁГ­Г¶ГҐГІ ГЁ ГЇГ°Г®Г«ГҐГ§Г«Г  ГЁГ¬ Гў Г°Г Г­Гі")
         wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me старается осторожно зацепить пулю пинцетом")
+        sampSendChat("/me Г±ГІГ Г°Г ГҐГІГ±Гї Г®Г±ГІГ®Г°Г®Г¦Г­Г® Г§Г Г¶ГҐГЇГЁГІГј ГЇГіГ«Гѕ ГЇГЁГ­Г¶ГҐГІГ®Г¬")
         wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/try изъяла пулю, нащупав её")
+        sampSendChat("/try ГЁГ§ГєГїГ«Г  ГЇГіГ«Гѕ, Г­Г Г№ГіГЇГ Гў ГҐВё")
 		end
-		if cfg.main.male == true then --- Мужская отыгровка
-        sampSendChat("/me подошёл к шкафу, достал из него перчатки")
+		if cfg.main.male == true then --- ГЊГіГ¦Г±ГЄГ Гї Г®ГІГ»ГЈГ°Г®ГўГЄГ 
+        sampSendChat("/me ГЇГ®Г¤Г®ГёВёГ« ГЄ ГёГЄГ ГґГі, Г¤Г®Г±ГІГ Г« ГЁГ§ Г­ГҐГЈГ® ГЇГҐГ°Г·Г ГІГЄГЁ")
         wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me помыл руки под краном, одел перчатки и закрыл шкаф")
+        sampSendChat("/me ГЇГ®Г¬Г»Г« Г°ГіГЄГЁ ГЇГ®Г¤ ГЄГ°Г Г­Г®Г¬, Г®Г¤ГҐГ« ГЇГҐГ°Г·Г ГІГЄГЁ ГЁ Г§Г ГЄГ°Г»Г« ГёГЄГ Гґ")
         wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/todo Ложитесь, я вам окажу помощь*показав рукой на стол.")
+        sampSendChat("/todo Г‹Г®Г¦ГЁГІГҐГ±Гј, Гї ГўГ Г¬ Г®ГЄГ Г¦Гі ГЇГ®Г¬Г®Г№Гј*ГЇГ®ГЄГ Г§Г Гў Г°ГіГЄГ®Г© Г­Г  Г±ГІГ®Г«.")
         wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/do Кислородная маска висела перед лицом.")
+        sampSendChat("/do ГЉГЁГ±Г«Г®Г°Г®Г¤Г­Г Гї Г¬Г Г±ГЄГ  ГўГЁГ±ГҐГ«Г  ГЇГҐГ°ГҐГ¤ Г«ГЁГ¶Г®Г¬.")
         wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me прокрутил вентиль, подав тем самым наркоз")
+        sampSendChat("/me ГЇГ°Г®ГЄГ°ГіГІГЁГ« ГўГҐГ­ГІГЁГ«Гј, ГЇГ®Г¤Г Гў ГІГҐГ¬ Г±Г Г¬Г»Г¬ Г­Г Г°ГЄГ®Г§")
         wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/do После подачи наркоза пациент уснул.")
+        sampSendChat("/do ГЏГ®Г±Г«ГҐ ГЇГ®Г¤Г Г·ГЁ Г­Г Г°ГЄГ®Г§Г  ГЇГ Г¶ГЁГҐГ­ГІ ГіГ±Г­ГіГ«.")
         wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me взял со стола поднос с хирургическими инструментами")
+        sampSendChat("/me ГўГ§ГїГ« Г±Г® Г±ГІГ®Г«Г  ГЇГ®Г¤Г­Г®Г± Г± ГµГЁГ°ГіГ°ГЈГЁГ·ГҐГ±ГЄГЁГ¬ГЁ ГЁГ­Г±ГІГ°ГіГ¬ГҐГ­ГІГ Г¬ГЁ")
         wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me поставил поднос на табурет рядом с операционным столом")
+        sampSendChat("/me ГЇГ®Г±ГІГ ГўГЁГ« ГЇГ®Г¤Г­Г®Г± Г­Г  ГІГ ГЎГіГ°ГҐГІ Г°ГїГ¤Г®Г¬ Г± Г®ГЇГҐГ°Г Г¶ГЁГ®Г­Г­Г»Г¬ Г±ГІГ®Г«Г®Г¬")
         wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me вколол шприц с 2 процентами Дибазола и ввёл обезболивающее")
+        sampSendChat("/me ГўГЄГ®Г«Г®Г« ГёГЇГ°ГЁГ¶ Г± 2 ГЇГ°Г®Г¶ГҐГ­ГІГ Г¬ГЁ Г„ГЁГЎГ Г§Г®Г«Г  ГЁ ГўГўВёГ« Г®ГЎГҐГ§ГЎГ®Г«ГЁГўГ ГѕГ№ГҐГҐ")
         wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me взял с подноса пинцет и пролез им в рану")
+        sampSendChat("/me ГўГ§ГїГ« Г± ГЇГ®Г¤Г­Г®Г±Г  ГЇГЁГ­Г¶ГҐГІ ГЁ ГЇГ°Г®Г«ГҐГ§ ГЁГ¬ Гў Г°Г Г­Гі")
         wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me старается осторожно зацепить пулю пинцетом")
+        sampSendChat("/me Г±ГІГ Г°Г ГҐГІГ±Гї Г®Г±ГІГ®Г°Г®Г¦Г­Г® Г§Г Г¶ГҐГЇГЁГІГј ГЇГіГ«Гѕ ГЇГЁГ­Г¶ГҐГІГ®Г¬")
         wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/try изъял пулю, нащупав её")
+        sampSendChat("/try ГЁГ§ГєГїГ« ГЇГіГ«Гѕ, Г­Г Г№ГіГЇГ Гў ГҐВё")
 		end
 		end
       },
 	  {
-        title = '{5b83c2}« Если неудачно, то переходим к №2. »',
+        title = '{5b83c2}В« Г…Г±Г«ГЁ Г­ГҐГіГ¤Г Г·Г­Г®, ГІГ® ГЇГҐГ°ГҐГµГ®Г¤ГЁГ¬ ГЄ В№2. В»',
         onclick = function()
         end
       },
 	  {
-        title = '{ffffff}» Пулевое ранение №2.',
+        title = '{ffffff}В» ГЏГіГ«ГҐГўГ®ГҐ Г°Г Г­ГҐГ­ГЁГҐ В№2.',
         onclick = function()
-		if cfg.main.male == false then --- Женская отыгровка
-        sampSendChat("/me цепляет пулю, делая это осторожно")
+		if cfg.main.male == false then --- Г†ГҐГ­Г±ГЄГ Гї Г®ГІГ»ГЈГ°Г®ГўГЄГ 
+        sampSendChat("/me Г¶ГҐГЇГ«ГїГҐГІ ГЇГіГ«Гѕ, Г¤ГҐГ«Г Гї ГЅГІГ® Г®Г±ГІГ®Г°Г®Г¦Г­Г®")
         wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/try изъяла пулю, нащупав её")
+        sampSendChat("/try ГЁГ§ГєГїГ«Г  ГЇГіГ«Гѕ, Г­Г Г№ГіГЇГ Гў ГҐВё")
 		end
-		if cfg.main.male == true then --- Мужская отыгровка
-        sampSendChat("/me цепляет пулю, делая это осторожно")
+		if cfg.main.male == true then --- ГЊГіГ¦Г±ГЄГ Гї Г®ГІГ»ГЈГ°Г®ГўГЄГ 
+        sampSendChat("/me Г¶ГҐГЇГ«ГїГҐГІ ГЇГіГ«Гѕ, Г¤ГҐГ«Г Гї ГЅГІГ® Г®Г±ГІГ®Г°Г®Г¦Г­Г®")
         wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/try изъял пулю, нащупав её")
+        sampSendChat("/try ГЁГ§ГєГїГ« ГЇГіГ«Гѕ, Г­Г Г№ГіГЇГ Гў ГҐВё")
 		end
 		end
       },
 	  {
-        title = '{5b83c2}« Если удачно, то переходим к №3. »',
+        title = '{5b83c2}В« Г…Г±Г«ГЁ ГіГ¤Г Г·Г­Г®, ГІГ® ГЇГҐГ°ГҐГµГ®Г¤ГЁГ¬ ГЄ В№3. В»',
         onclick = function()
         end
       },
 	  {
-        title = '{ffffff}» Пулевое ранение №3.',
+        title = '{ffffff}В» ГЏГіГ«ГҐГўГ®ГҐ Г°Г Г­ГҐГ­ГЁГҐ В№3.',
         onclick = function()
-		if cfg.main.male == false then --- Женская отыгровка
-        sampSendChat("/me извлёкла пулю из человека и положила её на поднос")
+		if cfg.main.male == false then --- Г†ГҐГ­Г±ГЄГ Гї Г®ГІГ»ГЈГ°Г®ГўГЄГ 
+        sampSendChat("/me ГЁГ§ГўГ«ВёГЄГ«Г  ГЇГіГ«Гѕ ГЁГ§ Г·ГҐГ«Г®ГўГҐГЄГ  ГЁ ГЇГ®Г«Г®Г¦ГЁГ«Г  ГҐВё Г­Г  ГЇГ®Г¤Г­Г®Г±")
         wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me взяла шёлковую иглу и продела нитку в ушко игры")
+        sampSendChat("/me ГўГ§ГїГ«Г  ГёВёГ«ГЄГ®ГўГіГѕ ГЁГЈГ«Гі ГЁ ГЇГ°Г®Г¤ГҐГ«Г  Г­ГЁГІГЄГі Гў ГіГёГЄГ® ГЁГЈГ°Г»")
         wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me начала накладывать швы, стягивая кожу у раны")
+        sampSendChat("/me Г­Г Г·Г Г«Г  Г­Г ГЄГ«Г Г¤Г»ГўГ ГІГј ГёГўГ», Г±ГІГїГЈГЁГўГ Гї ГЄГ®Г¦Гі Гі Г°Г Г­Г»")
         wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/do После наложения швов, они были зафиксированы.")
+        sampSendChat("/do ГЏГ®Г±Г«ГҐ Г­Г Г«Г®Г¦ГҐГ­ГЁГї ГёГўГ®Гў, Г®Г­ГЁ ГЎГ»Г«ГЁ Г§Г ГґГЁГЄГ±ГЁГ°Г®ГўГ Г­Г».")
         wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me взяла ножницы и обрезала лишнюю ниточку")
+        sampSendChat("/me ГўГ§ГїГ«Г  Г­Г®Г¦Г­ГЁГ¶Г» ГЁ Г®ГЎГ°ГҐГ§Г Г«Г  Г«ГЁГёГ­ГѕГѕ Г­ГЁГІГ®Г·ГЄГі")
         wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me обработала место ранения антисептиком и сложила всё на поднос")
+        sampSendChat("/me Г®ГЎГ°Г ГЎГ®ГІГ Г«Г  Г¬ГҐГ±ГІГ® Г°Г Г­ГҐГ­ГЁГї Г Г­ГІГЁГ±ГҐГЇГІГЁГЄГ®Г¬ ГЁ Г±Г«Г®Г¦ГЁГ«Г  ГўГ±Вё Г­Г  ГЇГ®Г¤Г­Г®Г±")
 		end
-		if cfg.main.male == true then --- Мужская отыгровка
-        sampSendChat("/me извлёк пулю из человека и положил её на поднос")
+		if cfg.main.male == true then --- ГЊГіГ¦Г±ГЄГ Гї Г®ГІГ»ГЈГ°Г®ГўГЄГ 
+        sampSendChat("/me ГЁГ§ГўГ«ВёГЄ ГЇГіГ«Гѕ ГЁГ§ Г·ГҐГ«Г®ГўГҐГЄГ  ГЁ ГЇГ®Г«Г®Г¦ГЁГ« ГҐВё Г­Г  ГЇГ®Г¤Г­Г®Г±")
         wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me взял шёлковую иглу и продел нитку в ушко игры")
+        sampSendChat("/me ГўГ§ГїГ« ГёВёГ«ГЄГ®ГўГіГѕ ГЁГЈГ«Гі ГЁ ГЇГ°Г®Г¤ГҐГ« Г­ГЁГІГЄГі Гў ГіГёГЄГ® ГЁГЈГ°Г»")
         wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me начал накладывать швы, стягивая кожу у раны")
+        sampSendChat("/me Г­Г Г·Г Г« Г­Г ГЄГ«Г Г¤Г»ГўГ ГІГј ГёГўГ», Г±ГІГїГЈГЁГўГ Гї ГЄГ®Г¦Гі Гі Г°Г Г­Г»")
         wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/do После наложения швов, они были зафиксированы.")
+        sampSendChat("/do ГЏГ®Г±Г«ГҐ Г­Г Г«Г®Г¦ГҐГ­ГЁГї ГёГўГ®Гў, Г®Г­ГЁ ГЎГ»Г«ГЁ Г§Г ГґГЁГЄГ±ГЁГ°Г®ГўГ Г­Г».")
         wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me взял ножницы и обрезал лишнюю ниточку")
+        sampSendChat("/me ГўГ§ГїГ« Г­Г®Г¦Г­ГЁГ¶Г» ГЁ Г®ГЎГ°ГҐГ§Г Г« Г«ГЁГёГ­ГѕГѕ Г­ГЁГІГ®Г·ГЄГі")
         wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me обработал место ранения антисептиком и сложил всё на поднос")
+        sampSendChat("/me Г®ГЎГ°Г ГЎГ®ГІГ Г« Г¬ГҐГ±ГІГ® Г°Г Г­ГҐГ­ГЁГї Г Г­ГІГЁГ±ГҐГЇГІГЁГЄГ®Г¬ ГЁ Г±Г«Г®Г¦ГЁГ« ГўГ±Вё Г­Г  ГЇГ®Г¤Г­Г®Г±")
 		end
 		end
       },
 	  {
-        title = '{ffffff}» Ножевое ранение.',
+        title = '{ffffff}В» ГЌГ®Г¦ГҐГўГ®ГҐ Г°Г Г­ГҐГ­ГЁГҐ.',
         onclick = function()
-		if cfg.main.male == false then --- Женская отыгровка
-        sampSendChat("/me подошла к шкафу, достала из него перчатки")
+		if cfg.main.male == false then --- Г†ГҐГ­Г±ГЄГ Гї Г®ГІГ»ГЈГ°Г®ГўГЄГ 
+        sampSendChat("/me ГЇГ®Г¤Г®ГёГ«Г  ГЄ ГёГЄГ ГґГі, Г¤Г®Г±ГІГ Г«Г  ГЁГ§ Г­ГҐГЈГ® ГЇГҐГ°Г·Г ГІГЄГЁ")
         wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me помыв руки под краном, одела перчатки и закрыла шкаф")
+        sampSendChat("/me ГЇГ®Г¬Г»Гў Г°ГіГЄГЁ ГЇГ®Г¤ ГЄГ°Г Г­Г®Г¬, Г®Г¤ГҐГ«Г  ГЇГҐГ°Г·Г ГІГЄГЁ ГЁ Г§Г ГЄГ°Г»Г«Г  ГёГЄГ Гґ")
         wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/todo Раздевайтесь, вещи положите сюда*показав рукой на стул.")
+        sampSendChat("/todo ГђГ Г§Г¤ГҐГўГ Г©ГІГҐГ±Гј, ГўГҐГ№ГЁ ГЇГ®Г«Г®Г¦ГЁГІГҐ Г±ГѕГ¤Г *ГЇГ®ГЄГ Г§Г Гў Г°ГіГЄГ®Г© Г­Г  Г±ГІГіГ«.")
         wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/do Кислородная маска висела перед лицом.")
+        sampSendChat("/do ГЉГЁГ±Г«Г®Г°Г®Г¤Г­Г Гї Г¬Г Г±ГЄГ  ГўГЁГ±ГҐГ«Г  ГЇГҐГ°ГҐГ¤ Г«ГЁГ¶Г®Г¬.")
         wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me прокрутила вентиль, подав тем самым наркоз")
+        sampSendChat("/me ГЇГ°Г®ГЄГ°ГіГІГЁГ«Г  ГўГҐГ­ГІГЁГ«Гј, ГЇГ®Г¤Г Гў ГІГҐГ¬ Г±Г Г¬Г»Г¬ Г­Г Г°ГЄГ®Г§")
         wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me взяла со стола поднос с хирургическими инструментами")
+        sampSendChat("/me ГўГ§ГїГ«Г  Г±Г® Г±ГІГ®Г«Г  ГЇГ®Г¤Г­Г®Г± Г± ГµГЁГ°ГіГ°ГЈГЁГ·ГҐГ±ГЄГЁГ¬ГЁ ГЁГ­Г±ГІГ°ГіГ¬ГҐГ­ГІГ Г¬ГЁ")
         wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me несёт поднос в руках и ставит поднос на табурет")
+        sampSendChat("/me Г­ГҐГ±ВёГІ ГЇГ®Г¤Г­Г®Г± Гў Г°ГіГЄГ Гµ ГЁ Г±ГІГ ГўГЁГІ ГЇГ®Г¤Г­Г®Г± Г­Г  ГІГ ГЎГіГ°ГҐГІ")
         wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me взяла с подноса шприц с раствором Дибазола")
+        sampSendChat("/me ГўГ§ГїГ«Г  Г± ГЇГ®Г¤Г­Г®Г±Г  ГёГЇГ°ГЁГ¶ Г± Г°Г Г±ГІГўГ®Г°Г®Г¬ Г„ГЁГЎГ Г§Г®Г«Г ")
         wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me вколола шприц рядом с местом ранения")
+        sampSendChat("/me ГўГЄГ®Г«Г®Г«Г  ГёГЇГ°ГЁГ¶ Г°ГїГ¤Г®Г¬ Г± Г¬ГҐГ±ГІГ®Г¬ Г°Г Г­ГҐГ­ГЁГї")
         wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/do Обезболивающее подействовало.")
+        sampSendChat("/do ГЋГЎГҐГ§ГЎГ®Г«ГЁГўГ ГѕГ№ГҐГҐ ГЇГ®Г¤ГҐГ©Г±ГІГўГ®ГўГ Г«Г®.")
         wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me начала накладывать швы, стянув кожу у раны")
+        sampSendChat("/me Г­Г Г·Г Г«Г  Г­Г ГЄГ«Г Г¤Г»ГўГ ГІГј ГёГўГ», Г±ГІГїГ­ГіГў ГЄГ®Г¦Гі Гі Г°Г Г­Г»")
         wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me закончив наложение швов, затем зафиксировала их")
+        sampSendChat("/me Г§Г ГЄГ®Г­Г·ГЁГў Г­Г Г«Г®Г¦ГҐГ­ГЁГҐ ГёГўГ®Гў, Г§Г ГІГҐГ¬ Г§Г ГґГЁГЄГ±ГЁГ°Г®ГўГ Г«Г  ГЁГµ")
         wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me обрезала лишнюю нить ножницами и взяла антисептик")
+        sampSendChat("/me Г®ГЎГ°ГҐГ§Г Г«Г  Г«ГЁГёГ­ГѕГѕ Г­ГЁГІГј Г­Г®Г¦Г­ГЁГ¶Г Г¬ГЁ ГЁ ГўГ§ГїГ«Г  Г Г­ГІГЁГ±ГҐГЇГІГЁГЄ")
         wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me обработала швы антисептиком и сложила всё на поднос")
+        sampSendChat("/me Г®ГЎГ°Г ГЎГ®ГІГ Г«Г  ГёГўГ» Г Г­ГІГЁГ±ГҐГЇГІГЁГЄГ®Г¬ ГЁ Г±Г«Г®Г¦ГЁГ«Г  ГўГ±Вё Г­Г  ГЇГ®Г¤Г­Г®Г±")
 		end
-		if cfg.main.male == true then --- Мужская отыгровка
-        sampSendChat("/me подошёл к шкафу, достал из него перчатки")
+		if cfg.main.male == true then --- ГЊГіГ¦Г±ГЄГ Гї Г®ГІГ»ГЈГ°Г®ГўГЄГ 
+        sampSendChat("/me ГЇГ®Г¤Г®ГёВёГ« ГЄ ГёГЄГ ГґГі, Г¤Г®Г±ГІГ Г« ГЁГ§ Г­ГҐГЈГ® ГЇГҐГ°Г·Г ГІГЄГЁ")
         wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me помыв руки под краном, одел перчатки и закрыл шкаф")
+        sampSendChat("/me ГЇГ®Г¬Г»Гў Г°ГіГЄГЁ ГЇГ®Г¤ ГЄГ°Г Г­Г®Г¬, Г®Г¤ГҐГ« ГЇГҐГ°Г·Г ГІГЄГЁ ГЁ Г§Г ГЄГ°Г»Г« ГёГЄГ Гґ")
         wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/todo Раздевайтесь, вещи положите сюда*показав рукой на стул.")
+        sampSendChat("/todo ГђГ Г§Г¤ГҐГўГ Г©ГІГҐГ±Гј, ГўГҐГ№ГЁ ГЇГ®Г«Г®Г¦ГЁГІГҐ Г±ГѕГ¤Г *ГЇГ®ГЄГ Г§Г Гў Г°ГіГЄГ®Г© Г­Г  Г±ГІГіГ«.")
         wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/do Кислородная маска висела перед лицом.")
+        sampSendChat("/do ГЉГЁГ±Г«Г®Г°Г®Г¤Г­Г Гї Г¬Г Г±ГЄГ  ГўГЁГ±ГҐГ«Г  ГЇГҐГ°ГҐГ¤ Г«ГЁГ¶Г®Г¬.")
         wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me прокрутил вентиль, подав тем самым наркоз")
+        sampSendChat("/me ГЇГ°Г®ГЄГ°ГіГІГЁГ« ГўГҐГ­ГІГЁГ«Гј, ГЇГ®Г¤Г Гў ГІГҐГ¬ Г±Г Г¬Г»Г¬ Г­Г Г°ГЄГ®Г§")
         wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me взял со стола поднос с хирургическими инструментами")
+        sampSendChat("/me ГўГ§ГїГ« Г±Г® Г±ГІГ®Г«Г  ГЇГ®Г¤Г­Г®Г± Г± ГµГЁГ°ГіГ°ГЈГЁГ·ГҐГ±ГЄГЁГ¬ГЁ ГЁГ­Г±ГІГ°ГіГ¬ГҐГ­ГІГ Г¬ГЁ")
         wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me несёт поднос в руках и ставит поднос на табурет")
+        sampSendChat("/me Г­ГҐГ±ВёГІ ГЇГ®Г¤Г­Г®Г± Гў Г°ГіГЄГ Гµ ГЁ Г±ГІГ ГўГЁГІ ГЇГ®Г¤Г­Г®Г± Г­Г  ГІГ ГЎГіГ°ГҐГІ")
         wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me взял с подноса шприц с раствором Дибазола")
+        sampSendChat("/me ГўГ§ГїГ« Г± ГЇГ®Г¤Г­Г®Г±Г  ГёГЇГ°ГЁГ¶ Г± Г°Г Г±ГІГўГ®Г°Г®Г¬ Г„ГЁГЎГ Г§Г®Г«Г ")
         wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me вколол шприц рядом с местом ранения")
+        sampSendChat("/me ГўГЄГ®Г«Г®Г« ГёГЇГ°ГЁГ¶ Г°ГїГ¤Г®Г¬ Г± Г¬ГҐГ±ГІГ®Г¬ Г°Г Г­ГҐГ­ГЁГї")
         wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/do Обезболивающее подействовало.")
+        sampSendChat("/do ГЋГЎГҐГ§ГЎГ®Г«ГЁГўГ ГѕГ№ГҐГҐ ГЇГ®Г¤ГҐГ©Г±ГІГўГ®ГўГ Г«Г®.")
         wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me начал накладывать швы, стянув кожу у раны")
+        sampSendChat("/me Г­Г Г·Г Г« Г­Г ГЄГ«Г Г¤Г»ГўГ ГІГј ГёГўГ», Г±ГІГїГ­ГіГў ГЄГ®Г¦Гі Гі Г°Г Г­Г»")
         wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me закончив наложение швов, затем зафиксировал их")
+        sampSendChat("/me Г§Г ГЄГ®Г­Г·ГЁГў Г­Г Г«Г®Г¦ГҐГ­ГЁГҐ ГёГўГ®Гў, Г§Г ГІГҐГ¬ Г§Г ГґГЁГЄГ±ГЁГ°Г®ГўГ Г« ГЁГµ")
         wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me обрезал лишнюю нить ножницами и взял антисептик")
+        sampSendChat("/me Г®ГЎГ°ГҐГ§Г Г« Г«ГЁГёГ­ГѕГѕ Г­ГЁГІГј Г­Г®Г¦Г­ГЁГ¶Г Г¬ГЁ ГЁ ГўГ§ГїГ« Г Г­ГІГЁГ±ГҐГЇГІГЁГЄ")
         wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me обработал швы антисептиком и сложил всё на поднос")
+        sampSendChat("/me Г®ГЎГ°Г ГЎГ®ГІГ Г« ГёГўГ» Г Г­ГІГЁГ±ГҐГЇГІГЁГЄГ®Г¬ ГЁ Г±Г«Г®Г¦ГЁГ« ГўГ±Вё Г­Г  ГЇГ®Г¤Г­Г®Г±")
 		end
 		end
       },
 	  {
-        title = '{ffffff}» Удаление аппендицита.',
+        title = '{ffffff}В» Г“Г¤Г Г«ГҐГ­ГЁГҐ Г ГЇГЇГҐГ­Г¤ГЁГ¶ГЁГІГ .',
         onclick = function()
-		if cfg.main.male == false then --- Женская отыгровка
-        sampSendChat("/me подошла к шкафу, достала из него перчатки")
+		if cfg.main.male == false then --- Г†ГҐГ­Г±ГЄГ Гї Г®ГІГ»ГЈГ°Г®ГўГЄГ 
+        sampSendChat("/me ГЇГ®Г¤Г®ГёГ«Г  ГЄ ГёГЄГ ГґГі, Г¤Г®Г±ГІГ Г«Г  ГЁГ§ Г­ГҐГЈГ® ГЇГҐГ°Г·Г ГІГЄГЁ")
         wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me помыла руки под краном, одела перчатки и закрыла шкаф")
+        sampSendChat("/me ГЇГ®Г¬Г»Г«Г  Г°ГіГЄГЁ ГЇГ®Г¤ ГЄГ°Г Г­Г®Г¬, Г®Г¤ГҐГ«Г  ГЇГҐГ°Г·Г ГІГЄГЁ ГЁ Г§Г ГЄГ°Г»Г«Г  ГёГЄГ Гґ")
         wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/do Кислородная маска висела перед лицом.")
+        sampSendChat("/do ГЉГЁГ±Г«Г®Г°Г®Г¤Г­Г Гї Г¬Г Г±ГЄГ  ГўГЁГ±ГҐГ«Г  ГЇГҐГ°ГҐГ¤ Г«ГЁГ¶Г®Г¬.")
         wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me прокрутила вентиль, подав тем самым наркоз")
+        sampSendChat("/me ГЇГ°Г®ГЄГ°ГіГІГЁГ«Г  ГўГҐГ­ГІГЁГ«Гј, ГЇГ®Г¤Г Гў ГІГҐГ¬ Г±Г Г¬Г»Г¬ Г­Г Г°ГЄГ®Г§")
         wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/do После подачи наркоза пациент уснул.")
+        sampSendChat("/do ГЏГ®Г±Г«ГҐ ГЇГ®Г¤Г Г·ГЁ Г­Г Г°ГЄГ®Г§Г  ГЇГ Г¶ГЁГҐГ­ГІ ГіГ±Г­ГіГ«.")
         wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me взяла со стола поднос с хирургическими инструментами")
+        sampSendChat("/me ГўГ§ГїГ«Г  Г±Г® Г±ГІГ®Г«Г  ГЇГ®Г¤Г­Г®Г± Г± ГµГЁГ°ГіГ°ГЈГЁГ·ГҐГ±ГЄГЁГ¬ГЁ ГЁГ­Г±ГІГ°ГіГ¬ГҐГ­ГІГ Г¬ГЁ")
         wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me взяла с подноса дыхательную трубку и ввёла в трахею пациента")
+        sampSendChat("/me ГўГ§ГїГ«Г  Г± ГЇГ®Г¤Г­Г®Г±Г  Г¤Г»ГµГ ГІГҐГ«ГјГ­ГіГѕ ГІГ°ГіГЎГЄГі ГЁ ГўГўВёГ«Г  Гў ГІГ°Г ГµГҐГѕ ГЇГ Г¶ГЁГҐГ­ГІГ ")
         wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me наметив маркером место надреза, затем сделала надрез")
+        sampSendChat("/me Г­Г Г¬ГҐГІГЁГў Г¬Г Г°ГЄГҐГ°Г®Г¬ Г¬ГҐГ±ГІГ® Г­Г Г¤Г°ГҐГ§Г , Г§Г ГІГҐГ¬ Г±Г¤ГҐГ«Г Г«Г  Г­Г Г¤Г°ГҐГ§")
         wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me взяла в руки пинцет и пролезла в надрез")
+        sampSendChat("/me ГўГ§ГїГ«Г  Гў Г°ГіГЄГЁ ГЇГЁГ­Г¶ГҐГІ ГЁ ГЇГ°Г®Г«ГҐГ§Г«Г  Гў Г­Г Г¤Г°ГҐГ§")
         wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me зацепила пинцетом аппендикс и обрезала воспалённый орган")
+        sampSendChat("/me Г§Г Г¶ГҐГЇГЁГ«Г  ГЇГЁГ­Г¶ГҐГІГ®Г¬ Г ГЇГЇГҐГ­Г¤ГЁГЄГ± ГЁ Г®ГЎГ°ГҐГ§Г Г«Г  ГўГ®Г±ГЇГ Г«ВёГ­Г­Г»Г© Г®Г°ГЈГ Г­")
         wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me извлёкла аппендикс пинцетом из раны, убрала на поднос скальпель")
+        sampSendChat("/me ГЁГ§ГўГ«ВёГЄГ«Г  Г ГЇГЇГҐГ­Г¤ГЁГЄГ± ГЇГЁГ­Г¶ГҐГІГ®Г¬ ГЁГ§ Г°Г Г­Г», ГіГЎГ°Г Г«Г  Г­Г  ГЇГ®Г¤Г­Г®Г± Г±ГЄГ Г«ГјГЇГҐГ«Гј")
         wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me взяла со стола нить и иглу, потом продела нить в ушко")
+        sampSendChat("/me ГўГ§ГїГ«Г  Г±Г® Г±ГІГ®Г«Г  Г­ГЁГІГј ГЁ ГЁГЈГ«Гі, ГЇГ®ГІГ®Г¬ ГЇГ°Г®Г¤ГҐГ«Г  Г­ГЁГІГј Гў ГіГёГЄГ®")
         wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me стянула ткани в слепой кишке и наложила швы")
+        sampSendChat("/me Г±ГІГїГ­ГіГ«Г  ГІГЄГ Г­ГЁ Гў Г±Г«ГҐГЇГ®Г© ГЄГЁГёГЄГҐ ГЁ Г­Г Г«Г®Г¦ГЁГ«Г  ГёГўГ»")
         wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me зафиксировав швы и отрезала нить ножницами")
+        sampSendChat("/me Г§Г ГґГЁГЄГ±ГЁГ°Г®ГўГ Гў ГёГўГ» ГЁ Г®ГІГ°ГҐГ§Г Г«Г  Г­ГЁГІГј Г­Г®Г¦Г­ГЁГ¶Г Г¬ГЁ")
         wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/do Процесс наложения швов на тело пациента.")
+        sampSendChat("/do ГЏГ°Г®Г¶ГҐГ±Г± Г­Г Г«Г®Г¦ГҐГ­ГЁГї ГёГўГ®Гў Г­Г  ГІГҐГ«Г® ГЇГ Г¶ГЁГҐГ­ГІГ .")
         wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me сложила всё на поднос и обработала")
+        sampSendChat("/me Г±Г«Г®Г¦ГЁГ«Г  ГўГ±Вё Г­Г  ГЇГ®Г¤Г­Г®Г± ГЁ Г®ГЎГ°Г ГЎГ®ГІГ Г«Г ")
         wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me положила всё на поднос, сняла перчатки")
+        sampSendChat("/me ГЇГ®Г«Г®Г¦ГЁГ«Г  ГўГ±Вё Г­Г  ГЇГ®Г¤Г­Г®Г±, Г±Г­ГїГ«Г  ГЇГҐГ°Г·Г ГІГЄГЁ")
         wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me обработала место швов антисептиком")
+        sampSendChat("/me Г®ГЎГ°Г ГЎГ®ГІГ Г«Г  Г¬ГҐГ±ГІГ® ГёГўГ®Гў Г Г­ГІГЁГ±ГҐГЇГІГЁГЄГ®Г¬")
 		end
-		if cfg.main.male == true then --- Мужская отыгровка
-        sampSendChat("/me подошёл к шкафу, достал из него перчатки")
+		if cfg.main.male == true then --- ГЊГіГ¦Г±ГЄГ Гї Г®ГІГ»ГЈГ°Г®ГўГЄГ 
+        sampSendChat("/me ГЇГ®Г¤Г®ГёВёГ« ГЄ ГёГЄГ ГґГі, Г¤Г®Г±ГІГ Г« ГЁГ§ Г­ГҐГЈГ® ГЇГҐГ°Г·Г ГІГЄГЁ")
         wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me помыл руки под краном, одел перчатки и закрыл шкаф")
+        sampSendChat("/me ГЇГ®Г¬Г»Г« Г°ГіГЄГЁ ГЇГ®Г¤ ГЄГ°Г Г­Г®Г¬, Г®Г¤ГҐГ« ГЇГҐГ°Г·Г ГІГЄГЁ ГЁ Г§Г ГЄГ°Г»Г« ГёГЄГ Гґ")
         wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/do Кислородная маска висела перед лицом.")
+        sampSendChat("/do ГЉГЁГ±Г«Г®Г°Г®Г¤Г­Г Гї Г¬Г Г±ГЄГ  ГўГЁГ±ГҐГ«Г  ГЇГҐГ°ГҐГ¤ Г«ГЁГ¶Г®Г¬.")
         wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me прокрутил вентиль, подав тем самым наркоз")
+        sampSendChat("/me ГЇГ°Г®ГЄГ°ГіГІГЁГ« ГўГҐГ­ГІГЁГ«Гј, ГЇГ®Г¤Г Гў ГІГҐГ¬ Г±Г Г¬Г»Г¬ Г­Г Г°ГЄГ®Г§")
         wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/do После подачи наркоза пациент уснул.")
+        sampSendChat("/do ГЏГ®Г±Г«ГҐ ГЇГ®Г¤Г Г·ГЁ Г­Г Г°ГЄГ®Г§Г  ГЇГ Г¶ГЁГҐГ­ГІ ГіГ±Г­ГіГ«.")
         wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me взял со стола поднос с хирургическими инструментами")
+        sampSendChat("/me ГўГ§ГїГ« Г±Г® Г±ГІГ®Г«Г  ГЇГ®Г¤Г­Г®Г± Г± ГµГЁГ°ГіГ°ГЈГЁГ·ГҐГ±ГЄГЁГ¬ГЁ ГЁГ­Г±ГІГ°ГіГ¬ГҐГ­ГІГ Г¬ГЁ")
         wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me взял с подноса дыхательную трубку и ввёл в трахею пациента")
+        sampSendChat("/me ГўГ§ГїГ« Г± ГЇГ®Г¤Г­Г®Г±Г  Г¤Г»ГµГ ГІГҐГ«ГјГ­ГіГѕ ГІГ°ГіГЎГЄГі ГЁ ГўГўВёГ« Гў ГІГ°Г ГµГҐГѕ ГЇГ Г¶ГЁГҐГ­ГІГ ")
         wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me наметив маркером место надреза, затем сделал надрез")
+        sampSendChat("/me Г­Г Г¬ГҐГІГЁГў Г¬Г Г°ГЄГҐГ°Г®Г¬ Г¬ГҐГ±ГІГ® Г­Г Г¤Г°ГҐГ§Г , Г§Г ГІГҐГ¬ Г±Г¤ГҐГ«Г Г« Г­Г Г¤Г°ГҐГ§")
         wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me взял в руки пинцет и пролез в надрез")
+        sampSendChat("/me ГўГ§ГїГ« Гў Г°ГіГЄГЁ ГЇГЁГ­Г¶ГҐГІ ГЁ ГЇГ°Г®Г«ГҐГ§ Гў Г­Г Г¤Г°ГҐГ§")
         wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me зацепил пинцетом аппендикс и обрезал воспалённый орган")
+        sampSendChat("/me Г§Г Г¶ГҐГЇГЁГ« ГЇГЁГ­Г¶ГҐГІГ®Г¬ Г ГЇГЇГҐГ­Г¤ГЁГЄГ± ГЁ Г®ГЎГ°ГҐГ§Г Г« ГўГ®Г±ГЇГ Г«ВёГ­Г­Г»Г© Г®Г°ГЈГ Г­")
         wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me извлёк аппендикс пинцетом из раны, убрал на поднос скальпель")
+        sampSendChat("/me ГЁГ§ГўГ«ВёГЄ Г ГЇГЇГҐГ­Г¤ГЁГЄГ± ГЇГЁГ­Г¶ГҐГІГ®Г¬ ГЁГ§ Г°Г Г­Г», ГіГЎГ°Г Г« Г­Г  ГЇГ®Г¤Г­Г®Г± Г±ГЄГ Г«ГјГЇГҐГ«Гј")
         wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me взял со стола нить и иглу, потом продел нить в ушко")
+        sampSendChat("/me ГўГ§ГїГ« Г±Г® Г±ГІГ®Г«Г  Г­ГЁГІГј ГЁ ГЁГЈГ«Гі, ГЇГ®ГІГ®Г¬ ГЇГ°Г®Г¤ГҐГ« Г­ГЁГІГј Гў ГіГёГЄГ®")
         wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me стянул ткани в слепой кишке и наложил швы")
+        sampSendChat("/me Г±ГІГїГ­ГіГ« ГІГЄГ Г­ГЁ Гў Г±Г«ГҐГЇГ®Г© ГЄГЁГёГЄГҐ ГЁ Г­Г Г«Г®Г¦ГЁГ« ГёГўГ»")
         wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me зафиксировав швы и отрезал нить ножницами")
+        sampSendChat("/me Г§Г ГґГЁГЄГ±ГЁГ°Г®ГўГ Гў ГёГўГ» ГЁ Г®ГІГ°ГҐГ§Г Г« Г­ГЁГІГј Г­Г®Г¦Г­ГЁГ¶Г Г¬ГЁ")
         wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/do Процесс наложения швов на тело пациента.")
+        sampSendChat("/do ГЏГ°Г®Г¶ГҐГ±Г± Г­Г Г«Г®Г¦ГҐГ­ГЁГї ГёГўГ®Гў Г­Г  ГІГҐГ«Г® ГЇГ Г¶ГЁГҐГ­ГІГ .")
         wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me сложил всё на поднос и обработал")
+        sampSendChat("/me Г±Г«Г®Г¦ГЁГ« ГўГ±Вё Г­Г  ГЇГ®Г¤Г­Г®Г± ГЁ Г®ГЎГ°Г ГЎГ®ГІГ Г«")
         wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me положил всё на поднос, снял перчатки")
+        sampSendChat("/me ГЇГ®Г«Г®Г¦ГЁГ« ГўГ±Вё Г­Г  ГЇГ®Г¤Г­Г®Г±, Г±Г­ГїГ« ГЇГҐГ°Г·Г ГІГЄГЁ")
         wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me обработал место швов антисептиком")
+        sampSendChat("/me Г®ГЎГ°Г ГЎГ®ГІГ Г« Г¬ГҐГ±ГІГ® ГёГўГ®Гў Г Г­ГІГЁГ±ГҐГЇГІГЁГЄГ®Г¬")
 		end
 		end
       },
@@ -1482,137 +1482,137 @@ function sobesedmenu(id)
     return
     {
       {
-        title = '{80a4bf}» {ffffff}Приветствие.',
+        title = '{80a4bf}В» {ffffff}ГЏГ°ГЁГўГҐГІГ±ГІГўГЁГҐ.',
         onclick = function()
 		local _, myid = sampGetPlayerIdByCharHandle(PLAYER_PED)
         local myname = sampGetPlayerNickname(myid)
-        sampSendChat('Здравствуйте. Я сотрудник больницы '..myname:gsub('_', ' ')..', вы на собеседование?')
+        sampSendChat('Г‡Г¤Г°Г ГўГ±ГІГўГіГ©ГІГҐ. Гџ Г±Г®ГІГ°ГіГ¤Г­ГЁГЄ ГЎГ®Г«ГјГ­ГЁГ¶Г» '..myname:gsub('_', ' ')..', ГўГ» Г­Г  Г±Г®ГЎГҐГ±ГҐГ¤Г®ГўГ Г­ГЁГҐ?')
         wait(cfg.commands.zaderjka * 1000)
-		sampSendChat('/do На рубашке бейджик с надписью '..rank..' | '..myname:gsub('_', ' ')..'.')
+		sampSendChat('/do ГЌГ  Г°ГіГЎГ ГёГЄГҐ ГЎГҐГ©Г¤Г¦ГЁГЄ Г± Г­Г Г¤ГЇГЁГ±ГјГѕ '..rank..' | '..myname:gsub('_', ' ')..'.')
 		end
       },
       {
-        title = '{80a4bf}» {ffffff}Документы.',
+        title = '{80a4bf}В» {ffffff}Г„Г®ГЄГіГ¬ГҐГ­ГІГ».',
         onclick = function()
 		local _, myid = sampGetPlayerIdByCharHandle(PLAYER_PED)
-        sampSendChat('Ваш паспорт и диплом, пожалуйста.')
+        sampSendChat('Г‚Г Гё ГЇГ Г±ГЇГ®Г°ГІ ГЁ Г¤ГЁГЇГ«Г®Г¬, ГЇГ®Г¦Г Г«ГіГ©Г±ГІГ .')
         wait(cfg.commands.zaderjka * 1000)
 		sampSendChat('/b /showpass '..myid..'')
         wait(cfg.commands.zaderjka * 1000)
-		sampSendChat('/b Диплом по РП.')
+		sampSendChat('/b Г„ГЁГЇГ«Г®Г¬ ГЇГ® ГђГЏ.')
         end
       },
 	  {
-        title = '{80a4bf}» {ffffff}Заявление на оф.портал на Нарколога{ff0000} с 6 лет в штате.',
+        title = '{80a4bf}В» {ffffff}Г‡Г ГїГўГ«ГҐГ­ГЁГҐ Г­Г  Г®Гґ.ГЇГ®Г°ГІГ Г« Г­Г  ГЌГ Г°ГЄГ®Г«Г®ГЈГ {ff0000} Г± 6 Г«ГҐГІ Гў ГёГІГ ГІГҐ.',
         onclick = function()
 		local _, myid = sampGetPlayerIdByCharHandle(PLAYER_PED)
-        sampSendChat('Вы можете оставить заявление на оф.портале, на должность Нарколога, а можете сейчас на Интерна.')
+        sampSendChat('Г‚Г» Г¬Г®Г¦ГҐГІГҐ Г®Г±ГІГ ГўГЁГІГј Г§Г ГїГўГ«ГҐГ­ГЁГҐ Г­Г  Г®Гґ.ГЇГ®Г°ГІГ Г«ГҐ, Г­Г  Г¤Г®Г«Г¦Г­Г®Г±ГІГј ГЌГ Г°ГЄГ®Г«Г®ГЈГ , Г  Г¬Г®Г¦ГҐГІГҐ Г±ГҐГ©Г·Г Г± Г­Г  Г€Г­ГІГҐГ°Г­Г .')
         wait(cfg.commands.zaderjka * 1000)
-		sampSendChat('/b evolve-rp.su -> Игровой сервер Saint-Louis -> Государственные структуры -> Министерство Здравоохранения -> Заявление на должность « Мед.Брат » | « Нарколог »')
+		sampSendChat('/b evolve-rp.su -> Г€ГЈГ°Г®ГўГ®Г© Г±ГҐГ°ГўГҐГ° Saint-Louis -> ГѓГ®Г±ГіГ¤Г Г°Г±ГІГўГҐГ­Г­Г»ГҐ Г±ГІГ°ГіГЄГІГіГ°Г» -> ГЊГЁГ­ГЁГ±ГІГҐГ°Г±ГІГўГ® Г‡Г¤Г°Г ГўГ®Г®ГµГ°Г Г­ГҐГ­ГЁГї -> Г‡Г ГїГўГ«ГҐГ­ГЁГҐ Г­Г  Г¤Г®Г«Г¦Г­Г®Г±ГІГј В« ГЊГҐГ¤.ГЃГ°Г ГІ В» | В« ГЌГ Г°ГЄГ®Г«Г®ГЈ В»')
         wait(cfg.commands.zaderjka * 1000)
-		sampSendChat('Или сейчас оставите заявление на интерна?')
+		sampSendChat('Г€Г«ГЁ Г±ГҐГ©Г·Г Г± Г®Г±ГІГ ГўГЁГІГҐ Г§Г ГїГўГ«ГҐГ­ГЁГҐ Г­Г  ГЁГ­ГІГҐГ°Г­Г ?')
         end
       },
 	  {
-        title = '{80a4bf}» {ffffff} Изучение документов.',
+        title = '{80a4bf}В» {ffffff} Г€Г§ГіГ·ГҐГ­ГЁГҐ Г¤Г®ГЄГіГ¬ГҐГ­ГІГ®Гў.',
         onclick = function()
-		if cfg.main.male == false then --- Женская отыгровка
+		if cfg.main.male == false then --- Г†ГҐГ­Г±ГЄГ Гї Г®ГІГ»ГЈГ°Г®ГўГЄГ 
 		local _, myid = sampGetPlayerIdByCharHandle(PLAYER_PED)
-		sampSendChat('/me взяла документы у человека напротив, после начала их изучать')
+		sampSendChat('/me ГўГ§ГїГ«Г  Г¤Г®ГЄГіГ¬ГҐГ­ГІГ» Гі Г·ГҐГ«Г®ГўГҐГЄГ  Г­Г ГЇГ°Г®ГІГЁГў, ГЇГ®Г±Г«ГҐ Г­Г Г·Г Г«Г  ГЁГµ ГЁГ§ГіГ·Г ГІГј')
         wait(cfg.commands.zaderjka * 1000)
-        sampSendChat('/me ознакомившись с документами, вернула их обратно')
+        sampSendChat('/me Г®Г§Г­Г ГЄГ®Г¬ГЁГўГёГЁГ±Гј Г± Г¤Г®ГЄГіГ¬ГҐГ­ГІГ Г¬ГЁ, ГўГҐГ°Г­ГіГ«Г  ГЁГµ Г®ГЎГ°Г ГІГ­Г®')
         end
-		if cfg.main.male == true then --- Мужская отыгровка
-		sampSendChat('/me взял документы у человека напротив, после начал их изучать')
+		if cfg.main.male == true then --- ГЊГіГ¦Г±ГЄГ Гї Г®ГІГ»ГЈГ°Г®ГўГЄГ 
+		sampSendChat('/me ГўГ§ГїГ« Г¤Г®ГЄГіГ¬ГҐГ­ГІГ» Гі Г·ГҐГ«Г®ГўГҐГЄГ  Г­Г ГЇГ°Г®ГІГЁГў, ГЇГ®Г±Г«ГҐ Г­Г Г·Г Г« ГЁГµ ГЁГ§ГіГ·Г ГІГј')
         wait(cfg.commands.zaderjka * 1000)
-        sampSendChat('/me ознакомившись с документами, вернул их обратно')
+        sampSendChat('/me Г®Г§Г­Г ГЄГ®Г¬ГЁГўГёГЁГ±Гј Г± Г¤Г®ГЄГіГ¬ГҐГ­ГІГ Г¬ГЁ, ГўГҐГ°Г­ГіГ« ГЁГµ Г®ГЎГ°Г ГІГ­Г®')
 		end
 		end
       },
 	  {
-        title = '{80a4bf}» {ffffff}Расскажите немного о себе.',
+        title = '{80a4bf}В» {ffffff}ГђГ Г±Г±ГЄГ Г¦ГЁГІГҐ Г­ГҐГ¬Г­Г®ГЈГ® Г® Г±ГҐГЎГҐ.',
         onclick = function()
 		local _, myid = sampGetPlayerIdByCharHandle(PLAYER_PED)
-		sampSendChat('Хорошо, расскажите немного о себе.')
+		sampSendChat('Г•Г®Г°Г®ГёГ®, Г°Г Г±Г±ГЄГ Г¦ГЁГІГҐ Г­ГҐГ¬Г­Г®ГЈГ® Г® Г±ГҐГЎГҐ.')
 		wait(4000)
         end
       },
 	  {
-	     title = '{80a4bf}» {ffffff}Работали ли раньше в мон',
+	     title = '{80a4bf}В» {ffffff}ГђГ ГЎГ®ГІГ Г«ГЁ Г«ГЁ Г°Г Г­ГјГёГҐ Гў Г¬Г®Г­',
         onclick = function()
-        sampSendChat('Работали раньше в Мининистерстве Здравоохранения?')
+        sampSendChat('ГђГ ГЎГ®ГІГ Г«ГЁ Г°Г Г­ГјГёГҐ Гў ГЊГЁГ­ГЁГ­ГЁГ±ГІГҐГ°Г±ГІГўГҐ Г‡Г¤Г°Г ГўГ®Г®ГµГ°Г Г­ГҐГ­ГЁГї?')
 		wait(4000)
         end
       },
 	  {
-	   title = '{80a4bf}» {ffffff}Проблемы с законом.',
+	   title = '{80a4bf}В» {ffffff}ГЏГ°Г®ГЎГ«ГҐГ¬Г» Г± Г§Г ГЄГ®Г­Г®Г¬.',
 	   onclick = function()
-	   sampSendChat('Имели раньше проблемы с законом?')
+	   sampSendChat('Г€Г¬ГҐГ«ГЁ Г°Г Г­ГјГёГҐ ГЇГ°Г®ГЎГ«ГҐГ¬Г» Г± Г§Г ГЄГ®Г­Г®Г¬?')
 	   wait(4000)
 	   end
       },
 	  {
-        title = '{80a4bf}» {ffffff}Cтресс на работе.',
+        title = '{80a4bf}В» {ffffff}CГІГ°ГҐГ±Г± Г­Г  Г°Г ГЎГ®ГІГҐ.',
         onclick = function()
 		local _, myid = sampGetPlayerIdByCharHandle(PLAYER_PED)
-        sampSendChat('Как вы справляетесь со стрессом на работе?')
+        sampSendChat('ГЉГ ГЄ ГўГ» Г±ГЇГ°Г ГўГ«ГїГҐГІГҐГ±Гј Г±Г® Г±ГІГ°ГҐГ±Г±Г®Г¬ Г­Г  Г°Г ГЎГ®ГІГҐ?')
         end
       },
 	  {
-        title = '{80a4bf}» {ffffff}Прошлая работа.',
+        title = '{80a4bf}В» {ffffff}ГЏГ°Г®ГёГ«Г Гї Г°Г ГЎГ®ГІГ .',
         onclick = function()
 		local _, myid = sampGetPlayerIdByCharHandle(PLAYER_PED)
-        sampSendChat('Что вас не устраивало на прошлой работе?')
+        sampSendChat('Г—ГІГ® ГўГ Г± Г­ГҐ ГіГ±ГІГ°Г ГЁГўГ Г«Г® Г­Г  ГЇГ°Г®ГёГ«Г®Г© Г°Г ГЎГ®ГІГҐ?')
         end
       },
 	  {
-        title = '{80a4bf}» {ffffff}Зарплата.',
+        title = '{80a4bf}В» {ffffff}Г‡Г Г°ГЇГ«Г ГІГ .',
         onclick = function()
 		local _, myid = sampGetPlayerIdByCharHandle(PLAYER_PED)
-        sampSendChat('На какую зарплату вы расчитываете?')
+        sampSendChat('ГЌГ  ГЄГ ГЄГіГѕ Г§Г Г°ГЇГ«Г ГІГі ГўГ» Г°Г Г±Г·ГЁГІГ»ГўГ ГҐГІГҐ?')
         end
       },
 	  {
-        title = '{80a4bf}» {ffffff}РП термины.',
+        title = '{80a4bf}В» {ffffff}ГђГЏ ГІГҐГ°Г¬ГЁГ­Г».',
         onclick = function()
-        sampSendChat('Что по вашему означают понятия как РП и ДМ?')
+        sampSendChat('Г—ГІГ® ГЇГ® ГўГ ГёГҐГ¬Гі Г®Г§Г­Г Г·Г ГѕГІ ГЇГ®Г­ГїГІГЁГї ГЄГ ГЄ ГђГЏ ГЁ Г„ГЊ?')
 		wait(4000)
         end
       },
 	  {
-        title = '{80a4bf}» {ffffff}Что над головой.',
+        title = '{80a4bf}В» {ffffff}Г—ГІГ® Г­Г Г¤ ГЈГ®Г«Г®ГўГ®Г©.',
         onclick = function()
-        sampSendChat('Что у меня над головой?')
+        sampSendChat('Г—ГІГ® Гі Г¬ГҐГ­Гї Г­Г Г¤ ГЈГ®Г«Г®ГўГ®Г©?')
 		wait(4000)
         end
       },
 	  {
-        title = '{80a4bf}» {ffffff}Приказы руководства.',
+        title = '{80a4bf}В» {ffffff}ГЏГ°ГЁГЄГ Г§Г» Г°ГіГЄГ®ГўГ®Г¤Г±ГІГўГ .',
         onclick = function()
 		local _, myid = sampGetPlayerIdByCharHandle(PLAYER_PED)
-        sampSendChat('Как вы переносите приказы руководства?')
+        sampSendChat('ГЉГ ГЄ ГўГ» ГЇГҐГ°ГҐГ­Г®Г±ГЁГІГҐ ГЇГ°ГЁГЄГ Г§Г» Г°ГіГЄГ®ГўГ®Г¤Г±ГІГўГ ?')
         end
       },
 	  {
-        title = '{80a4bf}» {ffffff}РП термины в /b.',
+        title = '{80a4bf}В» {ffffff}ГђГЏ ГІГҐГ°Г¬ГЁГ­Г» Гў /b.',
         onclick = function()
 		local _, myid = sampGetPlayerIdByCharHandle(PLAYER_PED)
-        sampSendChat('/b РП и ТК в /sms '..myid..'')
+        sampSendChat('/b ГђГЏ ГЁ Г’ГЉ Гў /sms '..myid..'')
 		wait(4000)
         end
       },
 	  {
-        title = '{80a4bf}» {ffffff}Вы приняты.',
+        title = '{80a4bf}В» {ffffff}Г‚Г» ГЇГ°ГЁГ­ГїГІГ».',
         onclick = function()
 		local _, myid = sampGetPlayerIdByCharHandle(PLAYER_PED)
-        sampSendChat('Поздравляю, вы нам подходите.')
+        sampSendChat('ГЏГ®Г§Г¤Г°Г ГўГ«ГїГѕ, ГўГ» Г­Г Г¬ ГЇГ®Г¤ГµГ®Г¤ГЁГІГҐ.')
         end
       },
 	  {
-        title = '{80a4bf}» {ffffff}Вы не приняты.',
+        title = '{80a4bf}В» {ffffff}Г‚Г» Г­ГҐ ГЇГ°ГЁГ­ГїГІГ».',
         onclick = function()
 		local _, myid = sampGetPlayerIdByCharHandle(PLAYER_PED)
-        sampSendChat('Прошу прощения, но вы нам не подходите. Покиньте собеседования.')
+        sampSendChat('ГЏГ°Г®ГёГі ГЇГ°Г®Г№ГҐГ­ГЁГї, Г­Г® ГўГ» Г­Г Г¬ Г­ГҐ ГЇГ®Г¤ГµГ®Г¤ГЁГІГҐ. ГЏГ®ГЄГЁГ­ГјГІГҐ Г±Г®ГЎГҐГ±ГҐГ¤Г®ГўГ Г­ГЁГї.')
         end
 	  },
     }
@@ -1622,21 +1622,21 @@ function govmenu(id)
  return
 {
    {
-   title = "{80a4bf}»{FFFFFF} Первая говка",
+   title = "{80a4bf}В»{FFFFFF} ГЏГҐГ°ГўГ Гї ГЈГ®ГўГЄГ ",
     onclick = function()
 	local _, myid = sampGetPlayerIdByCharHandle(PLAYER_PED)
 	local myname = sampGetPlayerNickname(myid)
-	sampSendChat("/d OG, заняла волну государственных новостей.")
+	sampSendChat("/d OG, Г§Г Г­ГїГ«Г  ГўГ®Г«Г­Гі ГЈГ®Г±ГіГ¤Г Г°Г±ГІГўГҐГ­Г­Г»Гµ Г­Г®ГўГ®Г±ГІГҐГ©.")
 		wait(1300)
-		sampSendChat("/gov [Medic]: Уважаемые граждане и гости штата. Cейчас состоится приём в интернатуру Минздрава.")
+		sampSendChat("/gov [Medic]: Г“ГўГ Г¦Г ГҐГ¬Г»ГҐ ГЈГ°Г Г¦Г¤Г Г­ГҐ ГЁ ГЈГ®Г±ГІГЁ ГёГІГ ГІГ . CГҐГ©Г·Г Г± Г±Г®Г±ГІГ®ГЁГІГ±Гї ГЇГ°ГЁВёГ¬ Гў ГЁГ­ГІГҐГ°Г­Г ГІГіГ°Гі ГЊГЁГ­Г§Г¤Г°Г ГўГ .")
         wait(7000)
-        sampSendChat('/gov [Medic]: Требования: прописка в Штате от 3 лет, ответственность и адекватность.')
+        sampSendChat('/gov [Medic]: Г’Г°ГҐГЎГ®ГўГ Г­ГЁГї: ГЇГ°Г®ГЇГЁГ±ГЄГ  Гў ГГІГ ГІГҐ Г®ГІ 3 Г«ГҐГІ, Г®ГІГўГҐГІГ±ГІГўГҐГ­Г­Г®Г±ГІГј ГЁ Г Г¤ГҐГЄГўГ ГІГ­Г®Г±ГІГј.')
         wait(7000)
-		sampSendChat('/gov [Medic]: Ждем вас в центральной больнице г. Los-Santos на втором этаже.')
+		sampSendChat('/gov [Medic]: Г†Г¤ГҐГ¬ ГўГ Г± Гў Г¶ГҐГ­ГІГ°Г Г«ГјГ­Г®Г© ГЎГ®Г«ГјГ­ГЁГ¶ГҐ ГЈ. Los-Santos Г­Г  ГўГІГ®Г°Г®Г¬ ГЅГІГ Г¦ГҐ.')
 		wait(7000)
-        sampSendChat("/d OG, освободила волну государственных новостей.")
+        sampSendChat("/d OG, Г®Г±ГўГ®ГЎГ®Г¤ГЁГ«Г  ГўГ®Г«Г­Гі ГЈГ®Г±ГіГ¤Г Г°Г±ГІГўГҐГ­Г­Г»Гµ Г­Г®ГўГ®Г±ГІГҐГ©.")
 		wait(7000)
-		sampAddChatMessage("{F80505}В обязательном порядке {F80505}добавьте {0CF513} /addvacancy.", -1)
+		sampAddChatMessage("{F80505}Г‚ Г®ГЎГїГ§Г ГІГҐГ«ГјГ­Г®Г¬ ГЇГ®Г°ГїГ¤ГЄГҐ {F80505}Г¤Г®ГЎГ ГўГјГІГҐ {0CF513} /addvacancy.", -1)
 		if cfg.main.hud then
         sampSendChat("/time 1")
         wait(500)
@@ -1647,19 +1647,19 @@ function govmenu(id)
 	end
 	},
 	{
-   title = "{80a4bf}»{FFFFFF} Вторая говка",
+   title = "{80a4bf}В»{FFFFFF} Г‚ГІГ®Г°Г Гї ГЈГ®ГўГЄГ ",
     onclick = function()
 	local _, myid = sampGetPlayerIdByCharHandle(PLAYER_PED)
 	local myname = sampGetPlayerNickname(myid)
-	sampSendChat("/d OG, заняла волну государственных новостей.")
+	sampSendChat("/d OG, Г§Г Г­ГїГ«Г  ГўГ®Г«Г­Гі ГЈГ®Г±ГіГ¤Г Г°Г±ГІГўГҐГ­Г­Г»Гµ Г­Г®ГўГ®Г±ГІГҐГ©.")
         wait(1300)
-        sampSendChat("/gov [Medic] Уважаемые граждане и гости штата. Начался приём в интернатуру Минздрава.")
+        sampSendChat("/gov [Medic] Г“ГўГ Г¦Г ГҐГ¬Г»ГҐ ГЈГ°Г Г¦Г¤Г Г­ГҐ ГЁ ГЈГ®Г±ГІГЁ ГёГІГ ГІГ . ГЌГ Г·Г Г«Г±Гї ГЇГ°ГЁВёГ¬ Гў ГЁГ­ГІГҐГ°Г­Г ГІГіГ°Гі ГЊГЁГ­Г§Г¤Г°Г ГўГ .")
                 wait(7000)
-        sampSendChat('/gov [Medic] Ждем всех желающих в центральной больнице г. Los-Santos на втором этаже.')
+        sampSendChat('/gov [Medic] Г†Г¤ГҐГ¬ ГўГ±ГҐГµ Г¦ГҐГ«Г ГѕГ№ГЁГµ Гў Г¶ГҐГ­ГІГ°Г Г«ГјГ­Г®Г© ГЎГ®Г«ГјГ­ГЁГ¶ГҐ ГЈ. Los-Santos Г­Г  ГўГІГ®Г°Г®Г¬ ГЅГІГ Г¦ГҐ.')
                 wait(7000)
-	sampSendChat('/gov [Medic] Требования: прописка в Штате от 3 лет, ответственность и адекватность.')
+	sampSendChat('/gov [Medic] Г’Г°ГҐГЎГ®ГўГ Г­ГЁГї: ГЇГ°Г®ГЇГЁГ±ГЄГ  Гў ГГІГ ГІГҐ Г®ГІ 3 Г«ГҐГІ, Г®ГІГўГҐГІГ±ГІГўГҐГ­Г­Г®Г±ГІГј ГЁ Г Г¤ГҐГЄГўГ ГІГ­Г®Г±ГІГј.')
 	        wait(7000)
-        sampSendChat("/d OG, освободила волну государственных новостей..")
+        sampSendChat("/d OG, Г®Г±ГўГ®ГЎГ®Г¤ГЁГ«Г  ГўГ®Г«Г­Гі ГЈГ®Г±ГіГ¤Г Г°Г±ГІГўГҐГ­Г­Г»Гµ Г­Г®ГўГ®Г±ГІГҐГ©..")
 		wait(1200)
 		if cfg.main.hud then
         sampSendChat("/time 1")
@@ -1671,19 +1671,19 @@ function govmenu(id)
 	end
    },
     {
-   title = "{80a4bf}»{FFFFFF} Третяя говка",
+   title = "{80a4bf}В»{FFFFFF} Г’Г°ГҐГІГїГї ГЈГ®ГўГЄГ ",
     onclick = function()
 	local _, myid = sampGetPlayerIdByCharHandle(PLAYER_PED)
 	local myname = sampGetPlayerNickname(myid)
-	sampSendChat("/d OG, заняла волну государственных новостей.")
+	sampSendChat("/d OG, Г§Г Г­ГїГ«Г  ГўГ®Г«Г­Гі ГЈГ®Г±ГіГ¤Г Г°Г±ГІГўГҐГ­Г­Г»Гµ Г­Г®ГўГ®Г±ГІГҐГ©.")
         wait(1300)
-        sampSendChat("/gov [Medic] Уважаемые жители и гости штата. Напоминаю, что сейчас идет приём в Минздрав.")
+        sampSendChat("/gov [Medic] Г“ГўГ Г¦Г ГҐГ¬Г»ГҐ Г¦ГЁГІГҐГ«ГЁ ГЁ ГЈГ®Г±ГІГЁ ГёГІГ ГІГ . ГЌГ ГЇГ®Г¬ГЁГ­Г Гѕ, Г·ГІГ® Г±ГҐГ©Г·Г Г± ГЁГ¤ГҐГІ ГЇГ°ГЁВёГ¬ Гў ГЊГЁГ­Г§Г¤Г°Г Гў.")
         wait(7000)
-        sampSendChat('/gov [Medic] Требования: прописка в Штате от 3 лет, ответственность и адекватность.')
+        sampSendChat('/gov [Medic] Г’Г°ГҐГЎГ®ГўГ Г­ГЁГї: ГЇГ°Г®ГЇГЁГ±ГЄГ  Гў ГГІГ ГІГҐ Г®ГІ 3 Г«ГҐГІ, Г®ГІГўГҐГІГ±ГІГўГҐГ­Г­Г®Г±ГІГј ГЁ Г Г¤ГҐГЄГўГ ГІГ­Г®Г±ГІГј.')
         wait(7000)
-	sampSendChat('/gov [Medic]: Для всех сотрудников, появилась возможность за 2 недели заработать 110 млн$')
+	sampSendChat('/gov [Medic]: Г„Г«Гї ГўГ±ГҐГµ Г±Г®ГІГ°ГіГ¤Г­ГЁГЄГ®Гў, ГЇГ®ГїГўГЁГ«Г Г±Гј ГўГ®Г§Г¬Г®Г¦Г­Г®Г±ГІГј Г§Г  2 Г­ГҐГ¤ГҐГ«ГЁ Г§Г Г°Г ГЎГ®ГІГ ГІГј 110 Г¬Г«Г­$')
 		wait(7000)
-        sampSendChat("/d OG, освободила волну государственных новостей.")
+        sampSendChat("/d OG, Г®Г±ГўГ®ГЎГ®Г¤ГЁГ«Г  ГўГ®Г«Г­Гі ГЈГ®Г±ГіГ¤Г Г°Г±ГІГўГҐГ­Г­Г»Гµ Г­Г®ГўГ®Г±ГІГҐГ©.")
 		wait(1200)
 		if cfg.main.hud then
         sampSendChat("/time 1")
@@ -1695,19 +1695,19 @@ function govmenu(id)
 	end
    },
     {
-   title = '{80a4bf}»{FFFFFF} Четвертая говка',
+   title = '{80a4bf}В»{FFFFFF} Г—ГҐГІГўГҐГ°ГІГ Гї ГЈГ®ГўГЄГ ',
     onclick = function()
 	local _, myid = sampGetPlayerIdByCharHandle(PLAYER_PED)
 	local myname = sampGetPlayerNickname(myid)
-	sampSendChat('/d OG, заняла волну государственных новостей.')
+	sampSendChat('/d OG, Г§Г Г­ГїГ«Г  ГўГ®Г«Г­Гі ГЈГ®Г±ГіГ¤Г Г°Г±ГІГўГҐГ­Г­Г»Гµ Г­Г®ГўГ®Г±ГІГҐГ©.')
                 wait(1300)
-        sampSendChat('/gov [Medic] Уважаемые жители и гости штата. К сожалению приём в интернатуру Минздрава закончен.')
+        sampSendChat('/gov [Medic] Г“ГўГ Г¦Г ГҐГ¬Г»ГҐ Г¦ГЁГІГҐГ«ГЁ ГЁ ГЈГ®Г±ГІГЁ ГёГІГ ГІГ . ГЉ Г±Г®Г¦Г Г«ГҐГ­ГЁГѕ ГЇГ°ГЁВёГ¬ Гў ГЁГ­ГІГҐГ°Г­Г ГІГіГ°Гі ГЊГЁГ­Г§Г¤Г°Г ГўГ  Г§Г ГЄГ®Г­Г·ГҐГ­.')
         wait(7000)
-	sampSendChat('/gov [Medic] Вы можете оставить заявление на должность Мед.Брат-Нарколог, на офф.портале.')
+	sampSendChat('/gov [Medic] Г‚Г» Г¬Г®Г¦ГҐГІГҐ Г®Г±ГІГ ГўГЁГІГј Г§Г ГїГўГ«ГҐГ­ГЁГҐ Г­Г  Г¤Г®Г«Г¦Г­Г®Г±ГІГј ГЊГҐГ¤.ГЃГ°Г ГІ-ГЌГ Г°ГЄГ®Г«Г®ГЈ, Г­Г  Г®ГґГґ.ГЇГ®Г°ГІГ Г«ГҐ.')
 		wait(7000)
-        sampSendChat('/gov [Medic] Напоминаю, за прохождение курса подготовки врачей, Вы можете получить 110 млн$')
+        sampSendChat('/gov [Medic] ГЌГ ГЇГ®Г¬ГЁГ­Г Гѕ, Г§Г  ГЇГ°Г®ГµГ®Г¦Г¤ГҐГ­ГЁГҐ ГЄГіГ°Г±Г  ГЇГ®Г¤ГЈГ®ГІГ®ГўГЄГЁ ГўГ°Г Г·ГҐГ©, Г‚Г» Г¬Г®Г¦ГҐГІГҐ ГЇГ®Г«ГіГ·ГЁГІГј 110 Г¬Г«Г­$')
 		wait(7000)
-        sampSendChat('/d OG, освободила волну государственных новостей.')
+        sampSendChat('/d OG, Г®Г±ГўГ®ГЎГ®Г¤ГЁГ«Г  ГўГ®Г«Г­Гі ГЈГ®Г±ГіГ¤Г Г°Г±ГІГўГҐГ­Г­Г»Гµ Г­Г®ГўГ®Г±ГІГҐГ©.')
 		wait(1200)
 		if cfg.main.hud then
         sampSendChat("/time 1")
@@ -1726,58 +1726,58 @@ function fastsmsk()
 		sampSetChatInputEnabled(true)
 		sampSetChatInputText("/t "..lastnumber.." ")
 	else
-		ftext("Вы ранее не получали входящих сообщений.", 0x046D63)
+		ftext("Г‚Г» Г°Г Г­ГҐГҐ Г­ГҐ ГЇГ®Г«ГіГ·Г Г«ГЁ ГўГµГ®Г¤ГїГ№ГЁГµ Г±Г®Г®ГЎГ№ГҐГ­ГЁГ©.", 0x046D63)
 	end
 end
 function fthmenu(id)
  return
 {
   {
-        title = '{80a4bf}»{FFFFFF} Лекция для {139BEC}Интерна.',
+        title = '{80a4bf}В»{FFFFFF} Г‹ГҐГЄГ¶ГЁГї Г¤Г«Гї {139BEC}Г€Г­ГІГҐГ°Г­Г .',
     onclick = function()
-	    sampSendChat('Приветствую! Вы успешно прошли собеседование и попали в медицинскую академию!')
+	    sampSendChat('ГЏГ°ГЁГўГҐГІГ±ГІГўГіГѕ! Г‚Г» ГіГ±ГЇГҐГёГ­Г® ГЇГ°Г®ГёГ«ГЁ Г±Г®ГЎГҐГ±ГҐГ¤Г®ГўГ Г­ГЁГҐ ГЁ ГЇГ®ГЇГ Г«ГЁ Гў Г¬ГҐГ¤ГЁГ¶ГЁГ­Г±ГЄГіГѕ Г ГЄГ Г¤ГҐГ¬ГЁГѕ!')
         wait(cfg.commands.zaderjka * 1000)
-        sampSendChat('Рабочий день в будние дни начинается с 10:00 по 20:00, в выходные дни..')
+        sampSendChat('ГђГ ГЎГ®Г·ГЁГ© Г¤ГҐГ­Гј Гў ГЎГіГ¤Г­ГЁГҐ Г¤Г­ГЁ Г­Г Г·ГЁГ­Г ГҐГІГ±Гї Г± 10:00 ГЇГ® 20:00, Гў ГўГ»ГµГ®Г¤Г­Г»ГҐ Г¤Г­ГЁ..')
         wait(cfg.commands.zaderjka * 1000)
-        sampSendChat('.. с 11:00 по 19:00. Обеденный перерыв с 13:00 по 14:00.')
+        sampSendChat('.. Г± 11:00 ГЇГ® 19:00. ГЋГЎГҐГ¤ГҐГ­Г­Г»Г© ГЇГҐГ°ГҐГ°Г»Гў Г± 13:00 ГЇГ® 14:00.')
         wait(cfg.commands.zaderjka * 1000)
-        sampSendChat('Сейчас я вам передам бейджик отделения МА.')
+        sampSendChat('Г‘ГҐГ©Г·Г Г± Гї ГўГ Г¬ ГЇГҐГ°ГҐГ¤Г Г¬ ГЎГҐГ©Г¤Г¦ГЁГЄ Г®ГІГ¤ГҐГ«ГҐГ­ГЁГї ГЊГЂ.')
         wait(cfg.commands.zaderjka * 1000)
-        sampSendChat('/me передала человеку напротив бейджик с надписью "МА"')
+        sampSendChat('/me ГЇГҐГ°ГҐГ¤Г Г«Г  Г·ГҐГ«Г®ГўГҐГЄГі Г­Г ГЇГ°Г®ГІГЁГў ГЎГҐГ©Г¤Г¦ГЁГЄ Г± Г­Г Г¤ГЇГЁГ±ГјГѕ "ГЊГЂ"')
         wait(cfg.commands.zaderjka * 1000)
         sampSendChat('/b /clist 13.')
         wait(cfg.commands.zaderjka * 1000)
-        sampSendChat('Вы обязаны каждый раз проговаривать свое отделение в рацию.')
+        sampSendChat('Г‚Г» Г®ГЎГїГ§Г Г­Г» ГЄГ Г¦Г¤Г»Г© Г°Г Г§ ГЇГ°Г®ГЈГ®ГўГ Г°ГЁГўГ ГІГј Г±ГўГ®ГҐ Г®ГІГ¤ГҐГ«ГҐГ­ГЁГҐ Гў Г°Г Г¶ГЁГѕ.')
         wait(cfg.commands.zaderjka * 1000)
-        sampSendChat('/b /r [MA]: Текст.')
+        sampSendChat('/b /r [MA]: Г’ГҐГЄГ±ГІ.')
         wait(cfg.commands.zaderjka * 1000)
-        sampSendChat('Ваши основные обязанности это: патрулирование штата, стоять на постах.')
+        sampSendChat('Г‚Г ГёГЁ Г®Г±Г­Г®ГўГ­Г»ГҐ Г®ГЎГїГ§Г Г­Г­Г®Г±ГІГЁ ГЅГІГ®: ГЇГ ГІГ°ГіГ«ГЁГ°Г®ГўГ Г­ГЁГҐ ГёГІГ ГІГ , Г±ГІГ®ГїГІГј Г­Г  ГЇГ®Г±ГІГ Гµ.')
         wait(cfg.commands.zaderjka * 1000)
-        sampSendChat('Ваша первоначальная заработная плата составляет - 9.750 вирт.')
+        sampSendChat('Г‚Г ГёГ  ГЇГҐГ°ГўГ®Г­Г Г·Г Г«ГјГ­Г Гї Г§Г Г°Г ГЎГ®ГІГ­Г Гї ГЇГ«Г ГІГ  Г±Г®Г±ГІГ ГўГ«ГїГҐГІ - 9.750 ГўГЁГ°ГІ.')
         wait(cfg.commands.zaderjka * 1000)
-        sampSendChat('С каждым повышением зарплата будет расти.')
+        sampSendChat('Г‘ ГЄГ Г¦Г¤Г»Г¬ ГЇГ®ГўГ»ГёГҐГ­ГЁГҐГ¬ Г§Г Г°ГЇГ«Г ГІГ  ГЎГіГ¤ГҐГІ Г°Г Г±ГІГЁ.')
         wait(cfg.commands.zaderjka * 1000)
-        sampSendChat('Так.. Давайте я вам расскажу про посты.')
+        sampSendChat('Г’Г ГЄ.. Г„Г ГўГ Г©ГІГҐ Гї ГўГ Г¬ Г°Г Г±Г±ГЄГ Г¦Гі ГЇГ°Г® ГЇГ®Г±ГІГ».')
         wait(cfg.commands.zaderjka * 1000)
-        sampSendChat('Основные посты - Мэрия, Мост ЛС-СФ / ЛС-ЛВ, Автовокзал LS / SF / LV, автошкола.')
+        sampSendChat('ГЋГ±Г­Г®ГўГ­Г»ГҐ ГЇГ®Г±ГІГ» - ГЊГЅГ°ГЁГї, ГЊГ®Г±ГІ Г‹Г‘-Г‘Г” / Г‹Г‘-Г‹Г‚, ГЂГўГІГ®ГўГ®ГЄГ§Г Г« LS / SF / LV, Г ГўГІГ®ГёГЄГ®Г«Г .')
         wait(cfg.commands.zaderjka * 1000)
-        sampSendChat('Когда ты заступил, находишся, покидаешь пост, об этом обязан(а) сообщить в рацию!')
+        sampSendChat('ГЉГ®ГЈГ¤Г  ГІГ» Г§Г Г±ГІГіГЇГЁГ«, Г­Г ГµГ®Г¤ГЁГёГ±Гї, ГЇГ®ГЄГЁГ¤Г ГҐГёГј ГЇГ®Г±ГІ, Г®ГЎ ГЅГІГ®Г¬ Г®ГЎГїГ§Г Г­(Г ) Г±Г®Г®ГЎГ№ГЁГІГј Гў Г°Г Г¶ГЁГѕ!')
         wait(cfg.commands.zaderjka * 1000)
-        sampSendChat('Например, давайте возьмём пост Мэрия.')
+        sampSendChat('ГЌГ ГЇГ°ГЁГ¬ГҐГ°, Г¤Г ГўГ Г©ГІГҐ ГўГ®Г§ГјГ¬ВёГ¬ ГЇГ®Г±ГІ ГЊГЅГ°ГЁГї.')
         wait(cfg.commands.zaderjka * 1000)
-        sampSendChat('Выезжаю на пост - Мэрия | Напарник -.')
+        sampSendChat('Г‚Г»ГҐГ§Г¦Г Гѕ Г­Г  ГЇГ®Г±ГІ - ГЊГЅГ°ГЁГї | ГЌГ ГЇГ Г°Г­ГЁГЄ -.')
         wait(cfg.commands.zaderjka * 1000)
-        sampSendChat('Заступил на пост - Мэрия | Вылечено граждан - | Принято вызовов -.')
+        sampSendChat('Г‡Г Г±ГІГіГЇГЁГ« Г­Г  ГЇГ®Г±ГІ - ГЊГЅГ°ГЁГї | Г‚Г»Г«ГҐГ·ГҐГ­Г® ГЈГ°Г Г¦Г¤Г Г­ - | ГЏГ°ГЁГ­ГїГІГ® ГўГ»Г§Г®ГўГ®Гў -.')
         wait(cfg.commands.zaderjka * 1000)
-        sampSendChat('Покидаю пост - Мэрия | Причина -.')
+        sampSendChat('ГЏГ®ГЄГЁГ¤Г Гѕ ГЇГ®Г±ГІ - ГЊГЅГ°ГЁГї | ГЏГ°ГЁГ·ГЁГ­Г  -.')
         wait(cfg.commands.zaderjka * 1000)
-        sampSendChat('Ваше повышение произойдет завтра. Завтра вы должны сдать следующее:')
+        sampSendChat('Г‚Г ГёГҐ ГЇГ®ГўГ»ГёГҐГ­ГЁГҐ ГЇГ°Г®ГЁГ§Г®Г©Г¤ГҐГІ Г§Г ГўГІГ°Г . Г‡Г ГўГІГ°Г  ГўГ» Г¤Г®Г«Г¦Г­Г» Г±Г¤Г ГІГј Г±Г«ГҐГ¤ГіГѕГ№ГҐГҐ:')
         wait(cfg.commands.zaderjka * 1000)
-        sampSendChat('- Ответить на 5 вопросов из устава больницы .')
+        sampSendChat('- ГЋГІГўГҐГІГЁГІГј Г­Г  5 ГўГ®ГЇГ°Г®Г±Г®Гў ГЁГ§ ГіГ±ГІГ ГўГ  ГЎГ®Г«ГјГ­ГЁГ¶Г» .')
         wait(cfg.commands.zaderjka * 1000)
-        sampSendChat('- Знать кабинеты, транспорт, посты, график работы больницы;')
+        sampSendChat('- Г‡Г­Г ГІГј ГЄГ ГЎГЁГ­ГҐГІГ», ГІГ°Г Г­Г±ГЇГ®Г°ГІ, ГЇГ®Г±ГІГ», ГЈГ°Г ГґГЁГЄ Г°Г ГЎГ®ГІГ» ГЎГ®Г«ГјГ­ГЁГ¶Г»;')
         wait(cfg.commands.zaderjka * 1000)
-        sampSendChat('Я вам рассказал(а) основную информацию. Если у вас есть вопросы - задавайте.')
+        sampSendChat('Гџ ГўГ Г¬ Г°Г Г±Г±ГЄГ Г§Г Г«(Г ) Г®Г±Г­Г®ГўГ­ГіГѕ ГЁГ­ГґГ®Г°Г¬Г Г¶ГЁГѕ. Г…Г±Г«ГЁ Гі ГўГ Г± ГҐГ±ГІГј ГўГ®ГЇГ°Г®Г±Г» - Г§Г Г¤Г ГўГ Г©ГІГҐ.')
 		wait(5000)
 		if cfg.main.hud then
         sampSendChat('/time 1')
@@ -1789,35 +1789,35 @@ function fthmenu(id)
     end
   },
    {
-   title = '{80a4bf}»{FFFFFF} Первая помощь при {139BEC}кровотечениях.',
+   title = '{80a4bf}В»{FFFFFF} ГЏГҐГ°ГўГ Гї ГЇГ®Г¬Г®Г№Гј ГЇГ°ГЁ {139BEC}ГЄГ°Г®ГўГ®ГІГҐГ·ГҐГ­ГЁГїГµ.',
     onclick = function()
-       sampSendChat('Приветствую, коллеги. Сегодня я прочту вам лекцию на тему «Первая помощь при кровотечении».')
+       sampSendChat('ГЏГ°ГЁГўГҐГІГ±ГІГўГіГѕ, ГЄГ®Г«Г«ГҐГЈГЁ. Г‘ГҐГЈГ®Г¤Г­Гї Гї ГЇГ°Г®Г·ГІГі ГўГ Г¬ Г«ГҐГЄГ¶ГЁГѕ Г­Г  ГІГҐГ¬Гі В«ГЏГҐГ°ГўГ Гї ГЇГ®Г¬Г®Г№Гј ГЇГ°ГЁ ГЄГ°Г®ГўГ®ГІГҐГ·ГҐГ­ГЁГЁВ».')
        wait(cfg.commands.zaderjka * 1000)
-       sampSendChat('Нужно четко понимать, что артериальное кровотечение представляет смертельную опасность для жизни.')
+       sampSendChat('ГЌГіГ¦Г­Г® Г·ГҐГІГЄГ® ГЇГ®Г­ГЁГ¬Г ГІГј, Г·ГІГ® Г Г°ГІГҐГ°ГЁГ Г«ГјГ­Г®ГҐ ГЄГ°Г®ГўГ®ГІГҐГ·ГҐГ­ГЁГҐ ГЇГ°ГҐГ¤Г±ГІГ ГўГ«ГїГҐГІ Г±Г¬ГҐГ°ГІГҐГ«ГјГ­ГіГѕ Г®ГЇГ Г±Г­Г®Г±ГІГј Г¤Г«Гї Г¦ГЁГ§Г­ГЁ.')
        wait(cfg.commands.zaderjka * 1000)
-       sampSendChat('Первое, что требуется – перекрыть сосуд выше поврежденного места.')
+       sampSendChat('ГЏГҐГ°ГўГ®ГҐ, Г·ГІГ® ГІГ°ГҐГЎГіГҐГІГ±Гї В– ГЇГҐГ°ГҐГЄГ°Г»ГІГј Г±Г®Г±ГіГ¤ ГўГ»ГёГҐ ГЇГ®ГўГ°ГҐГ¦Г¤ГҐГ­Г­Г®ГЈГ® Г¬ГҐГ±ГІГ .')
        wait(cfg.commands.zaderjka * 1000)
-       sampSendChat('Для этого прижмите артерию пальцами и срочно готовьте жгут.')
+       sampSendChat('Г„Г«Гї ГЅГІГ®ГЈГ® ГЇГ°ГЁГ¦Г¬ГЁГІГҐ Г Г°ГІГҐГ°ГЁГѕ ГЇГ Г«ГјГ¶Г Г¬ГЁ ГЁ Г±Г°Г®Г·Г­Г® ГЈГ®ГІГ®ГўГјГІГҐ Г¦ГЈГіГІ.')
        wait(cfg.commands.zaderjka * 1000)
-       sampSendChat('Используйте в таком случае любые подходящие средства:')
+       sampSendChat('Г€Г±ГЇГ®Г«ГјГ§ГіГ©ГІГҐ Гў ГІГ ГЄГ®Г¬ Г±Г«ГіГ·Г ГҐ Г«ГѕГЎГ»ГҐ ГЇГ®Г¤ГµГ®Г¤ГїГ№ГЁГҐ Г±Г°ГҐГ¤Г±ГІГўГ :')
        wait(cfg.commands.zaderjka * 1000)
-       sampSendChat('Шарф, платок, ремень, оторвите длинный кусок одежды.') 
+       sampSendChat('ГГ Г°Гґ, ГЇГ«Г ГІГ®ГЄ, Г°ГҐГ¬ГҐГ­Гј, Г®ГІГ®Г°ГўГЁГІГҐ Г¤Г«ГЁГ­Г­Г»Г© ГЄГіГ±Г®ГЄ Г®Г¤ГҐГ¦Г¤Г».') 
        wait(cfg.commands.zaderjka * 1000)
-       sampSendChat('Стягивайте жгут до тех пор, пока кровь не перестанет сочиться из раны.')
+       sampSendChat('Г‘ГІГїГЈГЁГўГ Г©ГІГҐ Г¦ГЈГіГІ Г¤Г® ГІГҐГµ ГЇГ®Г°, ГЇГ®ГЄГ  ГЄГ°Г®ГўГј Г­ГҐ ГЇГҐГ°ГҐГ±ГІГ Г­ГҐГІ Г±Г®Г·ГЁГІГјГ±Гї ГЁГ§ Г°Г Г­Г».')
        wait(cfg.commands.zaderjka * 1000)
-       sampSendChat('В случае венозного кровотечения действия повторяются, за исключением того, что..') 
+       sampSendChat('Г‚ Г±Г«ГіГ·Г ГҐ ГўГҐГ­Г®Г§Г­Г®ГЈГ® ГЄГ°Г®ГўГ®ГІГҐГ·ГҐГ­ГЁГї Г¤ГҐГ©Г±ГІГўГЁГї ГЇГ®ГўГІГ®Г°ГїГѕГІГ±Гї, Г§Г  ГЁГ±ГЄГ«ГѕГ·ГҐГ­ГЁГҐГ¬ ГІГ®ГЈГ®, Г·ГІГ®..') 
        wait(cfg.commands.zaderjka * 1000)
-       sampSendChat('..жгут накладывается чуть ниже повреждённого места.')
+       sampSendChat('..Г¦ГЈГіГІ Г­Г ГЄГ«Г Г¤Г»ГўГ ГҐГІГ±Гї Г·ГіГІГј Г­ГЁГ¦ГҐ ГЇГ®ГўГ°ГҐГ¦Г¤ВёГ­Г­Г®ГЈГ® Г¬ГҐГ±ГІГ .')
        wait(cfg.commands.zaderjka * 1000)
-       sampSendChat('Следует помнить, что при обоих видах кровотечения жгут накладывается не более двух часов..') 
+       sampSendChat('Г‘Г«ГҐГ¤ГіГҐГІ ГЇГ®Г¬Г­ГЁГІГј, Г·ГІГ® ГЇГ°ГЁ Г®ГЎГ®ГЁГµ ГўГЁГ¤Г Гµ ГЄГ°Г®ГўГ®ГІГҐГ·ГҐГ­ГЁГї Г¦ГЈГіГІ Г­Г ГЄГ«Г Г¤Г»ГўГ ГҐГІГ±Гї Г­ГҐ ГЎГ®Г«ГҐГҐ Г¤ГўГіГµ Г·Г Г±Г®Гў..') 
        wait(cfg.commands.zaderjka * 1000)
-       sampSendChat('..в жаркую погоду и не более часа в холодную.')
+       sampSendChat('..Гў Г¦Г Г°ГЄГіГѕ ГЇГ®ГЈГ®Г¤Гі ГЁ Г­ГҐ ГЎГ®Г«ГҐГҐ Г·Г Г±Г  Гў ГµГ®Г«Г®Г¤Г­ГіГѕ.')
        wait(cfg.commands.zaderjka * 1000)
-       sampSendChat('При капиллярном кровотечении следует обработать поврежденное место перекисью водорода..')
+       sampSendChat('ГЏГ°ГЁ ГЄГ ГЇГЁГ«Г«ГїГ°Г­Г®Г¬ ГЄГ°Г®ГўГ®ГІГҐГ·ГҐГ­ГЁГЁ Г±Г«ГҐГ¤ГіГҐГІ Г®ГЎГ°Г ГЎГ®ГІГ ГІГј ГЇГ®ГўГ°ГҐГ¦Г¤ГҐГ­Г­Г®ГҐ Г¬ГҐГ±ГІГ® ГЇГҐГ°ГҐГЄГЁГ±ГјГѕ ГўГ®Г¤Г®Г°Г®Г¤Г ..')
        wait(cfg.commands.zaderjka * 1000)
-       sampSendChat('..и наложить пластырь, либо перебинтовать рану. ')
+       sampSendChat('..ГЁ Г­Г Г«Г®Г¦ГЁГІГј ГЇГ«Г Г±ГІГ»Г°Гј, Г«ГЁГЎГ® ГЇГҐГ°ГҐГЎГЁГ­ГІГ®ГўГ ГІГј Г°Г Г­Гі. ')
        wait(cfg.commands.zaderjka * 1000)
-       sampSendChat('Спасибо за внимание.')
+       sampSendChat('Г‘ГЇГ Г±ГЁГЎГ® Г§Г  ГўГ­ГЁГ¬Г Г­ГЁГҐ.')
        wait(1200)
        if cfg.main.hud then
         sampSendChat('/time 1')
@@ -1829,35 +1829,35 @@ function fthmenu(id)
     end
   },
   {
-  title = '{80a4bf}»{FFFFFF} Первая помощь при {139BEC}обмороках.',
+  title = '{80a4bf}В»{FFFFFF} ГЏГҐГ°ГўГ Гї ГЇГ®Г¬Г®Г№Гј ГЇГ°ГЁ {139BEC}Г®ГЎГ¬Г®Г°Г®ГЄГ Гµ.',
     onclick = function()
-      sampSendChat('Приветствую, коллеги. Сегодня я прочту вам лекцию на тему «Первая помощь при обмороках».')
+      sampSendChat('ГЏГ°ГЁГўГҐГІГ±ГІГўГіГѕ, ГЄГ®Г«Г«ГҐГЈГЁ. Г‘ГҐГЈГ®Г¤Г­Гї Гї ГЇГ°Г®Г·ГІГі ГўГ Г¬ Г«ГҐГЄГ¶ГЁГѕ Г­Г  ГІГҐГ¬Гі В«ГЏГҐГ°ГўГ Гї ГЇГ®Г¬Г®Г№Гј ГЇГ°ГЁ Г®ГЎГ¬Г®Г°Г®ГЄГ ГµВ».')
       wait(cfg.commands.zaderjka * 5000)
-      sampSendChat('Обмороки сопровождаются кратковременной потерей сознания, вызванной..')
+      sampSendChat('ГЋГЎГ¬Г®Г°Г®ГЄГЁ Г±Г®ГЇГ°Г®ГўГ®Г¦Г¤Г ГѕГІГ±Гї ГЄГ°Г ГІГЄГ®ГўГ°ГҐГ¬ГҐГ­Г­Г®Г© ГЇГ®ГІГҐГ°ГҐГ© Г±Г®Г§Г­Г Г­ГЁГї, ГўГ»Г§ГўГ Г­Г­Г®Г©..')
       wait(cfg.commands.zaderjka * 1000)
-      sampSendChat('..недостаточным кровоснабжением мозга. ')
+      sampSendChat('..Г­ГҐГ¤Г®Г±ГІГ ГІГ®Г·Г­Г»Г¬ ГЄГ°Г®ГўГ®Г±Г­Г ГЎГ¦ГҐГ­ГЁГҐГ¬ Г¬Г®Г§ГЈГ . ')
       wait(cfg.commands.zaderjka * 1000)
-      sampSendChat('Обморок могут вызвать: резкая боль, эмоциональный стресс, ССБ и так далее.')
+      sampSendChat('ГЋГЎГ¬Г®Г°Г®ГЄ Г¬Г®ГЈГіГІ ГўГ»Г§ГўГ ГІГј: Г°ГҐГ§ГЄГ Гї ГЎГ®Г«Гј, ГЅГ¬Г®Г¶ГЁГ®Г­Г Г«ГјГ­Г»Г© Г±ГІГ°ГҐГ±Г±, Г‘Г‘ГЃ ГЁ ГІГ ГЄ Г¤Г Г«ГҐГҐ.')
       wait(cfg.commands.zaderjka * 1000)
-      sampSendChat('Бессознательному состоянию обычно предшествует резкое ухудшение самочувствия..')
+      sampSendChat('ГЃГҐГ±Г±Г®Г§Г­Г ГІГҐГ«ГјГ­Г®Г¬Гі Г±Г®Г±ГІГ®ГїГ­ГЁГѕ Г®ГЎГ»Г·Г­Г® ГЇГ°ГҐГ¤ГёГҐГ±ГІГўГіГҐГІ Г°ГҐГ§ГЄГ®ГҐ ГіГµГіГ¤ГёГҐГ­ГЁГҐ Г±Г Г¬Г®Г·ГіГўГ±ГІГўГЁГї..')
       wait(cfg.commands.zaderjka * 1000)
-      sampSendChat('..нарастает слабость, появляется тошнота, головокружение, шум или звон в ушах.')
+      sampSendChat('..Г­Г Г°Г Г±ГІГ ГҐГІ Г±Г«Г ГЎГ®Г±ГІГј, ГЇГ®ГїГўГ«ГїГҐГІГ±Гї ГІГ®ГёГ­Г®ГІГ , ГЈГ®Г«Г®ГўГ®ГЄГ°ГіГ¦ГҐГ­ГЁГҐ, ГёГіГ¬ ГЁГ«ГЁ Г§ГўГ®Г­ Гў ГіГёГ Гµ.')
       wait(cfg.commands.zaderjka * 1000)
-      sampSendChat('Затем человек бледнеет, покрывается холодным потом и внезапно теряет сознание.')
+      sampSendChat('Г‡Г ГІГҐГ¬ Г·ГҐГ«Г®ГўГҐГЄ ГЎГ«ГҐГ¤Г­ГҐГҐГІ, ГЇГ®ГЄГ°Г»ГўГ ГҐГІГ±Гї ГµГ®Г«Г®Г¤Г­Г»Г¬ ГЇГ®ГІГ®Г¬ ГЁ ГўГ­ГҐГ§Г ГЇГ­Г® ГІГҐГ°ГїГҐГІ Г±Г®Г§Г­Г Г­ГЁГҐ.')
       wait(cfg.commands.zaderjka * 1000)
-      sampSendChat('Первая помощь должна быть направлена на улучшение кровоснабжения мозга..')
+      sampSendChat('ГЏГҐГ°ГўГ Гї ГЇГ®Г¬Г®Г№Гј Г¤Г®Г«Г¦Г­Г  ГЎГ»ГІГј Г­Г ГЇГ°Г ГўГ«ГҐГ­Г  Г­Г  ГіГ«ГіГ·ГёГҐГ­ГЁГҐ ГЄГ°Г®ГўГ®Г±Г­Г ГЎГ¦ГҐГ­ГЁГї Г¬Г®Г§ГЈГ ..')
       wait(cfg.commands.zaderjka * 1000)
-      sampSendChat('..и обеспечение свободного дыхания.')
+      sampSendChat('..ГЁ Г®ГЎГҐГ±ГЇГҐГ·ГҐГ­ГЁГҐ Г±ГўГ®ГЎГ®Г¤Г­Г®ГЈГ® Г¤Г»ГµГ Г­ГЁГї.')
       wait(cfg.commands.zaderjka * 1000)
-      sampSendChat('Если пострадавший находится в душном, плохо проветренном помещении, то..')
+      sampSendChat('Г…Г±Г«ГЁ ГЇГ®Г±ГІГ°Г Г¤Г ГўГёГЁГ© Г­Г ГµГ®Г¤ГЁГІГ±Гї Гў Г¤ГіГёГ­Г®Г¬, ГЇГ«Г®ГµГ® ГЇГ°Г®ГўГҐГІГ°ГҐГ­Г­Г®Г¬ ГЇГ®Г¬ГҐГ№ГҐГ­ГЁГЁ, ГІГ®..')
       wait(cfg.commands.zaderjka * 1000)
-      sampSendChat('..откройте окно, включите вентилятор или вынесите потерявшего сознание на воздух.')
+      sampSendChat('..Г®ГІГЄГ°Г®Г©ГІГҐ Г®ГЄГ­Г®, ГўГЄГ«ГѕГ·ГЁГІГҐ ГўГҐГ­ГІГЁГ«ГїГІГ®Г° ГЁГ«ГЁ ГўГ»Г­ГҐГ±ГЁГІГҐ ГЇГ®ГІГҐГ°ГїГўГёГҐГЈГ® Г±Г®Г§Г­Г Г­ГЁГҐ Г­Г  ГўГ®Г§Г¤ГіГµ.')
       wait(cfg.commands.zaderjka * 1000)
-      sampSendChat('Протрите его лицо и шею холодной водой, похлопайте по щекам и..')
+      sampSendChat('ГЏГ°Г®ГІГ°ГЁГІГҐ ГҐГЈГ® Г«ГЁГ¶Г® ГЁ ГёГҐГѕ ГµГ®Г«Г®Г¤Г­Г®Г© ГўГ®Г¤Г®Г©, ГЇГ®ГµГ«Г®ГЇГ Г©ГІГҐ ГЇГ® Г№ГҐГЄГ Г¬ ГЁ..')
       wait(cfg.commands.zaderjka * 1000)
-      sampSendChat('..дайте пострадавшему понюхать ватку, смоченную нашатырным спиртом.')
+      sampSendChat('..Г¤Г Г©ГІГҐ ГЇГ®Г±ГІГ°Г Г¤Г ГўГёГҐГ¬Гі ГЇГ®Г­ГѕГµГ ГІГј ГўГ ГІГЄГі, Г±Г¬Г®Г·ГҐГ­Г­ГіГѕ Г­Г ГёГ ГІГ»Г°Г­Г»Г¬ Г±ГЇГЁГ°ГІГ®Г¬.')
       wait(cfg.commands.zaderjka * 1000)
-      sampSendChat('Спасибо за внимание.')
+      sampSendChat('Г‘ГЇГ Г±ГЁГЎГ® Г§Г  ГўГ­ГЁГ¬Г Г­ГЁГҐ.')
        wait(1200)
 		if cfg.main.hud then
         sampSendChat('/time 1')
@@ -1869,29 +1869,29 @@ function fthmenu(id)
     end
   },
   {
-    title = '{80a4bf}»{FFFFFF} Первая помощь при {139BEC}ДТП.',
+    title = '{80a4bf}В»{FFFFFF} ГЏГҐГ°ГўГ Гї ГЇГ®Г¬Г®Г№Гј ГЇГ°ГЁ {139BEC}Г„Г’ГЏ.',
     onclick = function()
-       sampSendChat('Приветствую, коллеги. Сегодня я прочту вам лекцию на тему «Первая помощь при ДТП».')
+       sampSendChat('ГЏГ°ГЁГўГҐГІГ±ГІГўГіГѕ, ГЄГ®Г«Г«ГҐГЈГЁ. Г‘ГҐГЈГ®Г¤Г­Гї Гї ГЇГ°Г®Г·ГІГі ГўГ Г¬ Г«ГҐГЄГ¶ГЁГѕ Г­Г  ГІГҐГ¬Гі В«ГЏГҐГ°ГўГ Гї ГЇГ®Г¬Г®Г№Гј ГЇГ°ГЁ Г„Г’ГЏВ».')
        wait(cfg.commands.zaderjka * 1000)
-       sampSendChat('Оказывая первую помощь, необходимо действовать по правилам.')
+       sampSendChat('ГЋГЄГ Г§Г»ГўГ Гї ГЇГҐГ°ГўГіГѕ ГЇГ®Г¬Г®Г№Гј, Г­ГҐГ®ГЎГµГ®Г¤ГЁГ¬Г® Г¤ГҐГ©Г±ГІГўГ®ГўГ ГІГј ГЇГ® ГЇГ°Г ГўГЁГ«Г Г¬.')
        wait(cfg.commands.zaderjka * 1000)
-       sampSendChat('Немедленно определите характер и источник травмы.')
+       sampSendChat('ГЌГҐГ¬ГҐГ¤Г«ГҐГ­Г­Г® Г®ГЇГ°ГҐГ¤ГҐГ«ГЁГІГҐ ГµГ Г°Г ГЄГІГҐГ° ГЁ ГЁГ±ГІГ®Г·Г­ГЁГЄ ГІГ°Г ГўГ¬Г».')
        wait(cfg.commands.zaderjka * 1000)
-       sampSendChat('Наиболее частые травмы в случае ДТП - сочетание повреждений черепа..')
+       sampSendChat('ГЌГ ГЁГЎГ®Г«ГҐГҐ Г·Г Г±ГІГ»ГҐ ГІГ°Г ГўГ¬Г» Гў Г±Г«ГіГ·Г ГҐ Г„Г’ГЏ - Г±Г®Г·ГҐГІГ Г­ГЁГҐ ГЇГ®ГўГ°ГҐГ¦Г¤ГҐГ­ГЁГ© Г·ГҐГ°ГҐГЇГ ..')
        wait(cfg.commands.zaderjka * 1000)
-       sampSendChat('..и нижних конечностей и грудной клетки.')
+       sampSendChat('..ГЁ Г­ГЁГ¦Г­ГЁГµ ГЄГ®Г­ГҐГ·Г­Г®Г±ГІГҐГ© ГЁ ГЈГ°ГіГ¤Г­Г®Г© ГЄГ«ГҐГІГЄГЁ.')
        wait(cfg.commands.zaderjka * 1000)
-       sampSendChat('Необходимо извлечь пострадавшего из автомобиля, осмотреть его.')
+       sampSendChat('ГЌГҐГ®ГЎГµГ®Г¤ГЁГ¬Г® ГЁГ§ГўГ«ГҐГ·Гј ГЇГ®Г±ГІГ°Г Г¤Г ГўГёГҐГЈГ® ГЁГ§ Г ГўГІГ®Г¬Г®ГЎГЁГ«Гї, Г®Г±Г¬Г®ГІГ°ГҐГІГј ГҐГЈГ®.')
        wait(cfg.commands.zaderjka * 1000)
-       sampSendChat('Далее следует оказать первую помощь в соответствии с выявленными травмами.')
+       sampSendChat('Г„Г Г«ГҐГҐ Г±Г«ГҐГ¤ГіГҐГІ Г®ГЄГ Г§Г ГІГј ГЇГҐГ°ГўГіГѕ ГЇГ®Г¬Г®Г№Гј Гў Г±Г®Г®ГІГўГҐГІГ±ГІГўГЁГЁ Г± ГўГ»ГїГўГ«ГҐГ­Г­Г»Г¬ГЁ ГІГ°Г ГўГ¬Г Г¬ГЁ.')
        wait(cfg.commands.zaderjka * 1000)
-       sampSendChat('Выявив их, требуется перенести пострадавшего в безопасное место..')
+       sampSendChat('Г‚Г»ГїГўГЁГў ГЁГµ, ГІГ°ГҐГЎГіГҐГІГ±Гї ГЇГҐГ°ГҐГ­ГҐГ±ГІГЁ ГЇГ®Г±ГІГ°Г Г¤Г ГўГёГҐГЈГ® Гў ГЎГҐГ§Г®ГЇГ Г±Г­Г®ГҐ Г¬ГҐГ±ГІГ®..')
        wait(cfg.commands.zaderjka * 1000)
-       sampSendChat('..укрыть от холода, зноя или дождя и вызвать врача, а затем..')
+       sampSendChat('..ГіГЄГ°Г»ГІГј Г®ГІ ГµГ®Г«Г®Г¤Г , Г§Г­Г®Гї ГЁГ«ГЁ Г¤Г®Г¦Г¤Гї ГЁ ГўГ»Г§ГўГ ГІГј ГўГ°Г Г·Г , Г  Г§Г ГІГҐГ¬..')
        wait(cfg.commands.zaderjka * 1000)
-       sampSendChat('..организовать транспортировку пострадавшего в лечебное учреждение.') 
+       sampSendChat('..Г®Г°ГЈГ Г­ГЁГ§Г®ГўГ ГІГј ГІГ°Г Г­Г±ГЇГ®Г°ГІГЁГ°Г®ГўГЄГі ГЇГ®Г±ГІГ°Г Г¤Г ГўГёГҐГЈГ® Гў Г«ГҐГ·ГҐГЎГ­Г®ГҐ ГіГ·Г°ГҐГ¦Г¤ГҐГ­ГЁГҐ.') 
        wait(cfg.commands.zaderjka * 1000)
-       sampSendChat('Спасибо за внимание.')
+       sampSendChat('Г‘ГЇГ Г±ГЁГЎГ® Г§Г  ГўГ­ГЁГ¬Г Г­ГЁГҐ.')
        wait(1200)
 		if cfg.main.hud then
         sampSendChat('/time 1')
@@ -1903,21 +1903,21 @@ function fthmenu(id)
     end
   },
    {
-    title = '{80a4bf}»{FFFFFF} Лекция для {139BEC}Нарколога.',
+    title = '{80a4bf}В»{FFFFFF} Г‹ГҐГЄГ¶ГЁГї Г¤Г«Гї {139BEC}ГЌГ Г°ГЄГ®Г«Г®ГЈГ .',
     onclick = function()
-	    sampSendChat('Здраствуйте. На должности Нарколог носим свои бэйджики №18.')
+	    sampSendChat('Г‡Г¤Г°Г Г±ГІГўГіГ©ГІГҐ. ГЌГ  Г¤Г®Г«Г¦Г­Г®Г±ГІГЁ ГЌГ Г°ГЄГ®Г«Г®ГЈ Г­Г®Г±ГЁГ¬ Г±ГўГ®ГЁ ГЎГЅГ©Г¤Г¦ГЁГЄГЁ В№18.')
         wait(cfg.commands.zaderjka * 1000)
-        sampSendChat('Сеансы от наркозависимости производятся специализированными препаратами.')
+        sampSendChat('Г‘ГҐГ Г­Г±Г» Г®ГІ Г­Г Г°ГЄГ®Г§Г ГўГЁГ±ГЁГ¬Г®Г±ГІГЁ ГЇГ°Г®ГЁГ§ГўГ®Г¤ГїГІГ±Гї Г±ГЇГҐГ¶ГЁГ Г«ГЁГ§ГЁГ°Г®ГўГ Г­Г­Г»Г¬ГЁ ГЇГ°ГҐГЇГ Г°Г ГІГ Г¬ГЁ.')
         wait(cfg.commands.zaderjka * 1000)
-        sampSendChat('Сеансы проводятся только в операционной на втором этаже больнице ')
+        sampSendChat('Г‘ГҐГ Г­Г±Г» ГЇГ°Г®ГўГ®Г¤ГїГІГ±Гї ГІГ®Г«ГјГЄГ® Гў Г®ГЇГҐГ°Г Г¶ГЁГ®Г­Г­Г®Г© Г­Г  ГўГІГ®Г°Г®Г¬ ГЅГІГ Г¦ГҐ ГЎГ®Г«ГјГ­ГЁГ¶ГҐ ')
         wait(cfg.commands.zaderjka * 1000)
-        sampSendChat('Так же вы теперь должны будете помогать на призывах. ')
+        sampSendChat('Г’Г ГЄ Г¦ГҐ ГўГ» ГІГҐГЇГҐГ°Гј Г¤Г®Г«Г¦Г­Г» ГЎГіГ¤ГҐГІГҐ ГЇГ®Г¬Г®ГЈГ ГІГј Г­Г  ГЇГ°ГЁГ§Г»ГўГ Гµ. ')
         wait(cfg.commands.zaderjka * 1000)
-        sampSendChat('Чтобы повысится в должности, вам нужно будет пройти школу Спасателей, школа состоит из 6-и этапов. ')
+        sampSendChat('Г—ГІГ®ГЎГ» ГЇГ®ГўГ»Г±ГЁГІГ±Гї Гў Г¤Г®Г«Г¦Г­Г®Г±ГІГЁ, ГўГ Г¬ Г­ГіГ¦Г­Г® ГЎГіГ¤ГҐГІ ГЇГ°Г®Г©ГІГЁ ГёГЄГ®Г«Гі Г‘ГЇГ Г±Г ГІГҐГ«ГҐГ©, ГёГЄГ®Г«Г  Г±Г®Г±ГІГ®ГЁГІ ГЁГ§ 6-ГЁ ГЅГІГ ГЇГ®Гў. ')
         wait(cfg.commands.zaderjka * 1000)
-        sampSendChat('Подробней на официальном сайте Министерства Здравоохранения. ')
+        sampSendChat('ГЏГ®Г¤Г°Г®ГЎГ­ГҐГ© Г­Г  Г®ГґГЁГ¶ГЁГ Г«ГјГ­Г®Г¬ Г±Г Г©ГІГҐ ГЊГЁГ­ГЁГ±ГІГҐГ°Г±ГІГўГ  Г‡Г¤Г°Г ГўГ®Г®ГµГ°Г Г­ГҐГ­ГЁГї. ')
         wait(cfg.commands.zaderjka * 1000)
-        sampSendChat('На этом лекция окончена. Вопросы имееются? ')
+        sampSendChat('ГЌГ  ГЅГІГ®Г¬ Г«ГҐГЄГ¶ГЁГї Г®ГЄГ®Г­Г·ГҐГ­Г . Г‚Г®ГЇГ°Г®Г±Г» ГЁГ¬ГҐГҐГѕГІГ±Гї? ')
 		wait(1200)
 		if cfg.main.hud then
         sampSendChat('/time 1')
@@ -1929,21 +1929,21 @@ function fthmenu(id)
     end
   },
   {
-    title = '{80a4bf}»{FFFFFF} Лекция о {139BEC}вреде курения.',
+    title = '{80a4bf}В»{FFFFFF} Г‹ГҐГЄГ¶ГЁГї Г® {139BEC}ГўГ°ГҐГ¤ГҐ ГЄГіГ°ГҐГ­ГЁГї.',
     onclick = function()
-	    sampSendChat('Теперь я расскажу вам о вреде курения.')
+	    sampSendChat('Г’ГҐГЇГҐГ°Гј Гї Г°Г Г±Г±ГЄГ Г¦Гі ГўГ Г¬ Г® ГўГ°ГҐГ¤ГҐ ГЄГіГ°ГҐГ­ГЁГї.')
         wait(cfg.commands.zaderjka * 1000)
-        sampSendChat('Курение - одна из самых знаменитых и распространенных привычек на сегодняшний день.')
+        sampSendChat('ГЉГіГ°ГҐГ­ГЁГҐ - Г®Г¤Г­Г  ГЁГ§ Г±Г Г¬Г»Гµ Г§Г­Г Г¬ГҐГ­ГЁГІГ»Гµ ГЁ Г°Г Г±ГЇГ°Г®Г±ГІГ°Г Г­ГҐГ­Г­Г»Гµ ГЇГ°ГЁГўГ»Г·ГҐГЄ Г­Г  Г±ГҐГЈГ®Г¤Г­ГїГёГ­ГЁГ© Г¤ГҐГ­Гј.')
         wait(cfg.commands.zaderjka * 1000)
-        sampSendChat('Запомните, господа, несколько вещей.')
+        sampSendChat('Г‡Г ГЇГ®Г¬Г­ГЁГІГҐ, ГЈГ®Г±ГЇГ®Г¤Г , Г­ГҐГ±ГЄГ®Г«ГјГЄГ® ГўГҐГ№ГҐГ©.')
         wait(cfg.commands.zaderjka * 1000)
-        sampSendChat('Курение вызывает рак и хроническое заболевание легких.')
+        sampSendChat('ГЉГіГ°ГҐГ­ГЁГҐ ГўГ»Г§Г»ГўГ ГҐГІ Г°Г ГЄ ГЁ ГµГ°Г®Г­ГЁГ·ГҐГ±ГЄГ®ГҐ Г§Г ГЎГ®Г«ГҐГўГ Г­ГЁГҐ Г«ГҐГЈГЄГЁГµ.')
         wait(cfg.commands.zaderjka * 1000)
-        sampSendChat('Также, табачный дым вызывает у некоторых людей всяческие кожные заболевания.')
+        sampSendChat('Г’Г ГЄГ¦ГҐ, ГІГ ГЎГ Г·Г­Г»Г© Г¤Г»Г¬ ГўГ»Г§Г»ГўГ ГҐГІ Гі Г­ГҐГЄГ®ГІГ®Г°Г»Гµ Г«ГѕГ¤ГҐГ© ГўГ±ГїГ·ГҐГ±ГЄГЁГҐ ГЄГ®Г¦Г­Г»ГҐ Г§Г ГЎГ®Г«ГҐГўГ Г­ГЁГї.')
         wait(cfg.commands.zaderjka * 1000)
-        sampSendChat('Брось сигарету - спаси себя и весь мир.')
+        sampSendChat('ГЃГ°Г®Г±Гј Г±ГЁГЈГ Г°ГҐГІГі - Г±ГЇГ Г±ГЁ Г±ГҐГЎГї ГЁ ГўГҐГ±Гј Г¬ГЁГ°.')
         wait(cfg.commands.zaderjka * 1000)
-        sampSendChat('На этом все, помните, Министерство Здравоохранения заботится о вашем здоровье.')
+        sampSendChat('ГЌГ  ГЅГІГ®Г¬ ГўГ±ГҐ, ГЇГ®Г¬Г­ГЁГІГҐ, ГЊГЁГ­ГЁГ±ГІГҐГ°Г±ГІГўГ® Г‡Г¤Г°Г ГўГ®Г®ГµГ°Г Г­ГҐГ­ГЁГї Г§Г ГЎГ®ГІГЁГІГ±Гї Г® ГўГ ГёГҐГ¬ Г§Г¤Г®Г°Г®ГўГјГҐ.')
 		wait(1200)
 		if cfg.main.hud then
         sampSendChat('/time 1')
@@ -1955,23 +1955,23 @@ function fthmenu(id)
     end
   },
   {
-    title = '{80a4bf}»{FFFFFF} Лекция о том {139BEC} как нужно обращаться с пациентами.',
+    title = '{80a4bf}В»{FFFFFF} Г‹ГҐГЄГ¶ГЁГї Г® ГІГ®Г¬ {139BEC} ГЄГ ГЄ Г­ГіГ¦Г­Г® Г®ГЎГ°Г Г№Г ГІГјГ±Гї Г± ГЇГ Г¶ГЁГҐГ­ГІГ Г¬ГЁ.',
     onclick = function()
-	    sampSendChat('Теперь лекция, о том, как нужно обращаться с пациентами.')
+	    sampSendChat('Г’ГҐГЇГҐГ°Гј Г«ГҐГЄГ¶ГЁГї, Г® ГІГ®Г¬, ГЄГ ГЄ Г­ГіГ¦Г­Г® Г®ГЎГ°Г Г№Г ГІГјГ±Гї Г± ГЇГ Г¶ГЁГҐГ­ГІГ Г¬ГЁ.')
         wait(cfg.commands.zaderjka * 1000)
-        sampSendChat('Для начала, вы должны вежливо их поприветствовать, что бы им было приятно.')
+        sampSendChat('Г„Г«Гї Г­Г Г·Г Г«Г , ГўГ» Г¤Г®Г«Г¦Г­Г» ГўГҐГ¦Г«ГЁГўГ® ГЁГµ ГЇГ®ГЇГ°ГЁГўГҐГІГ±ГІГўГ®ГўГ ГІГј, Г·ГІГ® ГЎГ» ГЁГ¬ ГЎГ»Г«Г® ГЇГ°ГЁГїГІГ­Г®.')
         wait(cfg.commands.zaderjka * 1000)
-        sampSendChat('Дальше, вы должны представиться, и спросить чем можете помочь.')
+        sampSendChat('Г„Г Г«ГјГёГҐ, ГўГ» Г¤Г®Г«Г¦Г­Г» ГЇГ°ГҐГ¤Г±ГІГ ГўГЁГІГјГ±Гї, ГЁ Г±ГЇГ°Г®Г±ГЁГІГј Г·ГҐГ¬ Г¬Г®Г¦ГҐГІГҐ ГЇГ®Г¬Г®Г·Гј.')
         wait(cfg.commands.zaderjka * 1000)
-        sampSendChat('Если же человек молчит, не уходите, может думает что выбрать.')
+        sampSendChat('Г…Г±Г«ГЁ Г¦ГҐ Г·ГҐГ«Г®ГўГҐГЄ Г¬Г®Г«Г·ГЁГІ, Г­ГҐ ГіГµГ®Г¤ГЁГІГҐ, Г¬Г®Г¦ГҐГІ Г¤ГіГ¬Г ГҐГІ Г·ГІГ® ГўГ»ГЎГ°Г ГІГј.')
         wait(cfg.commands.zaderjka * 1000)
-        sampSendChat('Когда человек задал вопрос, вы должны корректно ответить.')
+        sampSendChat('ГЉГ®ГЈГ¤Г  Г·ГҐГ«Г®ГўГҐГЄ Г§Г Г¤Г Г« ГўГ®ГЇГ°Г®Г±, ГўГ» Г¤Г®Г«Г¦Г­Г» ГЄГ®Г°Г°ГҐГЄГІГ­Г® Г®ГІГўГҐГІГЁГІГј.')
         wait(cfg.commands.zaderjka * 1000)
-        sampSendChat('Если же вопрос грубый, неадекватный, не отвечайте.')
+        sampSendChat('Г…Г±Г«ГЁ Г¦ГҐ ГўГ®ГЇГ°Г®Г± ГЈГ°ГіГЎГ»Г©, Г­ГҐГ Г¤ГҐГЄГўГ ГІГ­Г»Г©, Г­ГҐ Г®ГІГўГҐГ·Г Г©ГІГҐ.')
         wait(cfg.commands.zaderjka * 1000)
-        sampSendChat('При угрозе и неадекватных действиях - вызовите полицию.')
+        sampSendChat('ГЏГ°ГЁ ГіГЈГ°Г®Г§ГҐ ГЁ Г­ГҐГ Г¤ГҐГЄГўГ ГІГ­Г»Гµ Г¤ГҐГ©Г±ГІГўГЁГїГµ - ГўГ»Г§Г®ГўГЁГІГҐ ГЇГ®Г«ГЁГ¶ГЁГѕ.')
 		wait(cfg.commands.zaderjka * 1000)
-        sampSendChat('Спасибо за внимание, данная лекция подошла к концу.')
+        sampSendChat('Г‘ГЇГ Г±ГЁГЎГ® Г§Г  ГўГ­ГЁГ¬Г Г­ГЁГҐ, Г¤Г Г­Г­Г Гї Г«ГҐГЄГ¶ГЁГї ГЇГ®Г¤Г®ГёГ«Г  ГЄ ГЄГ®Г­Г¶Гі.')
 		wait(1200)
 		if cfg.main.hud then
         sampSendChat('/time 1')
@@ -1983,23 +1983,23 @@ function fthmenu(id)
     end
   },
   {
-    title = '{80a4bf}»{FFFFFF} Лекция о {139BEC} наркотических препаратах',
+    title = '{80a4bf}В»{FFFFFF} Г‹ГҐГЄГ¶ГЁГї Г® {139BEC} Г­Г Г°ГЄГ®ГІГЁГ·ГҐГ±ГЄГЁГµ ГЇГ°ГҐГЇГ Г°Г ГІГ Гµ',
     onclick = function()
-	    sampSendChat('Здравствуйте, уважаемые коллеги.')
+	    sampSendChat('Г‡Г¤Г°Г ГўГ±ГІГўГіГ©ГІГҐ, ГіГўГ Г¦Г ГҐГ¬Г»ГҐ ГЄГ®Г«Г«ГҐГЈГЁ.')
         wait(cfg.commands.zaderjka * 1000)
-        sampSendChat('Сейчас я расскажу вам о вреде наркотических веществ.')
+        sampSendChat('Г‘ГҐГ©Г·Г Г± Гї Г°Г Г±Г±ГЄГ Г¦Гі ГўГ Г¬ Г® ГўГ°ГҐГ¤ГҐ Г­Г Г°ГЄГ®ГІГЁГ·ГҐГ±ГЄГЁГµ ГўГҐГ№ГҐГ±ГІГў.')
         wait(cfg.commands.zaderjka * 1000)
-        sampSendChat('Наркотики - это вещества, способные вызывать состояние эйфории.')
+        sampSendChat('ГЌГ Г°ГЄГ®ГІГЁГЄГЁ - ГЅГІГ® ГўГҐГ№ГҐГ±ГІГўГ , Г±ГЇГ®Г±Г®ГЎГ­Г»ГҐ ГўГ»Г§Г»ГўГ ГІГј Г±Г®Г±ГІГ®ГїГ­ГЁГҐ ГЅГ©ГґГ®Г°ГЁГЁ.')
         wait(cfg.commands.zaderjka * 1000)
-        sampSendChat('Наркомания - заболевание, вызванное употреблением наркотических веществ.')
+        sampSendChat('ГЌГ Г°ГЄГ®Г¬Г Г­ГЁГї - Г§Г ГЎГ®Г«ГҐГўГ Г­ГЁГҐ, ГўГ»Г§ГўГ Г­Г­Г®ГҐ ГіГЇГ®ГІГ°ГҐГЎГ«ГҐГ­ГЁГҐГ¬ Г­Г Г°ГЄГ®ГІГЁГ·ГҐГ±ГЄГЁГµ ГўГҐГ№ГҐГ±ГІГў.')
         wait(cfg.commands.zaderjka * 1000)
-        sampSendChat('В среде употребляющих наркотики, выше риск заражения различными заболеваниями.')
+        sampSendChat('Г‚ Г±Г°ГҐГ¤ГҐ ГіГЇГ®ГІГ°ГҐГЎГ«ГїГѕГ№ГЁГµ Г­Г Г°ГЄГ®ГІГЁГЄГЁ, ГўГ»ГёГҐ Г°ГЁГ±ГЄ Г§Г Г°Г Г¦ГҐГ­ГЁГї Г°Г Г§Г«ГЁГ·Г­Г»Г¬ГЁ Г§Г ГЎГ®Г«ГҐГўГ Г­ГЁГїГ¬ГЁ.')
         wait(cfg.commands.zaderjka * 1000)
-        sampSendChat('Каждому по силам помочь бороться с наркоманией.')
+        sampSendChat('ГЉГ Г¦Г¤Г®Г¬Гі ГЇГ® Г±ГЁГ«Г Г¬ ГЇГ®Г¬Г®Г·Гј ГЎГ®Г°Г®ГІГјГ±Гї Г± Г­Г Г°ГЄГ®Г¬Г Г­ГЁГҐГ©.')
         wait(cfg.commands.zaderjka * 1000)
-        sampSendChat('Коллеги, обретайте уверенность в том, что вам не нужны наркотики.')
+        sampSendChat('ГЉГ®Г«Г«ГҐГЈГЁ, Г®ГЎГ°ГҐГІГ Г©ГІГҐ ГіГўГҐГ°ГҐГ­Г­Г®Г±ГІГј Гў ГІГ®Г¬, Г·ГІГ® ГўГ Г¬ Г­ГҐ Г­ГіГ¦Г­Г» Г­Г Г°ГЄГ®ГІГЁГЄГЁ.')
 		wait(cfg.commands.zaderjka * 1000)
-        sampSendChat('На этом лекция окончена, спасибо за внимание.')
+        sampSendChat('ГЌГ  ГЅГІГ®Г¬ Г«ГҐГЄГ¶ГЁГї Г®ГЄГ®Г­Г·ГҐГ­Г , Г±ГЇГ Г±ГЁГЎГ® Г§Г  ГўГ­ГЁГ¬Г Г­ГЁГҐ.')
 		wait(1200)
 		if cfg.main.hud then
         sampSendChat('/time 1')
@@ -2011,23 +2011,23 @@ function fthmenu(id)
     end
   },
   {
-    title = '{80a4bf}»{FFFFFF} Лекция о {139BEC} вирусах.',
+    title = '{80a4bf}В»{FFFFFF} Г‹ГҐГЄГ¶ГЁГї Г® {139BEC} ГўГЁГ°ГіГ±Г Гµ.',
     onclick = function()
-	    sampSendChat('Сейчас я расскажу вам несколько советов о вирусах.')
+	    sampSendChat('Г‘ГҐГ©Г·Г Г± Гї Г°Г Г±Г±ГЄГ Г¦Гі ГўГ Г¬ Г­ГҐГ±ГЄГ®Г«ГјГЄГ® Г±Г®ГўГҐГІГ®Гў Г® ГўГЁГ°ГіГ±Г Гµ.')
         wait(cfg.commands.zaderjka * 1000)
-        sampSendChat('Все мы знаем о вирусах и о их быстром размножении.')
+        sampSendChat('Г‚Г±ГҐ Г¬Г» Г§Г­Г ГҐГ¬ Г® ГўГЁГ°ГіГ±Г Гµ ГЁ Г® ГЁГµ ГЎГ»Г±ГІГ°Г®Г¬ Г°Г Г§Г¬Г­Г®Г¦ГҐГ­ГЁГЁ.')
         wait(cfg.commands.zaderjka * 1000)
-        sampSendChat('Вирусы опасны. И чаще всего приводят к летальным исходам.')
+        sampSendChat('Г‚ГЁГ°ГіГ±Г» Г®ГЇГ Г±Г­Г». Г€ Г·Г Г№ГҐ ГўГ±ГҐГЈГ® ГЇГ°ГЁГўГ®Г¤ГїГІ ГЄ Г«ГҐГІГ Г«ГјГ­Г»Г¬ ГЁГ±ГµГ®Г¤Г Г¬.')
         wait(cfg.commands.zaderjka * 1000)
-        sampSendChat('Господа, запомните несколько советов от Мининистерства Здравоохранения.')
+        sampSendChat('ГѓГ®Г±ГЇГ®Г¤Г , Г§Г ГЇГ®Г¬Г­ГЁГІГҐ Г­ГҐГ±ГЄГ®Г«ГјГЄГ® Г±Г®ГўГҐГІГ®Гў Г®ГІ ГЊГЁГ­ГЁГ­ГЁГ±ГІГҐГ°Г±ГІГўГ  Г‡Г¤Г°Г ГўГ®Г®ГµГ°Г Г­ГҐГ­ГЁГї.')
         wait(cfg.commands.zaderjka * 1000)
-        sampSendChat('Первое, если вы заражены, не контактируйте со здоровым.')
+        sampSendChat('ГЏГҐГ°ГўГ®ГҐ, ГҐГ±Г«ГЁ ГўГ» Г§Г Г°Г Г¦ГҐГ­Г», Г­ГҐ ГЄГ®Г­ГІГ ГЄГІГЁГ°ГіГ©ГІГҐ Г±Г® Г§Г¤Г®Г°Г®ГўГ»Г¬.')
         wait(cfg.commands.zaderjka * 1000)
-        sampSendChat('Второе, обычный поцелуй может заразить вашу вторую половинку.')
+        sampSendChat('Г‚ГІГ®Г°Г®ГҐ, Г®ГЎГ»Г·Г­Г»Г© ГЇГ®Г¶ГҐГ«ГіГ© Г¬Г®Г¦ГҐГІ Г§Г Г°Г Г§ГЁГІГј ГўГ ГёГі ГўГІГ®Г°ГіГѕ ГЇГ®Г«Г®ГўГЁГ­ГЄГі.')
         wait(cfg.commands.zaderjka * 1000)
-        sampSendChat('И третье, чаще мойте руки. Особенно, если вас окружают больные коллеги.')
+        sampSendChat('Г€ ГІГ°ГҐГІГјГҐ, Г·Г Г№ГҐ Г¬Г®Г©ГІГҐ Г°ГіГЄГЁ. ГЋГ±Г®ГЎГҐГ­Г­Г®, ГҐГ±Г«ГЁ ГўГ Г± Г®ГЄГ°ГіГ¦Г ГѕГІ ГЎГ®Г«ГјГ­Г»ГҐ ГЄГ®Г«Г«ГҐГЈГЁ.')
 		wait(cfg.commands.zaderjka * 1000)
-        sampSendChat('На этом все, помните, врачи штата заботится о вашем здоровье.')
+        sampSendChat('ГЌГ  ГЅГІГ®Г¬ ГўГ±ГҐ, ГЇГ®Г¬Г­ГЁГІГҐ, ГўГ°Г Г·ГЁ ГёГІГ ГІГ  Г§Г ГЎГ®ГІГЁГІГ±Гї Г® ГўГ ГёГҐГ¬ Г§Г¤Г®Г°Г®ГўГјГҐ.')
 		wait(1200)
 		if cfg.main.hud then
         sampSendChat('/time 1')
@@ -2039,43 +2039,43 @@ function fthmenu(id)
     end
   },
    {
-    title = '{80a4bf}»{FFFFFF} Лекция{139BEC} ПМП.',
+    title = '{80a4bf}В»{FFFFFF} Г‹ГҐГЄГ¶ГЁГї{139BEC} ГЏГЊГЏ.',
     onclick = function()
-	sampSendChat('Здраствуйте, уважаемые коллеги.')
+	sampSendChat('Г‡Г¤Г°Г Г±ГІГўГіГ©ГІГҐ, ГіГўГ Г¦Г ГҐГ¬Г»ГҐ ГЄГ®Г«Г«ГҐГЈГЁ.')
         wait(cfg.commands.zaderjka * 1000)
-        sampSendChat('Большинство людей, оказавшись на месте теракта, впадают в панику и не знают, что им делать до приезда медиков.')
+        sampSendChat('ГЃГ®Г«ГјГёГЁГ­Г±ГІГўГ® Г«ГѕГ¤ГҐГ©, Г®ГЄГ Г§Г ГўГёГЁГ±Гј Г­Г  Г¬ГҐГ±ГІГҐ ГІГҐГ°Г ГЄГІГ , ГўГЇГ Г¤Г ГѕГІ Гў ГЇГ Г­ГЁГЄГі ГЁ Г­ГҐ Г§Г­Г ГѕГІ, Г·ГІГ® ГЁГ¬ Г¤ГҐГ«Г ГІГј Г¤Г® ГЇГ°ГЁГҐГ§Г¤Г  Г¬ГҐГ¤ГЁГЄГ®Гў.')
         wait(cfg.commands.zaderjka * 1000)
-        sampSendChat('А между тем дорога буквально каждая минута, главное – понимать, как правильно оказать первую помощь.')
+        sampSendChat('ГЂ Г¬ГҐГ¦Г¤Гі ГІГҐГ¬ Г¤Г®Г°Г®ГЈГ  ГЎГіГЄГўГ Г«ГјГ­Г® ГЄГ Г¦Г¤Г Гї Г¬ГЁГ­ГіГІГ , ГЈГ«Г ГўГ­Г®ГҐ В– ГЇГ®Г­ГЁГ¬Г ГІГј, ГЄГ ГЄ ГЇГ°Г ГўГЁГ«ГјГ­Г® Г®ГЄГ Г§Г ГІГј ГЇГҐГ°ГўГіГѕ ГЇГ®Г¬Г®Г№Гј.')
         wait(cfg.commands.zaderjka * 1000)
-        sampSendChat('Остановить кровотечение, не промывать рану, не извлекать инородные тела и глубоко дышать...')
+        sampSendChat('ГЋГ±ГІГ Г­Г®ГўГЁГІГј ГЄГ°Г®ГўГ®ГІГҐГ·ГҐГ­ГЁГҐ, Г­ГҐ ГЇГ°Г®Г¬Г»ГўГ ГІГј Г°Г Г­Гі, Г­ГҐ ГЁГ§ГўГ«ГҐГЄГ ГІГј ГЁГ­Г®Г°Г®Г¤Г­Г»ГҐ ГІГҐГ«Г  ГЁ ГЈГ«ГіГЎГ®ГЄГ® Г¤Г»ГёГ ГІГј...')
         wait(cfg.commands.zaderjka * 1000)
-        sampSendChat('...вот основные действия, которые могут помочь пострадавшим при теракте.')
+        sampSendChat('...ГўГ®ГІ Г®Г±Г­Г®ГўГ­Г»ГҐ Г¤ГҐГ©Г±ГІГўГЁГї, ГЄГ®ГІГ®Г°Г»ГҐ Г¬Г®ГЈГіГІ ГЇГ®Г¬Г®Г·Гј ГЇГ®Г±ГІГ°Г Г¤Г ГўГёГЁГ¬ ГЇГ°ГЁ ГІГҐГ°Г ГЄГІГҐ.')
         wait(cfg.commands.zaderjka * 1000)
-        sampSendChat('Длительность факта изоляции человека специалисты считают ключевым моментом...')
+        sampSendChat('Г„Г«ГЁГІГҐГ«ГјГ­Г®Г±ГІГј ГґГ ГЄГІГ  ГЁГ§Г®Г«ГїГ¶ГЁГЁ Г·ГҐГ«Г®ГўГҐГЄГ  Г±ГЇГҐГ¶ГЁГ Г«ГЁГ±ГІГ» Г±Г·ГЁГІГ ГѕГІ ГЄГ«ГѕГ·ГҐГўГ»Г¬ Г¬Г®Г¬ГҐГ­ГІГ®Г¬...')
         wait(cfg.commands.zaderjka * 1000)
-        sampSendChat('...для состояния пострадавших. Оптимально она не должна превышать 30 минут.')
+        sampSendChat('...Г¤Г«Гї Г±Г®Г±ГІГ®ГїГ­ГЁГї ГЇГ®Г±ГІГ°Г Г¤Г ГўГёГЁГµ. ГЋГЇГІГЁГ¬Г Г«ГјГ­Г® Г®Г­Г  Г­ГҐ Г¤Г®Г«Г¦Г­Г  ГЇГ°ГҐГўГ»ГёГ ГІГј 30 Г¬ГЁГ­ГіГІ.')
         wait(cfg.commands.zaderjka * 1000)
-		sampSendChat('Если дольше — у тяжелых пострадавших могут развиться опасные для жизни осложнения или просто наступит смерть.')
+		sampSendChat('Г…Г±Г«ГЁ Г¤Г®Г«ГјГёГҐ В— Гі ГІГїГ¦ГҐГ«Г»Гµ ГЇГ®Г±ГІГ°Г Г¤Г ГўГёГЁГµ Г¬Г®ГЈГіГІ Г°Г Г§ГўГЁГІГјГ±Гї Г®ГЇГ Г±Г­Г»ГҐ Г¤Г«Гї Г¦ГЁГ§Г­ГЁ Г®Г±Г«Г®Г¦Г­ГҐГ­ГЁГї ГЁГ«ГЁ ГЇГ°Г®Г±ГІГ® Г­Г Г±ГІГіГЇГЁГІ Г±Г¬ГҐГ°ГІГј.')
         wait(cfg.commands.zaderjka * 1000)
-        sampSendChat('Известно, что в связи с несвоевременным оказанием медицинской помощи при катастрофах, инцидентах, любых происшествиях, где есть пострадавшие...')
+        sampSendChat('Г€Г§ГўГҐГ±ГІГ­Г®, Г·ГІГ® Гў Г±ГўГїГ§ГЁ Г± Г­ГҐГ±ГўГ®ГҐГўГ°ГҐГ¬ГҐГ­Г­Г»Г¬ Г®ГЄГ Г§Г Г­ГЁГҐГ¬ Г¬ГҐГ¤ГЁГ¶ГЁГ­Г±ГЄГ®Г© ГЇГ®Г¬Г®Г№ГЁ ГЇГ°ГЁ ГЄГ ГІГ Г±ГІГ°Г®ГґГ Гµ, ГЁГ­Г¶ГЁГ¤ГҐГ­ГІГ Гµ, Г«ГѕГЎГ»Гµ ГЇГ°Г®ГЁГ±ГёГҐГ±ГІГўГЁГїГµ, ГЈГ¤ГҐ ГҐГ±ГІГј ГЇГ®Г±ГІГ°Г Г¤Г ГўГёГЁГҐ...')
         wait(cfg.commands.zaderjka * 1000)
-        sampSendChat('...в течение первого часа погибает до 30% пострадавших, через три часа — до 70% а через шесть часов — до 90%.')
+        sampSendChat('...Гў ГІГҐГ·ГҐГ­ГЁГҐ ГЇГҐГ°ГўГ®ГЈГ® Г·Г Г±Г  ГЇГ®ГЈГЁГЎГ ГҐГІ Г¤Г® 30% ГЇГ®Г±ГІГ°Г Г¤Г ГўГёГЁГµ, Г·ГҐГ°ГҐГ§ ГІГ°ГЁ Г·Г Г±Г  В— Г¤Г® 70% Г  Г·ГҐГ°ГҐГ§ ГёГҐГ±ГІГј Г·Г Г±Г®Гў В— Г¤Г® 90%.')
         wait(cfg.commands.zaderjka * 1000)
-		sampSendChat('Эти цифры показывают: первая помощь при терактах нужна чем скорее, тем лучше, до приезда медиков.')
+		sampSendChat('ГќГІГЁ Г¶ГЁГґГ°Г» ГЇГ®ГЄГ Г§Г»ГўГ ГѕГІ: ГЇГҐГ°ГўГ Гї ГЇГ®Г¬Г®Г№Гј ГЇГ°ГЁ ГІГҐГ°Г ГЄГІГ Гµ Г­ГіГ¦Г­Г  Г·ГҐГ¬ Г±ГЄГ®Г°ГҐГҐ, ГІГҐГ¬ Г«ГіГ·ГёГҐ, Г¤Г® ГЇГ°ГЁГҐГ§Г¤Г  Г¬ГҐГ¤ГЁГЄГ®Гў.')
         wait(cfg.commands.zaderjka * 1000)
-		sampSendChat('На месте катастрофы или теракта вам надо справиться с тремя проблемами, которые убивают людей быстрее всего:')
+		sampSendChat('ГЌГ  Г¬ГҐГ±ГІГҐ ГЄГ ГІГ Г±ГІГ°Г®ГґГ» ГЁГ«ГЁ ГІГҐГ°Г ГЄГІГ  ГўГ Г¬ Г­Г Г¤Г® Г±ГЇГ°Г ГўГЁГІГјГ±Гї Г± ГІГ°ГҐГ¬Гї ГЇГ°Г®ГЎГ«ГҐГ¬Г Г¬ГЁ, ГЄГ®ГІГ®Г°Г»ГҐ ГіГЎГЁГўГ ГѕГІ Г«ГѕГ¤ГҐГ© ГЎГ»Г±ГІГ°ГҐГҐ ГўГ±ГҐГЈГ®:')
         wait(cfg.commands.zaderjka * 1000)
-        sampSendChat('- внешняя угроза;')
+        sampSendChat('- ГўГ­ГҐГёГ­ГїГї ГіГЈГ°Г®Г§Г ;')
 		wait(cfg.commands.zaderjka * 1000)
-		sampSendChat('- сильное кровотечение;')
+		sampSendChat('- Г±ГЁГ«ГјГ­Г®ГҐ ГЄГ°Г®ГўГ®ГІГҐГ·ГҐГ­ГЁГҐ;')
 		wait(cfg.commands.zaderjka * 1000)
-		sampSendChat('- проблемы с дыханием.')
+		sampSendChat('- ГЇГ°Г®ГЎГ«ГҐГ¬Г» Г± Г¤Г»ГµГ Г­ГЁГҐГ¬.')
 		wait(cfg.commands.zaderjka * 1000)
-		sampSendChat('Их надо ликвидировать в той же приоритетности. Вам надо сфокусироваться лишь на этих трёх вещах и количество выживших будет максимально.')
+		sampSendChat('Г€Гµ Г­Г Г¤Г® Г«ГЁГЄГўГЁГ¤ГЁГ°Г®ГўГ ГІГј Гў ГІГ®Г© Г¦ГҐ ГЇГ°ГЁГ®Г°ГЁГІГҐГІГ­Г®Г±ГІГЁ. Г‚Г Г¬ Г­Г Г¤Г® Г±ГґГ®ГЄГіГ±ГЁГ°Г®ГўГ ГІГјГ±Гї Г«ГЁГёГј Г­Г  ГЅГІГЁГµ ГІГ°ВёГµ ГўГҐГ№Г Гµ ГЁ ГЄГ®Г«ГЁГ·ГҐГ±ГІГўГ® ГўГ»Г¦ГЁГўГёГЁГµ ГЎГіГ¤ГҐГІ Г¬Г ГЄГ±ГЁГ¬Г Г«ГјГ­Г®.')
         wait(cfg.commands.zaderjka * 1000)
-		sampSendChat('Первая помощь — это комплекс срочных мер, направленных на спасение жизни человека.')
+		sampSendChat('ГЏГҐГ°ГўГ Гї ГЇГ®Г¬Г®Г№Гј В— ГЅГІГ® ГЄГ®Г¬ГЇГ«ГҐГЄГ± Г±Г°Г®Г·Г­Г»Гµ Г¬ГҐГ°, Г­Г ГЇГ°Г ГўГ«ГҐГ­Г­Г»Гµ Г­Г  Г±ГЇГ Г±ГҐГ­ГЁГҐ Г¦ГЁГ§Г­ГЁ Г·ГҐГ«Г®ГўГҐГЄГ .')
 		wait(cfg.commands.zaderjka * 1000)
-		sampSendChat('Несчастный случай, резкий приступ заболевания, отравление — в этих и других чрезвычайных ситуациях необходима грамотная первая помощь...')
+		sampSendChat('ГЌГҐГ±Г·Г Г±ГІГ­Г»Г© Г±Г«ГіГ·Г Г©, Г°ГҐГ§ГЄГЁГ© ГЇГ°ГЁГ±ГІГіГЇ Г§Г ГЎГ®Г«ГҐГўГ Г­ГЁГї, Г®ГІГ°Г ГўГ«ГҐГ­ГЁГҐ В— Гў ГЅГІГЁГµ ГЁ Г¤Г°ГіГЈГЁГµ Г·Г°ГҐГ§ГўГ»Г·Г Г©Г­Г»Гµ Г±ГЁГІГіГ Г¶ГЁГїГµ Г­ГҐГ®ГЎГµГ®Г¤ГЁГ¬Г  ГЈГ°Г Г¬Г®ГІГ­Г Гї ГЇГҐГ°ГўГ Гї ГЇГ®Г¬Г®Г№Гј...')
 		wait(cfg.commands.zaderjka * 1000)
 		if cfg.main.hud then
         sampSendChat('/time 1')
@@ -2105,63 +2105,63 @@ function imgui.OnDrawFrame()
     local iScreenWidth, iScreenHeight = getScreenResolution()
 	local btn_size = imgui.ImVec2(-0.1, 0)
     imgui.SetNextWindowPos(imgui.ImVec2(iScreenWidth / 2, iScreenHeight / 2), imgui.Cond.FirstUseEver, imgui.ImVec2(7, 3))
-    imgui.Begin(fa.ICON_COGS .. u8 ' Настройки##1', first_window, btn_size, imgui.WindowFlags.NoResize)
+    imgui.Begin(fa.ICON_COGS .. u8 ' ГЌГ Г±ГІГ°Г®Г©ГЄГЁ##1', first_window, btn_size, imgui.WindowFlags.NoResize)
 	imgui.PushItemWidth(200)
-	imgui.AlignTextToFramePadding(); imgui.Text(u8("Использовать автотег"))
+	imgui.AlignTextToFramePadding(); imgui.Text(u8("Г€Г±ГЇГ®Г«ГјГ§Г®ГўГ ГІГј Г ГўГІГ®ГІГҐГЈ"))
 	imgui.SameLine()
-	if imgui.ToggleButton(u8'Использовать автотег', tagb) then
+	if imgui.ToggleButton(u8'Г€Г±ГЇГ®Г«ГјГ§Г®ГўГ ГІГј Г ГўГІГ®ГІГҐГЈ', tagb) then
     cfg.main.tarb = not cfg.main.tarb
     end
 	if tagb.v then
-	if imgui.InputText(u8'Введите ваш тег.', tagfr) then
+	if imgui.InputText(u8'Г‚ГўГҐГ¤ГЁГІГҐ ГўГ Гё ГІГҐГЈ.', tagfr) then
     cfg.main.tarr = u8:decode(tagfr.v)
     end
 	end
-	imgui.Text(u8("Включить худ"))
+	imgui.Text(u8("Г‚ГЄГ«ГѕГ·ГЁГІГј ГµГіГ¤"))
 	imgui.SameLine()
-	if imgui.ToggleButton(u8'Включить/выключить худ', hudik) then
+	if imgui.ToggleButton(u8'Г‚ГЄГ«ГѕГ·ГЁГІГј/ГўГ»ГЄГ«ГѕГ·ГЁГІГј ГµГіГ¤', hudik) then
         cfg.main.givra = not cfg.main.givra
-		ftext(cfg.main.givra and 'Худ включен, установить положение /sethud.' or 'Худ выключен.')
+		ftext(cfg.main.givra and 'Г•ГіГ¤ ГўГЄГ«ГѕГ·ГҐГ­, ГіГ±ГІГ Г­Г®ГўГЁГІГј ГЇГ®Г«Г®Г¦ГҐГ­ГЁГҐ /sethud.' or 'Г•ГіГ¤ ГўГ»ГЄГ«ГѕГ·ГҐГ­.')
     end
-	imgui.Text(u8("Быстрый ответ на последнее СМС"))
+	imgui.Text(u8("ГЃГ»Г±ГІГ°Г»Г© Г®ГІГўГҐГІ Г­Г  ГЇГ®Г±Г«ГҐГ¤Г­ГҐГҐ Г‘ГЊГ‘"))
 	imgui.SameLine()
-    if imgui.HotKey(u8'##Быстрый ответ смс', config_keys.fastsms, tLastKeys, 100) then
+    if imgui.HotKey(u8'##ГЃГ»Г±ГІГ°Г»Г© Г®ГІГўГҐГІ Г±Г¬Г±', config_keys.fastsms, tLastKeys, 100) then
 	    rkeys.changeHotKey(fastsmskey, config_keys.fastsms.v)
-		ftext('Клавиша успешно изменена. Старое значение: '.. table.concat(rkeys.getKeysName(tLastKeys.v), " + ") .. ' | Новое значение: '.. table.concat(rkeys.getKeysName(config_keys.fastsms.v), " + "))
+		ftext('ГЉГ«Г ГўГЁГёГ  ГіГ±ГЇГҐГёГ­Г® ГЁГ§Г¬ГҐГ­ГҐГ­Г . Г‘ГІГ Г°Г®ГҐ Г§Г­Г Г·ГҐГ­ГЁГҐ: '.. table.concat(rkeys.getKeysName(tLastKeys.v), " + ") .. ' | ГЌГ®ГўГ®ГҐ Г§Г­Г Г·ГҐГ­ГЁГҐ: '.. table.concat(rkeys.getKeysName(config_keys.fastsms.v), " + "))
 		saveData(config_keys, 'moonloader/config/medick/keys.json')
 	end
-	imgui.Text(u8("Использовать автоклист"))
+	imgui.Text(u8("Г€Г±ГЇГ®Г«ГјГ§Г®ГўГ ГІГј Г ГўГІГ®ГЄГ«ГЁГ±ГІ"))
 	imgui.SameLine()
-	if imgui.ToggleButton(u8'Использовать автоклист', clistb) then
+	if imgui.ToggleButton(u8'Г€Г±ГЇГ®Г«ГјГ§Г®ГўГ ГІГј Г ГўГІГ®ГЄГ«ГЁГ±ГІ', clistb) then
         cfg.main.clistb = not cfg.main.clistb
     end
     if clistb.v then
-        if imgui.SliderInt(u8"Выберите значение клиста", clistbuffer, 0, 33) then
+        if imgui.SliderInt(u8"Г‚Г»ГЎГҐГ°ГЁГІГҐ Г§Г­Г Г·ГҐГ­ГЁГҐ ГЄГ«ГЁГ±ГІГ ", clistbuffer, 0, 33) then
             cfg.main.clist = clistbuffer.v
         end
-		imgui.Text(u8("Использовать отыгровку раздевалки"))
+		imgui.Text(u8("Г€Г±ГЇГ®Г«ГјГ§Г®ГўГ ГІГј Г®ГІГ»ГЈГ°Г®ГўГЄГі Г°Г Г§Г¤ГҐГўГ Г«ГЄГЁ"))
 	    imgui.SameLine()
-		if imgui.ToggleButton(u8'Использовать отыгровку раздевалки', clisto) then
+		if imgui.ToggleButton(u8'Г€Г±ГЇГ®Г«ГјГ§Г®ГўГ ГІГј Г®ГІГ»ГЈГ°Г®ГўГЄГі Г°Г Г§Г¤ГҐГўГ Г«ГЄГЁ', clisto) then
         cfg.main.clisto = not cfg.main.clisto
         end
     end
-	imgui.Text(u8("Мужские отыгровки"))
+	imgui.Text(u8("ГЊГіГ¦Г±ГЄГЁГҐ Г®ГІГ»ГЈГ°Г®ГўГЄГЁ"))
 	imgui.SameLine()
-	if imgui.ToggleButton(u8'Мужские отыгровки', stateb) then
+	if imgui.ToggleButton(u8'ГЊГіГ¦Г±ГЄГЁГҐ Г®ГІГ»ГЈГ°Г®ГўГЄГЁ', stateb) then
         cfg.main.male = not cfg.main.male
     end
 	
-	if imgui.SliderInt(u8'Задержка в лекциях и отыгровках(сек)', waitbuffer, 1, 25) then
+	if imgui.SliderInt(u8'Г‡Г Г¤ГҐГ°Г¦ГЄГ  Гў Г«ГҐГЄГ¶ГЁГїГµ ГЁ Г®ГІГ»ГЈГ°Г®ГўГЄГ Гµ(Г±ГҐГЄ)', waitbuffer, 1, 25) then
      cfg.commands.zaderjka = waitbuffer.v
     end
-	imgui.Text(u8("Автоскрин лекций/гос.новостей"))
+	imgui.Text(u8("ГЂГўГІГ®Г±ГЄГ°ГЁГ­ Г«ГҐГЄГ¶ГЁГ©/ГЈГ®Г±.Г­Г®ГўГ®Г±ГІГҐГ©"))
 	imgui.SameLine()
-	if imgui.ToggleButton(u8'Автоскрин лекций', autoscr) then
+	if imgui.ToggleButton(u8'ГЂГўГІГ®Г±ГЄГ°ГЁГ­ Г«ГҐГЄГ¶ГЁГ©', autoscr) then
         cfg.main.hud = not cfg.main.hud
     end
-    if imgui.CustomButton(u8('Сохранить настройки'), imgui.ImVec4(0.08, 0.61, 0.92, 0.40), imgui.ImVec4(0.08, 0.61, 0.92, 1.00), imgui.ImVec4(0.08, 0.61, 0.92, 0.76), btn_size) then
-	ftext('Настройки успешно сохранены.', -1)
-    inicfg.save(cfg, 'medick/config.ini') -- сохраняем все новые значения в конфиге
+    if imgui.CustomButton(u8('Г‘Г®ГµГ°Г Г­ГЁГІГј Г­Г Г±ГІГ°Г®Г©ГЄГЁ'), imgui.ImVec4(0.08, 0.61, 0.92, 0.40), imgui.ImVec4(0.08, 0.61, 0.92, 1.00), imgui.ImVec4(0.08, 0.61, 0.92, 0.76), btn_size) then
+	ftext('ГЌГ Г±ГІГ°Г®Г©ГЄГЁ ГіГ±ГЇГҐГёГ­Г® Г±Г®ГµГ°Г Г­ГҐГ­Г».', -1)
+    inicfg.save(cfg, 'medick/config.ini') -- Г±Г®ГµГ°Г Г­ГїГҐГ¬ ГўГ±ГҐ Г­Г®ГўГ»ГҐ Г§Г­Г Г·ГҐГ­ГЁГї Гў ГЄГ®Г­ГґГЁГЈГҐ
     end
     imgui.End()
    end
@@ -2171,7 +2171,7 @@ function imgui.OnDrawFrame()
                 local iScreenWidth, iScreenHeight = getScreenResolution()
                 imgui.SetNextWindowPos(imgui.ImVec2(iScreenWidth / 2, iScreenHeight / 2), imgui.Cond.FirstUseEver, imgui.ImVec2(0.5, 0.5))
                 imgui.SetNextWindowSize(imgui.ImVec2(iScreenWidth/2, iScreenHeight / 2), imgui.Cond.FirstUseEver)
-                imgui.Begin(u8('Medic Tools | Устав больницы'), ystwindow)
+                imgui.Begin(u8('Medic Tools | Г“Г±ГІГ Гў ГЎГ®Г«ГјГ­ГЁГ¶Г»'), ystwindow)
                 for line in io.lines('moonloader\\medick\\ystav.txt') do
                     imgui.TextWrapped(u8(line))
                 end
@@ -2189,44 +2189,44 @@ function imgui.OnDrawFrame()
 	imgui.SameLine()
 	imgui.Image(test, imgui.ImVec2(890, 140))
     imgui.Separator()
-	if imgui.Button(u8'Биндер', imgui.ImVec2(50, 30)) then
+	if imgui.Button(u8'ГЃГЁГ­Г¤ГҐГ°', imgui.ImVec2(50, 30)) then
       bMainWindow.v = not bMainWindow.v
     end
 	imgui.SameLine()
-    if imgui.Button(fa.ICON_COGS .. u8' Настройки скрипта', imgui.ImVec2(141, 30)) then
+    if imgui.Button(fa.ICON_COGS .. u8' ГЌГ Г±ГІГ°Г®Г©ГЄГЁ Г±ГЄГ°ГЁГЇГІГ ', imgui.ImVec2(141, 30)) then
       first_window.v = not first_window.v
     end
 	imgui.SameLine()
-    if imgui.Button(fa.ICON_REFRESH .. u8' Перезагрузить скрипт', imgui.ImVec2(155, 30)) then
+    if imgui.Button(fa.ICON_REFRESH .. u8' ГЏГҐГ°ГҐГ§Г ГЈГ°ГіГ§ГЁГІГј Г±ГЄГ°ГЁГЇГІ', imgui.ImVec2(155, 30)) then
       showCursor(false)
       thisScript():reload()
     end
 	imgui.SameLine()
-    if imgui.Button(fa.ICON_WRENCH .. u8' Информация о обновлениях', imgui.ImVec2(192, 30)) then
+    if imgui.Button(fa.ICON_WRENCH .. u8' Г€Г­ГґГ®Г°Г¬Г Г¶ГЁГї Г® Г®ГЎГ­Г®ГўГ«ГҐГ­ГЁГїГµ', imgui.ImVec2(192, 30)) then
       obnova.v = not obnova.v
     end
 	imgui.SameLine()
-    if imgui.Button(fa.ICON_INFO .. u8 ' Помощь', imgui.ImVec2(70, 30)) then
+    if imgui.Button(fa.ICON_INFO .. u8 ' ГЏГ®Г¬Г®Г№Гј', imgui.ImVec2(70, 30)) then
       helps.v = not helps.v
     end
 	imgui.SameLine()
-    if imgui.Button(fa.ICON_LINE_CHART .. u8' Система повышений', imgui.ImVec2(155, 30)) then os.execute('explorer "https://evolve-rp.su/index.php?threads/283444/"')
+    if imgui.Button(fa.ICON_LINE_CHART .. u8' Г‘ГЁГ±ГІГҐГ¬Г  ГЇГ®ГўГ»ГёГҐГ­ГЁГ©', imgui.ImVec2(155, 30)) then os.execute('explorer "https://evolve-rp.su/index.php?threads/283444/"')
     btn_size = not btn_size
     end
 	imgui.SameLine()
-    if imgui.Button(fa.ICON_BOOK .. u8' Устав', imgui.ImVec2(70, 30)) then os.execute('explorer "https://evolve-rp.su/index.php?threads/285201/"')
+    if imgui.Button(fa.ICON_BOOK .. u8' Г“Г±ГІГ Гў', imgui.ImVec2(70, 30)) then os.execute('explorer "https://evolve-rp.su/index.php?threads/285201/"')
     btn_size = not btn_size
     end
 	imgui.Separator()
-	imgui.BeginChild("Информация", imgui.ImVec2(410, 150), true)
-	imgui.Text(u8 'Имя и Фамилия:   '..sampGetPlayerNickname(myid):gsub('_', ' ')..'')
-	imgui.Text(u8 'Должность:') imgui.SameLine() imgui.Text(u8(rank))
-	imgui.Text(u8 'Номер телефона:   '..tel..'')
+	imgui.BeginChild("Г€Г­ГґГ®Г°Г¬Г Г¶ГЁГї", imgui.ImVec2(410, 150), true)
+	imgui.Text(u8 'Г€Г¬Гї ГЁ Г”Г Г¬ГЁГ«ГЁГї:   '..sampGetPlayerNickname(myid):gsub('_', ' ')..'')
+	imgui.Text(u8 'Г„Г®Г«Г¦Г­Г®Г±ГІГј:') imgui.SameLine() imgui.Text(u8(rank))
+	imgui.Text(u8 'ГЌГ®Г¬ГҐГ° ГІГҐГ«ГҐГґГ®Г­Г :   '..tel..'')
 	if cfg.main.tarb then
-	imgui.Text(u8 'Тег в рацию:') imgui.SameLine() imgui.Text(u8(cfg.main.tarr))
+	imgui.Text(u8 'Г’ГҐГЈ Гў Г°Г Г¶ГЁГѕ:') imgui.SameLine() imgui.Text(u8(cfg.main.tarr))
 	end
 	if cfg.main.clistb then
-	imgui.Text(u8 'Номер бейджика:   '..cfg.main.clist..'')
+	imgui.Text(u8 'ГЌГ®Г¬ГҐГ° ГЎГҐГ©Г¤Г¦ГЁГЄГ :   '..cfg.main.clist..'')
 	end
 	imgui.EndChild()
 	imgui.Separator()
@@ -2235,8 +2235,8 @@ function imgui.OnDrawFrame()
 		--		themes.SwitchColorTheme(i)
 		--	end
 		--end
-	imgui.SetCursorPosX((imgui.GetWindowWidth() - imgui.CalcTextSize(u8("Текущая дата: %s")).x)/1.5)
-	imgui.Text(u8(string.format("Текущая дата: %s", os.date())))
+	imgui.SetCursorPosX((imgui.GetWindowWidth() - imgui.CalcTextSize(u8("Г’ГҐГЄГіГ№Г Гї Г¤Г ГІГ : %s")).x)/1.5)
+	imgui.Text(u8(string.format("Г’ГҐГЄГіГ№Г Гї Г¤Г ГІГ : %s", os.date())))
 	
     imgui.End()
   end
@@ -2250,80 +2250,80 @@ function imgui.OnDrawFrame()
             imgui.Begin('Medic Helper', infbar, imgui.WindowFlags.NoResize + imgui.WindowFlags.NoCollapse + imgui.WindowFlags.NoTitleBar)
             imgui.CentrText('Medic Helper')
             imgui.Separator()
-            imgui.Text((u8"Информация: %s [%s] | Пинг: %s"):format(myname, myid, myping))
-			    imgui.Text((u8 'Время: %s'):format(os.date('%H:%M:%S')))
+            imgui.Text((u8"Г€Г­ГґГ®Г°Г¬Г Г¶ГЁГї: %s [%s] | ГЏГЁГ­ГЈ: %s"):format(myname, myid, myping))
+			    imgui.Text((u8 'Г‚Г°ГҐГ¬Гї: %s'):format(os.date('%H:%M:%S')))
             if valid and doesCharExist(ped) then 
                 local result, id = sampGetPlayerIdByCharHandle(ped)
                 if result then
                     local targetname = sampGetPlayerNickname(id)
                     local targetscore = sampGetPlayerScore(id)
-                    imgui.Text((u8 'Цель: %s [%s] | Уровень: %s'):format(targetname, id, targetscore))
+                    imgui.Text((u8 'Г–ГҐГ«Гј: %s [%s] | Г“Г°Г®ГўГҐГ­Гј: %s'):format(targetname, id, targetscore))
                 else
-                    imgui.Text(u8 'Цель: Нет')
+                    imgui.Text(u8 'Г–ГҐГ«Гј: ГЌГҐГІ')
                 end
             else
-                imgui.Text(u8 'Цель: Нет')
+                imgui.Text(u8 'Г–ГҐГ«Гј: ГЌГҐГІ')
             end
 			local cx, cy, cz = getCharCoordinates(PLAYER_PED)
 			local zcode = getNameOfZone(cx, cy, cz)
-			imgui.Text((u8 'Локация: %s | Квадрат: %s'):format(u8(getZones(zcode)), u8(kvadrat())))
-			imgui.Text((u8 'Вылечено: %s | Вылечено от нарко: %s'):format((health), u8(narkoh)))
+			imgui.Text((u8 'Г‹Г®ГЄГ Г¶ГЁГї: %s | ГЉГўГ Г¤Г°Г ГІ: %s'):format(u8(getZones(zcode)), u8(kvadrat())))
+			imgui.Text((u8 'Г‚Г»Г«ГҐГ·ГҐГ­Г®: %s | Г‚Г»Г«ГҐГ·ГҐГ­Г® Г®ГІ Г­Г Г°ГЄГ®: %s'):format((health), u8(narkoh)))
             inicfg.save(cfg, 'medick/config.ini')
             imgui.End()
         end
     if obnova.v then
                 local iScreenWidth, iScreenHeight = getScreenResolution()
                 imgui.SetNextWindowPos(imgui.ImVec2(iScreenWidth / 2, iScreenHeight / 2), imgui.Cond.FirstUseEver, imgui.ImVec2(7, 3))
-                 imgui.Begin(fa.ICON_WRENCH .. u8'Обновления.', obnova, imgui.WindowFlags.NoResize, imgui.WindowFlags.NoCollapse)
-				imgui.BeginChild("Обновления.", imgui.ImVec2(540, 250), true, imgui.WindowFlags.VerticalScrollbar)
-                imgui.BulletText(u8 'Что было сделано:')
+                 imgui.Begin(fa.ICON_WRENCH .. u8'ГЋГЎГ­Г®ГўГ«ГҐГ­ГЁГї.', obnova, imgui.WindowFlags.NoResize, imgui.WindowFlags.NoCollapse)
+				imgui.BeginChild("ГЋГЎГ­Г®ГўГ«ГҐГ­ГЁГї.", imgui.ImVec2(540, 250), true, imgui.WindowFlags.VerticalScrollbar)
+                imgui.BulletText(u8 'Г—ГІГ® ГЎГ»Г«Г® Г±Г¤ГҐГ«Г Г­Г®:')
 				imgui.Separator()
 				imgui.BulletText(u8 'v2.9.2')
-				imgui.BulletText(u8 '1.Команда /z - Для лечения в автомобиле.')
-				imgui.BulletText(u8 '2.Полностью переписана Менюшка Пкм+Z.')
+				imgui.BulletText(u8 '1.ГЉГ®Г¬Г Г­Г¤Г  /z - Г„Г«Гї Г«ГҐГ·ГҐГ­ГЁГї Гў Г ГўГІГ®Г¬Г®ГЎГЁГ«ГҐ.')
+				imgui.BulletText(u8 '2.ГЏГ®Г«Г­Г®Г±ГІГјГѕ ГЇГҐГ°ГҐГЇГЁГ±Г Г­Г  ГЊГҐГ­ГѕГёГЄГ  ГЏГЄГ¬+Z.')
 				imgui.Separator()
 				imgui.BulletText(u8 'v2.9.3')
-				imgui.BulletText(u8 '1.Удалено проктически все что связнано с Medick Helper.')
-                imgui.BulletText(u8 '2.Переработаны задержки всех отыгровок.')
-				imgui.BulletText(u8 '3.Устранены мелкие баги и проблемы с текстом.')
+				imgui.BulletText(u8 '1.Г“Г¤Г Г«ГҐГ­Г® ГЇГ°Г®ГЄГІГЁГ·ГҐГ±ГЄГЁ ГўГ±ГҐ Г·ГІГ® Г±ГўГїГ§Г­Г Г­Г® Г± Medick Helper.')
+                imgui.BulletText(u8 '2.ГЏГҐГ°ГҐГ°Г ГЎГ®ГІГ Г­Г» Г§Г Г¤ГҐГ°Г¦ГЄГЁ ГўГ±ГҐГµ Г®ГІГ»ГЈГ°Г®ГўГ®ГЄ.')
+				imgui.BulletText(u8 '3.Г“Г±ГІГ°Г Г­ГҐГ­Г» Г¬ГҐГ«ГЄГЁГҐ ГЎГ ГЈГЁ ГЁ ГЇГ°Г®ГЎГ«ГҐГ¬Г» Г± ГІГҐГЄГ±ГІГ®Г¬.')
 				imgui.Separator()
 				imgui.BulletText(u8 'v2.9.4')
-				imgui.BulletText(u8 '1.Изменен цвет интерфейса')
+				imgui.BulletText(u8 '1.Г€Г§Г¬ГҐГ­ГҐГ­ Г¶ГўГҐГІ ГЁГ­ГІГҐГ°ГґГҐГ©Г±Г ')
 				imgui.Separator()
 				imgui.BulletText(u8 'v2.9.5')
-				imgui.BulletText(u8 '1.Теперь гл.меню открывается на /mh')
-				imgui.BulletText(u8 '2.Добавлено в меню Пкм+Z меню собеседования')
+				imgui.BulletText(u8 '1.Г’ГҐГЇГҐГ°Гј ГЈГ«.Г¬ГҐГ­Гѕ Г®ГІГЄГ°Г»ГўГ ГҐГІГ±Гї Г­Г  /mh')
+				imgui.BulletText(u8 '2.Г„Г®ГЎГ ГўГ«ГҐГ­Г® Гў Г¬ГҐГ­Гѕ ГЏГЄГ¬+Z Г¬ГҐГ­Гѕ Г±Г®ГЎГҐГ±ГҐГ¤Г®ГўГ Г­ГЁГї')
 				imgui.Separator()
 				imgui.BulletText(u8 'v2.9.7')
-				imgui.BulletText(u8 '1.Переработан полностью /sethud')
+				imgui.BulletText(u8 '1.ГЏГҐГ°ГҐГ°Г ГЎГ®ГІГ Г­ ГЇГ®Г«Г­Г®Г±ГІГјГѕ /sethud')
 				imgui.Separator()
 				imgui.BulletText(u8 'v3.0')
-				imgui.BulletText(u8 '1.Теперь убрано ВСЕ что остовалось от Instructors helper.')
-				imgui.BulletText(u8 '2.В меню Пкм+Z добавлена проверка на вирус.')
-				imgui.BulletText(u8 '3.Добавлены новые лекции и Gov.')
+				imgui.BulletText(u8 '1.Г’ГҐГЇГҐГ°Гј ГіГЎГ°Г Г­Г® Г‚Г‘Г… Г·ГІГ® Г®Г±ГІГ®ГўГ Г«Г®Г±Гј Г®ГІ Instructors helper.')
+				imgui.BulletText(u8 '2.Г‚ Г¬ГҐГ­Гѕ ГЏГЄГ¬+Z Г¤Г®ГЎГ ГўГ«ГҐГ­Г  ГЇГ°Г®ГўГҐГ°ГЄГ  Г­Г  ГўГЁГ°ГіГ±.')
+				imgui.BulletText(u8 '3.Г„Г®ГЎГ ГўГ«ГҐГ­Г» Г­Г®ГўГ»ГҐ Г«ГҐГЄГ¶ГЁГЁ ГЁ Gov.')
 				imgui.Separator()
 				imgui.BulletText(u8 'v3.2')
-				imgui.BulletText(u8 '1.Возвращена настройка задержки в Настройках скрипта.')
-				imgui.BulletText(u8 '2.Добавлены новые лекции и методы лечения.')
-				imgui.BulletText(u8 '3.Доработаны задержки.')
+				imgui.BulletText(u8 '1.Г‚Г®Г§ГўГ°Г Г№ГҐГ­Г  Г­Г Г±ГІГ°Г®Г©ГЄГ  Г§Г Г¤ГҐГ°Г¦ГЄГЁ Гў ГЌГ Г±ГІГ°Г®Г©ГЄГ Гµ Г±ГЄГ°ГЁГЇГІГ .')
+				imgui.BulletText(u8 '2.Г„Г®ГЎГ ГўГ«ГҐГ­Г» Г­Г®ГўГ»ГҐ Г«ГҐГЄГ¶ГЁГЁ ГЁ Г¬ГҐГІГ®Г¤Г» Г«ГҐГ·ГҐГ­ГЁГї.')
+				imgui.BulletText(u8 '3.Г„Г®Г°Г ГЎГ®ГІГ Г­Г» Г§Г Г¤ГҐГ°Г¦ГЄГЁ.')
                 imgui.Separator()
 				imgui.BulletText(u8 'v3.8')
-				imgui.BulletText(u8 '1.Добавлены логи "/smslog" и "/rlog".')
-				imgui.BulletText(u8 '2.Полностью изменен интерфейс.')
-				imgui.BulletText(u8 '3.Добавлены новые лекции, мелкие изменения по тексту.')
-				imgui.BulletText(u8 '4.Добавлена кастомизация интерфейса.')
-				imgui.BulletText(u8 '5.Немного изменен Худ.')
+				imgui.BulletText(u8 '1.Г„Г®ГЎГ ГўГ«ГҐГ­Г» Г«Г®ГЈГЁ "/smslog" ГЁ "/rlog".')
+				imgui.BulletText(u8 '2.ГЏГ®Г«Г­Г®Г±ГІГјГѕ ГЁГ§Г¬ГҐГ­ГҐГ­ ГЁГ­ГІГҐГ°ГґГҐГ©Г±.')
+				imgui.BulletText(u8 '3.Г„Г®ГЎГ ГўГ«ГҐГ­Г» Г­Г®ГўГ»ГҐ Г«ГҐГЄГ¶ГЁГЁ, Г¬ГҐГ«ГЄГЁГҐ ГЁГ§Г¬ГҐГ­ГҐГ­ГЁГї ГЇГ® ГІГҐГЄГ±ГІГі.')
+				imgui.BulletText(u8 '4.Г„Г®ГЎГ ГўГ«ГҐГ­Г  ГЄГ Г±ГІГ®Г¬ГЁГ§Г Г¶ГЁГї ГЁГ­ГІГҐГ°ГґГҐГ©Г±Г .')
+				imgui.BulletText(u8 '5.ГЌГҐГ¬Г­Г®ГЈГ® ГЁГ§Г¬ГҐГ­ГҐГ­ Г•ГіГ¤.')
 				imgui.Separator()
 				imgui.BulletText(u8 'v3.8.1')
-				imgui.BulletText(u8 '1.Сделал reboot скрипта на версию v3.7" ')
-				imgui.BulletText(u8 '2.Вернул интерфейс, убрал кастомизацию.')
-				imgui.BulletText(u8 '3.Добавлены новые лекции, изменены отделы.')
-				imgui.BulletText(u8 '4.Исправлен "/smslog".')
-				imgui.BulletText(u8 '5.Исправлен биндер.')
-				imgui.BulletText(u8 '5.Изменен интерфейс.')
+				imgui.BulletText(u8 '1.Г‘Г¤ГҐГ«Г Г« reboot Г±ГЄГ°ГЁГЇГІГ  Г­Г  ГўГҐГ°Г±ГЁГѕ v3.7" ')
+				imgui.BulletText(u8 '2.Г‚ГҐГ°Г­ГіГ« ГЁГ­ГІГҐГ°ГґГҐГ©Г±, ГіГЎГ°Г Г« ГЄГ Г±ГІГ®Г¬ГЁГ§Г Г¶ГЁГѕ.')
+				imgui.BulletText(u8 '3.Г„Г®ГЎГ ГўГ«ГҐГ­Г» Г­Г®ГўГ»ГҐ Г«ГҐГЄГ¶ГЁГЁ, ГЁГ§Г¬ГҐГ­ГҐГ­Г» Г®ГІГ¤ГҐГ«Г».')
+				imgui.BulletText(u8 '4.Г€Г±ГЇГ°Г ГўГ«ГҐГ­ "/smslog".')
+				imgui.BulletText(u8 '5.Г€Г±ГЇГ°Г ГўГ«ГҐГ­ ГЎГЁГ­Г¤ГҐГ°.')
+				imgui.BulletText(u8 '5.Г€Г§Г¬ГҐГ­ГҐГ­ ГЁГ­ГІГҐГ°ГґГҐГ©Г±.')
 				imgui.Separator()
-				imgui.BulletText(u8 'Связь и предложения:')
-				imgui.BulletText(u8('ВК (кликабельно).'))
+				imgui.BulletText(u8 'Г‘ГўГїГ§Гј ГЁ ГЇГ°ГҐГ¤Г«Г®Г¦ГҐГ­ГЁГї:')
+				imgui.BulletText(u8('Г‚ГЉ (ГЄГ«ГЁГЄГ ГЎГҐГ«ГјГ­Г®).'))
 				if imgui.IsItemClicked() then
 				os.execute('explorer https://vk.com/artyom.fomin2016')
 				end
@@ -2334,26 +2334,26 @@ function imgui.OnDrawFrame()
 	if helps.v then
                 local iScreenWidth, iScreenHeight = getScreenResolution()
                 imgui.SetNextWindowPos(imgui.ImVec2(iScreenWidth / 2, iScreenHeight / 2), imgui.Cond.FirstUseEver, imgui.ImVec2(7, 3))
-                imgui.Begin(fa.ICON_INFO .. u8 'Помощь по скрипту.', helps, imgui.WindowFlags.NoResize, imgui.WindowFlags.NoCollapse)
-				imgui.BeginChild("Список команд", imgui.ImVec2(495, 230), true, imgui.WindowFlags.VerticalScrollbar)
-                imgui.BulletText(u8 '/mh - Открыть меню скрипта.')
+                imgui.Begin(fa.ICON_INFO .. u8 'ГЏГ®Г¬Г®Г№Гј ГЇГ® Г±ГЄГ°ГЁГЇГІГі.', helps, imgui.WindowFlags.NoResize, imgui.WindowFlags.NoCollapse)
+				imgui.BeginChild("Г‘ГЇГЁГ±Г®ГЄ ГЄГ®Г¬Г Г­Г¤", imgui.ImVec2(495, 230), true, imgui.WindowFlags.VerticalScrollbar)
+                imgui.BulletText(u8 '/mh - ГЋГІГЄГ°Г»ГІГј Г¬ГҐГ­Гѕ Г±ГЄГ°ГЁГЇГІГ .')
                 imgui.Separator()
-				imgui.BulletText(u8 '/z [id] - Вылечить пациента в авто.')
-				imgui.BulletText(u8 '/vig [id] [Причина] - Выдать выговор по рации.')
-				imgui.BulletText(u8 '/unvig [id] [Причина] - Снять выговор по рации.')
-                imgui.BulletText(u8 '/dmb - Открыть /members в диалоге.')
-				imgui.BulletText(u8 '/oinv[id] - Принять человека в отдел.')
-				imgui.BulletText(u8 '/zinv[id] - Назначить человека Заместителем отдела.')
-				imgui.BulletText(u8 '/ginv[id] - Назначить человека Главой отдела.')
-                imgui.BulletText(u8 '/where [id] - Запросить местоположение по рации.')
-                imgui.BulletText(u8 '/ystav - Открыть устав больницы.')
-				imgui.BulletText(u8 '/smsjob - Вызвать на работу весь мл.состав по смс.')
-                imgui.BulletText(u8 '/dlog - Открыть лог 25 последних сообщений в департамент.')
-				imgui.BulletText(u8 '/sethud - Установить позицию инфо-бара.')
+				imgui.BulletText(u8 '/z [id] - Г‚Г»Г«ГҐГ·ГЁГІГј ГЇГ Г¶ГЁГҐГ­ГІГ  Гў Г ГўГІГ®.')
+				imgui.BulletText(u8 '/vig [id] [ГЏГ°ГЁГ·ГЁГ­Г ] - Г‚Г»Г¤Г ГІГј ГўГ»ГЈГ®ГўГ®Г° ГЇГ® Г°Г Г¶ГЁГЁ.')
+				imgui.BulletText(u8 '/unvig [id] [ГЏГ°ГЁГ·ГЁГ­Г ] - Г‘Г­ГїГІГј ГўГ»ГЈГ®ГўГ®Г° ГЇГ® Г°Г Г¶ГЁГЁ.')
+                imgui.BulletText(u8 '/dmb - ГЋГІГЄГ°Г»ГІГј /members Гў Г¤ГЁГ Г«Г®ГЈГҐ.')
+				imgui.BulletText(u8 '/oinv[id] - ГЏГ°ГЁГ­ГїГІГј Г·ГҐГ«Г®ГўГҐГЄГ  Гў Г®ГІГ¤ГҐГ«.')
+				imgui.BulletText(u8 '/zinv[id] - ГЌГ Г§Г­Г Г·ГЁГІГј Г·ГҐГ«Г®ГўГҐГЄГ  Г‡Г Г¬ГҐГ±ГІГЁГІГҐГ«ГҐГ¬ Г®ГІГ¤ГҐГ«Г .')
+				imgui.BulletText(u8 '/ginv[id] - ГЌГ Г§Г­Г Г·ГЁГІГј Г·ГҐГ«Г®ГўГҐГЄГ  ГѓГ«Г ГўГ®Г© Г®ГІГ¤ГҐГ«Г .')
+                imgui.BulletText(u8 '/where [id] - Г‡Г ГЇГ°Г®Г±ГЁГІГј Г¬ГҐГ±ГІГ®ГЇГ®Г«Г®Г¦ГҐГ­ГЁГҐ ГЇГ® Г°Г Г¶ГЁГЁ.')
+                imgui.BulletText(u8 '/ystav - ГЋГІГЄГ°Г»ГІГј ГіГ±ГІГ Гў ГЎГ®Г«ГјГ­ГЁГ¶Г».')
+				imgui.BulletText(u8 '/smsjob - Г‚Г»Г§ГўГ ГІГј Г­Г  Г°Г ГЎГ®ГІГі ГўГҐГ±Гј Г¬Г«.Г±Г®Г±ГІГ Гў ГЇГ® Г±Г¬Г±.')
+                imgui.BulletText(u8 '/dlog - ГЋГІГЄГ°Г»ГІГј Г«Г®ГЈ 25 ГЇГ®Г±Г«ГҐГ¤Г­ГЁГµ Г±Г®Г®ГЎГ№ГҐГ­ГЁГ© Гў Г¤ГҐГЇГ Г°ГІГ Г¬ГҐГ­ГІ.')
+				imgui.BulletText(u8 '/sethud - Г“Г±ГІГ Г­Г®ГўГЁГІГј ГЇГ®Г§ГЁГ¶ГЁГѕ ГЁГ­ГґГ®-ГЎГ Г°Г .')
 				imgui.Separator()
-                imgui.BulletText(u8 'Клавиши: ')
-                imgui.BulletText(u8 'ПКМ+Z на игрока - Меню взаимодействия.')
-                imgui.BulletText(u8 'F2 - "Быстрое меню."')
+                imgui.BulletText(u8 'ГЉГ«Г ГўГЁГёГЁ: ')
+                imgui.BulletText(u8 'ГЏГЉГЊ+Z Г­Г  ГЁГЈГ°Г®ГЄГ  - ГЊГҐГ­Гѕ ГўГ§Г ГЁГ¬Г®Г¤ГҐГ©Г±ГІГўГЁГї.')
+                imgui.BulletText(u8 'F2 - "ГЃГ»Г±ГІГ°Г®ГҐ Г¬ГҐГ­Гѕ."')
 				imgui.EndChild()
                 imgui.End()
     end
@@ -2365,8 +2365,8 @@ function imgui.OnDrawFrame()
                 local iScreenWidth, iScreenHeight = getScreenResolution()
                 imgui.SetNextWindowPos(imgui.ImVec2(iScreenWidth / 2, iScreenHeight / 2), imgui.Cond.FirstUseEver, imgui.ImVec2(0.5, 0.5))
                 imgui.SetNextWindowSize(imgui.ImVec2(700, 330), imgui.Cond.FirstUseEver)
-                imgui.Begin(u8('Medic Tools | Обновление'), updwindows, imgui.WindowFlags.NoCollapse + imgui.WindowFlags.NoResize)
-                imgui.Text(u8('Вышло обновление скрипта Medic Tools до версии '..updversion..'. Что бы обновиться нажмите кнопку внизу.'))
+                imgui.Begin(u8('Medic Tools | ГЋГЎГ­Г®ГўГ«ГҐГ­ГЁГҐ'), updwindows, imgui.WindowFlags.NoCollapse + imgui.WindowFlags.NoResize)
+                imgui.Text(u8('Г‚Г»ГёГ«Г® Г®ГЎГ­Г®ГўГ«ГҐГ­ГЁГҐ Г±ГЄГ°ГЁГЇГІГ  Medic Tools Г¤Г® ГўГҐГ°Г±ГЁГЁ '..updversion..'. Г—ГІГ® ГЎГ» Г®ГЎГ­Г®ГўГЁГІГјГ±Гї Г­Г Г¦Г¬ГЁГІГҐ ГЄГ­Г®ГЇГЄГі ГўГ­ГЁГ§Гі.'))
                 imgui.Separator()
                 imgui.BeginChild("uuupdate", imgui.ImVec2(690, 200))
                 for line in ttt:gmatch('[^\r\n]+') do
@@ -2375,12 +2375,12 @@ function imgui.OnDrawFrame()
                 imgui.EndChild()
                 imgui.Separator()
                 imgui.PushItemWidth(305)
-                if imgui.Button(u8("Обновить"), imgui.ImVec2(339, 25)) then
+                if imgui.Button(u8("ГЋГЎГ­Г®ГўГЁГІГј"), imgui.ImVec2(339, 25)) then
                     lua_thread.create(goupdate)
                     updwindows.v = false
                 end
                 imgui.SameLine()
-                if imgui.Button(u8("Отложить обновление"), imgui.ImVec2(339, 25)) then
+                if imgui.Button(u8("ГЋГІГ«Г®Г¦ГЁГІГј Г®ГЎГ­Г®ГўГ«ГҐГ­ГЁГҐ"), imgui.ImVec2(339, 25)) then
                     updwindows.v = false
                 end
                 imgui.End()
@@ -2393,7 +2393,7 @@ function imgui.OnDrawFrame()
    imgui.SetNextWindowPos(imgui.ImVec2(iScreenWidth / 2, iScreenHeight / 2), imgui.Cond.FirstUseEver, imgui.ImVec2(0.5, 0.5))
    imgui.SetNextWindowSize(imgui.ImVec2(800, 530), imgui.Cond.FirstUseEver)
 
-   imgui.Begin(u8("IT | Биндер##main"), bMainWindow, imgui.WindowFlags.NoCollapse + imgui.WindowFlags.NoResize)
+   imgui.Begin(u8("IT | ГЃГЁГ­Г¤ГҐГ°##main"), bMainWindow, imgui.WindowFlags.NoCollapse + imgui.WindowFlags.NoResize)
 	imgui.BeginChild("##bindlist", imgui.ImVec2(795, 442))
 	for k, v in ipairs(tBindList) do
 		if hk.HotKey("##HK" .. k, v, tLastKeys, 100) then
@@ -2412,7 +2412,7 @@ function imgui.OnDrawFrame()
 			if sText:len() > 0 then
 				imgui.Text(u8(sText))
 			else
-				imgui.TextDisabled(u8("Пустое сообщение ..."))
+				imgui.TextDisabled(u8("ГЏГіГ±ГІГ®ГҐ Г±Г®Г®ГЎГ№ГҐГ­ГЁГҐ ..."))
 			end
 			imgui.EndChild()
 			if imgui.IsItemClicked() then
@@ -2428,7 +2428,7 @@ function imgui.OnDrawFrame()
 			imgui.PopItemWidth()
 			imgui.PopAllowKeyboardFocus()
 			imgui.SameLine()
-			imgui.Checkbox(u8("Ввод") .. "##editCH" .. k, bIsEnterEdit)
+			imgui.Checkbox(u8("Г‚ГўГ®Г¤") .. "##editCH" .. k, bIsEnterEdit)
 			if save then
 				tBindList[tEditData.id].text = u8:decode(sInputEdit.v) .. (bIsEnterEdit.v and "[enter]" or "")
 				tEditData.id = -1
@@ -2443,7 +2443,7 @@ function imgui.OnDrawFrame()
 
 	imgui.Separator()
 
-	if imgui.Button(u8"Добавить клавишу") then
+	if imgui.Button(u8"Г„Г®ГЎГ ГўГЁГІГј ГЄГ«Г ГўГЁГёГі") then
 		tBindList[#tBindList + 1] = {text = "", v = {}}
 	end
 
@@ -2469,7 +2469,7 @@ function onHotKey(id, keys)
 	end
 end
 
-function showHelp(param) -- "вопросик" для скрипта
+function showHelp(param) -- "ГўГ®ГЇГ°Г®Г±ГЁГЄ" Г¤Г«Гї Г±ГЄГ°ГЁГЇГІГ 
     imgui.TextDisabled('(?)')
     if imgui.IsItemHovered() then
         imgui.BeginTooltip()
@@ -2513,12 +2513,12 @@ addEventHandler("onWindowMessage", function (msg, wparam, lparam)
 end)
 
 function submenus_show(menu, caption, select_button, close_button, back_button)
-    select_button, close_button, back_button = select_button or '»', close_button or 'x', back_button or '«'
+    select_button, close_button, back_button = select_button or 'В»', close_button or 'x', back_button or 'В«'
     prev_menus = {}
     function display(menu, id, caption)
         local string_list = {}
         for i, v in ipairs(menu) do
-            table.insert(string_list, type(v.submenu) == 'table' and v.title .. ' »' or v.title)
+            table.insert(string_list, type(v.submenu) == 'table' and v.title .. ' В»' or v.title)
         end
         sampShowDialog(id, caption, table.concat(string_list, '\n'), select_button, (#prev_menus > 0) and back_button or close_button, sf.DIALOG_STYLE_LIST)
         repeat
@@ -2560,7 +2560,7 @@ function r(pam)
             sampSendChat(string.format('/r %s', pam))
         end
     else
-        ftext('Введите /r [текст].')
+        ftext('Г‚ГўГҐГ¤ГЁГІГҐ /r [ГІГҐГЄГ±ГІ].')
     end
 end
 function ftext(message)
@@ -2601,84 +2601,84 @@ function pkmmenu(id)
     return
     {
       {
-        title = "{80a4bf}»{ffffff} Меню врача.",
+        title = "{80a4bf}В»{ffffff} ГЊГҐГ­Гѕ ГўГ°Г Г·Г .",
         onclick = function()
         pID = tonumber(args)
         submenus_show(instmenu(id), "{9966cc}Medick Helper {ffffff}| {"..color.."}"..sampGetPlayerNickname(id).."["..id.."] ")
         end
       },
       {
-        title = "{80a4bf}» {ffffff}Вылечить",
+        title = "{80a4bf}В» {ffffff}Г‚Г»Г«ГҐГ·ГЁГІГј",
         onclick = function()
         pID = tonumber(args)
         submenus_show(oformenu(id), "{9966cc}Medick Helper {ffffff}| {"..color.."}"..sampGetPlayerNickname(id).."["..id.."] ")
         end
       },
 	  {
-        title = "{80a4bf}» {ffffff}Призыв меню.",
+        title = "{80a4bf}В» {ffffff}ГЏГ°ГЁГ§Г»Гў Г¬ГҐГ­Гѕ.",
         onclick = function()
         pID = tonumber(args)
         submenus_show(priziv(id), "{9966cc}Medick Helper {ffffff}| {"..color.."}"..sampGetPlayerNickname(id).."["..id.."] ")
         end
       },
 	  {
-        title = "{80a4bf}» {ffffff}Выдача справки в ПД",
+        title = "{80a4bf}В» {ffffff}Г‚Г»Г¤Г Г·Г  Г±ГЇГ°Г ГўГЄГЁ Гў ГЏГ„",
         onclick = function()
-		if cfg.main.male == false then --- Женская отыгровка
-	    sampSendChat("/me достает чистый бланк")
+		if cfg.main.male == false then --- Г†ГҐГ­Г±ГЄГ Гї Г®ГІГ»ГЈГ°Г®ГўГЄГ 
+	    sampSendChat("/me Г¤Г®Г±ГІГ ГҐГІ Г·ГЁГ±ГІГ»Г© ГЎГ«Г Г­ГЄ")
         wait(cfg.commands.zaderjka * 1000)
-	    sampSendChat("/me достаёт ручку из нагрудного кармана")
+	    sampSendChat("/me Г¤Г®Г±ГІГ ВёГІ Г°ГіГ·ГЄГі ГЁГ§ Г­Г ГЈГ°ГіГ¤Г­Г®ГЈГ® ГЄГ Г°Г¬Г Г­Г ")
         wait(cfg.commands.zaderjka * 1000)
-	    sampSendChat("Страдаете ли вы какими-либо заболеваниями?")
+	    sampSendChat("Г‘ГІГ°Г Г¤Г ГҐГІГҐ Г«ГЁ ГўГ» ГЄГ ГЄГЁГ¬ГЁ-Г«ГЁГЎГ® Г§Г ГЎГ®Г«ГҐГўГ Г­ГЁГїГ¬ГЁ?")
         wait(cfg.commands.zaderjka * 1000)
-	    sampSendChat("/me сделала пометку в бланке")
+	    sampSendChat("/me Г±Г¤ГҐГ«Г Г«Г  ГЇГ®Г¬ГҐГІГЄГі Гў ГЎГ«Г Г­ГЄГҐ")
         wait(cfg.commands.zaderjka * 1000)
-	    sampSendChat("/me поставила печать Годен")
+	    sampSendChat("/me ГЇГ®Г±ГІГ ГўГЁГ«Г  ГЇГҐГ·Г ГІГј ГѓГ®Г¤ГҐГ­")
         wait(cfg.commands.zaderjka * 1000)
-	    sampSendChat("/do Мед.карта в руках")
+	    sampSendChat("/do ГЊГҐГ¤.ГЄГ Г°ГІГ  Гў Г°ГіГЄГ Гµ")
         wait(cfg.commands.zaderjka * 1000)
-	    sampSendChat("/me передала мед.карту")
+	    sampSendChat("/me ГЇГҐГ°ГҐГ¤Г Г«Г  Г¬ГҐГ¤.ГЄГ Г°ГІГі")
 		end
-		if cfg.main.male == true then --- Мужская отыгровка
-	    sampSendChat("/me достает чистый бланк")
+		if cfg.main.male == true then --- ГЊГіГ¦Г±ГЄГ Гї Г®ГІГ»ГЈГ°Г®ГўГЄГ 
+	    sampSendChat("/me Г¤Г®Г±ГІГ ГҐГІ Г·ГЁГ±ГІГ»Г© ГЎГ«Г Г­ГЄ")
         wait(cfg.commands.zaderjka * 1000)
-	    sampSendChat("/me достаёт ручку из нагрудного кармана")
+	    sampSendChat("/me Г¤Г®Г±ГІГ ВёГІ Г°ГіГ·ГЄГі ГЁГ§ Г­Г ГЈГ°ГіГ¤Г­Г®ГЈГ® ГЄГ Г°Г¬Г Г­Г ")
         wait(cfg.commands.zaderjka * 1000)
-	    sampSendChat("Страдаете ли вы какими-либо заболеваниями?")
+	    sampSendChat("Г‘ГІГ°Г Г¤Г ГҐГІГҐ Г«ГЁ ГўГ» ГЄГ ГЄГЁГ¬ГЁ-Г«ГЁГЎГ® Г§Г ГЎГ®Г«ГҐГўГ Г­ГЁГїГ¬ГЁ?")
         wait(cfg.commands.zaderjka * 1000)
-	    sampSendChat("/me сделал пометку в бланке")
+	    sampSendChat("/me Г±Г¤ГҐГ«Г Г« ГЇГ®Г¬ГҐГІГЄГі Гў ГЎГ«Г Г­ГЄГҐ")
         wait(cfg.commands.zaderjka * 1000)
-	    sampSendChat("/me поставил печать Годен")
+	    sampSendChat("/me ГЇГ®Г±ГІГ ГўГЁГ« ГЇГҐГ·Г ГІГј ГѓГ®Г¤ГҐГ­")
         wait(cfg.commands.zaderjka * 1000)
-	    sampSendChat("/do Мед.карта в руках")
+	    sampSendChat("/do ГЊГҐГ¤.ГЄГ Г°ГІГ  Гў Г°ГіГЄГ Гµ")
         wait(cfg.commands.zaderjka * 1000)
-	    sampSendChat("/me передал мед.карту")
+	    sampSendChat("/me ГЇГҐГ°ГҐГ¤Г Г« Г¬ГҐГ¤.ГЄГ Г°ГІГі")
 		end
 		end
       },
 	  {
-        title = "{ffffff}» Меню рентгена, порезов, переломов.",
+        title = "{ffffff}В» ГЊГҐГ­Гѕ Г°ГҐГ­ГІГЈГҐГ­Г , ГЇГ®Г°ГҐГ§Г®Гў, ГЇГҐГ°ГҐГ«Г®Г¬Г®Гў.",
         onclick = function()
         pID = tonumber(args)
         submenus_show(renmenu(id), "{9966cc}Medic Helper {ffffff}| {"..color.."}"..sampGetPlayerNickname(id).."["..id.."] ")
         end
       },
 	  {
-        title = "{ffffff}» Медицинский осмотр.",
+        title = "{ffffff}В» ГЊГҐГ¤ГЁГ¶ГЁГ­Г±ГЄГЁГ© Г®Г±Г¬Г®ГІГ°.",
         onclick = function()
         pID = tonumber(args)
         submenus_show(medosmotr(id), "{9966cc}Medic Helper {ffffff}| {"..color.."}"..sampGetPlayerNickname(id).."["..id.."] ")
         end
       },
 	  {
-        title = "{ffffff}» Первая мед.помощь.",
+        title = "{ffffff}В» ГЏГҐГ°ГўГ Гї Г¬ГҐГ¤.ГЇГ®Г¬Г®Г№Гј.",
         onclick = function()
         pID = tonumber(args)
         submenus_show(medpomosh(id), "{9966cc}Medic Helper {ffffff}| {"..color.."}"..sampGetPlayerNickname(id).."["..id.."] ")
         end
       },
 	  {
-        title = "{ffffff}» Раздел операций",
+        title = "{ffffff}В» ГђГ Г§Г¤ГҐГ« Г®ГЇГҐГ°Г Г¶ГЁГ©",
         onclick = function()
         pID = tonumber(args)
         submenus_show(operacia(id), "{9966cc}Medic Helper {ffffff}| {"..color.."}"..sampGetPlayerNickname(id).."["..id.."] ")
@@ -2690,93 +2690,93 @@ function ustav(id)
     return
     {
       {
-        title = '{5b83c2}« Раздел устава. »',
+        title = '{5b83c2}В« ГђГ Г§Г¤ГҐГ« ГіГ±ГІГ ГўГ . В»',
         onclick = function()
         end
       },
       {
-        title = '{80a4bf}» {ffffff}Сколько минут дается сотруднику, чтобы прибыть на работу и переодеться в рабочую форму?',
+        title = '{80a4bf}В» {ffffff}Г‘ГЄГ®Г«ГјГЄГ® Г¬ГЁГ­ГіГІ Г¤Г ГҐГІГ±Гї Г±Г®ГІГ°ГіГ¤Г­ГЁГЄГі, Г·ГІГ®ГЎГ» ГЇГ°ГЁГЎГ»ГІГј Г­Г  Г°Г ГЎГ®ГІГі ГЁ ГЇГҐГ°ГҐГ®Г¤ГҐГІГјГ±Гї Гў Г°Г ГЎГ®Г·ГіГѕ ГґГ®Г°Г¬Гі?',
         onclick = function()
-        sampSendChat("Сколько минут дается сотруднику, чтобы прибыть на работу и переодеться в рабочую форму?")
+        sampSendChat("Г‘ГЄГ®Г«ГјГЄГ® Г¬ГЁГ­ГіГІ Г¤Г ГҐГІГ±Гї Г±Г®ГІГ°ГіГ¤Г­ГЁГЄГі, Г·ГІГ®ГЎГ» ГЇГ°ГЁГЎГ»ГІГј Г­Г  Г°Г ГЎГ®ГІГі ГЁ ГЇГҐГ°ГҐГ®Г¤ГҐГІГјГ±Гї Гў Г°Г ГЎГ®Г·ГіГѕ ГґГ®Г°Г¬Гі?")
 		wait(1500)
-		ftext("{FFFFFF}- Правильный ответ: {A52A2A}15 минут.", -1)
+		ftext("{FFFFFF}- ГЏГ°Г ГўГЁГ«ГјГ­Г»Г© Г®ГІГўГҐГІ: {A52A2A}15 Г¬ГЁГ­ГіГІ.", -1)
 		end
       },
       {
-        title = '{80a4bf}» {ffffff}С какой должности разрешено использовать волну департамента в качестве переговоров?',
+        title = '{80a4bf}В» {ffffff}Г‘ ГЄГ ГЄГ®Г© Г¤Г®Г«Г¦Г­Г®Г±ГІГЁ Г°Г Г§Г°ГҐГёГҐГ­Г® ГЁГ±ГЇГ®Г«ГјГ§Г®ГўГ ГІГј ГўГ®Г«Г­Гі Г¤ГҐГЇГ Г°ГІГ Г¬ГҐГ­ГІГ  Гў ГЄГ Г·ГҐГ±ГІГўГҐ ГЇГҐГ°ГҐГЈГ®ГўГ®Г°Г®Гў?',
         onclick = function()
-        sampSendChat("С какой должности разрешено использовать волну департамента в качестве переговоров?")
+        sampSendChat("Г‘ ГЄГ ГЄГ®Г© Г¤Г®Г«Г¦Г­Г®Г±ГІГЁ Г°Г Г§Г°ГҐГёГҐГ­Г® ГЁГ±ГЇГ®Г«ГјГ§Г®ГўГ ГІГј ГўГ®Г«Г­Гі Г¤ГҐГЇГ Г°ГІГ Г¬ГҐГ­ГІГ  Гў ГЄГ Г·ГҐГ±ГІГўГҐ ГЇГҐГ°ГҐГЈГ®ГўГ®Г°Г®Гў?")
 		wait(500)
-		ftext("{FFFFFF}- Правильный ответ: {A52A2A}С должности Мед.Брата.", -1)
+		ftext("{FFFFFF}- ГЏГ°Г ГўГЁГ«ГјГ­Г»Г© Г®ГІГўГҐГІ: {A52A2A}Г‘ Г¤Г®Г«Г¦Г­Г®Г±ГІГЁ ГЊГҐГ¤.ГЃГ°Г ГІГ .", -1)
 		end
       },
 	  {
-        title = '{80a4bf}» {ffffff}С какой должности разрешено выезжать в наземный патруль штата?',
+        title = '{80a4bf}В» {ffffff}Г‘ ГЄГ ГЄГ®Г© Г¤Г®Г«Г¦Г­Г®Г±ГІГЁ Г°Г Г§Г°ГҐГёГҐГ­Г® ГўГ»ГҐГ§Г¦Г ГІГј Гў Г­Г Г§ГҐГ¬Г­Г»Г© ГЇГ ГІГ°ГіГ«Гј ГёГІГ ГІГ ?',
         onclick = function()
-        sampSendChat(" С какой должности разрешено выезжать в наземный патруль штата?")
+        sampSendChat(" Г‘ ГЄГ ГЄГ®Г© Г¤Г®Г«Г¦Г­Г®Г±ГІГЁ Г°Г Г§Г°ГҐГёГҐГ­Г® ГўГ»ГҐГ§Г¦Г ГІГј Гў Г­Г Г§ГҐГ¬Г­Г»Г© ГЇГ ГІГ°ГіГ«Гј ГёГІГ ГІГ ?")
 		wait(1500)
-		ftext("{FFFFFF}- Правильный ответ: {A52A2A}С должности Мед.Брата.", -1)
+		ftext("{FFFFFF}- ГЏГ°Г ГўГЁГ«ГјГ­Г»Г© Г®ГІГўГҐГІ: {A52A2A}Г‘ Г¤Г®Г«Г¦Г­Г®Г±ГІГЁ ГЊГҐГ¤.ГЃГ°Г ГІГ .", -1)
 		end
       },
 	  {
-        title = '{80a4bf}» {ffffff}С какой должности разрешено использовать воздушно-транспортное средство?',
+        title = '{80a4bf}В» {ffffff}Г‘ ГЄГ ГЄГ®Г© Г¤Г®Г«Г¦Г­Г®Г±ГІГЁ Г°Г Г§Г°ГҐГёГҐГ­Г® ГЁГ±ГЇГ®Г«ГјГ§Г®ГўГ ГІГј ГўГ®Г§Г¤ГіГёГ­Г®-ГІГ°Г Г­Г±ГЇГ®Г°ГІГ­Г®ГҐ Г±Г°ГҐГ¤Г±ГІГўГ®?',
         onclick = function()
-        sampSendChat("С какой должности разрешено использовать воздушно-транспортное средство?")
+        sampSendChat("Г‘ ГЄГ ГЄГ®Г© Г¤Г®Г«Г¦Г­Г®Г±ГІГЁ Г°Г Г§Г°ГҐГёГҐГ­Г® ГЁГ±ГЇГ®Г«ГјГ§Г®ГўГ ГІГј ГўГ®Г§Г¤ГіГёГ­Г®-ГІГ°Г Г­Г±ГЇГ®Г°ГІГ­Г®ГҐ Г±Г°ГҐГ¤Г±ГІГўГ®?")
 		wait(1500)
-		ftext("{FFFFFF}- Правильный ответ: {A52A2A}С должности Психолога, по разрешению {ff0000}рук-ва с Доктора.", -1)
+		ftext("{FFFFFF}- ГЏГ°Г ГўГЁГ«ГјГ­Г»Г© Г®ГІГўГҐГІ: {A52A2A}Г‘ Г¤Г®Г«Г¦Г­Г®Г±ГІГЁ ГЏГ±ГЁГµГ®Г«Г®ГЈГ , ГЇГ® Г°Г Г§Г°ГҐГёГҐГ­ГЁГѕ {ff0000}Г°ГіГЄ-ГўГ  Г± Г„Г®ГЄГІГ®Г°Г .", -1)
 		end
       },
 	  {
-        title = '{80a4bf}» {ffffff}Какие заведения запрещено посещать во время рабочего дня?',
+        title = '{80a4bf}В» {ffffff}ГЉГ ГЄГЁГҐ Г§Г ГўГҐГ¤ГҐГ­ГЁГї Г§Г ГЇГ°ГҐГ№ГҐГ­Г® ГЇГ®Г±ГҐГ№Г ГІГј ГўГ® ГўГ°ГҐГ¬Гї Г°Г ГЎГ®Г·ГҐГЈГ® Г¤Г­Гї?',
         onclick = function()
-        sampSendChat("Какие заведения запрещено посещать во время рабочего дня?")
+        sampSendChat("ГЉГ ГЄГЁГҐ Г§Г ГўГҐГ¤ГҐГ­ГЁГї Г§Г ГЇГ°ГҐГ№ГҐГ­Г® ГЇГ®Г±ГҐГ№Г ГІГј ГўГ® ГўГ°ГҐГ¬Гї Г°Г ГЎГ®Г·ГҐГЈГ® Г¤Г­Гї?")
 		wait(1500)
-		ftext("{FFFFFF}- Правильный ответ: {A52A2A}Автобазар, Казино.", -1)
+		ftext("{FFFFFF}- ГЏГ°Г ГўГЁГ«ГјГ­Г»Г© Г®ГІГўГҐГІ: {A52A2A}ГЂГўГІГ®ГЎГ Г§Г Г°, ГЉГ Г§ГЁГ­Г®.", -1)
 		end
       },
 	  {
-        title = '{5b83c2}« Раздел вопросов по медикаментам. »',
+        title = '{5b83c2}В« ГђГ Г§Г¤ГҐГ« ГўГ®ГЇГ°Г®Г±Г®Гў ГЇГ® Г¬ГҐГ¤ГЁГЄГ Г¬ГҐГ­ГІГ Г¬. В»',
         onclick = function()
         end
 	  },
 	  {
-        title = '{80a4bf}» {ffffff}Какие мед.препараты вы выпишите от боли в животе?',
+        title = '{80a4bf}В» {ffffff}ГЉГ ГЄГЁГҐ Г¬ГҐГ¤.ГЇГ°ГҐГЇГ Г°Г ГІГ» ГўГ» ГўГ»ГЇГЁГёГЁГІГҐ Г®ГІ ГЎГ®Г«ГЁ Гў Г¦ГЁГўГ®ГІГҐ?',
         onclick = function()
-        sampSendChat("Какие мед.препараты вы выпишите от боли в животе?")
+        sampSendChat("ГЉГ ГЄГЁГҐ Г¬ГҐГ¤.ГЇГ°ГҐГЇГ Г°Г ГІГ» ГўГ» ГўГ»ГЇГЁГёГЁГІГҐ Г®ГІ ГЎГ®Г«ГЁ Гў Г¦ГЁГўГ®ГІГҐ?")
 		wait(1500)
-		ftext("{FFFFFF}- Правильный ответ: {A52A2A}Но-шпа, Дротаверин, Кеторолак, Спазмалгон, Кетанов.", -1)
+		ftext("{FFFFFF}- ГЏГ°Г ГўГЁГ«ГјГ­Г»Г© Г®ГІГўГҐГІ: {A52A2A}ГЌГ®-ГёГЇГ , Г„Г°Г®ГІГ ГўГҐГ°ГЁГ­, ГЉГҐГІГ®Г°Г®Г«Г ГЄ, Г‘ГЇГ Г§Г¬Г Г«ГЈГ®Г­, ГЉГҐГІГ Г­Г®Гў.", -1)
 		end
       },
 	  {
-        title = '{80a4bf}» {ffffff}Какие мед.препараты вы выпишите при боли в голове?',
+        title = '{80a4bf}В» {ffffff}ГЉГ ГЄГЁГҐ Г¬ГҐГ¤.ГЇГ°ГҐГЇГ Г°Г ГІГ» ГўГ» ГўГ»ГЇГЁГёГЁГІГҐ ГЇГ°ГЁ ГЎГ®Г«ГЁ Гў ГЈГ®Г«Г®ГўГҐ?',
         onclick = function()
-        sampSendChat("Какие мед.препараты вы выпишите при боли в голове?")
+        sampSendChat("ГЉГ ГЄГЁГҐ Г¬ГҐГ¤.ГЇГ°ГҐГЇГ Г°Г ГІГ» ГўГ» ГўГ»ГЇГЁГёГЁГІГҐ ГЇГ°ГЁ ГЎГ®Г«ГЁ Гў ГЈГ®Г«Г®ГўГҐ?")
 		wait(1500)
-		ftext("{FFFFFF}- Правильный ответ: {A52A2A}Аспирин, Анальгин, Цитрамон, Диклофенак, Пенталгин.", -1)
+		ftext("{FFFFFF}- ГЏГ°Г ГўГЁГ«ГјГ­Г»Г© Г®ГІГўГҐГІ: {A52A2A}ГЂГ±ГЇГЁГ°ГЁГ­, ГЂГ­Г Г«ГјГЈГЁГ­, Г–ГЁГІГ°Г Г¬Г®Г­, Г„ГЁГЄГ«Г®ГґГҐГ­Г ГЄ, ГЏГҐГ­ГІГ Г«ГЈГЁГ­.", -1)
 		end
       },
 	  {
-        title = '{80a4bf}» {ffffff}Какие мед.препараты вы выпишите от боли в горле?',
+        title = '{80a4bf}В» {ffffff}ГЉГ ГЄГЁГҐ Г¬ГҐГ¤.ГЇГ°ГҐГЇГ Г°Г ГІГ» ГўГ» ГўГ»ГЇГЁГёГЁГІГҐ Г®ГІ ГЎГ®Г«ГЁ Гў ГЈГ®Г°Г«ГҐ?',
         onclick = function()
-        sampSendChat("Какие мед.препараты вы выпишите от боли в горле?")
+        sampSendChat("ГЉГ ГЄГЁГҐ Г¬ГҐГ¤.ГЇГ°ГҐГЇГ Г°Г ГІГ» ГўГ» ГўГ»ГЇГЁГёГЁГІГҐ Г®ГІ ГЎГ®Г«ГЁ Гў ГЈГ®Г°Г«ГҐ?")
 		wait(1500)
-		ftext("{FFFFFF}- Правильный ответ: {A52A2A}Гексализ, Фалиминт, Стрепсилс.", -1)
+		ftext("{FFFFFF}- ГЏГ°Г ГўГЁГ«ГјГ­Г»Г© Г®ГІГўГҐГІ: {A52A2A}ГѓГҐГЄГ±Г Г«ГЁГ§, Г”Г Г«ГЁГ¬ГЁГ­ГІ, Г‘ГІГ°ГҐГЇГ±ГЁГ«Г±.", -1)
 		end
       },
 	  {
-        title = '{80a4bf}» {ffffff}Какие мед.препараты вы выпишите от температуры?',
+        title = '{80a4bf}В» {ffffff}ГЉГ ГЄГЁГҐ Г¬ГҐГ¤.ГЇГ°ГҐГЇГ Г°Г ГІГ» ГўГ» ГўГ»ГЇГЁГёГЁГІГҐ Г®ГІ ГІГҐГ¬ГЇГҐГ°Г ГІГіГ°Г»?',
         onclick = function()
-        sampSendChat("Какие мед.препараты вы выпишите от температуры?")
+        sampSendChat("ГЉГ ГЄГЁГҐ Г¬ГҐГ¤.ГЇГ°ГҐГЇГ Г°Г ГІГ» ГўГ» ГўГ»ГЇГЁГёГЁГІГҐ Г®ГІ ГІГҐГ¬ГЇГҐГ°Г ГІГіГ°Г»?")
 		wait(1500)
-		ftext("{FFFFFF}- Правильный ответ: {A52A2A}Парацетамол, Нурофен, Ибуклин, Ринза.", -1)
+		ftext("{FFFFFF}- ГЏГ°Г ГўГЁГ«ГјГ­Г»Г© Г®ГІГўГҐГІ: {A52A2A}ГЏГ Г°Г Г¶ГҐГІГ Г¬Г®Г«, ГЌГіГ°Г®ГґГҐГ­, Г€ГЎГіГЄГ«ГЁГ­, ГђГЁГ­Г§Г .", -1)
 		end
       },
 	  {
-        title = '{80a4bf}» {ffffff}Какие мед.препараты вы выпишите при кашле?',
+        title = '{80a4bf}В» {ffffff}ГЉГ ГЄГЁГҐ Г¬ГҐГ¤.ГЇГ°ГҐГЇГ Г°Г ГІГ» ГўГ» ГўГ»ГЇГЁГёГЁГІГҐ ГЇГ°ГЁ ГЄГ ГёГ«ГҐ?',
         onclick = function()
-        sampSendChat("Какие мед.препараты вы выпишите при кашле?")
+        sampSendChat("ГЉГ ГЄГЁГҐ Г¬ГҐГ¤.ГЇГ°ГҐГЇГ Г°Г ГІГ» ГўГ» ГўГ»ГЇГЁГёГЁГІГҐ ГЇГ°ГЁ ГЄГ ГёГ«ГҐ?")
 		wait(1500)
-		ftext("{FFFFFF}- Правильный ответ: {A52A2A}Амбробене, Амброгексал, АЦЦ, Бромгексин, Доктор МОМ.", -1)
+		ftext("{FFFFFF}- ГЏГ°Г ГўГЁГ«ГјГ­Г»Г© Г®ГІГўГҐГІ: {A52A2A}ГЂГ¬ГЎГ°Г®ГЎГҐГ­ГҐ, ГЂГ¬ГЎГ°Г®ГЈГҐГЄГ±Г Г«, ГЂГ–Г–, ГЃГ°Г®Г¬ГЈГҐГЄГ±ГЁГ­, Г„Г®ГЄГІГ®Г° ГЊГЋГЊ.", -1)
 		end
       },
     }
@@ -2801,19 +2801,19 @@ function instmenu(id)
     return
     {
       {
-        title = '{80a4bf}» {ffffff}Приветствие.',
+        title = '{80a4bf}В» {ffffff}ГЏГ°ГЁГўГҐГІГ±ГІГўГЁГҐ.',
         onclick = function()
 		local _, myid = sampGetPlayerIdByCharHandle(PLAYER_PED)
         local myname = sampGetPlayerNickname(myid)
-        sampSendChat("Здравствуйте. Я сотрудник больницы "..myname:gsub('_', ' ')..", чем могу помочь?")
+        sampSendChat("Г‡Г¤Г°Г ГўГ±ГІГўГіГ©ГІГҐ. Гџ Г±Г®ГІГ°ГіГ¤Г­ГЁГЄ ГЎГ®Г«ГјГ­ГЁГ¶Г» "..myname:gsub('_', ' ')..", Г·ГҐГ¬ Г¬Г®ГЈГі ГЇГ®Г¬Г®Г·Гј?")
         wait(1000)
-		sampSendChat('/do На рубашке бейджик с надписью '..rank..' | '..myname:gsub('_', ' ')..'.')
+		sampSendChat('/do ГЌГ  Г°ГіГЎГ ГёГЄГҐ ГЎГҐГ©Г¤Г¦ГЁГЄ Г± Г­Г Г¤ГЇГЁГ±ГјГѕ '..rank..' | '..myname:gsub('_', ' ')..'.')
 		end
       },
 	  {
-        title = '{80a4bf}» {ffffff}Попрощаться с клиентом.',
+        title = '{80a4bf}В» {ffffff}ГЏГ®ГЇГ°Г®Г№Г ГІГјГ±Гї Г± ГЄГ«ГЁГҐГ­ГІГ®Г¬.',
         onclick = function()
-        sampSendChat("Всего вам доброго.")
+        sampSendChat("Г‚Г±ГҐГЈГ® ГўГ Г¬ Г¤Г®ГЎГ°Г®ГЈГ®.")
         end
       }
     }
@@ -2830,116 +2830,116 @@ function oformenu(id)
     return
     {
       {
-        title = '{80a4bf}» {ffffff}Голова',
+        title = '{80a4bf}В» {ffffff}ГѓГ®Г«Г®ГўГ ',
         onclick = function()
-		if cfg.main.male == false then --- Женская отыгровка
-		  sampSendChat("/do Через плечо врача накинута мед. сумка на ремне.")
+		if cfg.main.male == false then --- Г†ГҐГ­Г±ГЄГ Гї Г®ГІГ»ГЈГ°Г®ГўГЄГ 
+		  sampSendChat("/do Г—ГҐГ°ГҐГ§ ГЇГ«ГҐГ·Г® ГўГ°Г Г·Г  Г­Г ГЄГЁГ­ГіГІГ  Г¬ГҐГ¤. Г±ГіГ¬ГЄГ  Г­Г  Г°ГҐГ¬Г­ГҐ.")
           wait(cfg.commands.zaderjka * 1000)
-          sampSendChat("/me достала из мед.сумки лекарство и бутылочку воды")
+          sampSendChat("/me Г¤Г®Г±ГІГ Г«Г  ГЁГ§ Г¬ГҐГ¤.Г±ГіГ¬ГЄГЁ Г«ГҐГЄГ Г°Г±ГІГўГ® ГЁ ГЎГіГІГ»Г«Г®Г·ГЄГі ГўГ®Г¤Г»")
           wait(cfg.commands.zaderjka * 1000)
-          sampSendChat("/do Парацетамол в руке")
+          sampSendChat("/do ГЏГ Г°Г Г¶ГҐГІГ Г¬Г®Г« Гў Г°ГіГЄГҐ")
           wait(cfg.commands.zaderjka * 1000)
-		  sampSendChat('/me передала лекарство и бутылочку воды '..sampGetPlayerNickname(id):gsub('_', ' ')..'')
+		  sampSendChat('/me ГЇГҐГ°ГҐГ¤Г Г«Г  Г«ГҐГЄГ Г°Г±ГІГўГ® ГЁ ГЎГіГІГ»Г«Г®Г·ГЄГі ГўГ®Г¤Г» '..sampGetPlayerNickname(id):gsub('_', ' ')..'')
           wait(1000)
 		  sampSendChat("/heal "..id) 
         end
-        if cfg.main.male == true then --- Мужская отыгровка
-		  sampSendChat("/do Через плечо врача накинута мед. сумка на ремне.")
+        if cfg.main.male == true then --- ГЊГіГ¦Г±ГЄГ Гї Г®ГІГ»ГЈГ°Г®ГўГЄГ 
+		  sampSendChat("/do Г—ГҐГ°ГҐГ§ ГЇГ«ГҐГ·Г® ГўГ°Г Г·Г  Г­Г ГЄГЁГ­ГіГІГ  Г¬ГҐГ¤. Г±ГіГ¬ГЄГ  Г­Г  Г°ГҐГ¬Г­ГҐ.")
           wait(cfg.commands.zaderjka * 1000)
-          sampSendChat("/me достал из мед.сумки лекарство и бутылочку воды")
+          sampSendChat("/me Г¤Г®Г±ГІГ Г« ГЁГ§ Г¬ГҐГ¤.Г±ГіГ¬ГЄГЁ Г«ГҐГЄГ Г°Г±ГІГўГ® ГЁ ГЎГіГІГ»Г«Г®Г·ГЄГі ГўГ®Г¤Г»")
           wait(cfg.commands.zaderjka * 1000)
-          sampSendChat("/do Парацетамол в руке")
+          sampSendChat("/do ГЏГ Г°Г Г¶ГҐГІГ Г¬Г®Г« Гў Г°ГіГЄГҐ")
           wait(cfg.commands.zaderjka * 1000)
-		  sampSendChat('/me передал лекарство и бутылочку воды '..sampGetPlayerNickname(id):gsub('_', ' ')..'')
+		  sampSendChat('/me ГЇГҐГ°ГҐГ¤Г Г« Г«ГҐГЄГ Г°Г±ГІГўГ® ГЁ ГЎГіГІГ»Г«Г®Г·ГЄГі ГўГ®Г¤Г» '..sampGetPlayerNickname(id):gsub('_', ' ')..'')
           wait(1000)
 		  sampSendChat("/heal "..id) 
         end
 		end
       },
       {
-        title = '{80a4bf}» {ffffff}Живот',
+        title = '{80a4bf}В» {ffffff}Г†ГЁГўГ®ГІ',
         onclick = function()
-		if cfg.main.male == false then --- Женская отыгровка
-		  sampSendChat("/do Через плечо врача накинута мед. сумка на ремне.")
+		if cfg.main.male == false then --- Г†ГҐГ­Г±ГЄГ Гї Г®ГІГ»ГЈГ°Г®ГўГЄГ 
+		  sampSendChat("/do Г—ГҐГ°ГҐГ§ ГЇГ«ГҐГ·Г® ГўГ°Г Г·Г  Г­Г ГЄГЁГ­ГіГІГ  Г¬ГҐГ¤. Г±ГіГ¬ГЄГ  Г­Г  Г°ГҐГ¬Г­ГҐ.")
 	      wait(cfg.commands.zaderjka * 1000)
-          sampSendChat("/me достала из мед.сумки лекарство и бутылочку воды")
+          sampSendChat("/me Г¤Г®Г±ГІГ Г«Г  ГЁГ§ Г¬ГҐГ¤.Г±ГіГ¬ГЄГЁ Г«ГҐГЄГ Г°Г±ГІГўГ® ГЁ ГЎГіГІГ»Г«Г®Г·ГЄГі ГўГ®Г¤Г»")
 	      wait(cfg.commands.zaderjka * 1000)
-          sampSendChat("/do Нош-па в руке")
+          sampSendChat("/do ГЌГ®Гё-ГЇГ  Гў Г°ГіГЄГҐ")
 	      wait(cfg.commands.zaderjka * 1000)
-		  sampSendChat('/me передала лекарство и бутылочку воды '..sampGetPlayerNickname(id):gsub('_', ' ')..'')
+		  sampSendChat('/me ГЇГҐГ°ГҐГ¤Г Г«Г  Г«ГҐГЄГ Г°Г±ГІГўГ® ГЁ ГЎГіГІГ»Г«Г®Г·ГЄГі ГўГ®Г¤Г» '..sampGetPlayerNickname(id):gsub('_', ' ')..'')
 	      wait(1000)
 		  sampSendChat("/heal "..id) 
         end
-        if cfg.main.male == true then --- Мужская отыгровка
-		  sampSendChat("/do Через плечо врача накинута мед. сумка на ремне.")
+        if cfg.main.male == true then --- ГЊГіГ¦Г±ГЄГ Гї Г®ГІГ»ГЈГ°Г®ГўГЄГ 
+		  sampSendChat("/do Г—ГҐГ°ГҐГ§ ГЇГ«ГҐГ·Г® ГўГ°Г Г·Г  Г­Г ГЄГЁГ­ГіГІГ  Г¬ГҐГ¤. Г±ГіГ¬ГЄГ  Г­Г  Г°ГҐГ¬Г­ГҐ.")
 	      wait(cfg.commands.zaderjka * 1000)
-          sampSendChat("/me достал из мед.сумки лекарство и бутылочку воды")
+          sampSendChat("/me Г¤Г®Г±ГІГ Г« ГЁГ§ Г¬ГҐГ¤.Г±ГіГ¬ГЄГЁ Г«ГҐГЄГ Г°Г±ГІГўГ® ГЁ ГЎГіГІГ»Г«Г®Г·ГЄГі ГўГ®Г¤Г»")
 	      wait(cfg.commands.zaderjka * 1000)
-          sampSendChat("/do Нош-па в руке")
+          sampSendChat("/do ГЌГ®Гё-ГЇГ  Гў Г°ГіГЄГҐ")
 	      wait(cfg.commands.zaderjka * 1000)
-		  sampSendChat('/me передал лекарство и бутылочку воды '..sampGetPlayerNickname(id):gsub('_', ' ')..'')
+		  sampSendChat('/me ГЇГҐГ°ГҐГ¤Г Г« Г«ГҐГЄГ Г°Г±ГІГўГ® ГЁ ГЎГіГІГ»Г«Г®Г·ГЄГі ГўГ®Г¤Г» '..sampGetPlayerNickname(id):gsub('_', ' ')..'')
 	      wait(1000)
 		  sampSendChat("/heal "..id) 
         end
 		end
       },
       {
-        title = '{80a4bf}» {ffffff}Горло',
+        title = '{80a4bf}В» {ffffff}ГѓГ®Г°Г«Г®',
         onclick = function()
-		if cfg.main.male == false then --- Женская отыгровка
-		  sampSendChat("/do Через плечо врача накинута мед. сумка на ремне.")
+		if cfg.main.male == false then --- Г†ГҐГ­Г±ГЄГ Гї Г®ГІГ»ГЈГ°Г®ГўГЄГ 
+		  sampSendChat("/do Г—ГҐГ°ГҐГ§ ГЇГ«ГҐГ·Г® ГўГ°Г Г·Г  Г­Г ГЄГЁГ­ГіГІГ  Г¬ГҐГ¤. Г±ГіГ¬ГЄГ  Г­Г  Г°ГҐГ¬Г­ГҐ.")
 	      wait(cfg.commands.zaderjka * 1000)
-          sampSendChat("/me достала из мед.сумки лекарство и бутылочку воды")
+          sampSendChat("/me Г¤Г®Г±ГІГ Г«Г  ГЁГ§ Г¬ГҐГ¤.Г±ГіГ¬ГЄГЁ Г«ГҐГЄГ Г°Г±ГІГўГ® ГЁ ГЎГіГІГ»Г«Г®Г·ГЄГі ГўГ®Г¤Г»")
 	      wait(cfg.commands.zaderjka * 1000)
-          sampSendChat("/do Стопангин в руке")
+          sampSendChat("/do Г‘ГІГ®ГЇГ Г­ГЈГЁГ­ Гў Г°ГіГЄГҐ")
 	      wait(cfg.commands.zaderjka * 1000)
-		  sampSendChat('/me передала лекарство и бутылочку воды '..sampGetPlayerNickname(id):gsub('_', ' ')..'')
+		  sampSendChat('/me ГЇГҐГ°ГҐГ¤Г Г«Г  Г«ГҐГЄГ Г°Г±ГІГўГ® ГЁ ГЎГіГІГ»Г«Г®Г·ГЄГі ГўГ®Г¤Г» '..sampGetPlayerNickname(id):gsub('_', ' ')..'')
 	      wait(1000)
 		  sampSendChat("/heal "..id) 
 		end
-        if cfg.main.male == true then --- Мужская отыгровка
-		  sampSendChat("/do Через плечо врача накинута мед. сумка на ремне.")
+        if cfg.main.male == true then --- ГЊГіГ¦Г±ГЄГ Гї Г®ГІГ»ГЈГ°Г®ГўГЄГ 
+		  sampSendChat("/do Г—ГҐГ°ГҐГ§ ГЇГ«ГҐГ·Г® ГўГ°Г Г·Г  Г­Г ГЄГЁГ­ГіГІГ  Г¬ГҐГ¤. Г±ГіГ¬ГЄГ  Г­Г  Г°ГҐГ¬Г­ГҐ.")
 	      wait(cfg.commands.zaderjka * 1000)
-          sampSendChat("/me достал из мед.сумки лекарство и бутылочку воды")
+          sampSendChat("/me Г¤Г®Г±ГІГ Г« ГЁГ§ Г¬ГҐГ¤.Г±ГіГ¬ГЄГЁ Г«ГҐГЄГ Г°Г±ГІГўГ® ГЁ ГЎГіГІГ»Г«Г®Г·ГЄГі ГўГ®Г¤Г»")
 	      wait(cfg.commands.zaderjka * 1000)
-          sampSendChat("/do Стопангин в руке")
+          sampSendChat("/do Г‘ГІГ®ГЇГ Г­ГЈГЁГ­ Гў Г°ГіГЄГҐ")
 	      wait(cfg.commands.zaderjka * 1000)
-		  sampSendChat('/me передал лекарство и бутылочку воды '..sampGetPlayerNickname(id):gsub('_', ' ')..'')
+		  sampSendChat('/me ГЇГҐГ°ГҐГ¤Г Г« Г«ГҐГЄГ Г°Г±ГІГўГ® ГЁ ГЎГіГІГ»Г«Г®Г·ГЄГі ГўГ®Г¤Г» '..sampGetPlayerNickname(id):gsub('_', ' ')..'')
 		  wait(1000)
 		  sampSendChat("/heal "..id) 
         end
         end
 		},
 	    {
-        title = '{80a4bf}» {ffffff}Лечение от наркозависимости.',
+        title = '{80a4bf}В» {ffffff}Г‹ГҐГ·ГҐГ­ГЁГҐ Г®ГІ Г­Г Г°ГЄГ®Г§Г ГўГЁГ±ГЁГ¬Г®Г±ГІГЁ.',
         onclick = function()
-		if cfg.main.male == false then --- Женская отыгровка
-		sampSendChat("/do Через плечо врача накинута мед.сумка на ремне.")
+		if cfg.main.male == false then --- Г†ГҐГ­Г±ГЄГ Гї Г®ГІГ»ГЈГ°Г®ГўГЄГ 
+		sampSendChat("/do Г—ГҐГ°ГҐГ§ ГЇГ«ГҐГ·Г® ГўГ°Г Г·Г  Г­Г ГЄГЁГ­ГіГІГ  Г¬ГҐГ¤.Г±ГіГ¬ГЄГ  Г­Г  Г°ГҐГ¬Г­ГҐ.")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me достала из мед.сумки шприц.")
+        sampSendChat("/me Г¤Г®Г±ГІГ Г«Г  ГЁГ§ Г¬ГҐГ¤.Г±ГіГ¬ГЄГЁ ГёГЇГ°ГЁГ¶.")
 	    wait(cfg.commands.zaderjka * 1000)
-		sampSendChat("/do Шприц в левой руке.")
+		sampSendChat("/do ГГЇГ°ГЁГ¶ Гў Г«ГҐГўГ®Г© Г°ГіГЄГҐ.")
 	    wait(cfg.commands.zaderjka * 1000)
-		sampSendChat('/me обработала ватой место укола на вене '..sampGetPlayerNickname(id):gsub('_', ' ')..'')
+		sampSendChat('/me Г®ГЎГ°Г ГЎГ®ГІГ Г«Г  ГўГ ГІГ®Г© Г¬ГҐГ±ГІГ® ГіГЄГ®Г«Г  Г­Г  ГўГҐГ­ГҐ '..sampGetPlayerNickname(id):gsub('_', ' ')..'')
 	    wait(cfg.commands.zaderjka * 1000)
-		sampSendChat('/me аккуратным движением вводит препарат в вену '..sampGetPlayerNickname(id):gsub('_', ' ')..'')
+		sampSendChat('/me Г ГЄГЄГіГ°Г ГІГ­Г»Г¬ Г¤ГўГЁГ¦ГҐГ­ГЁГҐГ¬ ГўГўГ®Г¤ГЁГІ ГЇГ°ГҐГЇГ Г°Г ГІ Гў ГўГҐГ­Гі '..sampGetPlayerNickname(id):gsub('_', ' ')..'')
 	    wait(cfg.commands.zaderjka * 1000)
-		sampSendChat("/todo Ну вот и всё*вытащив шприц из вены и приложив вату к месту укола.")
+		sampSendChat("/todo ГЌГі ГўГ®ГІ ГЁ ГўГ±Вё*ГўГ»ГІГ Г№ГЁГў ГёГЇГ°ГЁГ¶ ГЁГ§ ГўГҐГ­Г» ГЁ ГЇГ°ГЁГ«Г®Г¦ГЁГў ГўГ ГІГі ГЄ Г¬ГҐГ±ГІГі ГіГЄГ®Г«Г .")
         wait(1000)
         sampSendChat("/healaddict " .. id .. "  10000")
 		end
-		if cfg.main.male == true then --- Мужская отыгровка
-		sampSendChat("/do Через плечо врача накинута мед.сумка на ремне.")
+		if cfg.main.male == true then --- ГЊГіГ¦Г±ГЄГ Гї Г®ГІГ»ГЈГ°Г®ГўГЄГ 
+		sampSendChat("/do Г—ГҐГ°ГҐГ§ ГЇГ«ГҐГ·Г® ГўГ°Г Г·Г  Г­Г ГЄГЁГ­ГіГІГ  Г¬ГҐГ¤.Г±ГіГ¬ГЄГ  Г­Г  Г°ГҐГ¬Г­ГҐ.")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me достал из мед.сумки шприц.")
+        sampSendChat("/me Г¤Г®Г±ГІГ Г« ГЁГ§ Г¬ГҐГ¤.Г±ГіГ¬ГЄГЁ ГёГЇГ°ГЁГ¶.")
 	    wait(cfg.commands.zaderjka * 1000)
-		sampSendChat("/do Шприц в левой руке.")
+		sampSendChat("/do ГГЇГ°ГЁГ¶ Гў Г«ГҐГўГ®Г© Г°ГіГЄГҐ.")
 	    wait(cfg.commands.zaderjka * 1000)
-		sampSendChat('/me обработал ватой место укола на вене '..sampGetPlayerNickname(id):gsub('_', ' ')..'')
+		sampSendChat('/me Г®ГЎГ°Г ГЎГ®ГІГ Г« ГўГ ГІГ®Г© Г¬ГҐГ±ГІГ® ГіГЄГ®Г«Г  Г­Г  ГўГҐГ­ГҐ '..sampGetPlayerNickname(id):gsub('_', ' ')..'')
 	    wait(cfg.commands.zaderjka * 1000)
-		sampSendChat('/me аккуратным движением вводит препарат в вену '..sampGetPlayerNickname(id):gsub('_', ' ')..'')
+		sampSendChat('/me Г ГЄГЄГіГ°Г ГІГ­Г»Г¬ Г¤ГўГЁГ¦ГҐГ­ГЁГҐГ¬ ГўГўГ®Г¤ГЁГІ ГЇГ°ГҐГЇГ Г°Г ГІ Гў ГўГҐГ­Гі '..sampGetPlayerNickname(id):gsub('_', ' ')..'')
 	    wait(cfg.commands.zaderjka * 1000)
-		sampSendChat("/todo Ну вот и всё*вытащив шприц из вены и приложив вату к месту укола.")
+		sampSendChat("/todo ГЌГі ГўГ®ГІ ГЁ ГўГ±Вё*ГўГ»ГІГ Г№ГЁГў ГёГЇГ°ГЁГ¶ ГЁГ§ ГўГҐГ­Г» ГЁ ГЇГ°ГЁГ«Г®Г¦ГЁГў ГўГ ГІГі ГЄ Г¬ГҐГ±ГІГі ГіГЄГ®Г«Г .")
         wait(1000)
         sampSendChat("/healaddict " .. id .. "  10000")
 		end
@@ -2951,654 +2951,654 @@ function medpomosh(args)
     return
     {
       {
-        title = '{5b83c2}« При закрытых/открытых переломах: »',
+        title = '{5b83c2}В« ГЏГ°ГЁ Г§Г ГЄГ°Г»ГІГ»Гµ/Г®ГІГЄГ°Г»ГІГ»Гµ ГЇГҐГ°ГҐГ«Г®Г¬Г Гµ: В»',
         onclick = function()
         end
       },
 	  {
-        title = '{5b83c2}« При закрытом переломе руки/ноги: »',
+        title = '{5b83c2}В« ГЏГ°ГЁ Г§Г ГЄГ°Г»ГІГ®Г¬ ГЇГҐГ°ГҐГ«Г®Г¬ГҐ Г°ГіГЄГЁ/Г­Г®ГЈГЁ: В»',
         onclick = function()
         end
       },
 	  {
-        title = '{ffffff}» 1) Для начала вы должны ввести анальгетик через шприц в вену пострадавшего.',
+        title = '{ffffff}В» 1) Г„Г«Гї Г­Г Г·Г Г«Г  ГўГ» Г¤Г®Г«Г¦Г­Г» ГўГўГҐГ±ГІГЁ Г Г­Г Г«ГјГЈГҐГІГЁГЄ Г·ГҐГ°ГҐГ§ ГёГЇГ°ГЁГ¶ Гў ГўГҐГ­Гі ГЇГ®Г±ГІГ°Г Г¤Г ГўГёГҐГЈГ®.',
         onclick = function()
-		if cfg.main.male == false then --- Женская отыгровка
-        sampSendChat("/do Медицинский кейс в руке.")
+		if cfg.main.male == false then --- Г†ГҐГ­Г±ГЄГ Гї Г®ГІГ»ГЈГ°Г®ГўГЄГ 
+        sampSendChat("/do ГЊГҐГ¤ГЁГ¶ГЁГ­Г±ГЄГЁГ© ГЄГҐГ©Г± Гў Г°ГіГЄГҐ.")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me положила медицинский кейс на пол и открыла его")
+        sampSendChat("/me ГЇГ®Г«Г®Г¦ГЁГ«Г  Г¬ГҐГ¤ГЁГ¶ГЁГ­Г±ГЄГЁГ© ГЄГҐГ©Г± Г­Г  ГЇГ®Г« ГЁ Г®ГІГЄГ°Г»Г«Г  ГҐГЈГ®")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/do В кейсе лежат: стерильные шприцы, ампула с анальгетиком, шина, бинты")
+        sampSendChat("/do Г‚ ГЄГҐГ©Г±ГҐ Г«ГҐГ¦Г ГІ: Г±ГІГҐГ°ГЁГ«ГјГ­Г»ГҐ ГёГЇГ°ГЁГ¶Г», Г Г¬ГЇГіГ«Г  Г± Г Г­Г Г«ГјГЈГҐГІГЁГЄГ®Г¬, ГёГЁГ­Г , ГЎГЁГ­ГІГ»")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me достала стерильный шприц с ампулой, аккуратно приоткрыла ампулу с анальгетиком")
+        sampSendChat("/me Г¤Г®Г±ГІГ Г«Г  Г±ГІГҐГ°ГЁГ«ГјГ­Г»Г© ГёГЇГ°ГЁГ¶ Г± Г Г¬ГЇГіГ«Г®Г©, Г ГЄГЄГіГ°Г ГІГ­Г® ГЇГ°ГЁГ®ГІГЄГ°Г»Г«Г  Г Г¬ГЇГіГ«Гі Г± Г Г­Г Г«ГјГЈГҐГІГЁГЄГ®Г¬")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me перелила содержимое ампулы в шприц")
+        sampSendChat("/me ГЇГҐГ°ГҐГ«ГЁГ«Г  Г±Г®Г¤ГҐГ°Г¦ГЁГ¬Г®ГҐ Г Г¬ГЇГіГ«Г» Гў ГёГЇГ°ГЁГ¶")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me закатала рукав пострадавшего, после чего ввёла анальгетик через шприц в вену, вдавив поршень")
+        sampSendChat("/me Г§Г ГЄГ ГІГ Г«Г  Г°ГіГЄГ Гў ГЇГ®Г±ГІГ°Г Г¤Г ГўГёГҐГЈГ®, ГЇГ®Г±Г«ГҐ Г·ГҐГЈГ® ГўГўВёГ«Г  Г Г­Г Г«ГјГЈГҐГІГЁГЄ Г·ГҐГ°ГҐГ§ ГёГЇГ°ГЁГ¶ Гў ГўГҐГ­Гі, ГўГ¤Г ГўГЁГў ГЇГ®Г°ГёГҐГ­Гј")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/do Анальгетик проник в организм пострадавшего.")
+        sampSendChat("/do ГЂГ­Г Г«ГјГЈГҐГІГЁГЄ ГЇГ°Г®Г­ГЁГЄ Гў Г®Г°ГЈГ Г­ГЁГ§Г¬ ГЇГ®Г±ГІГ°Г Г¤Г ГўГёГҐГЈГ®.")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me убрала использованный шприц в медицинскую сумку")
+        sampSendChat("/me ГіГЎГ°Г Г«Г  ГЁГ±ГЇГ®Г«ГјГ§Г®ГўГ Г­Г­Г»Г© ГёГЇГ°ГЁГ¶ Гў Г¬ГҐГ¤ГЁГ¶ГЁГ­Г±ГЄГіГѕ Г±ГіГ¬ГЄГі")
 		end
-		if cfg.main.male == true then --- Мужская отыгровка
-        sampSendChat("/do Медицинский кейс в руке.")
+		if cfg.main.male == true then --- ГЊГіГ¦Г±ГЄГ Гї Г®ГІГ»ГЈГ°Г®ГўГЄГ 
+        sampSendChat("/do ГЊГҐГ¤ГЁГ¶ГЁГ­Г±ГЄГЁГ© ГЄГҐГ©Г± Гў Г°ГіГЄГҐ.")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me положил медицинский кейс на пол и открыл его")
+        sampSendChat("/me ГЇГ®Г«Г®Г¦ГЁГ« Г¬ГҐГ¤ГЁГ¶ГЁГ­Г±ГЄГЁГ© ГЄГҐГ©Г± Г­Г  ГЇГ®Г« ГЁ Г®ГІГЄГ°Г»Г« ГҐГЈГ®")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/do В кейсе лежат: стерильные шприцы, ампула с анальгетиком, шина, бинты")
+        sampSendChat("/do Г‚ ГЄГҐГ©Г±ГҐ Г«ГҐГ¦Г ГІ: Г±ГІГҐГ°ГЁГ«ГјГ­Г»ГҐ ГёГЇГ°ГЁГ¶Г», Г Г¬ГЇГіГ«Г  Г± Г Г­Г Г«ГјГЈГҐГІГЁГЄГ®Г¬, ГёГЁГ­Г , ГЎГЁГ­ГІГ»")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me достал стерильный шприц с ампулой, аккуратно приоткрыл ампулу с анальгетиком")
+        sampSendChat("/me Г¤Г®Г±ГІГ Г« Г±ГІГҐГ°ГЁГ«ГјГ­Г»Г© ГёГЇГ°ГЁГ¶ Г± Г Г¬ГЇГіГ«Г®Г©, Г ГЄГЄГіГ°Г ГІГ­Г® ГЇГ°ГЁГ®ГІГЄГ°Г»Г« Г Г¬ГЇГіГ«Гі Г± Г Г­Г Г«ГјГЈГҐГІГЁГЄГ®Г¬")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me перелил содержимое ампулы в шприц")
+        sampSendChat("/me ГЇГҐГ°ГҐГ«ГЁГ« Г±Г®Г¤ГҐГ°Г¦ГЁГ¬Г®ГҐ Г Г¬ГЇГіГ«Г» Гў ГёГЇГ°ГЁГ¶")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me закатал рукав пострадавшего, после чего ввёл анальгетик через шприц в вену, вдавив поршень")
+        sampSendChat("/me Г§Г ГЄГ ГІГ Г« Г°ГіГЄГ Гў ГЇГ®Г±ГІГ°Г Г¤Г ГўГёГҐГЈГ®, ГЇГ®Г±Г«ГҐ Г·ГҐГЈГ® ГўГўВёГ« Г Г­Г Г«ГјГЈГҐГІГЁГЄ Г·ГҐГ°ГҐГ§ ГёГЇГ°ГЁГ¶ Гў ГўГҐГ­Гі, ГўГ¤Г ГўГЁГў ГЇГ®Г°ГёГҐГ­Гј")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/do Анальгетик проник в организм пострадавшего.")
+        sampSendChat("/do ГЂГ­Г Г«ГјГЈГҐГІГЁГЄ ГЇГ°Г®Г­ГЁГЄ Гў Г®Г°ГЈГ Г­ГЁГ§Г¬ ГЇГ®Г±ГІГ°Г Г¤Г ГўГёГҐГЈГ®.")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me убрал использованный шприц в медицинскую сумку")
+        sampSendChat("/me ГіГЎГ°Г Г« ГЁГ±ГЇГ®Г«ГјГ§Г®ГўГ Г­Г­Г»Г© ГёГЇГ°ГЁГ¶ Гў Г¬ГҐГ¤ГЁГ¶ГЁГ­Г±ГЄГіГѕ Г±ГіГ¬ГЄГі")
 		end
 		end
       },
 	  {
-        title = '{ffffff}» 2) Следует быстро наложить шину.',
+        title = '{ffffff}В» 2) Г‘Г«ГҐГ¤ГіГҐГІ ГЎГ»Г±ГІГ°Г® Г­Г Г«Г®Г¦ГЁГІГј ГёГЁГ­Гі.',
         onclick = function()
-		if cfg.main.male == false then --- Женская отыгровка
-        sampSendChat("/me достала из кейса шину, затем принялась накладывать её на повреждённую конечность")
+		if cfg.main.male == false then --- Г†ГҐГ­Г±ГЄГ Гї Г®ГІГ»ГЈГ°Г®ГўГЄГ 
+        sampSendChat("/me Г¤Г®Г±ГІГ Г«Г  ГЁГ§ ГЄГҐГ©Г±Г  ГёГЁГ­Гі, Г§Г ГІГҐГ¬ ГЇГ°ГЁГ­ГїГ«Г Г±Гј Г­Г ГЄГ«Г Г¤Г»ГўГ ГІГј ГҐВё Г­Г  ГЇГ®ГўГ°ГҐГ¦Г¤ВёГ­Г­ГіГѕ ГЄГ®Г­ГҐГ·Г­Г®Г±ГІГј")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me аккуратно наложила шину на повреждённую конечность")
+        sampSendChat("/me Г ГЄГЄГіГ°Г ГІГ­Г® Г­Г Г«Г®Г¦ГЁГ«Г  ГёГЁГ­Гі Г­Г  ГЇГ®ГўГ°ГҐГ¦Г¤ВёГ­Г­ГіГѕ ГЄГ®Г­ГҐГ·Г­Г®Г±ГІГј")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/do Шина качественно наложена на повреждённую конечность.")
+        sampSendChat("/do ГГЁГ­Г  ГЄГ Г·ГҐГ±ГІГўГҐГ­Г­Г® Г­Г Г«Г®Г¦ГҐГ­Г  Г­Г  ГЇГ®ГўГ°ГҐГ¦Г¤ВёГ­Г­ГіГѕ ГЄГ®Г­ГҐГ·Г­Г®Г±ГІГј.")
 		end
-		if cfg.main.male == true then --- Мужская отыгровка
-        sampSendChat("/me достал из кейса шину, затем принялcz накладывать её на повреждённую конечность")
+		if cfg.main.male == true then --- ГЊГіГ¦Г±ГЄГ Гї Г®ГІГ»ГЈГ°Г®ГўГЄГ 
+        sampSendChat("/me Г¤Г®Г±ГІГ Г« ГЁГ§ ГЄГҐГ©Г±Г  ГёГЁГ­Гі, Г§Г ГІГҐГ¬ ГЇГ°ГЁГ­ГїГ«cz Г­Г ГЄГ«Г Г¤Г»ГўГ ГІГј ГҐВё Г­Г  ГЇГ®ГўГ°ГҐГ¦Г¤ВёГ­Г­ГіГѕ ГЄГ®Г­ГҐГ·Г­Г®Г±ГІГј")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me аккуратно наложил шину на повреждённую конечность")
+        sampSendChat("/me Г ГЄГЄГіГ°Г ГІГ­Г® Г­Г Г«Г®Г¦ГЁГ« ГёГЁГ­Гі Г­Г  ГЇГ®ГўГ°ГҐГ¦Г¤ВёГ­Г­ГіГѕ ГЄГ®Г­ГҐГ·Г­Г®Г±ГІГј")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/do Шина качественно наложена на повреждённую конечность.")
+        sampSendChat("/do ГГЁГ­Г  ГЄГ Г·ГҐГ±ГІГўГҐГ­Г­Г® Г­Г Г«Г®Г¦ГҐГ­Г  Г­Г  ГЇГ®ГўГ°ГҐГ¦Г¤ВёГ­Г­ГіГѕ ГЄГ®Г­ГҐГ·Г­Г®Г±ГІГј.")
 		end
 		end
       },
 	  {
-        title = '{ffffff}» 3) Нужно срочно иммобилизировать повреждённую конечность с помощью косынки.',
+        title = '{ffffff}В» 3) ГЌГіГ¦Г­Г® Г±Г°Г®Г·Г­Г® ГЁГ¬Г¬Г®ГЎГЁГ«ГЁГ§ГЁГ°Г®ГўГ ГІГј ГЇГ®ГўГ°ГҐГ¦Г¤ВёГ­Г­ГіГѕ ГЄГ®Г­ГҐГ·Г­Г®Г±ГІГј Г± ГЇГ®Г¬Г®Г№ГјГѕ ГЄГ®Г±Г»Г­ГЄГЁ.',
         onclick = function()
-		if cfg.main.male == false then --- Женская отыгровка
-        sampSendChat("/me взяла из кейса стерильные бинты и сделала косынку")
+		if cfg.main.male == false then --- Г†ГҐГ­Г±ГЄГ Гї Г®ГІГ»ГЈГ°Г®ГўГЄГ 
+        sampSendChat("/me ГўГ§ГїГ«Г  ГЁГ§ ГЄГҐГ©Г±Г  Г±ГІГҐГ°ГЁГ«ГјГ­Г»ГҐ ГЎГЁГ­ГІГ» ГЁ Г±Г¤ГҐГ«Г Г«Г  ГЄГ®Г±Г»Г­ГЄГі")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me подвесила повреждённую конечность в согнутом положении")
+        sampSendChat("/me ГЇГ®Г¤ГўГҐГ±ГЁГ«Г  ГЇГ®ГўГ°ГҐГ¦Г¤ВёГ­Г­ГіГѕ ГЄГ®Г­ГҐГ·Г­Г®Г±ГІГј Гў Г±Г®ГЈГ­ГіГІГ®Г¬ ГЇГ®Г«Г®Г¦ГҐГ­ГЁГЁ")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/do Повреждённая конечность иммобилизована. ")
+        sampSendChat("/do ГЏГ®ГўГ°ГҐГ¦Г¤ВёГ­Г­Г Гї ГЄГ®Г­ГҐГ·Г­Г®Г±ГІГј ГЁГ¬Г¬Г®ГЎГЁГ«ГЁГ§Г®ГўГ Г­Г . ")
 		end
-		if cfg.main.male == true then --- Мужская отыгровка
-        sampSendChat("/me взял из кейса стерильные бинты и сделал косынку")
+		if cfg.main.male == true then --- ГЊГіГ¦Г±ГЄГ Гї Г®ГІГ»ГЈГ°Г®ГўГЄГ 
+        sampSendChat("/me ГўГ§ГїГ« ГЁГ§ ГЄГҐГ©Г±Г  Г±ГІГҐГ°ГЁГ«ГјГ­Г»ГҐ ГЎГЁГ­ГІГ» ГЁ Г±Г¤ГҐГ«Г Г« ГЄГ®Г±Г»Г­ГЄГі")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me подвесил повреждённую конечность в согнутом положении")
+        sampSendChat("/me ГЇГ®Г¤ГўГҐГ±ГЁГ« ГЇГ®ГўГ°ГҐГ¦Г¤ВёГ­Г­ГіГѕ ГЄГ®Г­ГҐГ·Г­Г®Г±ГІГј Гў Г±Г®ГЈГ­ГіГІГ®Г¬ ГЇГ®Г«Г®Г¦ГҐГ­ГЁГЁ")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/do Повреждённая конечность иммобилизована. ")
+        sampSendChat("/do ГЏГ®ГўГ°ГҐГ¦Г¤ВёГ­Г­Г Гї ГЄГ®Г­ГҐГ·Г­Г®Г±ГІГј ГЁГ¬Г¬Г®ГЎГЁГ«ГЁГ§Г®ГўГ Г­Г . ")
 		end
 		end
       },
 	  {
-        title = '{5b83c2}« При открытом переломе руки/ноги: »',
+        title = '{5b83c2}В« ГЏГ°ГЁ Г®ГІГЄГ°Г»ГІГ®Г¬ ГЇГҐГ°ГҐГ«Г®Г¬ГҐ Г°ГіГЄГЁ/Г­Г®ГЈГЁ: В»',
         onclick = function()
         end
       },
 	  {
-        title = '{ffffff}» 1) Для начала вы должны ввести анальгетик через шприц в вену пострадавшего.',
+        title = '{ffffff}В» 1) Г„Г«Гї Г­Г Г·Г Г«Г  ГўГ» Г¤Г®Г«Г¦Г­Г» ГўГўГҐГ±ГІГЁ Г Г­Г Г«ГјГЈГҐГІГЁГЄ Г·ГҐГ°ГҐГ§ ГёГЇГ°ГЁГ¶ Гў ГўГҐГ­Гі ГЇГ®Г±ГІГ°Г Г¤Г ГўГёГҐГЈГ®.',
         onclick = function()
-		if cfg.main.male == false then --- Женская отыгровка
-        sampSendChat("/do Медицинский кейс в руке.")
+		if cfg.main.male == false then --- Г†ГҐГ­Г±ГЄГ Гї Г®ГІГ»ГЈГ°Г®ГўГЄГ 
+        sampSendChat("/do ГЊГҐГ¤ГЁГ¶ГЁГ­Г±ГЄГЁГ© ГЄГҐГ©Г± Гў Г°ГіГЄГҐ.")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me положила медицинский кейс на пол и открыла его")
+        sampSendChat("/me ГЇГ®Г«Г®Г¦ГЁГ«Г  Г¬ГҐГ¤ГЁГ¶ГЁГ­Г±ГЄГЁГ© ГЄГҐГ©Г± Г­Г  ГЇГ®Г« ГЁ Г®ГІГЄГ°Г»Г«Г  ГҐГЈГ®")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/do В кейсе лежат: стерильные шприцы, ампула с анальгетиком, шина, бинты, антисептик и жгут.")
+        sampSendChat("/do Г‚ ГЄГҐГ©Г±ГҐ Г«ГҐГ¦Г ГІ: Г±ГІГҐГ°ГЁГ«ГјГ­Г»ГҐ ГёГЇГ°ГЁГ¶Г», Г Г¬ГЇГіГ«Г  Г± Г Г­Г Г«ГјГЈГҐГІГЁГЄГ®Г¬, ГёГЁГ­Г , ГЎГЁГ­ГІГ», Г Г­ГІГЁГ±ГҐГЇГІГЁГЄ ГЁ Г¦ГЈГіГІ.")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me достала стерильный шприц с ампулой, аккуратно приоткрыла ампулу с анальгетиком")
+        sampSendChat("/me Г¤Г®Г±ГІГ Г«Г  Г±ГІГҐГ°ГЁГ«ГјГ­Г»Г© ГёГЇГ°ГЁГ¶ Г± Г Г¬ГЇГіГ«Г®Г©, Г ГЄГЄГіГ°Г ГІГ­Г® ГЇГ°ГЁГ®ГІГЄГ°Г»Г«Г  Г Г¬ГЇГіГ«Гі Г± Г Г­Г Г«ГјГЈГҐГІГЁГЄГ®Г¬")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me перелила содержимое ампулы в шприц")
+        sampSendChat("/me ГЇГҐГ°ГҐГ«ГЁГ«Г  Г±Г®Г¤ГҐГ°Г¦ГЁГ¬Г®ГҐ Г Г¬ГЇГіГ«Г» Гў ГёГЇГ°ГЁГ¶")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me закатала рукав пострадавшего, после чего ввёла анальгетик через шприц в вену, вдавив поршень")
+        sampSendChat("/me Г§Г ГЄГ ГІГ Г«Г  Г°ГіГЄГ Гў ГЇГ®Г±ГІГ°Г Г¤Г ГўГёГҐГЈГ®, ГЇГ®Г±Г«ГҐ Г·ГҐГЈГ® ГўГўВёГ«Г  Г Г­Г Г«ГјГЈГҐГІГЁГЄ Г·ГҐГ°ГҐГ§ ГёГЇГ°ГЁГ¶ Гў ГўГҐГ­Гі, ГўГ¤Г ГўГЁГў ГЇГ®Г°ГёГҐГ­Гј")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/do Анальгетик проник в организм пострадавшего.")
+        sampSendChat("/do ГЂГ­Г Г«ГјГЈГҐГІГЁГЄ ГЇГ°Г®Г­ГЁГЄ Гў Г®Г°ГЈГ Г­ГЁГ§Г¬ ГЇГ®Г±ГІГ°Г Г¤Г ГўГёГҐГЈГ®.")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me убрала использованный шприц в медицинскую сумку")
+        sampSendChat("/me ГіГЎГ°Г Г«Г  ГЁГ±ГЇГ®Г«ГјГ§Г®ГўГ Г­Г­Г»Г© ГёГЇГ°ГЁГ¶ Гў Г¬ГҐГ¤ГЁГ¶ГЁГ­Г±ГЄГіГѕ Г±ГіГ¬ГЄГі")
 		end
-		if cfg.main.male == true then --- Мужская отыгровка
-        sampSendChat("/do Медицинский кейс в руке.")
+		if cfg.main.male == true then --- ГЊГіГ¦Г±ГЄГ Гї Г®ГІГ»ГЈГ°Г®ГўГЄГ 
+        sampSendChat("/do ГЊГҐГ¤ГЁГ¶ГЁГ­Г±ГЄГЁГ© ГЄГҐГ©Г± Гў Г°ГіГЄГҐ.")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me положил медицинский кейс на пол и открыл его")
+        sampSendChat("/me ГЇГ®Г«Г®Г¦ГЁГ« Г¬ГҐГ¤ГЁГ¶ГЁГ­Г±ГЄГЁГ© ГЄГҐГ©Г± Г­Г  ГЇГ®Г« ГЁ Г®ГІГЄГ°Г»Г« ГҐГЈГ®")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/do В кейсе лежат: стерильные шприцы, ампула с анальгетиком, шина, бинты, антисептик и жгут.")
+        sampSendChat("/do Г‚ ГЄГҐГ©Г±ГҐ Г«ГҐГ¦Г ГІ: Г±ГІГҐГ°ГЁГ«ГјГ­Г»ГҐ ГёГЇГ°ГЁГ¶Г», Г Г¬ГЇГіГ«Г  Г± Г Г­Г Г«ГјГЈГҐГІГЁГЄГ®Г¬, ГёГЁГ­Г , ГЎГЁГ­ГІГ», Г Г­ГІГЁГ±ГҐГЇГІГЁГЄ ГЁ Г¦ГЈГіГІ.")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me достал стерильный шприц с ампулой, аккуратно приоткрыл ампулу с анальгетиком")
+        sampSendChat("/me Г¤Г®Г±ГІГ Г« Г±ГІГҐГ°ГЁГ«ГјГ­Г»Г© ГёГЇГ°ГЁГ¶ Г± Г Г¬ГЇГіГ«Г®Г©, Г ГЄГЄГіГ°Г ГІГ­Г® ГЇГ°ГЁГ®ГІГЄГ°Г»Г« Г Г¬ГЇГіГ«Гі Г± Г Г­Г Г«ГјГЈГҐГІГЁГЄГ®Г¬")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me перелил содержимое ампулы в шприц")
+        sampSendChat("/me ГЇГҐГ°ГҐГ«ГЁГ« Г±Г®Г¤ГҐГ°Г¦ГЁГ¬Г®ГҐ Г Г¬ГЇГіГ«Г» Гў ГёГЇГ°ГЁГ¶")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me закатал рукав пострадавшего, после чего ввёл анальгетик через шприц в вену, вдавив поршень")
+        sampSendChat("/me Г§Г ГЄГ ГІГ Г« Г°ГіГЄГ Гў ГЇГ®Г±ГІГ°Г Г¤Г ГўГёГҐГЈГ®, ГЇГ®Г±Г«ГҐ Г·ГҐГЈГ® ГўГўВёГ« Г Г­Г Г«ГјГЈГҐГІГЁГЄ Г·ГҐГ°ГҐГ§ ГёГЇГ°ГЁГ¶ Гў ГўГҐГ­Гі, ГўГ¤Г ГўГЁГў ГЇГ®Г°ГёГҐГ­Гј")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/do Анальгетик проник в организм пострадавшего.")
+        sampSendChat("/do ГЂГ­Г Г«ГјГЈГҐГІГЁГЄ ГЇГ°Г®Г­ГЁГЄ Гў Г®Г°ГЈГ Г­ГЁГ§Г¬ ГЇГ®Г±ГІГ°Г Г¤Г ГўГёГҐГЈГ®.")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me убрал использованный шприц в медицинскую сумку")
+        sampSendChat("/me ГіГЎГ°Г Г« ГЁГ±ГЇГ®Г«ГјГ§Г®ГўГ Г­Г­Г»Г© ГёГЇГ°ГЁГ¶ Гў Г¬ГҐГ¤ГЁГ¶ГЁГ­Г±ГЄГіГѕ Г±ГіГ¬ГЄГі")
 		end
 		end
       },
 	  {
-        title = '{ffffff}» 2) Следует быстро наложить жгут, обработать рану антисептиком, наложить шину.',
+        title = '{ffffff}В» 2) Г‘Г«ГҐГ¤ГіГҐГІ ГЎГ»Г±ГІГ°Г® Г­Г Г«Г®Г¦ГЁГІГј Г¦ГЈГіГІ, Г®ГЎГ°Г ГЎГ®ГІГ ГІГј Г°Г Г­Гі Г Г­ГІГЁГ±ГҐГЇГІГЁГЄГ®Г¬, Г­Г Г«Г®Г¦ГЁГІГј ГёГЁГ­Гі.',
         onclick = function()
-		if cfg.main.male == false then --- Женская отыгровка
-        sampSendChat("/me достала из кейса кровоостанавливающий жгут, затем начала накладывать его")
+		if cfg.main.male == false then --- Г†ГҐГ­Г±ГЄГ Гї Г®ГІГ»ГЈГ°Г®ГўГЄГ 
+        sampSendChat("/me Г¤Г®Г±ГІГ Г«Г  ГЁГ§ ГЄГҐГ©Г±Г  ГЄГ°Г®ГўГ®Г®Г±ГІГ Г­Г ГўГ«ГЁГўГ ГѕГ№ГЁГ© Г¦ГЈГіГІ, Г§Г ГІГҐГ¬ Г­Г Г·Г Г«Г  Г­Г ГЄГ«Г Г¤Г»ГўГ ГІГј ГҐГЈГ®")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me наложила жгут поверх раны на повреждённую конечность")
+        sampSendChat("/me Г­Г Г«Г®Г¦ГЁГ«Г  Г¦ГЈГіГІ ГЇГ®ГўГҐГ°Гµ Г°Г Г­Г» Г­Г  ГЇГ®ГўГ°ГҐГ¦Г¤ВёГ­Г­ГіГѕ ГЄГ®Г­ГҐГ·Г­Г®Г±ГІГј")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me достала из кейса спрей с антисептическим средством")
+        sampSendChat("/me Г¤Г®Г±ГІГ Г«Г  ГЁГ§ ГЄГҐГ©Г±Г  Г±ГЇГ°ГҐГ© Г± Г Г­ГІГЁГ±ГҐГЇГІГЁГ·ГҐГ±ГЄГЁГ¬ Г±Г°ГҐГ¤Г±ГІГўГ®Г¬")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me обработала рану антисептическим средством")
+        sampSendChat("/me Г®ГЎГ°Г ГЎГ®ГІГ Г«Г  Г°Г Г­Гі Г Г­ГІГЁГ±ГҐГЇГІГЁГ·ГҐГ±ГЄГЁГ¬ Г±Г°ГҐГ¤Г±ГІГўГ®Г¬")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me убрала спрей в кейс, достала шину")
+        sampSendChat("/me ГіГЎГ°Г Г«Г  Г±ГЇГ°ГҐГ© Гў ГЄГҐГ©Г±, Г¤Г®Г±ГІГ Г«Г  ГёГЁГ­Гі")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me аккуратно наложила шину на повреждённую конечность")
+        sampSendChat("/me Г ГЄГЄГіГ°Г ГІГ­Г® Г­Г Г«Г®Г¦ГЁГ«Г  ГёГЁГ­Гі Г­Г  ГЇГ®ГўГ°ГҐГ¦Г¤ВёГ­Г­ГіГѕ ГЄГ®Г­ГҐГ·Г­Г®Г±ГІГј")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/do Шина качественно наложена на повреждённую конечность.")
+        sampSendChat("/do ГГЁГ­Г  ГЄГ Г·ГҐГ±ГІГўГҐГ­Г­Г® Г­Г Г«Г®Г¦ГҐГ­Г  Г­Г  ГЇГ®ГўГ°ГҐГ¦Г¤ВёГ­Г­ГіГѕ ГЄГ®Г­ГҐГ·Г­Г®Г±ГІГј.")
 		end
-		if cfg.main.male == true then --- Мужская отыгровка
-        sampSendChat("/me достал из кейса кровоостанавливающий жгут, затем начал накладывать его")
+		if cfg.main.male == true then --- ГЊГіГ¦Г±ГЄГ Гї Г®ГІГ»ГЈГ°Г®ГўГЄГ 
+        sampSendChat("/me Г¤Г®Г±ГІГ Г« ГЁГ§ ГЄГҐГ©Г±Г  ГЄГ°Г®ГўГ®Г®Г±ГІГ Г­Г ГўГ«ГЁГўГ ГѕГ№ГЁГ© Г¦ГЈГіГІ, Г§Г ГІГҐГ¬ Г­Г Г·Г Г« Г­Г ГЄГ«Г Г¤Г»ГўГ ГІГј ГҐГЈГ®")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me наложил жгут поверх раны на повреждённую конечность")
+        sampSendChat("/me Г­Г Г«Г®Г¦ГЁГ« Г¦ГЈГіГІ ГЇГ®ГўГҐГ°Гµ Г°Г Г­Г» Г­Г  ГЇГ®ГўГ°ГҐГ¦Г¤ВёГ­Г­ГіГѕ ГЄГ®Г­ГҐГ·Г­Г®Г±ГІГј")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me достал из кейса спрей с антисептическим средством")
+        sampSendChat("/me Г¤Г®Г±ГІГ Г« ГЁГ§ ГЄГҐГ©Г±Г  Г±ГЇГ°ГҐГ© Г± Г Г­ГІГЁГ±ГҐГЇГІГЁГ·ГҐГ±ГЄГЁГ¬ Г±Г°ГҐГ¤Г±ГІГўГ®Г¬")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me обработал рану антисептическим средством")
+        sampSendChat("/me Г®ГЎГ°Г ГЎГ®ГІГ Г« Г°Г Г­Гі Г Г­ГІГЁГ±ГҐГЇГІГЁГ·ГҐГ±ГЄГЁГ¬ Г±Г°ГҐГ¤Г±ГІГўГ®Г¬")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me убрал спрей в кейс, достал шину")
+        sampSendChat("/me ГіГЎГ°Г Г« Г±ГЇГ°ГҐГ© Гў ГЄГҐГ©Г±, Г¤Г®Г±ГІГ Г« ГёГЁГ­Гі")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me аккуратно наложил шину на повреждённую конечность")
+        sampSendChat("/me Г ГЄГЄГіГ°Г ГІГ­Г® Г­Г Г«Г®Г¦ГЁГ« ГёГЁГ­Гі Г­Г  ГЇГ®ГўГ°ГҐГ¦Г¤ВёГ­Г­ГіГѕ ГЄГ®Г­ГҐГ·Г­Г®Г±ГІГј")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/do Шина качественно наложена на повреждённую конечность.")
+        sampSendChat("/do ГГЁГ­Г  ГЄГ Г·ГҐГ±ГІГўГҐГ­Г­Г® Г­Г Г«Г®Г¦ГҐГ­Г  Г­Г  ГЇГ®ГўГ°ГҐГ¦Г¤ВёГ­Г­ГіГѕ ГЄГ®Г­ГҐГ·Г­Г®Г±ГІГј.")
 		end
 		end
       },
 	  {
-        title = '{ffffff}» 3) Следует иммобилизировать повреждённую конечность с помощью косынки.',
+        title = '{ffffff}В» 3) Г‘Г«ГҐГ¤ГіГҐГІ ГЁГ¬Г¬Г®ГЎГЁГ«ГЁГ§ГЁГ°Г®ГўГ ГІГј ГЇГ®ГўГ°ГҐГ¦Г¤ВёГ­Г­ГіГѕ ГЄГ®Г­ГҐГ·Г­Г®Г±ГІГј Г± ГЇГ®Г¬Г®Г№ГјГѕ ГЄГ®Г±Г»Г­ГЄГЁ.',
         onclick = function()
-		if cfg.main.male == false then --- Женская отыгровка
-        sampSendChat("/me взяла из кейса стерильные бинты и начала делать косынку")
+		if cfg.main.male == false then --- Г†ГҐГ­Г±ГЄГ Гї Г®ГІГ»ГЈГ°Г®ГўГЄГ 
+        sampSendChat("/me ГўГ§ГїГ«Г  ГЁГ§ ГЄГҐГ©Г±Г  Г±ГІГҐГ°ГЁГ«ГјГ­Г»ГҐ ГЎГЁГ­ГІГ» ГЁ Г­Г Г·Г Г«Г  Г¤ГҐГ«Г ГІГј ГЄГ®Г±Г»Г­ГЄГі")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me сделала косынку из стерильного бинта")
+        sampSendChat("/me Г±Г¤ГҐГ«Г Г«Г  ГЄГ®Г±Г»Г­ГЄГі ГЁГ§ Г±ГІГҐГ°ГЁГ«ГјГ­Г®ГЈГ® ГЎГЁГ­ГІГ ")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me подвесила повреждённую конечность в согнутом положении")
+        sampSendChat("/me ГЇГ®Г¤ГўГҐГ±ГЁГ«Г  ГЇГ®ГўГ°ГҐГ¦Г¤ВёГ­Г­ГіГѕ ГЄГ®Г­ГҐГ·Г­Г®Г±ГІГј Гў Г±Г®ГЈГ­ГіГІГ®Г¬ ГЇГ®Г«Г®Г¦ГҐГ­ГЁГЁ")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/do Повреждённая конечность иммобилизована.")
+        sampSendChat("/do ГЏГ®ГўГ°ГҐГ¦Г¤ВёГ­Г­Г Гї ГЄГ®Г­ГҐГ·Г­Г®Г±ГІГј ГЁГ¬Г¬Г®ГЎГЁГ«ГЁГ§Г®ГўГ Г­Г .")
 		end
-		if cfg.main.male == true then --- Мужская отыгровка
-        sampSendChat("/me взял из кейса стерильные бинты и начал делать косынку")
+		if cfg.main.male == true then --- ГЊГіГ¦Г±ГЄГ Гї Г®ГІГ»ГЈГ°Г®ГўГЄГ 
+        sampSendChat("/me ГўГ§ГїГ« ГЁГ§ ГЄГҐГ©Г±Г  Г±ГІГҐГ°ГЁГ«ГјГ­Г»ГҐ ГЎГЁГ­ГІГ» ГЁ Г­Г Г·Г Г« Г¤ГҐГ«Г ГІГј ГЄГ®Г±Г»Г­ГЄГі")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me сделал косынку из стерильного бинта")
+        sampSendChat("/me Г±Г¤ГҐГ«Г Г« ГЄГ®Г±Г»Г­ГЄГі ГЁГ§ Г±ГІГҐГ°ГЁГ«ГјГ­Г®ГЈГ® ГЎГЁГ­ГІГ ")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me подвесил повреждённую конечность в согнутом положении")
+        sampSendChat("/me ГЇГ®Г¤ГўГҐГ±ГЁГ« ГЇГ®ГўГ°ГҐГ¦Г¤ВёГ­Г­ГіГѕ ГЄГ®Г­ГҐГ·Г­Г®Г±ГІГј Гў Г±Г®ГЈГ­ГіГІГ®Г¬ ГЇГ®Г«Г®Г¦ГҐГ­ГЁГЁ")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/do Повреждённая конечность иммобилизована.")
+        sampSendChat("/do ГЏГ®ГўГ°ГҐГ¦Г¤ВёГ­Г­Г Гї ГЄГ®Г­ГҐГ·Г­Г®Г±ГІГј ГЁГ¬Г¬Г®ГЎГЁГ«ГЁГ§Г®ГўГ Г­Г .")
 		end
 		end
       },
 	  {
-        title = '{5b83c2}« При ушибах/растяжениях: »',
+        title = '{5b83c2}В« ГЏГ°ГЁ ГіГёГЁГЎГ Гµ/Г°Г Г±ГІГїГ¦ГҐГ­ГЁГїГµ: В»',
         onclick = function()
         end
       },
 	  {
-        title = '{ffffff}» 1) Для начала нужно обработать место ушиба охлаждающим спреем.',
+        title = '{ffffff}В» 1) Г„Г«Гї Г­Г Г·Г Г«Г  Г­ГіГ¦Г­Г® Г®ГЎГ°Г ГЎГ®ГІГ ГІГј Г¬ГҐГ±ГІГ® ГіГёГЁГЎГ  Г®ГµГ«Г Г¦Г¤Г ГѕГ№ГЁГ¬ Г±ГЇГ°ГҐГҐГ¬.',
         onclick = function()
-		if cfg.main.male == false then --- Женская отыгровка
-        sampSendChat("/do Медицинский кейс в руке.")
+		if cfg.main.male == false then --- Г†ГҐГ­Г±ГЄГ Гї Г®ГІГ»ГЈГ°Г®ГўГЄГ 
+        sampSendChat("/do ГЊГҐГ¤ГЁГ¶ГЁГ­Г±ГЄГЁГ© ГЄГҐГ©Г± Гў Г°ГіГЄГҐ.")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me достала из кейса спрей 'Фрост' и обработала ушиб спреем")
+        sampSendChat("/me Г¤Г®Г±ГІГ Г«Г  ГЁГ§ ГЄГҐГ©Г±Г  Г±ГЇГ°ГҐГ© 'Г”Г°Г®Г±ГІ' ГЁ Г®ГЎГ°Г ГЎГ®ГІГ Г«Г  ГіГёГЁГЎ Г±ГЇГ°ГҐГҐГ¬")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/do Место ушиба обработано охлаждающим спреем.")
+        sampSendChat("/do ГЊГҐГ±ГІГ® ГіГёГЁГЎГ  Г®ГЎГ°Г ГЎГ®ГІГ Г­Г® Г®ГµГ«Г Г¦Г¤Г ГѕГ№ГЁГ¬ Г±ГЇГ°ГҐГҐГ¬.")
 		end
-		if cfg.main.male == true then --- Мужская отыгровка
-        sampSendChat("/do Медицинский кейс в руке.")
+		if cfg.main.male == true then --- ГЊГіГ¦Г±ГЄГ Гї Г®ГІГ»ГЈГ°Г®ГўГЄГ 
+        sampSendChat("/do ГЊГҐГ¤ГЁГ¶ГЁГ­Г±ГЄГЁГ© ГЄГҐГ©Г± Гў Г°ГіГЄГҐ.")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me достал из кейса спрей 'Фрост' и обработал ушиб спреем")
+        sampSendChat("/me Г¤Г®Г±ГІГ Г« ГЁГ§ ГЄГҐГ©Г±Г  Г±ГЇГ°ГҐГ© 'Г”Г°Г®Г±ГІ' ГЁ Г®ГЎГ°Г ГЎГ®ГІГ Г« ГіГёГЁГЎ Г±ГЇГ°ГҐГҐГ¬")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/do Место ушиба обработано охлаждающим спреем.")
+        sampSendChat("/do ГЊГҐГ±ГІГ® ГіГёГЁГЎГ  Г®ГЎГ°Г ГЎГ®ГІГ Г­Г® Г®ГµГ«Г Г¦Г¤Г ГѕГ№ГЁГ¬ Г±ГЇГ°ГҐГҐГ¬.")
 		end
 		end
       },
 	  {
-        title = '{ffffff}» 2) Далее нужно наложить на повреждённую конечность эластичный бинт.',
+        title = '{ffffff}В» 2) Г„Г Г«ГҐГҐ Г­ГіГ¦Г­Г® Г­Г Г«Г®Г¦ГЁГІГј Г­Г  ГЇГ®ГўГ°ГҐГ¦Г¤ВёГ­Г­ГіГѕ ГЄГ®Г­ГҐГ·Г­Г®Г±ГІГј ГЅГ«Г Г±ГІГЁГ·Г­Г»Г© ГЎГЁГ­ГІ.',
         onclick = function()
-		if cfg.main.male == false then --- Женская отыгровка
-        sampSendChat("/me открыла кейс и достала из неё эластичный бинт")
+		if cfg.main.male == false then --- Г†ГҐГ­Г±ГЄГ Гї Г®ГІГ»ГЈГ°Г®ГўГЄГ 
+        sampSendChat("/me Г®ГІГЄГ°Г»Г«Г  ГЄГҐГ©Г± ГЁ Г¤Г®Г±ГІГ Г«Г  ГЁГ§ Г­ГҐВё ГЅГ«Г Г±ГІГЁГ·Г­Г»Г© ГЎГЁГ­ГІ")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me убрала спрей в кейс и наложила на конечность пострадавшего эластичных бинт")
+        sampSendChat("/me ГіГЎГ°Г Г«Г  Г±ГЇГ°ГҐГ© Гў ГЄГҐГ©Г± ГЁ Г­Г Г«Г®Г¦ГЁГ«Г  Г­Г  ГЄГ®Г­ГҐГ·Г­Г®Г±ГІГј ГЇГ®Г±ГІГ°Г Г¤Г ГўГёГҐГЈГ® ГЅГ«Г Г±ГІГЁГ·Г­Г»Гµ ГЎГЁГ­ГІ")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me крепко затянула эластичный бинт")
+        sampSendChat("/me ГЄГ°ГҐГЇГЄГ® Г§Г ГІГїГ­ГіГ«Г  ГЅГ«Г Г±ГІГЁГ·Г­Г»Г© ГЎГЁГ­ГІ")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/do Эластичный бинт плотно сидит на конечности пациента.")
+        sampSendChat("/do ГќГ«Г Г±ГІГЁГ·Г­Г»Г© ГЎГЁГ­ГІ ГЇГ«Г®ГІГ­Г® Г±ГЁГ¤ГЁГІ Г­Г  ГЄГ®Г­ГҐГ·Г­Г®Г±ГІГЁ ГЇГ Г¶ГЁГҐГ­ГІГ .")
 		end
-		if cfg.main.male == true then --- Мужская отыгровка
-        sampSendChat("/me открыл кейс и достал из неё эластичный бинт")
+		if cfg.main.male == true then --- ГЊГіГ¦Г±ГЄГ Гї Г®ГІГ»ГЈГ°Г®ГўГЄГ 
+        sampSendChat("/me Г®ГІГЄГ°Г»Г« ГЄГҐГ©Г± ГЁ Г¤Г®Г±ГІГ Г« ГЁГ§ Г­ГҐВё ГЅГ«Г Г±ГІГЁГ·Г­Г»Г© ГЎГЁГ­ГІ")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me убрал спрей в кейс и наложил на конечность пострадавшего эластичных бинт")
+        sampSendChat("/me ГіГЎГ°Г Г« Г±ГЇГ°ГҐГ© Гў ГЄГҐГ©Г± ГЁ Г­Г Г«Г®Г¦ГЁГ« Г­Г  ГЄГ®Г­ГҐГ·Г­Г®Г±ГІГј ГЇГ®Г±ГІГ°Г Г¤Г ГўГёГҐГЈГ® ГЅГ«Г Г±ГІГЁГ·Г­Г»Гµ ГЎГЁГ­ГІ")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me крепко затянул эластичный бинт")
+        sampSendChat("/me ГЄГ°ГҐГЇГЄГ® Г§Г ГІГїГ­ГіГ« ГЅГ«Г Г±ГІГЁГ·Г­Г»Г© ГЎГЁГ­ГІ")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/do Эластичный бинт плотно сидит на конечности пациента.")
+        sampSendChat("/do ГќГ«Г Г±ГІГЁГ·Г­Г»Г© ГЎГЁГ­ГІ ГЇГ«Г®ГІГ­Г® Г±ГЁГ¤ГЁГІ Г­Г  ГЄГ®Г­ГҐГ·Г­Г®Г±ГІГЁ ГЇГ Г¶ГЁГҐГ­ГІГ .")
 		end
 		end
       },
 	  {
-        title = '{5b83c2}« При ножевых/огнестрельных ранениях: »',
+        title = '{5b83c2}В« ГЏГ°ГЁ Г­Г®Г¦ГҐГўГ»Гµ/Г®ГЈГ­ГҐГ±ГІГ°ГҐГ«ГјГ­Г»Гµ Г°Г Г­ГҐГ­ГЁГїГµ: В»',
         onclick = function()
         end
       },
 	  {
-        title = '{ffffff}» 1) Для начала нужно обработать рану хлоргесидином или любым аналогом.',
+        title = '{ffffff}В» 1) Г„Г«Гї Г­Г Г·Г Г«Г  Г­ГіГ¦Г­Г® Г®ГЎГ°Г ГЎГ®ГІГ ГІГј Г°Г Г­Гі ГµГ«Г®Г°ГЈГҐГ±ГЁГ¤ГЁГ­Г®Г¬ ГЁГ«ГЁ Г«ГѕГЎГ»Г¬ Г Г­Г Г«Г®ГЈГ®Г¬.',
         onclick = function()
-		if cfg.main.male == false then --- Женская отыгровка
-        sampSendChat("/me осмотрела рану и опознала характер повреждения")
+		if cfg.main.male == false then --- Г†ГҐГ­Г±ГЄГ Гї Г®ГІГ»ГЈГ°Г®ГўГЄГ 
+        sampSendChat("/me Г®Г±Г¬Г®ГІГ°ГҐГ«Г  Г°Г Г­Гі ГЁ Г®ГЇГ®Г§Г­Г Г«Г  ГµГ Г°Г ГЄГІГҐГ° ГЇГ®ГўГ°ГҐГ¦Г¤ГҐГ­ГЁГї")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/do Колотая рана.")
+        sampSendChat("/do ГЉГ®Г«Г®ГІГ Гї Г°Г Г­Г .")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/do Медицинский кейс в руке.")
+        sampSendChat("/do ГЊГҐГ¤ГЁГ¶ГЁГ­Г±ГЄГЁГ© ГЄГҐГ©Г± Гў Г°ГіГЄГҐ.")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me достала из него раствор хлоргексидина и обработала рану пострадавшего")
+        sampSendChat("/me Г¤Г®Г±ГІГ Г«Г  ГЁГ§ Г­ГҐГЈГ® Г°Г Г±ГІГўГ®Г° ГµГ«Г®Г°ГЈГҐГЄГ±ГЁГ¤ГЁГ­Г  ГЁ Г®ГЎГ°Г ГЎГ®ГІГ Г«Г  Г°Г Г­Гі ГЇГ®Г±ГІГ°Г Г¤Г ГўГёГҐГЈГ®")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me убрала в сумку раствор хлоргексидина")
+        sampSendChat("/me ГіГЎГ°Г Г«Г  Гў Г±ГіГ¬ГЄГі Г°Г Г±ГІГўГ®Г° ГµГ«Г®Г°ГЈГҐГЄГ±ГЁГ¤ГЁГ­Г ")
 		end
-		if cfg.main.male == true then --- Мужская отыгровка
-        sampSendChat("/me осмотрел рану и опознал характер повреждения")
+		if cfg.main.male == true then --- ГЊГіГ¦Г±ГЄГ Гї Г®ГІГ»ГЈГ°Г®ГўГЄГ 
+        sampSendChat("/me Г®Г±Г¬Г®ГІГ°ГҐГ« Г°Г Г­Гі ГЁ Г®ГЇГ®Г§Г­Г Г« ГµГ Г°Г ГЄГІГҐГ° ГЇГ®ГўГ°ГҐГ¦Г¤ГҐГ­ГЁГї")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/do Колотая рана.")
+        sampSendChat("/do ГЉГ®Г«Г®ГІГ Гї Г°Г Г­Г .")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/do Медицинский кейс в руке.")
+        sampSendChat("/do ГЊГҐГ¤ГЁГ¶ГЁГ­Г±ГЄГЁГ© ГЄГҐГ©Г± Гў Г°ГіГЄГҐ.")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me достал из него раствор хлоргексидина и обработал рану пострадавшего")
+        sampSendChat("/me Г¤Г®Г±ГІГ Г« ГЁГ§ Г­ГҐГЈГ® Г°Г Г±ГІГўГ®Г° ГµГ«Г®Г°ГЈГҐГЄГ±ГЁГ¤ГЁГ­Г  ГЁ Г®ГЎГ°Г ГЎГ®ГІГ Г« Г°Г Г­Гі ГЇГ®Г±ГІГ°Г Г¤Г ГўГёГҐГЈГ®")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me убрал в сумку раствор хлоргексидина")
+        sampSendChat("/me ГіГЎГ°Г Г« Гў Г±ГіГ¬ГЄГі Г°Г Г±ГІГўГ®Г° ГµГ«Г®Г°ГЈГҐГЄГ±ГЁГ¤ГЁГ­Г ")
 		end
 		end
       },
 	  {
-        title = '{ffffff}» 2) После обработки раны следует сделать из бинтов накладную повязку, наложить её на рану.',
+        title = '{ffffff}В» 2) ГЏГ®Г±Г«ГҐ Г®ГЎГ°Г ГЎГ®ГІГЄГЁ Г°Г Г­Г» Г±Г«ГҐГ¤ГіГҐГІ Г±Г¤ГҐГ«Г ГІГј ГЁГ§ ГЎГЁГ­ГІГ®Гў Г­Г ГЄГ«Г Г¤Г­ГіГѕ ГЇГ®ГўГїГ§ГЄГі, Г­Г Г«Г®Г¦ГЁГІГј ГҐВё Г­Г  Г°Г Г­Гі.',
         onclick = function()
-		if cfg.main.male == false then --- Женская отыгровка
-        sampSendChat("/me достала бинты из медицинского кейса и сделала из них накладную повязку")
+		if cfg.main.male == false then --- Г†ГҐГ­Г±ГЄГ Гї Г®ГІГ»ГЈГ°Г®ГўГЄГ 
+        sampSendChat("/me Г¤Г®Г±ГІГ Г«Г  ГЎГЁГ­ГІГ» ГЁГ§ Г¬ГҐГ¤ГЁГ¶ГЁГ­Г±ГЄГ®ГЈГ® ГЄГҐГ©Г±Г  ГЁ Г±Г¤ГҐГ«Г Г«Г  ГЁГ§ Г­ГЁГµ Г­Г ГЄГ«Г Г¤Г­ГіГѕ ГЇГ®ГўГїГ§ГЄГі")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me наложила повязку на рану")
+        sampSendChat("/me Г­Г Г«Г®Г¦ГЁГ«Г  ГЇГ®ГўГїГ§ГЄГі Г­Г  Г°Г Г­Гі")
 	    wait(cfg.commands.zaderjka * 1000) 
-        sampSendChat("/do Бинты скрыли рану.")
+        sampSendChat("/do ГЃГЁГ­ГІГ» Г±ГЄГ°Г»Г«ГЁ Г°Г Г­Гі.")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/do Повязка крепко наложена и стягивает рану.")
+        sampSendChat("/do ГЏГ®ГўГїГ§ГЄГ  ГЄГ°ГҐГЇГЄГ® Г­Г Г«Г®Г¦ГҐГ­Г  ГЁ Г±ГІГїГЈГЁГўГ ГҐГІ Г°Г Г­Гі.")
 		end
-		if cfg.main.male == true then --- Мужская отыгровка
-        sampSendChat("/me достал бинты из медицинского кейса и сделал из них накладную повязку")
+		if cfg.main.male == true then --- ГЊГіГ¦Г±ГЄГ Гї Г®ГІГ»ГЈГ°Г®ГўГЄГ 
+        sampSendChat("/me Г¤Г®Г±ГІГ Г« ГЎГЁГ­ГІГ» ГЁГ§ Г¬ГҐГ¤ГЁГ¶ГЁГ­Г±ГЄГ®ГЈГ® ГЄГҐГ©Г±Г  ГЁ Г±Г¤ГҐГ«Г Г« ГЁГ§ Г­ГЁГµ Г­Г ГЄГ«Г Г¤Г­ГіГѕ ГЇГ®ГўГїГ§ГЄГі")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me наложил повязку на рану")
+        sampSendChat("/me Г­Г Г«Г®Г¦ГЁГ« ГЇГ®ГўГїГ§ГЄГі Г­Г  Г°Г Г­Гі")
 	    wait(cfg.commands.zaderjka * 1000) 
-        sampSendChat("/do Бинты скрыли рану.")
+        sampSendChat("/do ГЃГЁГ­ГІГ» Г±ГЄГ°Г»Г«ГЁ Г°Г Г­Гі.")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/do Повязка крепко наложена и стягивает рану.")
+        sampSendChat("/do ГЏГ®ГўГїГ§ГЄГ  ГЄГ°ГҐГЇГЄГ® Г­Г Г«Г®Г¦ГҐГ­Г  ГЁ Г±ГІГїГЈГЁГўГ ГҐГІ Г°Г Г­Гі.")
 		end
 		end
       },
 	  {
-        title = '{5b83c2}« При огнестрельных ранениях: »',
+        title = '{5b83c2}В« ГЏГ°ГЁ Г®ГЈГ­ГҐГ±ГІГ°ГҐГ«ГјГ­Г»Гµ Г°Г Г­ГҐГ­ГЁГїГµ: В»',
         onclick = function()
         end
       },
 	  {
-        title = '{ffffff}» 1) Сначала нужно остановить кровотечение. Для этого нужно освободить место ранения от одежды.',
+        title = '{ffffff}В» 1) Г‘Г­Г Г·Г Г«Г  Г­ГіГ¦Г­Г® Г®Г±ГІГ Г­Г®ГўГЁГІГј ГЄГ°Г®ГўГ®ГІГҐГ·ГҐГ­ГЁГҐ. Г„Г«Гї ГЅГІГ®ГЈГ® Г­ГіГ¦Г­Г® Г®Г±ГўГ®ГЎГ®Г¤ГЁГІГј Г¬ГҐГ±ГІГ® Г°Г Г­ГҐГ­ГЁГї Г®ГІ Г®Г¤ГҐГ¦Г¤Г».',
         onclick = function()
-		if cfg.main.male == false then --- Женская отыгровка
-        sampSendChat("/do Медицинский кейс в руке.")
+		if cfg.main.male == false then --- Г†ГҐГ­Г±ГЄГ Гї Г®ГІГ»ГЈГ°Г®ГўГЄГ 
+        sampSendChat("/do ГЊГҐГ¤ГЁГ¶ГЁГ­Г±ГЄГЁГ© ГЄГҐГ©Г± Гў Г°ГіГЄГҐ.")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me увидела ранение и достала из медицинского кейса жгут")
+        sampSendChat("/me ГіГўГЁГ¤ГҐГ«Г  Г°Г Г­ГҐГ­ГЁГҐ ГЁ Г¤Г®Г±ГІГ Г«Г  ГЁГ§ Г¬ГҐГ¤ГЁГ¶ГЁГ­Г±ГЄГ®ГЈГ® ГЄГҐГ©Г±Г  Г¦ГЈГіГІ")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me освободила руку пострадавшего от одежды и начала накладывать жгут")
+        sampSendChat("/me Г®Г±ГўГ®ГЎГ®Г¤ГЁГ«Г  Г°ГіГЄГі ГЇГ®Г±ГІГ°Г Г¤Г ГўГёГҐГЈГ® Г®ГІ Г®Г¤ГҐГ¦Г¤Г» ГЁ Г­Г Г·Г Г«Г  Г­Г ГЄГ«Г Г¤Г»ГўГ ГІГј Г¦ГЈГіГІ")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/do Жгут наложен, кровотечение остановлено.")
+        sampSendChat("/do Г†ГЈГіГІ Г­Г Г«Г®Г¦ГҐГ­, ГЄГ°Г®ГўГ®ГІГҐГ·ГҐГ­ГЁГҐ Г®Г±ГІГ Г­Г®ГўГ«ГҐГ­Г®.")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me достала блокнот из кармана и написала время наложения жгута")
+        sampSendChat("/me Г¤Г®Г±ГІГ Г«Г  ГЎГ«Г®ГЄГ­Г®ГІ ГЁГ§ ГЄГ Г°Г¬Г Г­Г  ГЁ Г­Г ГЇГЁГ±Г Г«Г  ГўГ°ГҐГ¬Гї Г­Г Г«Г®Г¦ГҐГ­ГЁГї Г¦ГЈГіГІГ ")
 		end
-		if cfg.main.male == true then --- Мужская отыгровка
-        sampSendChat("/do Медицинский кейс в руке.")
+		if cfg.main.male == true then --- ГЊГіГ¦Г±ГЄГ Гї Г®ГІГ»ГЈГ°Г®ГўГЄГ 
+        sampSendChat("/do ГЊГҐГ¤ГЁГ¶ГЁГ­Г±ГЄГЁГ© ГЄГҐГ©Г± Гў Г°ГіГЄГҐ.")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me увидел ранение и достал из медицинского кейса жгут")
+        sampSendChat("/me ГіГўГЁГ¤ГҐГ« Г°Г Г­ГҐГ­ГЁГҐ ГЁ Г¤Г®Г±ГІГ Г« ГЁГ§ Г¬ГҐГ¤ГЁГ¶ГЁГ­Г±ГЄГ®ГЈГ® ГЄГҐГ©Г±Г  Г¦ГЈГіГІ")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me освободил руку пострадавшего от одежды и начал накладывать жгут")
+        sampSendChat("/me Г®Г±ГўГ®ГЎГ®Г¤ГЁГ« Г°ГіГЄГі ГЇГ®Г±ГІГ°Г Г¤Г ГўГёГҐГЈГ® Г®ГІ Г®Г¤ГҐГ¦Г¤Г» ГЁ Г­Г Г·Г Г« Г­Г ГЄГ«Г Г¤Г»ГўГ ГІГј Г¦ГЈГіГІ")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/do Жгут наложен, кровотечение остановлено.")
+        sampSendChat("/do Г†ГЈГіГІ Г­Г Г«Г®Г¦ГҐГ­, ГЄГ°Г®ГўГ®ГІГҐГ·ГҐГ­ГЁГҐ Г®Г±ГІГ Г­Г®ГўГ«ГҐГ­Г®.")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me достал блокнот из кармана и написал время наложения жгута")
+        sampSendChat("/me Г¤Г®Г±ГІГ Г« ГЎГ«Г®ГЄГ­Г®ГІ ГЁГ§ ГЄГ Г°Г¬Г Г­Г  ГЁ Г­Г ГЇГЁГ±Г Г« ГўГ°ГҐГ¬Гї Г­Г Г«Г®Г¦ГҐГ­ГЁГї Г¦ГЈГіГІГ ")
 		end
 		end
       },
 	  {
-        title = '{ffffff}» 2) Далее нужно обработать рану хлоргексидином или другим аналогом.',
+        title = '{ffffff}В» 2) Г„Г Г«ГҐГҐ Г­ГіГ¦Г­Г® Г®ГЎГ°Г ГЎГ®ГІГ ГІГј Г°Г Г­Гі ГµГ«Г®Г°ГЈГҐГЄГ±ГЁГ¤ГЁГ­Г®Г¬ ГЁГ«ГЁ Г¤Г°ГіГЈГЁГ¬ Г Г­Г Г«Г®ГЈГ®Г¬.',
         onclick = function()
-		if cfg.main.male == false then --- Женская отыгровка
-        sampSendChat("/me открыла сумку и достала из неё раствор хлоргексидина")
+		if cfg.main.male == false then --- Г†ГҐГ­Г±ГЄГ Гї Г®ГІГ»ГЈГ°Г®ГўГЄГ 
+        sampSendChat("/me Г®ГІГЄГ°Г»Г«Г  Г±ГіГ¬ГЄГі ГЁ Г¤Г®Г±ГІГ Г«Г  ГЁГ§ Г­ГҐВё Г°Г Г±ГІГўГ®Г° ГµГ«Г®Г°ГЈГҐГЄГ±ГЁГ¤ГЁГ­Г ")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me обработала рану пострадавшего и положила раствор хлоргексидина в сумку")
+        sampSendChat("/me Г®ГЎГ°Г ГЎГ®ГІГ Г«Г  Г°Г Г­Гі ГЇГ®Г±ГІГ°Г Г¤Г ГўГёГҐГЈГ® ГЁ ГЇГ®Г«Г®Г¦ГЁГ«Г  Г°Г Г±ГІГўГ®Г° ГµГ«Г®Г°ГЈГҐГЄГ±ГЁГ¤ГЁГ­Г  Гў Г±ГіГ¬ГЄГі")
 		end
-		if cfg.main.male == true then --- Мужская отыгровка
-        sampSendChat("/me открыл сумку и достал из неё раствор хлоргексидина")
+		if cfg.main.male == true then --- ГЊГіГ¦Г±ГЄГ Гї Г®ГІГ»ГЈГ°Г®ГўГЄГ 
+        sampSendChat("/me Г®ГІГЄГ°Г»Г« Г±ГіГ¬ГЄГі ГЁ Г¤Г®Г±ГІГ Г« ГЁГ§ Г­ГҐВё Г°Г Г±ГІГўГ®Г° ГµГ«Г®Г°ГЈГҐГЄГ±ГЁГ¤ГЁГ­Г ")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me обработал рану пострадавшего и положил раствор хлоргексидина в сумку")
+        sampSendChat("/me Г®ГЎГ°Г ГЎГ®ГІГ Г« Г°Г Г­Гі ГЇГ®Г±ГІГ°Г Г¤Г ГўГёГҐГЈГ® ГЁ ГЇГ®Г«Г®Г¦ГЁГ« Г°Г Г±ГІГўГ®Г° ГµГ«Г®Г°ГЈГҐГЄГ±ГЁГ¤ГЁГ­Г  Гў Г±ГіГ¬ГЄГі")
 		end
 		end
       },
 	  {
-        title = '{ffffff}» 3) После всех проведённых процедур нужно сделать из бинтов накладную повязку, наложить её.',
+        title = '{ffffff}В» 3) ГЏГ®Г±Г«ГҐ ГўГ±ГҐГµ ГЇГ°Г®ГўГҐГ¤ВёГ­Г­Г»Гµ ГЇГ°Г®Г¶ГҐГ¤ГіГ° Г­ГіГ¦Г­Г® Г±Г¤ГҐГ«Г ГІГј ГЁГ§ ГЎГЁГ­ГІГ®Гў Г­Г ГЄГ«Г Г¤Г­ГіГѕ ГЇГ®ГўГїГ§ГЄГі, Г­Г Г«Г®Г¦ГЁГІГј ГҐВё.',
         onclick = function()
-		if cfg.main.male == false then --- Женская отыгровка
-        sampSendChat("/me достала бинты из медицинского кейса и сделала из них накладную повязку")
+		if cfg.main.male == false then --- Г†ГҐГ­Г±ГЄГ Гї Г®ГІГ»ГЈГ°Г®ГўГЄГ 
+        sampSendChat("/me Г¤Г®Г±ГІГ Г«Г  ГЎГЁГ­ГІГ» ГЁГ§ Г¬ГҐГ¤ГЁГ¶ГЁГ­Г±ГЄГ®ГЈГ® ГЄГҐГ©Г±Г  ГЁ Г±Г¤ГҐГ«Г Г«Г  ГЁГ§ Г­ГЁГµ Г­Г ГЄГ«Г Г¤Г­ГіГѕ ГЇГ®ГўГїГ§ГЄГі")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me начала накладывать повязку на рану")
+        sampSendChat("/me Г­Г Г·Г Г«Г  Г­Г ГЄГ«Г Г¤Г»ГўГ ГІГј ГЇГ®ГўГїГ§ГЄГі Г­Г  Г°Г Г­Гі")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/do Бинты постепенно начали скрывать рану.")
+        sampSendChat("/do ГЃГЁГ­ГІГ» ГЇГ®Г±ГІГҐГЇГҐГ­Г­Г® Г­Г Г·Г Г«ГЁ Г±ГЄГ°Г»ГўГ ГІГј Г°Г Г­Гі.")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/do Повязка крепко наложена и стягивает рану.")
+        sampSendChat("/do ГЏГ®ГўГїГ§ГЄГ  ГЄГ°ГҐГЇГЄГ® Г­Г Г«Г®Г¦ГҐГ­Г  ГЁ Г±ГІГїГЈГЁГўГ ГҐГІ Г°Г Г­Гі.")
 		end
-		if cfg.main.male == true then --- Мужская отыгровка
-        sampSendChat("/me достал бинты из медицинского кейса и сделал из них накладную повязку")
+		if cfg.main.male == true then --- ГЊГіГ¦Г±ГЄГ Гї Г®ГІГ»ГЈГ°Г®ГўГЄГ 
+        sampSendChat("/me Г¤Г®Г±ГІГ Г« ГЎГЁГ­ГІГ» ГЁГ§ Г¬ГҐГ¤ГЁГ¶ГЁГ­Г±ГЄГ®ГЈГ® ГЄГҐГ©Г±Г  ГЁ Г±Г¤ГҐГ«Г Г« ГЁГ§ Г­ГЁГµ Г­Г ГЄГ«Г Г¤Г­ГіГѕ ГЇГ®ГўГїГ§ГЄГі")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me начал накладывать повязку на рану")
+        sampSendChat("/me Г­Г Г·Г Г« Г­Г ГЄГ«Г Г¤Г»ГўГ ГІГј ГЇГ®ГўГїГ§ГЄГі Г­Г  Г°Г Г­Гі")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/do Бинты постепенно начали скрывать рану.")
+        sampSendChat("/do ГЃГЁГ­ГІГ» ГЇГ®Г±ГІГҐГЇГҐГ­Г­Г® Г­Г Г·Г Г«ГЁ Г±ГЄГ°Г»ГўГ ГІГј Г°Г Г­Гі.")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/do Повязка крепко наложена и стягивает рану.")
+        sampSendChat("/do ГЏГ®ГўГїГ§ГЄГ  ГЄГ°ГҐГЇГЄГ® Г­Г Г«Г®Г¦ГҐГ­Г  ГЁ Г±ГІГїГЈГЁГўГ ГҐГІ Г°Г Г­Гі.")
 		end
 		end
       },
 	  {
-        title = '{5b83c2}« При обмороке: »',
+        title = '{5b83c2}В« ГЏГ°ГЁ Г®ГЎГ¬Г®Г°Г®ГЄГҐ: В»',
         onclick = function()
         end
       },
 	  {
-        title = '{ffffff}» 1) Привести пациента в сознание.',
+        title = '{ffffff}В» 1) ГЏГ°ГЁГўГҐГ±ГІГЁ ГЇГ Г¶ГЁГҐГ­ГІГ  Гў Г±Г®Г§Г­Г Г­ГЁГҐ.',
         onclick = function()
-		if cfg.main.male == false then --- Женская отыгровка
-        sampSendChat("/do Медицинский кейс в руке.")
+		if cfg.main.male == false then --- Г†ГҐГ­Г±ГЄГ Гї Г®ГІГ»ГЈГ°Г®ГўГЄГ 
+        sampSendChat("/do ГЊГҐГ¤ГЁГ¶ГЁГ­Г±ГЄГЁГ© ГЄГҐГ©Г± Гў Г°ГіГЄГҐ.")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me положила медицинский кейс на пол и открыла его")
+        sampSendChat("/me ГЇГ®Г«Г®Г¦ГЁГ«Г  Г¬ГҐГ¤ГЁГ¶ГЁГ­Г±ГЄГЁГ© ГЄГҐГ©Г± Г­Г  ГЇГ®Г« ГЁ Г®ГІГЄГ°Г»Г«Г  ГҐГЈГ®")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me достала из кейса флакон с нашатырным спиртом и открыла его")
+        sampSendChat("/me Г¤Г®Г±ГІГ Г«Г  ГЁГ§ ГЄГҐГ©Г±Г  ГґГ«Г ГЄГ®Г­ Г± Г­Г ГёГ ГІГ»Г°Г­Г»Г¬ Г±ГЇГЁГ°ГІГ®Г¬ ГЁ Г®ГІГЄГ°Г»Г«Г  ГҐГЈГ®")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me достала из кейса ватку и намочила её нашатырным спиртом")
+        sampSendChat("/me Г¤Г®Г±ГІГ Г«Г  ГЁГ§ ГЄГҐГ©Г±Г  ГўГ ГІГЄГі ГЁ Г­Г Г¬Г®Г·ГЁГ«Г  ГҐВё Г­Г ГёГ ГІГ»Г°Г­Г»Г¬ Г±ГЇГЁГ°ГІГ®Г¬")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me поднёсла смоченную ватку к носу пострадавшего")
+        sampSendChat("/me ГЇГ®Г¤Г­ВёГ±Г«Г  Г±Г¬Г®Г·ГҐГ­Г­ГіГѕ ГўГ ГІГЄГі ГЄ Г­Г®Г±Гі ГЇГ®Г±ГІГ°Г Г¤Г ГўГёГҐГЈГ®")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/do Человек очнулся?")
+        sampSendChat("/do Г—ГҐГ«Г®ГўГҐГЄ Г®Г·Г­ГіГ«Г±Гї?")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/b /do Дa/Нет.")
+        sampSendChat("/b /do Г„a/ГЌГҐГІ.")
 		end
-		if cfg.main.male == true then --- Мужская отыгровка
-      sampSendChat("/do Медицинский кейс в руке.")
+		if cfg.main.male == true then --- ГЊГіГ¦Г±ГЄГ Гї Г®ГІГ»ГЈГ°Г®ГўГЄГ 
+      sampSendChat("/do ГЊГҐГ¤ГЁГ¶ГЁГ­Г±ГЄГЁГ© ГЄГҐГ©Г± Гў Г°ГіГЄГҐ.")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me положил медицинский кейс на пол и открыл его")
+        sampSendChat("/me ГЇГ®Г«Г®Г¦ГЁГ« Г¬ГҐГ¤ГЁГ¶ГЁГ­Г±ГЄГЁГ© ГЄГҐГ©Г± Г­Г  ГЇГ®Г« ГЁ Г®ГІГЄГ°Г»Г« ГҐГЈГ®")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me достал из кейса флакон с нашатырным спиртом и открыл его")
+        sampSendChat("/me Г¤Г®Г±ГІГ Г« ГЁГ§ ГЄГҐГ©Г±Г  ГґГ«Г ГЄГ®Г­ Г± Г­Г ГёГ ГІГ»Г°Г­Г»Г¬ Г±ГЇГЁГ°ГІГ®Г¬ ГЁ Г®ГІГЄГ°Г»Г« ГҐГЈГ®")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me достал из кейса ватку и намочил её нашатырным спиртом")
+        sampSendChat("/me Г¤Г®Г±ГІГ Г« ГЁГ§ ГЄГҐГ©Г±Г  ГўГ ГІГЄГі ГЁ Г­Г Г¬Г®Г·ГЁГ« ГҐВё Г­Г ГёГ ГІГ»Г°Г­Г»Г¬ Г±ГЇГЁГ°ГІГ®Г¬")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me поднёсл смоченную ватку к носу пострадавшего")
+        sampSendChat("/me ГЇГ®Г¤Г­ВёГ±Г« Г±Г¬Г®Г·ГҐГ­Г­ГіГѕ ГўГ ГІГЄГі ГЄ Г­Г®Г±Гі ГЇГ®Г±ГІГ°Г Г¤Г ГўГёГҐГЈГ®")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/do Человек очнулся?")
+        sampSendChat("/do Г—ГҐГ«Г®ГўГҐГЄ Г®Г·Г­ГіГ«Г±Гї?")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/b /do Дa/Нет.")
+        sampSendChat("/b /do Г„a/ГЌГҐГІ.")
 		end
 		end
       },
 	  {
-        title = '{ffffff}» 2) Если пациент пришел в себя.',
+        title = '{ffffff}В» 2) Г…Г±Г«ГЁ ГЇГ Г¶ГЁГҐГ­ГІ ГЇГ°ГЁГёГҐГ« Гў Г±ГҐГЎГї.',
         onclick = function()
-        sampSendChat("С вами всё хорошо, успокойтесь, вы потеряли сознание.")
+        sampSendChat("Г‘ ГўГ Г¬ГЁ ГўГ±Вё ГµГ®Г°Г®ГёГ®, ГіГ±ГЇГ®ГЄГ®Г©ГІГҐГ±Гј, ГўГ» ГЇГ®ГІГҐГ°ГїГ«ГЁ Г±Г®Г§Г­Г Г­ГЁГҐ.")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("Теперь всё в порядке, я могу вам ещё чем-то помочь?")
+        sampSendChat("Г’ГҐГЇГҐГ°Гј ГўГ±Вё Гў ГЇГ®Г°ГїГ¤ГЄГҐ, Гї Г¬Г®ГЈГі ГўГ Г¬ ГҐГ№Вё Г·ГҐГ¬-ГІГ® ГЇГ®Г¬Г®Г·Гј?")
 		end
       },
 	  {
-        title = '{ffffff}» 3) Если пациент не пришел в себя.',
+        title = '{ffffff}В» 3) Г…Г±Г«ГЁ ГЇГ Г¶ГЁГҐГ­ГІ Г­ГҐ ГЇГ°ГЁГёГҐГ« Гў Г±ГҐГЎГї.',
         onclick = function()
-		if cfg.main.male == false then --- Женская отыгровка
-        sampSendChat("/me слегка похлопала руками по щекам человека")
+		if cfg.main.male == false then --- Г†ГҐГ­Г±ГЄГ Гї Г®ГІГ»ГЈГ°Г®ГўГЄГ 
+        sampSendChat("/me Г±Г«ГҐГЈГЄГ  ГЇГ®ГµГ«Г®ГЇГ Г«Г  Г°ГіГЄГ Г¬ГЁ ГЇГ® Г№ГҐГЄГ Г¬ Г·ГҐГ«Г®ГўГҐГЄГ ")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me достала из сумки бутылку с холодной водой и открутила крышку")
+        sampSendChat("/me Г¤Г®Г±ГІГ Г«Г  ГЁГ§ Г±ГіГ¬ГЄГЁ ГЎГіГІГ»Г«ГЄГі Г± ГµГ®Г«Г®Г¤Г­Г®Г© ГўГ®Г¤Г®Г© ГЁ Г®ГІГЄГ°ГіГІГЁГ«Г  ГЄГ°Г»ГёГЄГі")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me брызнула водой из бутылки на лицо пострадавшего")
+        sampSendChat("/me ГЎГ°Г»Г§Г­ГіГ«Г  ГўГ®Г¤Г®Г© ГЁГ§ ГЎГіГІГ»Г«ГЄГЁ Г­Г  Г«ГЁГ¶Г® ГЇГ®Г±ГІГ°Г Г¤Г ГўГёГҐГЈГ®")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me похлопала пострадавшего по щекам")
+        sampSendChat("/me ГЇГ®ГµГ«Г®ГЇГ Г«Г  ГЇГ®Г±ГІГ°Г Г¤Г ГўГёГҐГЈГ® ГЇГ® Г№ГҐГЄГ Г¬")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/do Человек пришёл в сознание?")
+        sampSendChat("/do Г—ГҐГ«Г®ГўГҐГЄ ГЇГ°ГЁГёВёГ« Гў Г±Г®Г§Г­Г Г­ГЁГҐ?")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/b /do Дa/Нет.")
+        sampSendChat("/b /do Г„a/ГЌГҐГІ.")
 		end
-		if cfg.main.male == true then --- Мужская отыгровка
-        sampSendChat("/me слегка похлопал руками по щекам человека")
+		if cfg.main.male == true then --- ГЊГіГ¦Г±ГЄГ Гї Г®ГІГ»ГЈГ°Г®ГўГЄГ 
+        sampSendChat("/me Г±Г«ГҐГЈГЄГ  ГЇГ®ГµГ«Г®ГЇГ Г« Г°ГіГЄГ Г¬ГЁ ГЇГ® Г№ГҐГЄГ Г¬ Г·ГҐГ«Г®ГўГҐГЄГ ")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me достал из сумки бутылку с холодной водой и открутил крышку")
+        sampSendChat("/me Г¤Г®Г±ГІГ Г« ГЁГ§ Г±ГіГ¬ГЄГЁ ГЎГіГІГ»Г«ГЄГі Г± ГµГ®Г«Г®Г¤Г­Г®Г© ГўГ®Г¤Г®Г© ГЁ Г®ГІГЄГ°ГіГІГЁГ« ГЄГ°Г»ГёГЄГі")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me брызнул водой из бутылки на лицо пострадавшего")
+        sampSendChat("/me ГЎГ°Г»Г§Г­ГіГ« ГўГ®Г¤Г®Г© ГЁГ§ ГЎГіГІГ»Г«ГЄГЁ Г­Г  Г«ГЁГ¶Г® ГЇГ®Г±ГІГ°Г Г¤Г ГўГёГҐГЈГ®")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me похлопал пострадавшего по щекам")
+        sampSendChat("/me ГЇГ®ГµГ«Г®ГЇГ Г« ГЇГ®Г±ГІГ°Г Г¤Г ГўГёГҐГЈГ® ГЇГ® Г№ГҐГЄГ Г¬")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/do Человек пришёл в сознание?")
+        sampSendChat("/do Г—ГҐГ«Г®ГўГҐГЄ ГЇГ°ГЁГёВёГ« Гў Г±Г®Г§Г­Г Г­ГЁГҐ?")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/b /do Дa/Нет.")
+        sampSendChat("/b /do Г„a/ГЌГҐГІ.")
 		end
 		end
       },
 	  {
-        title = '{5b83c2}« Если пациент пришел в себя то пункт обморока №2. »',
+        title = '{5b83c2}В« Г…Г±Г«ГЁ ГЇГ Г¶ГЁГҐГ­ГІ ГЇГ°ГЁГёГҐГ« Гў Г±ГҐГЎГї ГІГ® ГЇГіГ­ГЄГІ Г®ГЎГ¬Г®Г°Г®ГЄГ  В№2. В»',
         onclick = function()
         end
       },
 	  {
-        title = '{ffffff}» 4) Если пациент до сих пор не пришел в себя, проверить пульс.',
+        title = '{ffffff}В» 4) Г…Г±Г«ГЁ ГЇГ Г¶ГЁГҐГ­ГІ Г¤Г® Г±ГЁГµ ГЇГ®Г° Г­ГҐ ГЇГ°ГЁГёГҐГ« Гў Г±ГҐГЎГї, ГЇГ°Г®ГўГҐГ°ГЁГІГј ГЇГіГ«ГјГ±.',
         onclick = function()
-		if cfg.main.male == false then --- Женская отыгровка
-        sampSendChat("/me поднёсла два пальца к шее пострадавшего, приложив их к сонной артерии")
+		if cfg.main.male == false then --- Г†ГҐГ­Г±ГЄГ Гї Г®ГІГ»ГЈГ°Г®ГўГЄГ 
+        sampSendChat("/me ГЇГ®Г¤Г­ВёГ±Г«Г  Г¤ГўГ  ГЇГ Г«ГјГ¶Г  ГЄ ГёГҐГҐ ГЇГ®Г±ГІГ°Г Г¤Г ГўГёГҐГЈГ®, ГЇГ°ГЁГ«Г®Г¦ГЁГў ГЁГµ ГЄ Г±Г®Г­Г­Г®Г© Г Г°ГІГҐГ°ГЁГЁ")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/do У человека есть пульс?")
+        sampSendChat("/do Г“ Г·ГҐГ«Г®ГўГҐГЄГ  ГҐГ±ГІГј ГЇГіГ«ГјГ±?")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/b /do Да/Нет. ")
+        sampSendChat("/b /do Г„Г /ГЌГҐГІ. ")
 		end
-		if cfg.main.male == true then --- Мужская отыгровка
-        sampSendChat("/me поднёс два пальца к шее пострадавшего, приложив их к сонной артерии")
+		if cfg.main.male == true then --- ГЊГіГ¦Г±ГЄГ Гї Г®ГІГ»ГЈГ°Г®ГўГЄГ 
+        sampSendChat("/me ГЇГ®Г¤Г­ВёГ± Г¤ГўГ  ГЇГ Г«ГјГ¶Г  ГЄ ГёГҐГҐ ГЇГ®Г±ГІГ°Г Г¤Г ГўГёГҐГЈГ®, ГЇГ°ГЁГ«Г®Г¦ГЁГў ГЁГµ ГЄ Г±Г®Г­Г­Г®Г© Г Г°ГІГҐГ°ГЁГЁ")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/do У человека есть пульс?")
+        sampSendChat("/do Г“ Г·ГҐГ«Г®ГўГҐГЄГ  ГҐГ±ГІГј ГЇГіГ«ГјГ±?")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/b /do Да/Нет. ")
+        sampSendChat("/b /do Г„Г /ГЌГҐГІ. ")
 		end
 		end
       },
 	  {
-        title = '{ffffff}» 5) Если у пострадавшего нет пульса, то нужно провести ряд процедур реанимирования.',
+        title = '{ffffff}В» 5) Г…Г±Г«ГЁ Гі ГЇГ®Г±ГІГ°Г Г¤Г ГўГёГҐГЈГ® Г­ГҐГІ ГЇГіГ«ГјГ±Г , ГІГ® Г­ГіГ¦Г­Г® ГЇГ°Г®ГўГҐГ±ГІГЁ Г°ГїГ¤ ГЇГ°Г®Г¶ГҐГ¤ГіГ° Г°ГҐГ Г­ГЁГ¬ГЁГ°Г®ГўГ Г­ГЁГї.',
         onclick = function()
-		if cfg.main.male == false then --- Женская отыгровка
-        sampSendChat("/me достала из сумки полотенце и подложила его под шею пострадавшего")
+		if cfg.main.male == false then --- Г†ГҐГ­Г±ГЄГ Гї Г®ГІГ»ГЈГ°Г®ГўГЄГ 
+        sampSendChat("/me Г¤Г®Г±ГІГ Г«Г  ГЁГ§ Г±ГіГ¬ГЄГЁ ГЇГ®Г«Г®ГІГҐГ­Г¶ГҐ ГЁ ГЇГ®Г¤Г«Г®Г¦ГЁГ«Г  ГҐГЈГ® ГЇГ®Г¤ ГёГҐГѕ ГЇГ®Г±ГІГ°Г Г¤Г ГўГёГҐГЈГ®")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me сняла с груди человека всю одежду")
+        sampSendChat("/me Г±Г­ГїГ«Г  Г± ГЈГ°ГіГ¤ГЁ Г·ГҐГ«Г®ГўГҐГЄГ  ГўГ±Гѕ Г®Г¤ГҐГ¦Г¤Гі")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me сняла все сдавливающие аксессуары")
+        sampSendChat("/me Г±Г­ГїГ«Г  ГўГ±ГҐ Г±Г¤Г ГўГ«ГЁГўГ ГѕГ№ГЁГҐ Г ГЄГ±ГҐГ±Г±ГіГ Г°Г»")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me сделала глубокий вдох и начала делать искусственное дыхание лёгких")
+        sampSendChat("/me Г±Г¤ГҐГ«Г Г«Г  ГЈГ«ГіГЎГ®ГЄГЁГ© ГўГ¤Г®Гµ ГЁ Г­Г Г·Г Г«Г  Г¤ГҐГ«Г ГІГј ГЁГ±ГЄГіГ±Г±ГІГўГҐГ­Г­Г®ГҐ Г¤Г»ГµГ Г­ГЁГҐ Г«ВёГЈГЄГЁГµ")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/do Воздух постепенно наполняет лёгкие пострадавшего.")
+        sampSendChat("/do Г‚Г®Г§Г¤ГіГµ ГЇГ®Г±ГІГҐГЇГҐГ­Г­Г® Г­Г ГЇГ®Г«Г­ГїГҐГІ Г«ВёГЈГЄГЁГҐ ГЇГ®Г±ГІГ°Г Г¤Г ГўГёГҐГЈГ®.")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me положила руки друг на друга на грудь человека")
+        sampSendChat("/me ГЇГ®Г«Г®Г¦ГЁГ«Г  Г°ГіГЄГЁ Г¤Г°ГіГЈ Г­Г  Г¤Г°ГіГЈГ  Г­Г  ГЈГ°ГіГ¤Гј Г·ГҐГ«Г®ГўГҐГЄГ ")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me делает непрямой массаж сердца")
+        sampSendChat("/me Г¤ГҐГ«Г ГҐГІ Г­ГҐГЇГ°ГїГ¬Г®Г© Г¬Г Г±Г±Г Г¦ Г±ГҐГ°Г¤Г¶Г ")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me попеременно делает искусственное дыхание и непрямой массаж сердца")
+        sampSendChat("/me ГЇГ®ГЇГҐГ°ГҐГ¬ГҐГ­Г­Г® Г¤ГҐГ«Г ГҐГІ ГЁГ±ГЄГіГ±Г±ГІГўГҐГ­Г­Г®ГҐ Г¤Г»ГµГ Г­ГЁГҐ ГЁ Г­ГҐГЇГ°ГїГ¬Г®Г© Г¬Г Г±Г±Г Г¦ Г±ГҐГ°Г¤Г¶Г ")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/do Человек пришёл в себя?")
+        sampSendChat("/do Г—ГҐГ«Г®ГўГҐГЄ ГЇГ°ГЁГёВёГ« Гў Г±ГҐГЎГї?")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/b /do Да/Нет. ")
+        sampSendChat("/b /do Г„Г /ГЌГҐГІ. ")
 		end
-		if cfg.main.male == true then --- Мужская отыгровка
-        sampSendChat("/me достал из сумки полотенце и подложил его под шею пострадавшего")
+		if cfg.main.male == true then --- ГЊГіГ¦Г±ГЄГ Гї Г®ГІГ»ГЈГ°Г®ГўГЄГ 
+        sampSendChat("/me Г¤Г®Г±ГІГ Г« ГЁГ§ Г±ГіГ¬ГЄГЁ ГЇГ®Г«Г®ГІГҐГ­Г¶ГҐ ГЁ ГЇГ®Г¤Г«Г®Г¦ГЁГ« ГҐГЈГ® ГЇГ®Г¤ ГёГҐГѕ ГЇГ®Г±ГІГ°Г Г¤Г ГўГёГҐГЈГ®")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me снял с груди человека всю одежду")
+        sampSendChat("/me Г±Г­ГїГ« Г± ГЈГ°ГіГ¤ГЁ Г·ГҐГ«Г®ГўГҐГЄГ  ГўГ±Гѕ Г®Г¤ГҐГ¦Г¤Гі")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me снял все сдавливающие аксессуары")
+        sampSendChat("/me Г±Г­ГїГ« ГўГ±ГҐ Г±Г¤Г ГўГ«ГЁГўГ ГѕГ№ГЁГҐ Г ГЄГ±ГҐГ±Г±ГіГ Г°Г»")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me сделал глубокий вдох и начал делать искусственное дыхание лёгких")
+        sampSendChat("/me Г±Г¤ГҐГ«Г Г« ГЈГ«ГіГЎГ®ГЄГЁГ© ГўГ¤Г®Гµ ГЁ Г­Г Г·Г Г« Г¤ГҐГ«Г ГІГј ГЁГ±ГЄГіГ±Г±ГІГўГҐГ­Г­Г®ГҐ Г¤Г»ГµГ Г­ГЁГҐ Г«ВёГЈГЄГЁГµ")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/do Воздух постепенно наполняет лёгкие пострадавшего.")
+        sampSendChat("/do Г‚Г®Г§Г¤ГіГµ ГЇГ®Г±ГІГҐГЇГҐГ­Г­Г® Г­Г ГЇГ®Г«Г­ГїГҐГІ Г«ВёГЈГЄГЁГҐ ГЇГ®Г±ГІГ°Г Г¤Г ГўГёГҐГЈГ®.")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me положил руки друг на друга на грудь человека")
+        sampSendChat("/me ГЇГ®Г«Г®Г¦ГЁГ« Г°ГіГЄГЁ Г¤Г°ГіГЈ Г­Г  Г¤Г°ГіГЈГ  Г­Г  ГЈГ°ГіГ¤Гј Г·ГҐГ«Г®ГўГҐГЄГ ")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me делает непрямой массаж сердца")
+        sampSendChat("/me Г¤ГҐГ«Г ГҐГІ Г­ГҐГЇГ°ГїГ¬Г®Г© Г¬Г Г±Г±Г Г¦ Г±ГҐГ°Г¤Г¶Г ")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me попеременно делает искусственное дыхание и непрямой массаж сердца")
+        sampSendChat("/me ГЇГ®ГЇГҐГ°ГҐГ¬ГҐГ­Г­Г® Г¤ГҐГ«Г ГҐГІ ГЁГ±ГЄГіГ±Г±ГІГўГҐГ­Г­Г®ГҐ Г¤Г»ГµГ Г­ГЁГҐ ГЁ Г­ГҐГЇГ°ГїГ¬Г®Г© Г¬Г Г±Г±Г Г¦ Г±ГҐГ°Г¤Г¶Г ")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/do Человек пришёл в себя?")
+        sampSendChat("/do Г—ГҐГ«Г®ГўГҐГЄ ГЇГ°ГЁГёВёГ« Гў Г±ГҐГЎГї?")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/b /do Да/Нет. ")
+        sampSendChat("/b /do Г„Г /ГЌГҐГІ. ")
 		end
 		end
       },
 	  {
-        title = '{5b83c2}« Если пациент пришел после всех процедур везем в больницу для лечения. »',
+        title = '{5b83c2}В« Г…Г±Г«ГЁ ГЇГ Г¶ГЁГҐГ­ГІ ГЇГ°ГЁГёГҐГ« ГЇГ®Г±Г«ГҐ ГўГ±ГҐГµ ГЇГ°Г®Г¶ГҐГ¤ГіГ° ГўГҐГ§ГҐГ¬ Гў ГЎГ®Г«ГјГ­ГЁГ¶Гі Г¤Г«Гї Г«ГҐГ·ГҐГ­ГЁГї. В»',
         onclick = function()
         end
       },
 	  {
-        title = '{5b83c2}« Если пациент не пришел в себя везем в больницу для устанавления смерти. »',
+        title = '{5b83c2}В« Г…Г±Г«ГЁ ГЇГ Г¶ГЁГҐГ­ГІ Г­ГҐ ГЇГ°ГЁГёГҐГ« Гў Г±ГҐГЎГї ГўГҐГ§ГҐГ¬ Гў ГЎГ®Г«ГјГ­ГЁГ¶Гі Г¤Г«Гї ГіГ±ГІГ Г­Г ГўГ«ГҐГ­ГЁГї Г±Г¬ГҐГ°ГІГЁ. В»',
         onclick = function()
         end
       },
 	  {
-        title = '{5b83c2}« При потере пульса: »',
+        title = '{5b83c2}В« ГЏГ°ГЁ ГЇГ®ГІГҐГ°ГҐ ГЇГіГ«ГјГ±Г : В»',
         onclick = function()
         end
       },
 	  {
-        title = '{ffffff}» 1) Если у пострадавшего нет пульса, то нужно провести ряд процедур реанимирования.',
+        title = '{ffffff}В» 1) Г…Г±Г«ГЁ Гі ГЇГ®Г±ГІГ°Г Г¤Г ГўГёГҐГЈГ® Г­ГҐГІ ГЇГіГ«ГјГ±Г , ГІГ® Г­ГіГ¦Г­Г® ГЇГ°Г®ГўГҐГ±ГІГЁ Г°ГїГ¤ ГЇГ°Г®Г¶ГҐГ¤ГіГ° Г°ГҐГ Г­ГЁГ¬ГЁГ°Г®ГўГ Г­ГЁГї.',
         onclick = function()
-		if cfg.main.male == false then --- Женская отыгровка
-        sampSendChat("/do Медицинский кейс в руке.")
+		if cfg.main.male == false then --- Г†ГҐГ­Г±ГЄГ Гї Г®ГІГ»ГЈГ°Г®ГўГЄГ 
+        sampSendChat("/do ГЊГҐГ¤ГЁГ¶ГЁГ­Г±ГЄГЁГ© ГЄГҐГ©Г± Гў Г°ГіГЄГҐ.")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me достала из кейса полотенце и подложила его под шею пострадавшего")
+        sampSendChat("/me Г¤Г®Г±ГІГ Г«Г  ГЁГ§ ГЄГҐГ©Г±Г  ГЇГ®Г«Г®ГІГҐГ­Г¶ГҐ ГЁ ГЇГ®Г¤Г«Г®Г¦ГЁГ«Г  ГҐГЈГ® ГЇГ®Г¤ ГёГҐГѕ ГЇГ®Г±ГІГ°Г Г¤Г ГўГёГҐГЈГ®")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me сняла с груди человека всю одежду и все сдавливающие аксессуары ")
+        sampSendChat("/me Г±Г­ГїГ«Г  Г± ГЈГ°ГіГ¤ГЁ Г·ГҐГ«Г®ГўГҐГЄГ  ГўГ±Гѕ Г®Г¤ГҐГ¦Г¤Гі ГЁ ГўГ±ГҐ Г±Г¤Г ГўГ«ГЁГўГ ГѕГ№ГЁГҐ Г ГЄГ±ГҐГ±Г±ГіГ Г°Г» ")
 		end
-		if cfg.main.male == true then --- Мужская отыгровка
-        sampSendChat("/do Медицинский кейс в руке.")
+		if cfg.main.male == true then --- ГЊГіГ¦Г±ГЄГ Гї Г®ГІГ»ГЈГ°Г®ГўГЄГ 
+        sampSendChat("/do ГЊГҐГ¤ГЁГ¶ГЁГ­Г±ГЄГЁГ© ГЄГҐГ©Г± Гў Г°ГіГЄГҐ.")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me достал из кейса полотенце и подложил его под шею пострадавшего")
+        sampSendChat("/me Г¤Г®Г±ГІГ Г« ГЁГ§ ГЄГҐГ©Г±Г  ГЇГ®Г«Г®ГІГҐГ­Г¶ГҐ ГЁ ГЇГ®Г¤Г«Г®Г¦ГЁГ« ГҐГЈГ® ГЇГ®Г¤ ГёГҐГѕ ГЇГ®Г±ГІГ°Г Г¤Г ГўГёГҐГЈГ®")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me снял с груди человека всю одежду и все сдавливающие аксессуары ")
+        sampSendChat("/me Г±Г­ГїГ« Г± ГЈГ°ГіГ¤ГЁ Г·ГҐГ«Г®ГўГҐГЄГ  ГўГ±Гѕ Г®Г¤ГҐГ¦Г¤Гі ГЁ ГўГ±ГҐ Г±Г¤Г ГўГ«ГЁГўГ ГѕГ№ГЁГҐ Г ГЄГ±ГҐГ±Г±ГіГ Г°Г» ")
 		end
 		end
       },
 	  {
-        title = '{ffffff}» 2) Если у пострадавшего нет пульса, то нужно провести ряд процедур реанимирования.',
+        title = '{ffffff}В» 2) Г…Г±Г«ГЁ Гі ГЇГ®Г±ГІГ°Г Г¤Г ГўГёГҐГЈГ® Г­ГҐГІ ГЇГіГ«ГјГ±Г , ГІГ® Г­ГіГ¦Г­Г® ГЇГ°Г®ГўГҐГ±ГІГЁ Г°ГїГ¤ ГЇГ°Г®Г¶ГҐГ¤ГіГ° Г°ГҐГ Г­ГЁГ¬ГЁГ°Г®ГўГ Г­ГЁГї.',
         onclick = function()
-		if cfg.main.male == false then --- Женская отыгровка
-        sampSendChat("/me сделала глубокий вдох и начала делать искусственное дыхание лёгких")
+		if cfg.main.male == false then --- Г†ГҐГ­Г±ГЄГ Гї Г®ГІГ»ГЈГ°Г®ГўГЄГ 
+        sampSendChat("/me Г±Г¤ГҐГ«Г Г«Г  ГЈГ«ГіГЎГ®ГЄГЁГ© ГўГ¤Г®Гµ ГЁ Г­Г Г·Г Г«Г  Г¤ГҐГ«Г ГІГј ГЁГ±ГЄГіГ±Г±ГІГўГҐГ­Г­Г®ГҐ Г¤Г»ГµГ Г­ГЁГҐ Г«ВёГЈГЄГЁГµ")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/do Воздух постепенно наполняет лёгкие пострадавшего.")
+        sampSendChat("/do Г‚Г®Г§Г¤ГіГµ ГЇГ®Г±ГІГҐГЇГҐГ­Г­Г® Г­Г ГЇГ®Г«Г­ГїГҐГІ Г«ВёГЈГЄГЁГҐ ГЇГ®Г±ГІГ°Г Г¤Г ГўГёГҐГЈГ®.")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me положила руки на грудь человека")
+        sampSendChat("/me ГЇГ®Г«Г®Г¦ГЁГ«Г  Г°ГіГЄГЁ Г­Г  ГЈГ°ГіГ¤Гј Г·ГҐГ«Г®ГўГҐГЄГ ")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me делает непрямой массаж сердца")
+        sampSendChat("/me Г¤ГҐГ«Г ГҐГІ Г­ГҐГЇГ°ГїГ¬Г®Г© Г¬Г Г±Г±Г Г¦ Г±ГҐГ°Г¤Г¶Г ")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me попеременно делает искусственное дыхание и непрямой массаж сердца.")
+        sampSendChat("/me ГЇГ®ГЇГҐГ°ГҐГ¬ГҐГ­Г­Г® Г¤ГҐГ«Г ГҐГІ ГЁГ±ГЄГіГ±Г±ГІГўГҐГ­Г­Г®ГҐ Г¤Г»ГµГ Г­ГЁГҐ ГЁ Г­ГҐГЇГ°ГїГ¬Г®Г© Г¬Г Г±Г±Г Г¦ Г±ГҐГ°Г¤Г¶Г .")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/do Прошла минута.")
+        sampSendChat("/do ГЏГ°Г®ГёГ«Г  Г¬ГЁГ­ГіГІГ .")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/do Человек пришёл в себя?")
+        sampSendChat("/do Г—ГҐГ«Г®ГўГҐГЄ ГЇГ°ГЁГёВёГ« Гў Г±ГҐГЎГї?")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/b /do Да/Нет.")
+        sampSendChat("/b /do Г„Г /ГЌГҐГІ.")
 		end
-		if cfg.main.male == true then --- Мужская отыгровка
-        sampSendChat("/me сделал глубокий вдох и начал делать искусственное дыхание лёгких")
+		if cfg.main.male == true then --- ГЊГіГ¦Г±ГЄГ Гї Г®ГІГ»ГЈГ°Г®ГўГЄГ 
+        sampSendChat("/me Г±Г¤ГҐГ«Г Г« ГЈГ«ГіГЎГ®ГЄГЁГ© ГўГ¤Г®Гµ ГЁ Г­Г Г·Г Г« Г¤ГҐГ«Г ГІГј ГЁГ±ГЄГіГ±Г±ГІГўГҐГ­Г­Г®ГҐ Г¤Г»ГµГ Г­ГЁГҐ Г«ВёГЈГЄГЁГµ")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/do Воздух постепенно наполняет лёгкие пострадавшего.")
+        sampSendChat("/do Г‚Г®Г§Г¤ГіГµ ГЇГ®Г±ГІГҐГЇГҐГ­Г­Г® Г­Г ГЇГ®Г«Г­ГїГҐГІ Г«ВёГЈГЄГЁГҐ ГЇГ®Г±ГІГ°Г Г¤Г ГўГёГҐГЈГ®.")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me положил руки на грудь человека")
+        sampSendChat("/me ГЇГ®Г«Г®Г¦ГЁГ« Г°ГіГЄГЁ Г­Г  ГЈГ°ГіГ¤Гј Г·ГҐГ«Г®ГўГҐГЄГ ")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me делает непрямой массаж сердца")
+        sampSendChat("/me Г¤ГҐГ«Г ГҐГІ Г­ГҐГЇГ°ГїГ¬Г®Г© Г¬Г Г±Г±Г Г¦ Г±ГҐГ°Г¤Г¶Г ")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me попеременно делает искусственное дыхание и непрямой массаж сердца.")
+        sampSendChat("/me ГЇГ®ГЇГҐГ°ГҐГ¬ГҐГ­Г­Г® Г¤ГҐГ«Г ГҐГІ ГЁГ±ГЄГіГ±Г±ГІГўГҐГ­Г­Г®ГҐ Г¤Г»ГµГ Г­ГЁГҐ ГЁ Г­ГҐГЇГ°ГїГ¬Г®Г© Г¬Г Г±Г±Г Г¦ Г±ГҐГ°Г¤Г¶Г .")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/do Прошла минута.")
+        sampSendChat("/do ГЏГ°Г®ГёГ«Г  Г¬ГЁГ­ГіГІГ .")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/do Человек пришёл в себя?")
+        sampSendChat("/do Г—ГҐГ«Г®ГўГҐГЄ ГЇГ°ГЁГёВёГ« Гў Г±ГҐГЎГї?")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/b /do Да/Нет.")
+        sampSendChat("/b /do Г„Г /ГЌГҐГІ.")
 		end
 		end
       },
 	  {
-        title = '{5b83c2}« Если пациент не пришел в себя то, продолжайте те же действия в течении 4 минут. »',
+        title = '{5b83c2}В« Г…Г±Г«ГЁ ГЇГ Г¶ГЁГҐГ­ГІ Г­ГҐ ГЇГ°ГЁГёГҐГ« Гў Г±ГҐГЎГї ГІГ®, ГЇГ°Г®Г¤Г®Г«Г¦Г Г©ГІГҐ ГІГҐ Г¦ГҐ Г¤ГҐГ©Г±ГІГўГЁГї Гў ГІГҐГ·ГҐГ­ГЁГЁ 4 Г¬ГЁГ­ГіГІ. В»',
         onclick = function()
         end
       },
 	  {
-        title = '{5b83c2}« Если пациент не пришел в себя то, везите его в больницу устанавливать смерть. »',
+        title = '{5b83c2}В« Г…Г±Г«ГЁ ГЇГ Г¶ГЁГҐГ­ГІ Г­ГҐ ГЇГ°ГЁГёГҐГ« Гў Г±ГҐГЎГї ГІГ®, ГўГҐГ§ГЁГІГҐ ГҐГЈГ® Гў ГЎГ®Г«ГјГ­ГЁГ¶Гі ГіГ±ГІГ Г­Г ГўГ«ГЁГўГ ГІГј Г±Г¬ГҐГ°ГІГј. В»',
         onclick = function()
         end
       },
 	  {
-        title = '{5b83c2}« При ожогах: »',
+        title = '{5b83c2}В« ГЏГ°ГЁ Г®Г¦Г®ГЈГ Гµ: В»',
         onclick = function()
         end
       },
 	  {
-        title = '{ffffff}» 1) Нужно освободить обожжённый участок кожи от одежды.',
+        title = '{ffffff}В» 1) ГЌГіГ¦Г­Г® Г®Г±ГўГ®ГЎГ®Г¤ГЁГІГј Г®ГЎГ®Г¦Г¦ВёГ­Г­Г»Г© ГіГ·Г Г±ГІГ®ГЄ ГЄГ®Г¦ГЁ Г®ГІ Г®Г¤ГҐГ¦Г¤Г».',
         onclick = function()
-		if cfg.main.male == false then --- Женская отыгровка
-        sampSendChat("/do Медицинский кейс в руке.")
+		if cfg.main.male == false then --- Г†ГҐГ­Г±ГЄГ Гї Г®ГІГ»ГЈГ°Г®ГўГЄГ 
+        sampSendChat("/do ГЊГҐГ¤ГЁГ¶ГЁГ­Г±ГЄГЁГ© ГЄГҐГ©Г± Гў Г°ГіГЄГҐ.")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me положила кейс на пол и достала из него медицинские ножницы")
+        sampSendChat("/me ГЇГ®Г«Г®Г¦ГЁГ«Г  ГЄГҐГ©Г± Г­Г  ГЇГ®Г« ГЁ Г¤Г®Г±ГІГ Г«Г  ГЁГ§ Г­ГҐГЈГ® Г¬ГҐГ¤ГЁГ¶ГЁГ­Г±ГЄГЁГҐ Г­Г®Г¦Г­ГЁГ¶Г»")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me использует ножницы и освободила обожжённый участок кожи от одежды")
+        sampSendChat("/me ГЁГ±ГЇГ®Г«ГјГ§ГіГҐГІ Г­Г®Г¦Г­ГЁГ¶Г» ГЁ Г®Г±ГўГ®ГЎГ®Г¤ГЁГ«Г  Г®ГЎГ®Г¦Г¦ВёГ­Г­Г»Г© ГіГ·Г Г±ГІГ®ГЄ ГЄГ®Г¦ГЁ Г®ГІ Г®Г¤ГҐГ¦Г¤Г»")
 		end
-		if cfg.main.male == true then --- Мужская отыгровка
-        sampSendChat("/do Медицинский кейс в руке.")
+		if cfg.main.male == true then --- ГЊГіГ¦Г±ГЄГ Гї Г®ГІГ»ГЈГ°Г®ГўГЄГ 
+        sampSendChat("/do ГЊГҐГ¤ГЁГ¶ГЁГ­Г±ГЄГЁГ© ГЄГҐГ©Г± Гў Г°ГіГЄГҐ.")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me положил кейс на пол и достал из него медицинские ножницы")
+        sampSendChat("/me ГЇГ®Г«Г®Г¦ГЁГ« ГЄГҐГ©Г± Г­Г  ГЇГ®Г« ГЁ Г¤Г®Г±ГІГ Г« ГЁГ§ Г­ГҐГЈГ® Г¬ГҐГ¤ГЁГ¶ГЁГ­Г±ГЄГЁГҐ Г­Г®Г¦Г­ГЁГ¶Г»")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me использует ножницы и освободила обожжённый участок кожи от одежды")
+        sampSendChat("/me ГЁГ±ГЇГ®Г«ГјГ§ГіГҐГІ Г­Г®Г¦Г­ГЁГ¶Г» ГЁ Г®Г±ГўГ®ГЎГ®Г¤ГЁГ«Г  Г®ГЎГ®Г¦Г¦ВёГ­Г­Г»Г© ГіГ·Г Г±ГІГ®ГЄ ГЄГ®Г¦ГЁ Г®ГІ Г®Г¤ГҐГ¦Г¤Г»")
 		end
 		end
       },
 	  {
-        title = '{ffffff}» 2) Далее нужно обработать обгоревший участок кожи спреем "Олазоль".',
+        title = '{ffffff}В» 2) Г„Г Г«ГҐГҐ Г­ГіГ¦Г­Г® Г®ГЎГ°Г ГЎГ®ГІГ ГІГј Г®ГЎГЈГ®Г°ГҐГўГёГЁГ© ГіГ·Г Г±ГІГ®ГЄ ГЄГ®Г¦ГЁ Г±ГЇГ°ГҐГҐГ¬ "ГЋГ«Г Г§Г®Г«Гј".',
         onclick = function()
-		if cfg.main.male == false then --- Женская отыгровка
-        sampSendChat("/me достала из сумки спрей 'Олазоль' и открыла его колпачок")
+		if cfg.main.male == false then --- Г†ГҐГ­Г±ГЄГ Гї Г®ГІГ»ГЈГ°Г®ГўГЄГ 
+        sampSendChat("/me Г¤Г®Г±ГІГ Г«Г  ГЁГ§ Г±ГіГ¬ГЄГЁ Г±ГЇГ°ГҐГ© 'ГЋГ«Г Г§Г®Г«Гј' ГЁ Г®ГІГЄГ°Г»Г«Г  ГҐГЈГ® ГЄГ®Г«ГЇГ Г·Г®ГЄ")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me сбрызнула спреем обгоревшие участки кожи и закрыла спрей")
+        sampSendChat("/me Г±ГЎГ°Г»Г§Г­ГіГ«Г  Г±ГЇГ°ГҐГҐГ¬ Г®ГЎГЈГ®Г°ГҐГўГёГЁГҐ ГіГ·Г Г±ГІГЄГЁ ГЄГ®Г¦ГЁ ГЁ Г§Г ГЄГ°Г»Г«Г  Г±ГЇГ°ГҐГ©")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me убрала его в медицинский кейс и достала из неё бинты")
+        sampSendChat("/me ГіГЎГ°Г Г«Г  ГҐГЈГ® Гў Г¬ГҐГ¤ГЁГ¶ГЁГ­Г±ГЄГЁГ© ГЄГҐГ©Г± ГЁ Г¤Г®Г±ГІГ Г«Г  ГЁГ§ Г­ГҐВё ГЎГЁГ­ГІГ»")
 		end
-		if cfg.main.male == true then --- Мужская отыгровка
-        sampSendChat("/me достал из сумки спрей 'Олазоль' и открыл его колпачок")
+		if cfg.main.male == true then --- ГЊГіГ¦Г±ГЄГ Гї Г®ГІГ»ГЈГ°Г®ГўГЄГ 
+        sampSendChat("/me Г¤Г®Г±ГІГ Г« ГЁГ§ Г±ГіГ¬ГЄГЁ Г±ГЇГ°ГҐГ© 'ГЋГ«Г Г§Г®Г«Гј' ГЁ Г®ГІГЄГ°Г»Г« ГҐГЈГ® ГЄГ®Г«ГЇГ Г·Г®ГЄ")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me сбрызнул спреем обгоревшие участки кожи и закрыл спрей")
+        sampSendChat("/me Г±ГЎГ°Г»Г§Г­ГіГ« Г±ГЇГ°ГҐГҐГ¬ Г®ГЎГЈГ®Г°ГҐГўГёГЁГҐ ГіГ·Г Г±ГІГЄГЁ ГЄГ®Г¦ГЁ ГЁ Г§Г ГЄГ°Г»Г« Г±ГЇГ°ГҐГ©")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me убрал его в медицинский кейс и достал из неё бинты")
+        sampSendChat("/me ГіГЎГ°Г Г« ГҐГЈГ® Гў Г¬ГҐГ¤ГЁГ¶ГЁГ­Г±ГЄГЁГ© ГЄГҐГ©Г± ГЁ Г¤Г®Г±ГІГ Г« ГЁГ§ Г­ГҐВё ГЎГЁГ­ГІГ»")
 		end
 		end
       },
 	  {
-        title = '{ffffff}» 3) В конце всех процедур следует наложить повязку из бинтов на обожжённый участок кожи.',
+        title = '{ffffff}В» 3) Г‚ ГЄГ®Г­Г¶ГҐ ГўГ±ГҐГµ ГЇГ°Г®Г¶ГҐГ¤ГіГ° Г±Г«ГҐГ¤ГіГҐГІ Г­Г Г«Г®Г¦ГЁГІГј ГЇГ®ГўГїГ§ГЄГі ГЁГ§ ГЎГЁГ­ГІГ®Гў Г­Г  Г®ГЎГ®Г¦Г¦ВёГ­Г­Г»Г© ГіГ·Г Г±ГІГ®ГЄ ГЄГ®Г¦ГЁ.',
         onclick = function()
-		if cfg.main.male == false then --- Женская отыгровка
-        sampSendChat("/me наложила повязку из бинтов на ожог")
+		if cfg.main.male == false then --- Г†ГҐГ­Г±ГЄГ Гї Г®ГІГ»ГЈГ°Г®ГўГЄГ 
+        sampSendChat("/me Г­Г Г«Г®Г¦ГЁГ«Г  ГЇГ®ГўГїГ§ГЄГі ГЁГ§ ГЎГЁГ­ГІГ®Гў Г­Г  Г®Г¦Г®ГЈ")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/do Повязка крепко сидит на ожоге.")
+        sampSendChat("/do ГЏГ®ГўГїГ§ГЄГ  ГЄГ°ГҐГЇГЄГ® Г±ГЁГ¤ГЁГІ Г­Г  Г®Г¦Г®ГЈГҐ.")
 		end
-		if cfg.main.male == true then --- Мужская отыгровка
-        sampSendChat("/me наложил повязку из бинтов на ожог")
+		if cfg.main.male == true then --- ГЊГіГ¦Г±ГЄГ Гї Г®ГІГ»ГЈГ°Г®ГўГЄГ 
+        sampSendChat("/me Г­Г Г«Г®Г¦ГЁГ« ГЇГ®ГўГїГ§ГЄГі ГЁГ§ ГЎГЁГ­ГІГ®Гў Г­Г  Г®Г¦Г®ГЈ")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/do Повязка крепко сидит на ожоге.")
+        sampSendChat("/do ГЏГ®ГўГїГ§ГЄГ  ГЄГ°ГҐГЇГЄГ® Г±ГЁГ¤ГЁГІ Г­Г  Г®Г¦Г®ГЈГҐ.")
 		end
 		end
       },
@@ -3608,54 +3608,54 @@ function medosmotr(args)
     return
     {
 	  {
-        title = '{ffffff}» Осмотр у Нарколога',
+        title = '{ffffff}В» ГЋГ±Г¬Г®ГІГ° Гі ГЌГ Г°ГЄГ®Г«Г®ГЈГ ',
         onclick = function()
-		if cfg.main.male == false then --- Женская отыгровка
-        sampSendChat("Добрый день, присаживайтесь на кушетку и закатайте рукав.")
+		if cfg.main.male == false then --- Г†ГҐГ­Г±ГЄГ Гї Г®ГІГ»ГЈГ°Г®ГўГЄГ 
+        sampSendChat("Г„Г®ГЎГ°Г»Г© Г¤ГҐГ­Гј, ГЇГ°ГЁГ±Г Г¦ГЁГўГ Г©ГІГҐГ±Гј Г­Г  ГЄГіГёГҐГІГЄГі ГЁ Г§Г ГЄГ ГІГ Г©ГІГҐ Г°ГіГЄГ Гў.")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("Вам нужно сдать анализ крови.")
+        sampSendChat("Г‚Г Г¬ Г­ГіГ¦Г­Г® Г±Г¤Г ГІГј Г Г­Г Г«ГЁГ§ ГЄГ°Г®ГўГЁ.")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me достала из шкафа: жгут, пустой шприц и ватку, смоченную спиртом.")
+        sampSendChat("/me Г¤Г®Г±ГІГ Г«Г  ГЁГ§ ГёГЄГ ГґГ : Г¦ГЈГіГІ, ГЇГіГ±ГІГ®Г© ГёГЇГ°ГЁГ¶ ГЁ ГўГ ГІГЄГі, Г±Г¬Г®Г·ГҐГ­Г­ГіГѕ Г±ГЇГЁГ°ГІГ®Г¬.")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me затянула жгут на руке пациента")
+        sampSendChat("/me Г§Г ГІГїГ­ГіГ«Г  Г¦ГЈГіГІ Г­Г  Г°ГіГЄГҐ ГЇГ Г¶ГЁГҐГ­ГІГ ")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me обработала ваткой место будущей инъекции")
+        sampSendChat("/me Г®ГЎГ°Г ГЎГ®ГІГ Г«Г  ГўГ ГІГЄГ®Г© Г¬ГҐГ±ГІГ® ГЎГіГ¤ГіГ№ГҐГ© ГЁГ­ГєГҐГЄГ¶ГЁГЁ")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me взяла шприцом необходимое количество крови с вены")
+        sampSendChat("/me ГўГ§ГїГ«Г  ГёГЇГ°ГЁГ¶Г®Г¬ Г­ГҐГ®ГЎГµГ®Г¤ГЁГ¬Г®ГҐ ГЄГ®Г«ГЁГ·ГҐГ±ГІГўГ® ГЄГ°Г®ГўГЁ Г± ГўГҐГ­Г»")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me приложила ватку к месту укола")
+        sampSendChat("/me ГЇГ°ГЁГ«Г®Г¦ГЁГ«Г  ГўГ ГІГЄГі ГЄ Г¬ГҐГ±ГІГі ГіГЄГ®Г«Г ")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me перелила кровь из шприца в пробирку")
+        sampSendChat("/me ГЇГҐГ°ГҐГ«ГЁГ«Г  ГЄГ°Г®ГўГј ГЁГ§ ГёГЇГ°ГЁГ¶Г  Гў ГЇГ°Г®ГЎГЁГ°ГЄГі")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me опустила тестовую палочку в пробирку")
+        sampSendChat("/me Г®ГЇГіГ±ГІГЁГ«Г  ГІГҐГ±ГІГ®ГўГіГѕ ГЇГ Г«Г®Г·ГЄГі Гў ГЇГ°Г®ГЎГЁГ°ГЄГі")
 	    wait(1000)
 		sampSendChat("/checkheal "..args)
 		end
-		if cfg.main.male == true then --- Мужская отыгровка
-        sampSendChat("Добрый день, присаживайтесь на кушетку и закатайте рукав.")
+		if cfg.main.male == true then --- ГЊГіГ¦Г±ГЄГ Гї Г®ГІГ»ГЈГ°Г®ГўГЄГ 
+        sampSendChat("Г„Г®ГЎГ°Г»Г© Г¤ГҐГ­Гј, ГЇГ°ГЁГ±Г Г¦ГЁГўГ Г©ГІГҐГ±Гј Г­Г  ГЄГіГёГҐГІГЄГі ГЁ Г§Г ГЄГ ГІГ Г©ГІГҐ Г°ГіГЄГ Гў.")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("Вам нужно сдать анализ крови.")
+        sampSendChat("Г‚Г Г¬ Г­ГіГ¦Г­Г® Г±Г¤Г ГІГј Г Г­Г Г«ГЁГ§ ГЄГ°Г®ГўГЁ.")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me достал из шкафа: жгут, пустой шприц и ватку, смоченную спиртом.")
+        sampSendChat("/me Г¤Г®Г±ГІГ Г« ГЁГ§ ГёГЄГ ГґГ : Г¦ГЈГіГІ, ГЇГіГ±ГІГ®Г© ГёГЇГ°ГЁГ¶ ГЁ ГўГ ГІГЄГі, Г±Г¬Г®Г·ГҐГ­Г­ГіГѕ Г±ГЇГЁГ°ГІГ®Г¬.")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me затянул жгут на руке пациента")
+        sampSendChat("/me Г§Г ГІГїГ­ГіГ« Г¦ГЈГіГІ Г­Г  Г°ГіГЄГҐ ГЇГ Г¶ГЁГҐГ­ГІГ ")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me обработал ваткой место будущей инъекции")
+        sampSendChat("/me Г®ГЎГ°Г ГЎГ®ГІГ Г« ГўГ ГІГЄГ®Г© Г¬ГҐГ±ГІГ® ГЎГіГ¤ГіГ№ГҐГ© ГЁГ­ГєГҐГЄГ¶ГЁГЁ")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me взял шприцом необходимое количество крови с вены")
+        sampSendChat("/me ГўГ§ГїГ« ГёГЇГ°ГЁГ¶Г®Г¬ Г­ГҐГ®ГЎГµГ®Г¤ГЁГ¬Г®ГҐ ГЄГ®Г«ГЁГ·ГҐГ±ГІГўГ® ГЄГ°Г®ГўГЁ Г± ГўГҐГ­Г»")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me приложил ватку к месту укола")
+        sampSendChat("/me ГЇГ°ГЁГ«Г®Г¦ГЁГ« ГўГ ГІГЄГі ГЄ Г¬ГҐГ±ГІГі ГіГЄГ®Г«Г ")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me перелил кровь из шприца в пробирку")
+        sampSendChat("/me ГЇГҐГ°ГҐГ«ГЁГ« ГЄГ°Г®ГўГј ГЁГ§ ГёГЇГ°ГЁГ¶Г  Гў ГЇГ°Г®ГЎГЁГ°ГЄГі")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me опустил тестовую палочку в пробирку")
+        sampSendChat("/me Г®ГЇГіГ±ГІГЁГ« ГІГҐГ±ГІГ®ГўГіГѕ ГЇГ Г«Г®Г·ГЄГі Гў ГЇГ°Г®ГЎГЁГ°ГЄГі")
 	    wait(1000)
 		sampSendChat("/checkheal "..args)
 		end
 		end
       },
 	  {
-        title = '{5b83c2}« Проверяем командой /checkheal [id]. »',
+        title = '{5b83c2}В« ГЏГ°Г®ГўГҐГ°ГїГҐГ¬ ГЄГ®Г¬Г Г­Г¤Г®Г© /checkheal [id]. В»',
         onclick = function()
         end
       },
@@ -3665,218 +3665,218 @@ function renmenu(args)
     return
     {
       {
-        title = '{5b83c2}« Список процедур. »',
+        title = '{5b83c2}В« Г‘ГЇГЁГ±Г®ГЄ ГЇГ°Г®Г¶ГҐГ¤ГіГ°. В»',
         onclick = function()
         end
       },
       {
-        title = '{ffffff}» Рентгеновский аппарат.',
+        title = '{ffffff}В» ГђГҐГ­ГІГЈГҐГ­Г®ГўГ±ГЄГЁГ© Г ГЇГЇГ Г°Г ГІ.',
         onclick = function()
-		if cfg.main.male == false then --- Женская отыгровка
-        sampSendChat("Ложитесь на кушетку и лежите смирно.")
+		if cfg.main.male == false then --- Г†ГҐГ­Г±ГЄГ Гї Г®ГІГ»ГЈГ°Г®ГўГЄГ 
+        sampSendChat("Г‹Г®Г¦ГЁГІГҐГ±Гј Г­Г  ГЄГіГёГҐГІГЄГі ГЁ Г«ГҐГ¦ГЁГІГҐ Г±Г¬ГЁГ°Г­Г®.")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me включила рентгеновский аппарат")
+        sampSendChat("/me ГўГЄГ«ГѕГ·ГЁГ«Г  Г°ГҐГ­ГІГЈГҐГ­Г®ГўГ±ГЄГЁГ© Г ГЇГЇГ Г°Г ГІ")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/do Рентгеновский аппарат зашумел.")
+        sampSendChat("/do ГђГҐГ­ГІГЈГҐГ­Г®ГўГ±ГЄГЁГ© Г ГЇГЇГ Г°Г ГІ Г§Г ГёГіГ¬ГҐГ«.")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me провела рентгеновским аппаратом по поврежденному участку")
+        sampSendChat("/me ГЇГ°Г®ГўГҐГ«Г  Г°ГҐГ­ГІГЈГҐГ­Г®ГўГ±ГЄГЁГ¬ Г ГЇГЇГ Г°Г ГІГ®Г¬ ГЇГ® ГЇГ®ГўГ°ГҐГ¦Г¤ГҐГ­Г­Г®Г¬Гі ГіГ·Г Г±ГІГЄГі")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me рассматривает снимок")
+        sampSendChat("/me Г°Г Г±Г±Г¬Г ГІГ°ГЁГўГ ГҐГІ Г±Г­ГЁГ¬Г®ГЄ")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/try обнаружила перелом") 
+        sampSendChat("/try Г®ГЎГ­Г Г°ГіГ¦ГЁГ«Г  ГЇГҐГ°ГҐГ«Г®Г¬") 
 		end
-		if cfg.main.male == true then --- Мужская отыгровка
-        sampSendChat("Ложитесь на кушетку и лежите смирно.")
+		if cfg.main.male == true then --- ГЊГіГ¦Г±ГЄГ Гї Г®ГІГ»ГЈГ°Г®ГўГЄГ 
+        sampSendChat("Г‹Г®Г¦ГЁГІГҐГ±Гј Г­Г  ГЄГіГёГҐГІГЄГі ГЁ Г«ГҐГ¦ГЁГІГҐ Г±Г¬ГЁГ°Г­Г®.")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me включил рентгеновский аппарат")
+        sampSendChat("/me ГўГЄГ«ГѕГ·ГЁГ« Г°ГҐГ­ГІГЈГҐГ­Г®ГўГ±ГЄГЁГ© Г ГЇГЇГ Г°Г ГІ")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/do Рентгеновский аппарат зашумел.")
+        sampSendChat("/do ГђГҐГ­ГІГЈГҐГ­Г®ГўГ±ГЄГЁГ© Г ГЇГЇГ Г°Г ГІ Г§Г ГёГіГ¬ГҐГ«.")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me провел рентгеновским аппаратом по поврежденному участку")
+        sampSendChat("/me ГЇГ°Г®ГўГҐГ« Г°ГҐГ­ГІГЈГҐГ­Г®ГўГ±ГЄГЁГ¬ Г ГЇГЇГ Г°Г ГІГ®Г¬ ГЇГ® ГЇГ®ГўГ°ГҐГ¦Г¤ГҐГ­Г­Г®Г¬Гі ГіГ·Г Г±ГІГЄГі")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me рассматривает снимок")
+        sampSendChat("/me Г°Г Г±Г±Г¬Г ГІГ°ГЁГўГ ГҐГІ Г±Г­ГЁГ¬Г®ГЄ")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/try обнаружил перелом") 
+        sampSendChat("/try Г®ГЎГ­Г Г°ГіГ¦ГЁГ« ГЇГҐГ°ГҐГ«Г®Г¬") 
 		end
 		end
       },
       {
-        title = '{5b83c2}« Если у пациента перелом конечностей. »',
+        title = '{5b83c2}В« Г…Г±Г«ГЁ Гі ГЇГ Г¶ГЁГҐГ­ГІГ  ГЇГҐГ°ГҐГ«Г®Г¬ ГЄГ®Г­ГҐГ·Г­Г®Г±ГІГҐГ©. В»',
         onclick = function()
         end
       },
       {
-        title = '{ffffff}» Перелом конечностей.',
+        title = '{ffffff}В» ГЏГҐГ°ГҐГ«Г®Г¬ ГЄГ®Г­ГҐГ·Г­Г®Г±ГІГҐГ©.',
         onclick = function()
-		if cfg.main.male == false then --- Женская отыгровка
-        sampSendChat("Садитесь на кушетку.")
+		if cfg.main.male == false then --- Г†ГҐГ­Г±ГЄГ Гї Г®ГІГ»ГЈГ°Г®ГўГЄГ 
+        sampSendChat("Г‘Г Г¤ГЁГІГҐГ±Гј Г­Г  ГЄГіГёГҐГІГЄГі.")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me взяла со стола перчатки и надела их")
+        sampSendChat("/me ГўГ§ГїГ«Г  Г±Г® Г±ГІГ®Г«Г  ГЇГҐГ°Г·Г ГІГЄГЁ ГЁ Г­Г Г¤ГҐГ«Г  ГЁГµ")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/do Рентгеновский аппарат зашумел.")
+        sampSendChat("/do ГђГҐГ­ГІГЈГҐГ­Г®ГўГ±ГЄГЁГ© Г ГЇГЇГ Г°Г ГІ Г§Г ГёГіГ¬ГҐГ«.")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me взяла шприц с обезбаливающим, после чего обезболила поврежденный участок")
+        sampSendChat("/me ГўГ§ГїГ«Г  ГёГЇГ°ГЁГ¶ Г± Г®ГЎГҐГ§ГЎГ Г«ГЁГўГ ГѕГ№ГЁГ¬, ГЇГ®Г±Г«ГҐ Г·ГҐГЈГ® Г®ГЎГҐГ§ГЎГ®Г«ГЁГ«Г  ГЇГ®ГўГ°ГҐГ¦Г¤ГҐГ­Г­Г»Г© ГіГ·Г Г±ГІГ®ГЄ")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me провела репозицию поврежденного участка")
+        sampSendChat("/me ГЇГ°Г®ГўГҐГ«Г  Г°ГҐГЇГ®Г§ГЁГ¶ГЁГѕ ГЇГ®ГўГ°ГҐГ¦Г¤ГҐГ­Г­Г®ГЈГ® ГіГ·Г Г±ГІГЄГ ")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me подготовила гипсовый пороошок")
+        sampSendChat("/me ГЇГ®Г¤ГЈГ®ГІГ®ГўГЁГ«Г  ГЈГЁГЇГ±Г®ГўГ»Г© ГЇГ®Г°Г®Г®ГёГ®ГЄ")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me раскатила бинт вдоль стола, после чего втерла гипсовый раствор")
+        sampSendChat("/me Г°Г Г±ГЄГ ГІГЁГ«Г  ГЎГЁГ­ГІ ГўГ¤Г®Г«Гј Г±ГІГ®Г«Г , ГЇГ®Г±Г«ГҐ Г·ГҐГЈГ® ГўГІГҐГ°Г«Г  ГЈГЁГЇГ±Г®ГўГ»Г© Г°Г Г±ГІГўГ®Г°")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me свернула бинт, после чего зафиксировала перелом")
+        sampSendChat("/me Г±ГўГҐГ°Г­ГіГ«Г  ГЎГЁГ­ГІ, ГЇГ®Г±Г«ГҐ Г·ГҐГЈГ® Г§Г ГґГЁГЄГ±ГЁГ°Г®ГўГ Г«Г  ГЇГҐГ°ГҐГ«Г®Г¬")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("Приходите через месяц. Всего доброго.")
+        sampSendChat("ГЏГ°ГЁГµГ®Г¤ГЁГІГҐ Г·ГҐГ°ГҐГ§ Г¬ГҐГ±ГїГ¶. Г‚Г±ГҐГЈГ® Г¤Г®ГЎГ°Г®ГЈГ®.")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me сняла перчатки и бросила их в урну возле стола") 
+        sampSendChat("/me Г±Г­ГїГ«Г  ГЇГҐГ°Г·Г ГІГЄГЁ ГЁ ГЎГ°Г®Г±ГЁГ«Г  ГЁГµ Гў ГіГ°Г­Гі ГўГ®Г§Г«ГҐ Г±ГІГ®Г«Г ") 
 		end
-		if cfg.main.male == true then --- Мужская отыгровка
-        sampSendChat("Садитесь на кушетку.")
+		if cfg.main.male == true then --- ГЊГіГ¦Г±ГЄГ Гї Г®ГІГ»ГЈГ°Г®ГўГЄГ 
+        sampSendChat("Г‘Г Г¤ГЁГІГҐГ±Гј Г­Г  ГЄГіГёГҐГІГЄГі.")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me взял со стола перчатки и надел их")
+        sampSendChat("/me ГўГ§ГїГ« Г±Г® Г±ГІГ®Г«Г  ГЇГҐГ°Г·Г ГІГЄГЁ ГЁ Г­Г Г¤ГҐГ« ГЁГµ")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/do Рентгеновский аппарат зашумел.")
+        sampSendChat("/do ГђГҐГ­ГІГЈГҐГ­Г®ГўГ±ГЄГЁГ© Г ГЇГЇГ Г°Г ГІ Г§Г ГёГіГ¬ГҐГ«.")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me взял шприц с обезбаливающим, после чего обезболил поврежденный участок")
+        sampSendChat("/me ГўГ§ГїГ« ГёГЇГ°ГЁГ¶ Г± Г®ГЎГҐГ§ГЎГ Г«ГЁГўГ ГѕГ№ГЁГ¬, ГЇГ®Г±Г«ГҐ Г·ГҐГЈГ® Г®ГЎГҐГ§ГЎГ®Г«ГЁГ« ГЇГ®ГўГ°ГҐГ¦Г¤ГҐГ­Г­Г»Г© ГіГ·Г Г±ГІГ®ГЄ")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me провела репозицию поврежденного участка")
+        sampSendChat("/me ГЇГ°Г®ГўГҐГ«Г  Г°ГҐГЇГ®Г§ГЁГ¶ГЁГѕ ГЇГ®ГўГ°ГҐГ¦Г¤ГҐГ­Г­Г®ГЈГ® ГіГ·Г Г±ГІГЄГ ")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me подготовил гипсовый пороошок")
+        sampSendChat("/me ГЇГ®Г¤ГЈГ®ГІГ®ГўГЁГ« ГЈГЁГЇГ±Г®ГўГ»Г© ГЇГ®Г°Г®Г®ГёГ®ГЄ")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me раскатил бинт вдоль стола, после чего втер гипсовый раствор")
+        sampSendChat("/me Г°Г Г±ГЄГ ГІГЁГ« ГЎГЁГ­ГІ ГўГ¤Г®Г«Гј Г±ГІГ®Г«Г , ГЇГ®Г±Г«ГҐ Г·ГҐГЈГ® ГўГІГҐГ° ГЈГЁГЇГ±Г®ГўГ»Г© Г°Г Г±ГІГўГ®Г°")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me свернул бинт, после чего зафиксировал перелом")
+        sampSendChat("/me Г±ГўГҐГ°Г­ГіГ« ГЎГЁГ­ГІ, ГЇГ®Г±Г«ГҐ Г·ГҐГЈГ® Г§Г ГґГЁГЄГ±ГЁГ°Г®ГўГ Г« ГЇГҐГ°ГҐГ«Г®Г¬")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("Приходите через месяц. Всего доброго.")
+        sampSendChat("ГЏГ°ГЁГµГ®Г¤ГЁГІГҐ Г·ГҐГ°ГҐГ§ Г¬ГҐГ±ГїГ¶. Г‚Г±ГҐГЈГ® Г¤Г®ГЎГ°Г®ГЈГ®.")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me снял перчатки и бросил их в урну возле стола") 
+        sampSendChat("/me Г±Г­ГїГ« ГЇГҐГ°Г·Г ГІГЄГЁ ГЁ ГЎГ°Г®Г±ГЁГ« ГЁГµ Гў ГіГ°Г­Гі ГўГ®Г§Г«ГҐ Г±ГІГ®Г«Г ") 
 		end
 		end
       },
       {
-        title = '{5b83c2}« Если у пациента перелом позвоночника/ребер. »',
+        title = '{5b83c2}В« Г…Г±Г«ГЁ Гі ГЇГ Г¶ГЁГҐГ­ГІГ  ГЇГҐГ°ГҐГ«Г®Г¬ ГЇГ®Г§ГўГ®Г­Г®Г·Г­ГЁГЄГ /Г°ГҐГЎГҐГ°. В»',
         onclick = function()
         end
       },
       {
-        title = '{ffffff}» Перелом позвоночника/ребер.',
+        title = '{ffffff}В» ГЏГҐГ°ГҐГ«Г®Г¬ ГЇГ®Г§ГўГ®Г­Г®Г·Г­ГЁГЄГ /Г°ГҐГЎГҐГ°.',
         onclick = function()
-		if cfg.main.male == false then --- Женская отыгровка
-        sampSendChat("/me осторожно уклала пострадавшего на операционный стол")
+		if cfg.main.male == false then --- Г†ГҐГ­Г±ГЄГ Гї Г®ГІГ»ГЈГ°Г®ГўГЄГ 
+        sampSendChat("/me Г®Г±ГІГ®Г°Г®Г¦Г­Г® ГіГЄГ«Г Г«Г  ГЇГ®Г±ГІГ°Г Г¤Г ГўГёГҐГЈГ® Г­Г  Г®ГЇГҐГ°Г Г¶ГЁГ®Г­Г­Г»Г© Г±ГІГ®Г«")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me взяла со стола перчатки и надела их")
+        sampSendChat("/me ГўГ§ГїГ«Г  Г±Г® Г±ГІГ®Г«Г  ГЇГҐГ°Г·Г ГІГЄГЁ ГЁ Г­Г Г¤ГҐГ«Г  ГЁГµ")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me подключила пострадавшего к капельнице")
+        sampSendChat("/me ГЇГ®Г¤ГЄГ«ГѕГ·ГЁГ«Г  ГЇГ®Г±ГІГ°Г Г¤Г ГўГёГҐГЈГ® ГЄ ГЄГ ГЇГҐГ«ГјГ­ГЁГ¶ГҐ")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me намочила ватку спиртом и обработала кожу на руке пациента")
+        sampSendChat("/me Г­Г Г¬Г®Г·ГЁГ«Г  ГўГ ГІГЄГі Г±ГЇГЁГ°ГІГ®Г¬ ГЁ Г®ГЎГ°Г ГЎГ®ГІГ Г«Г  ГЄГ®Г¦Гі Г­Г  Г°ГіГЄГҐ ГЇГ Г¶ГЁГҐГ­ГІГ ")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me внутривенно ввела Фторотан")
+        sampSendChat("/me ГўГ­ГіГІГ°ГЁГўГҐГ­Г­Г® ГўГўГҐГ«Г  Г”ГІГ®Г°Г®ГІГ Г­")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/do Наркоз начинает действовать, пациент потерял сознание.")
+        sampSendChat("/do ГЌГ Г°ГЄГ®Г§ Г­Г Г·ГЁГ­Г ГҐГІ Г¤ГҐГ©Г±ГІГўГ®ГўГ ГІГј, ГЇГ Г¶ГЁГҐГ­ГІ ГЇГ®ГІГҐГ°ГїГ« Г±Г®Г§Г­Г Г­ГЁГҐ.")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me достала скальпель и пинцет")
+        sampSendChat("/me Г¤Г®Г±ГІГ Г«Г  Г±ГЄГ Г«ГјГЇГҐГ«Гј ГЁ ГЇГЁГ­Г¶ГҐГІ")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me с помощью различных инструментов произвела репозицию поврежденного участка")
+        sampSendChat("/me Г± ГЇГ®Г¬Г®Г№ГјГѕ Г°Г Г§Г«ГЁГ·Г­Г»Гµ ГЁГ­Г±ГІГ°ГіГ¬ГҐГ­ГІГ®Гў ГЇГ°Г®ГЁГ§ГўГҐГ«Г  Г°ГҐГЇГ®Г§ГЁГ¶ГЁГѕ ГЇГ®ГўГ°ГҐГ¦Г¤ГҐГ­Г­Г®ГЈГ® ГіГ·Г Г±ГІГЄГ ")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me достала из тумбочки специальный корсет")
+        sampSendChat("/me Г¤Г®Г±ГІГ Г«Г  ГЁГ§ ГІГіГ¬ГЎГ®Г·ГЄГЁ Г±ГЇГҐГ¶ГЁГ Г«ГјГ­Г»Г© ГЄГ®Г°Г±ГҐГІ")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me зафиксировала поврежденный участок с помощью карсета")
+        sampSendChat("/me Г§Г ГґГЁГЄГ±ГЁГ°Г®ГўГ Г«Г  ГЇГ®ГўГ°ГҐГ¦Г¤ГҐГ­Г­Г»Г© ГіГ·Г Г±ГІГ®ГЄ Г± ГЇГ®Г¬Г®Г№ГјГѕ ГЄГ Г°Г±ГҐГІГ ")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me сняла перчатки и бросила их в урну возле стола")
+        sampSendChat("/me Г±Г­ГїГ«Г  ГЇГҐГ°Г·Г ГІГЄГЁ ГЁ ГЎГ°Г®Г±ГЁГ«Г  ГЁГµ Гў ГіГ°Г­Гі ГўГ®Г§Г«ГҐ Г±ГІГ®Г«Г ")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me убрала в отдельный контейнер грязный инструментарий")
+        sampSendChat("/me ГіГЎГ°Г Г«Г  Гў Г®ГІГ¤ГҐГ«ГјГ­Г»Г© ГЄГ®Г­ГІГҐГ©Г­ГҐГ° ГЈГ°ГїГ§Г­Г»Г© ГЁГ­Г±ГІГ°ГіГ¬ГҐГ­ГІГ Г°ГЁГ©")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/do Прошло некоторое время, пациент пришёл в сознание.") 
+        sampSendChat("/do ГЏГ°Г®ГёГ«Г® Г­ГҐГЄГ®ГІГ®Г°Г®ГҐ ГўГ°ГҐГ¬Гї, ГЇГ Г¶ГЁГҐГ­ГІ ГЇГ°ГЁГёВёГ« Гў Г±Г®Г§Г­Г Г­ГЁГҐ.") 
 		end
-		if cfg.main.male == true then --- Мужская отыгровка
-        sampSendChat("/me осторожно уклал пострадавшего на операционный стол")
+		if cfg.main.male == true then --- ГЊГіГ¦Г±ГЄГ Гї Г®ГІГ»ГЈГ°Г®ГўГЄГ 
+        sampSendChat("/me Г®Г±ГІГ®Г°Г®Г¦Г­Г® ГіГЄГ«Г Г« ГЇГ®Г±ГІГ°Г Г¤Г ГўГёГҐГЈГ® Г­Г  Г®ГЇГҐГ°Г Г¶ГЁГ®Г­Г­Г»Г© Г±ГІГ®Г«")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me взял со стола перчатки и надел их")
+        sampSendChat("/me ГўГ§ГїГ« Г±Г® Г±ГІГ®Г«Г  ГЇГҐГ°Г·Г ГІГЄГЁ ГЁ Г­Г Г¤ГҐГ« ГЁГµ")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me подключил пострадавшего к капельнице")
+        sampSendChat("/me ГЇГ®Г¤ГЄГ«ГѕГ·ГЁГ« ГЇГ®Г±ГІГ°Г Г¤Г ГўГёГҐГЈГ® ГЄ ГЄГ ГЇГҐГ«ГјГ­ГЁГ¶ГҐ")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me намочил ватку спиртом и обработал кожу на руке пациента")
+        sampSendChat("/me Г­Г Г¬Г®Г·ГЁГ« ГўГ ГІГЄГі Г±ГЇГЁГ°ГІГ®Г¬ ГЁ Г®ГЎГ°Г ГЎГ®ГІГ Г« ГЄГ®Г¦Гі Г­Г  Г°ГіГЄГҐ ГЇГ Г¶ГЁГҐГ­ГІГ ")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me внутривенно ввела Фторотан")
+        sampSendChat("/me ГўГ­ГіГІГ°ГЁГўГҐГ­Г­Г® ГўГўГҐГ«Г  Г”ГІГ®Г°Г®ГІГ Г­")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/do Наркоз начинает действовать, пациент потерял сознание.")
+        sampSendChat("/do ГЌГ Г°ГЄГ®Г§ Г­Г Г·ГЁГ­Г ГҐГІ Г¤ГҐГ©Г±ГІГўГ®ГўГ ГІГј, ГЇГ Г¶ГЁГҐГ­ГІ ГЇГ®ГІГҐГ°ГїГ« Г±Г®Г§Г­Г Г­ГЁГҐ.")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me достал скальпель и пинцет")
+        sampSendChat("/me Г¤Г®Г±ГІГ Г« Г±ГЄГ Г«ГјГЇГҐГ«Гј ГЁ ГЇГЁГ­Г¶ГҐГІ")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me с помощью различных инструментов произвел репозицию поврежденного участка")
+        sampSendChat("/me Г± ГЇГ®Г¬Г®Г№ГјГѕ Г°Г Г§Г«ГЁГ·Г­Г»Гµ ГЁГ­Г±ГІГ°ГіГ¬ГҐГ­ГІГ®Гў ГЇГ°Г®ГЁГ§ГўГҐГ« Г°ГҐГЇГ®Г§ГЁГ¶ГЁГѕ ГЇГ®ГўГ°ГҐГ¦Г¤ГҐГ­Г­Г®ГЈГ® ГіГ·Г Г±ГІГЄГ ")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me достал из тумбочки специальный корсет")
+        sampSendChat("/me Г¤Г®Г±ГІГ Г« ГЁГ§ ГІГіГ¬ГЎГ®Г·ГЄГЁ Г±ГЇГҐГ¶ГЁГ Г«ГјГ­Г»Г© ГЄГ®Г°Г±ГҐГІ")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me зафиксировал поврежденный участок с помощью карсета")
+        sampSendChat("/me Г§Г ГґГЁГЄГ±ГЁГ°Г®ГўГ Г« ГЇГ®ГўГ°ГҐГ¦Г¤ГҐГ­Г­Г»Г© ГіГ·Г Г±ГІГ®ГЄ Г± ГЇГ®Г¬Г®Г№ГјГѕ ГЄГ Г°Г±ГҐГІГ ")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me снял перчатки и бросил их в урну возле стола")
+        sampSendChat("/me Г±Г­ГїГ« ГЇГҐГ°Г·Г ГІГЄГЁ ГЁ ГЎГ°Г®Г±ГЁГ« ГЁГµ Гў ГіГ°Г­Гі ГўГ®Г§Г«ГҐ Г±ГІГ®Г«Г ")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me убрал в отдельный контейнер грязный инструментарий")
+        sampSendChat("/me ГіГЎГ°Г Г« Гў Г®ГІГ¤ГҐГ«ГјГ­Г»Г© ГЄГ®Г­ГІГҐГ©Г­ГҐГ° ГЈГ°ГїГ§Г­Г»Г© ГЁГ­Г±ГІГ°ГіГ¬ГҐГ­ГІГ Г°ГЁГ©")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/do Прошло некоторое время, пациент пришёл в сознание.") 
+        sampSendChat("/do ГЏГ°Г®ГёГ«Г® Г­ГҐГЄГ®ГІГ®Г°Г®ГҐ ГўГ°ГҐГ¬Гї, ГЇГ Г¶ГЁГҐГ­ГІ ГЇГ°ГЁГёВёГ« Гў Г±Г®Г§Г­Г Г­ГЁГҐ.") 
 		end
 		end
       },
       {
-        title = '{5b83c2}« Если у пациента глубокий порез. »',
+        title = '{5b83c2}В« Г…Г±Г«ГЁ Гі ГЇГ Г¶ГЁГҐГ­ГІГ  ГЈГ«ГіГЎГ®ГЄГЁГ© ГЇГ®Г°ГҐГ§. В»',
         onclick = function()
         end
       },
       {
-        title = '{ffffff}» Глубокий порез.',
+        title = '{ffffff}В» ГѓГ«ГіГЎГ®ГЄГЁГ© ГЇГ®Г°ГҐГ§.',
         onclick = function()
-		if cfg.main.male == false then --- Женская отыгровка
-        sampSendChat("/me взяла со стола перчатки и надела их")
+		if cfg.main.male == false then --- Г†ГҐГ­Г±ГЄГ Гї Г®ГІГ»ГЈГ°Г®ГўГЄГ 
+        sampSendChat("/me ГўГ§ГїГ«Г  Г±Г® Г±ГІГ®Г«Г  ГЇГҐГ°Г·Г ГІГЄГЁ ГЁ Г­Г Г¤ГҐГ«Г  ГЁГµ")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me провела осмотр пациента")
+        sampSendChat("/me ГЇГ°Г®ГўГҐГ«Г  Г®Г±Г¬Г®ГІГ° ГЇГ Г¶ГЁГҐГ­ГІГ ")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me определила степень тяжести пореза у пациента")
+        sampSendChat("/me Г®ГЇГ°ГҐГ¤ГҐГ«ГЁГ«Г  Г±ГІГҐГЇГҐГ­Гј ГІГїГ¦ГҐГ±ГІГЁ ГЇГ®Г°ГҐГ§Г  Гі ГЇГ Г¶ГЁГҐГ­ГІГ ")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me обезболила поврежденный участок")
+        sampSendChat("/me Г®ГЎГҐГ§ГЎГ®Г«ГЁГ«Г  ГЇГ®ГўГ°ГҐГ¦Г¤ГҐГ­Г­Г»Г© ГіГ·Г Г±ГІГ®ГЄ")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me достала из мед. сумки жгут и наложила его поверх повреждения")
+        sampSendChat("/me Г¤Г®Г±ГІГ Г«Г  ГЁГ§ Г¬ГҐГ¤. Г±ГіГ¬ГЄГЁ Г¦ГЈГіГІ ГЁ Г­Г Г«Г®Г¦ГЁГ«Г  ГҐГЈГ® ГЇГ®ГўГҐГ°Гµ ГЇГ®ГўГ°ГҐГ¦Г¤ГҐГ­ГЁГї")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me разложила хирургические инструменты на столе")
+        sampSendChat("/me Г°Г Г§Г«Г®Г¦ГЁГ«Г  ГµГЁГ°ГіГ°ГЈГЁГ·ГҐГ±ГЄГЁГҐ ГЁГ­Г±ГІГ°ГіГ¬ГҐГ­ГІГ» Г­Г  Г±ГІГ®Г«ГҐ")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me взяла специальные иглу и нити")
+        sampSendChat("/me ГўГ§ГїГ«Г  Г±ГЇГҐГ¶ГЁГ Г«ГјГ­Г»ГҐ ГЁГЈГ«Гі ГЁ Г­ГЁГІГЁ")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me зашила кровеносный сосуд и проверила пульс")
+        sampSendChat("/me Г§Г ГёГЁГ«Г  ГЄГ°Г®ГўГҐГ­Г®Г±Г­Г»Г© Г±Г®Г±ГіГ¤ ГЁ ГЇГ°Г®ГўГҐГ°ГЁГ«Г  ГЇГіГ«ГјГ±")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me протерла кровь и зашила место пореза")
+        sampSendChat("/me ГЇГ°Г®ГІГҐГ°Г«Г  ГЄГ°Г®ГўГј ГЁ Г§Г ГёГЁГ«Г  Г¬ГҐГ±ГІГ® ГЇГ®Г°ГҐГ§Г ")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me отложила иглу и нити в сторону")
+        sampSendChat("/me Г®ГІГ«Г®Г¦ГЁГ«Г  ГЁГЈГ«Гі ГЁ Г­ГЁГІГЁ Гў Г±ГІГ®Г°Г®Г­Гі")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me сняла жгут, взяла бинты и перебинтовала поврежденный участок кожи")
+        sampSendChat("/me Г±Г­ГїГ«Г  Г¦ГЈГіГІ, ГўГ§ГїГ«Г  ГЎГЁГ­ГІГ» ГЁ ГЇГҐГ°ГҐГЎГЁГ­ГІГ®ГўГ Г«Г  ГЇГ®ГўГ°ГҐГ¦Г¤ГҐГ­Г­Г»Г© ГіГ·Г Г±ГІГ®ГЄ ГЄГ®Г¦ГЁ")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("До свадьбы заживет, удачного дня, не болейте.")
+        sampSendChat("Г„Г® Г±ГўГ Г¤ГјГЎГ» Г§Г Г¦ГЁГўГҐГІ, ГіГ¤Г Г·Г­Г®ГЈГ® Г¤Г­Гї, Г­ГҐ ГЎГ®Г«ГҐГ©ГІГҐ.")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me убрала в отдельный контейнер грязный инструментарий") 
+        sampSendChat("/me ГіГЎГ°Г Г«Г  Гў Г®ГІГ¤ГҐГ«ГјГ­Г»Г© ГЄГ®Г­ГІГҐГ©Г­ГҐГ° ГЈГ°ГїГ§Г­Г»Г© ГЁГ­Г±ГІГ°ГіГ¬ГҐГ­ГІГ Г°ГЁГ©") 
 		end
-		if cfg.main.male == true then --- Мужская отыгровка
-        sampSendChat("/me взял со стола перчатки и надел их")
+		if cfg.main.male == true then --- ГЊГіГ¦Г±ГЄГ Гї Г®ГІГ»ГЈГ°Г®ГўГЄГ 
+        sampSendChat("/me ГўГ§ГїГ« Г±Г® Г±ГІГ®Г«Г  ГЇГҐГ°Г·Г ГІГЄГЁ ГЁ Г­Г Г¤ГҐГ« ГЁГµ")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me провел осмотр пациента")
+        sampSendChat("/me ГЇГ°Г®ГўГҐГ« Г®Г±Г¬Г®ГІГ° ГЇГ Г¶ГЁГҐГ­ГІГ ")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me определил степень тяжести пореза у пациента")
+        sampSendChat("/me Г®ГЇГ°ГҐГ¤ГҐГ«ГЁГ« Г±ГІГҐГЇГҐГ­Гј ГІГїГ¦ГҐГ±ГІГЁ ГЇГ®Г°ГҐГ§Г  Гі ГЇГ Г¶ГЁГҐГ­ГІГ ")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me обезболил поврежденный участок")
+        sampSendChat("/me Г®ГЎГҐГ§ГЎГ®Г«ГЁГ« ГЇГ®ГўГ°ГҐГ¦Г¤ГҐГ­Г­Г»Г© ГіГ·Г Г±ГІГ®ГЄ")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me достал из мед. сумки жгут и наложил его поверх повреждения")
+        sampSendChat("/me Г¤Г®Г±ГІГ Г« ГЁГ§ Г¬ГҐГ¤. Г±ГіГ¬ГЄГЁ Г¦ГЈГіГІ ГЁ Г­Г Г«Г®Г¦ГЁГ« ГҐГЈГ® ГЇГ®ГўГҐГ°Гµ ГЇГ®ГўГ°ГҐГ¦Г¤ГҐГ­ГЁГї")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me разложил хирургические инструменты на столе")
+        sampSendChat("/me Г°Г Г§Г«Г®Г¦ГЁГ« ГµГЁГ°ГіГ°ГЈГЁГ·ГҐГ±ГЄГЁГҐ ГЁГ­Г±ГІГ°ГіГ¬ГҐГ­ГІГ» Г­Г  Г±ГІГ®Г«ГҐ")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me взял специальные иглу и нити")
+        sampSendChat("/me ГўГ§ГїГ« Г±ГЇГҐГ¶ГЁГ Г«ГјГ­Г»ГҐ ГЁГЈГ«Гі ГЁ Г­ГЁГІГЁ")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me зашил кровеносный сосуд и проверил пульс")
+        sampSendChat("/me Г§Г ГёГЁГ« ГЄГ°Г®ГўГҐГ­Г®Г±Г­Г»Г© Г±Г®Г±ГіГ¤ ГЁ ГЇГ°Г®ГўГҐГ°ГЁГ« ГЇГіГ«ГјГ±")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me протер кровь и зашил место пореза")
+        sampSendChat("/me ГЇГ°Г®ГІГҐГ° ГЄГ°Г®ГўГј ГЁ Г§Г ГёГЁГ« Г¬ГҐГ±ГІГ® ГЇГ®Г°ГҐГ§Г ")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me отложил иглу и нити в сторону")
+        sampSendChat("/me Г®ГІГ«Г®Г¦ГЁГ« ГЁГЈГ«Гі ГЁ Г­ГЁГІГЁ Гў Г±ГІГ®Г°Г®Г­Гі")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me снял жгут, взял бинты и перебинтовал поврежденный участок кожи")
+        sampSendChat("/me Г±Г­ГїГ« Г¦ГЈГіГІ, ГўГ§ГїГ« ГЎГЁГ­ГІГ» ГЁ ГЇГҐГ°ГҐГЎГЁГ­ГІГ®ГўГ Г« ГЇГ®ГўГ°ГҐГ¦Г¤ГҐГ­Г­Г»Г© ГіГ·Г Г±ГІГ®ГЄ ГЄГ®Г¦ГЁ")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("До свадьбы заживет, удачного дня, не болейте.")
+        sampSendChat("Г„Г® Г±ГўГ Г¤ГјГЎГ» Г§Г Г¦ГЁГўГҐГІ, ГіГ¤Г Г·Г­Г®ГЈГ® Г¤Г­Гї, Г­ГҐ ГЎГ®Г«ГҐГ©ГІГҐ.")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me убрал в отдельный контейнер грязный инструментарий") 
+        sampSendChat("/me ГіГЎГ°Г Г« Гў Г®ГІГ¤ГҐГ«ГјГ­Г»Г© ГЄГ®Г­ГІГҐГ©Г­ГҐГ° ГЈГ°ГїГ§Г­Г»Г© ГЁГ­Г±ГІГ°ГіГ¬ГҐГ­ГІГ Г°ГЁГ©") 
 		end
 		end
       },
@@ -3886,132 +3886,132 @@ function priziv(id)
     return
     {
 	  {
-        title = '{80a4bf}» {ffffff}Приветствие.',
+        title = '{80a4bf}В» {ffffff}ГЏГ°ГЁГўГҐГІГ±ГІГўГЁГҐ.',
         onclick = function()
 		local _, myid = sampGetPlayerIdByCharHandle(PLAYER_PED)
         local myname = sampGetPlayerNickname(myid)
-		sampSendChat('Здравствуйте, я '..rank..' военной мед.комиссии этого Штата.')
+		sampSendChat('Г‡Г¤Г°Г ГўГ±ГІГўГіГ©ГІГҐ, Гї '..rank..' ГўГ®ГҐГ­Г­Г®Г© Г¬ГҐГ¤.ГЄГ®Г¬ГЁГ±Г±ГЁГЁ ГЅГІГ®ГЈГ® ГГІГ ГІГ .')
 	    wait(cfg.commands.zaderjka * 1000)
-		sampSendChat('/do На рубашке бейджик с надписью '..rank..' | '..myname:gsub('_', ' ')..'.')
+		sampSendChat('/do ГЌГ  Г°ГіГЎГ ГёГЄГҐ ГЎГҐГ©Г¤Г¦ГЁГЄ Г± Г­Г Г¤ГЇГЁГ±ГјГѕ '..rank..' | '..myname:gsub('_', ' ')..'.')
 	    wait(cfg.commands.zaderjka * 1000)
-		sampSendChat("Призывник покажите пожалуйста вашу мед.карту.")
+		sampSendChat("ГЏГ°ГЁГ§Г»ГўГ­ГЁГЄ ГЇГ®ГЄГ Г¦ГЁГІГҐ ГЇГ®Г¦Г Г«ГіГ©Г±ГІГ  ГўГ ГёГі Г¬ГҐГ¤.ГЄГ Г°ГІГі.")
 	    wait(cfg.commands.zaderjka * 1000)
-		sampSendChat("/b /me передал мед.карту")
+		sampSendChat("/b /me ГЇГҐГ°ГҐГ¤Г Г« Г¬ГҐГ¤.ГЄГ Г°ГІГі")
 		end
       },
 	  {
-        title = '{80a4bf}» {ffffff}Проверка мед.карты',
+        title = '{80a4bf}В» {ffffff}ГЏГ°Г®ГўГҐГ°ГЄГ  Г¬ГҐГ¤.ГЄГ Г°ГІГ»',
         onclick = function()
-		if cfg.main.male == false then --- Женская отыгровка
-		sampSendChat("/me протянула правую руку, после взяла мед.карту у человека напротив")
+		if cfg.main.male == false then --- Г†ГҐГ­Г±ГЄГ Гї Г®ГІГ»ГЈГ°Г®ГўГЄГ 
+		sampSendChat("/me ГЇГ°Г®ГІГїГ­ГіГ«Г  ГЇГ°Г ГўГіГѕ Г°ГіГЄГі, ГЇГ®Г±Г«ГҐ ГўГ§ГїГ«Г  Г¬ГҐГ¤.ГЄГ Г°ГІГі Гі Г·ГҐГ«Г®ГўГҐГЄГ  Г­Г ГЇГ°Г®ГІГЁГў")
 	    wait(cfg.commands.zaderjka * 1000)
-		sampSendChat("/me начала смотреть мед.карту, после чего сказала")
+		sampSendChat("/me Г­Г Г·Г Г«Г  Г±Г¬Г®ГІГ°ГҐГІГј Г¬ГҐГ¤.ГЄГ Г°ГІГі, ГЇГ®Г±Г«ГҐ Г·ГҐГЈГ® Г±ГЄГ Г§Г Г«Г ")
 	    wait(cfg.commands.zaderjka * 1000)
-		sampSendChat("Наркотические вещества употребляли?")
+		sampSendChat("ГЌГ Г°ГЄГ®ГІГЁГ·ГҐГ±ГЄГЁГҐ ГўГҐГ№ГҐГ±ГІГўГ  ГіГЇГ®ГІГ°ГҐГЎГ«ГїГ«ГЁ?")
 		end
-		if cfg.main.male == true then --- Мужская отыгровка
-		sampSendChat("/me протянул правую руку, после взял мед.карту у человека напротив")
+		if cfg.main.male == true then --- ГЊГіГ¦Г±ГЄГ Гї Г®ГІГ»ГЈГ°Г®ГўГЄГ 
+		sampSendChat("/me ГЇГ°Г®ГІГїГ­ГіГ« ГЇГ°Г ГўГіГѕ Г°ГіГЄГі, ГЇГ®Г±Г«ГҐ ГўГ§ГїГ« Г¬ГҐГ¤.ГЄГ Г°ГІГі Гі Г·ГҐГ«Г®ГўГҐГЄГ  Г­Г ГЇГ°Г®ГІГЁГў")
 	    wait(cfg.commands.zaderjka * 1000)
-		sampSendChat("/me начал смотреть мед.карту, после чего сказал")
+		sampSendChat("/me Г­Г Г·Г Г« Г±Г¬Г®ГІГ°ГҐГІГј Г¬ГҐГ¤.ГЄГ Г°ГІГі, ГЇГ®Г±Г«ГҐ Г·ГҐГЈГ® Г±ГЄГ Г§Г Г«")
 	    wait(cfg.commands.zaderjka * 1000)
-		sampSendChat("Наркотические вещества употребляли?")
+		sampSendChat("ГЌГ Г°ГЄГ®ГІГЁГ·ГҐГ±ГЄГЁГҐ ГўГҐГ№ГҐГ±ГІГўГ  ГіГЇГ®ГІГ°ГҐГЎГ«ГїГ«ГЁ?")
 		end
 		end
       },
 	  {
-        title = '{80a4bf}» {ffffff}Проверка на зависимость',
+        title = '{80a4bf}В» {ffffff}ГЏГ°Г®ГўГҐГ°ГЄГ  Г­Г  Г§Г ГўГЁГ±ГЁГ¬Г®Г±ГІГј',
         onclick = function()
-		if cfg.main.male == false then --- Женская отыгровка
-		sampSendChat("- Хорошо. Сейчас мы проверим вас на наличие наркозависимости.")
+		if cfg.main.male == false then --- Г†ГҐГ­Г±ГЄГ Гї Г®ГІГ»ГЈГ°Г®ГўГЄГ 
+		sampSendChat("- Г•Г®Г°Г®ГёГ®. Г‘ГҐГ©Г·Г Г± Г¬Г» ГЇГ°Г®ГўГҐГ°ГЁГ¬ ГўГ Г± Г­Г  Г­Г Г«ГЁГ·ГЁГҐ Г­Г Г°ГЄГ®Г§Г ГўГЁГ±ГЁГ¬Г®Г±ГІГЁ.")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/do Через плечо врача накинута мед.сумка на ремне.")
+        sampSendChat("/do Г—ГҐГ°ГҐГ§ ГЇГ«ГҐГ·Г® ГўГ°Г Г·Г  Г­Г ГЄГЁГ­ГіГІГ  Г¬ГҐГ¤.Г±ГіГ¬ГЄГ  Г­Г  Г°ГҐГ¬Г­ГҐ.")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me достала из мед.сумки вату, спирт, шприц и специальную колбочку")
+        sampSendChat("/me Г¤Г®Г±ГІГ Г«Г  ГЁГ§ Г¬ГҐГ¤.Г±ГіГ¬ГЄГЁ ГўГ ГІГі, Г±ГЇГЁГ°ГІ, ГёГЇГ°ГЁГ¶ ГЁ Г±ГЇГҐГ¶ГЁГ Г«ГјГ­ГіГѕ ГЄГ®Г«ГЎГ®Г·ГЄГі")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me пропитала вату спиртом")
+        sampSendChat("/me ГЇГ°Г®ГЇГЁГІГ Г«Г  ГўГ ГІГі Г±ГЇГЁГ°ГІГ®Г¬")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/do Пропитанная спиртом вата в левой руке.")
+        sampSendChat("/do ГЏГ°Г®ГЇГЁГІГ Г­Г­Г Гї Г±ГЇГЁГ°ГІГ®Г¬ ГўГ ГІГ  Гў Г«ГҐГўГ®Г© Г°ГіГЄГҐ.")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat('/me обработала ватой место укола на вене '..sampGetPlayerNickname(id):gsub('_', ' ')..'')
+        sampSendChat('/me Г®ГЎГ°Г ГЎГ®ГІГ Г«Г  ГўГ ГІГ®Г© Г¬ГҐГ±ГІГ® ГіГЄГ®Г«Г  Г­Г  ГўГҐГ­ГҐ '..sampGetPlayerNickname(id):gsub('_', ' ')..'')
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/do Шприц и специальная колбочка в правой руке.")
+        sampSendChat("/do ГГЇГ°ГЁГ¶ ГЁ Г±ГЇГҐГ¶ГЁГ Г«ГјГ­Г Гї ГЄГ®Г«ГЎГ®Г·ГЄГ  Гў ГЇГ°Г ГўГ®Г© Г°ГіГЄГҐ.")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat('/me аккуратным движением вводит шприц в вену '..sampGetPlayerNickname(id):gsub('_', ' ')..'')
+        sampSendChat('/me Г ГЄГЄГіГ°Г ГІГ­Г»Г¬ Г¤ГўГЁГ¦ГҐГ­ГЁГҐГ¬ ГўГўГ®Г¤ГЁГІ ГёГЇГ°ГЁГ¶ Гў ГўГҐГ­Гі '..sampGetPlayerNickname(id):gsub('_', ' ')..'')
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me с помощью шприца взяла немного крови для анализа")
+        sampSendChat("/me Г± ГЇГ®Г¬Г®Г№ГјГѕ ГёГЇГ°ГЁГ¶Г  ГўГ§ГїГ«Г  Г­ГҐГ¬Г­Г®ГЈГ® ГЄГ°Г®ГўГЁ Г¤Г«Гї Г Г­Г Г«ГЁГ§Г ")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me перелила кровь из шприца в специальную колбу, затем поместила её в мини-лабораторию")
+        sampSendChat("/me ГЇГҐГ°ГҐГ«ГЁГ«Г  ГЄГ°Г®ГўГј ГЁГ§ ГёГЇГ°ГЁГ¶Г  Гў Г±ГЇГҐГ¶ГЁГ Г«ГјГ­ГіГѕ ГЄГ®Г«ГЎГі, Г§Г ГІГҐГ¬ ГЇГ®Г¬ГҐГ±ГІГЁГ«Г  ГҐВё Гў Г¬ГЁГ­ГЁ-Г«Г ГЎГ®Г°Г ГІГ®Г°ГЁГѕ")
         wait(1300)
 		sampSendChat("/checkheal "..id)
 		end
-		if cfg.main.male == true then --- Мужская отыгровка
-		sampSendChat("- Хорошо. Сейчас мы проверим вас на наличие наркозависимости.")
+		if cfg.main.male == true then --- ГЊГіГ¦Г±ГЄГ Гї Г®ГІГ»ГЈГ°Г®ГўГЄГ 
+		sampSendChat("- Г•Г®Г°Г®ГёГ®. Г‘ГҐГ©Г·Г Г± Г¬Г» ГЇГ°Г®ГўГҐГ°ГЁГ¬ ГўГ Г± Г­Г  Г­Г Г«ГЁГ·ГЁГҐ Г­Г Г°ГЄГ®Г§Г ГўГЁГ±ГЁГ¬Г®Г±ГІГЁ.")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/do Через плечо врача накинута мед.сумка на ремне.")
+        sampSendChat("/do Г—ГҐГ°ГҐГ§ ГЇГ«ГҐГ·Г® ГўГ°Г Г·Г  Г­Г ГЄГЁГ­ГіГІГ  Г¬ГҐГ¤.Г±ГіГ¬ГЄГ  Г­Г  Г°ГҐГ¬Г­ГҐ.")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me достал из мед.сумки вату, спирт, шприц и специальную колбочку")
+        sampSendChat("/me Г¤Г®Г±ГІГ Г« ГЁГ§ Г¬ГҐГ¤.Г±ГіГ¬ГЄГЁ ГўГ ГІГі, Г±ГЇГЁГ°ГІ, ГёГЇГ°ГЁГ¶ ГЁ Г±ГЇГҐГ¶ГЁГ Г«ГјГ­ГіГѕ ГЄГ®Г«ГЎГ®Г·ГЄГі")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me пропитал вату спиртом")
+        sampSendChat("/me ГЇГ°Г®ГЇГЁГІГ Г« ГўГ ГІГі Г±ГЇГЁГ°ГІГ®Г¬")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/do Пропитанная спиртом вата в левой руке.")
+        sampSendChat("/do ГЏГ°Г®ГЇГЁГІГ Г­Г­Г Гї Г±ГЇГЁГ°ГІГ®Г¬ ГўГ ГІГ  Гў Г«ГҐГўГ®Г© Г°ГіГЄГҐ.")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat('/me обработал ватой место укола на вене '..sampGetPlayerNickname(id):gsub('_', ' ')..'')
+        sampSendChat('/me Г®ГЎГ°Г ГЎГ®ГІГ Г« ГўГ ГІГ®Г© Г¬ГҐГ±ГІГ® ГіГЄГ®Г«Г  Г­Г  ГўГҐГ­ГҐ '..sampGetPlayerNickname(id):gsub('_', ' ')..'')
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/do Шприц и специальная колбочка в правой руке.")
+        sampSendChat("/do ГГЇГ°ГЁГ¶ ГЁ Г±ГЇГҐГ¶ГЁГ Г«ГјГ­Г Гї ГЄГ®Г«ГЎГ®Г·ГЄГ  Гў ГЇГ°Г ГўГ®Г© Г°ГіГЄГҐ.")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat('/me аккуратным движением вводит шприц в вену '..sampGetPlayerNickname(id):gsub('_', ' ')..'')
+        sampSendChat('/me Г ГЄГЄГіГ°Г ГІГ­Г»Г¬ Г¤ГўГЁГ¦ГҐГ­ГЁГҐГ¬ ГўГўГ®Г¤ГЁГІ ГёГЇГ°ГЁГ¶ Гў ГўГҐГ­Гі '..sampGetPlayerNickname(id):gsub('_', ' ')..'')
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me с помощью шприца взял немного крови для анализа")
+        sampSendChat("/me Г± ГЇГ®Г¬Г®Г№ГјГѕ ГёГЇГ°ГЁГ¶Г  ГўГ§ГїГ« Г­ГҐГ¬Г­Г®ГЈГ® ГЄГ°Г®ГўГЁ Г¤Г«Гї Г Г­Г Г«ГЁГ§Г ")
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me перелил кровь из шприца в специальную колбу, затем поместил её в мини-лабораторию")
+        sampSendChat("/me ГЇГҐГ°ГҐГ«ГЁГ« ГЄГ°Г®ГўГј ГЁГ§ ГёГЇГ°ГЁГ¶Г  Гў Г±ГЇГҐГ¶ГЁГ Г«ГјГ­ГіГѕ ГЄГ®Г«ГЎГі, Г§Г ГІГҐГ¬ ГЇГ®Г¬ГҐГ±ГІГЁГ« ГҐВё Гў Г¬ГЁГ­ГЁ-Г«Г ГЎГ®Г°Г ГІГ®Г°ГЁГѕ")
         wait(1300)
 		sampSendChat("/checkheal "..id)
 		end
 		end
       },
 	  {
-        title = '{80a4bf}» {ffffff} Годен.',
+        title = '{80a4bf}В» {ffffff} ГѓГ®Г¤ГҐГ­.',
         onclick = function()
-		if cfg.main.male == false then --- Женская отыгровка
-		sampSendChat('/do На экране показан отрицательный результат теста крови '..sampGetPlayerNickname(id):gsub('_', ' ')..'')
+		if cfg.main.male == false then --- Г†ГҐГ­Г±ГЄГ Гї Г®ГІГ»ГЈГ°Г®ГўГЄГ 
+		sampSendChat('/do ГЌГ  ГЅГЄГ°Г Г­ГҐ ГЇГ®ГЄГ Г§Г Г­ Г®ГІГ°ГЁГ¶Г ГІГҐГ«ГјГ­Г»Г© Г°ГҐГ§ГіГ«ГјГІГ ГІ ГІГҐГ±ГІГ  ГЄГ°Г®ГўГЁ '..sampGetPlayerNickname(id):gsub('_', ' ')..'')
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me выписала справку о том, что пациент не имеет наркозависимости и годен к службе.")
+        sampSendChat("/me ГўГ»ГЇГЁГ±Г Г«Г  Г±ГЇГ°Г ГўГЄГі Г® ГІГ®Г¬, Г·ГІГ® ГЇГ Г¶ГЁГҐГ­ГІ Г­ГҐ ГЁГ¬ГҐГҐГІ Г­Г Г°ГЄГ®Г§Г ГўГЁГ±ГЁГ¬Г®Г±ГІГЁ ГЁ ГЈГ®Г¤ГҐГ­ ГЄ Г±Г«ГіГ¦ГЎГҐ.")
 	    wait(cfg.commands.zaderjka * 1000)
-		sampSendChat("/me передала справку пациенту в руки")
+		sampSendChat("/me ГЇГҐГ°ГҐГ¤Г Г«Г  Г±ГЇГ°Г ГўГЄГі ГЇГ Г¶ГЁГҐГ­ГІГі Гў Г°ГіГЄГЁ")
 		wait(3000)
-		sampSendChat("/do Протянута правая рука со справкой.")
+		sampSendChat("/do ГЏГ°Г®ГІГїГ­ГіГІГ  ГЇГ°Г ГўГ Гї Г°ГіГЄГ  Г±Г® Г±ГЇГ°Г ГўГЄГ®Г©.")
 		wait(3000)
-		sampSendChat("Вот. Держите и проходите дальше")
+		sampSendChat("Г‚Г®ГІ. Г„ГҐГ°Г¦ГЁГІГҐ ГЁ ГЇГ°Г®ГµГ®Г¤ГЁГІГҐ Г¤Г Г«ГјГёГҐ")
 		end
-		if cfg.main.male == true then --- Мужская отыгровка
-		sampSendChat('/do На экране показан отрицательный результат теста крови '..sampGetPlayerNickname(id):gsub('_', ' ')..'')
+		if cfg.main.male == true then --- ГЊГіГ¦Г±ГЄГ Гї Г®ГІГ»ГЈГ°Г®ГўГЄГ 
+		sampSendChat('/do ГЌГ  ГЅГЄГ°Г Г­ГҐ ГЇГ®ГЄГ Г§Г Г­ Г®ГІГ°ГЁГ¶Г ГІГҐГ«ГјГ­Г»Г© Г°ГҐГ§ГіГ«ГјГІГ ГІ ГІГҐГ±ГІГ  ГЄГ°Г®ГўГЁ '..sampGetPlayerNickname(id):gsub('_', ' ')..'')
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("/me выписал справку о том, что пациент не имеет наркозависимости и годен к службе.")
+        sampSendChat("/me ГўГ»ГЇГЁГ±Г Г« Г±ГЇГ°Г ГўГЄГі Г® ГІГ®Г¬, Г·ГІГ® ГЇГ Г¶ГЁГҐГ­ГІ Г­ГҐ ГЁГ¬ГҐГҐГІ Г­Г Г°ГЄГ®Г§Г ГўГЁГ±ГЁГ¬Г®Г±ГІГЁ ГЁ ГЈГ®Г¤ГҐГ­ ГЄ Г±Г«ГіГ¦ГЎГҐ.")
 	    wait(cfg.commands.zaderjka * 1000)
-		sampSendChat("/me передал справку пациенту в руки")
+		sampSendChat("/me ГЇГҐГ°ГҐГ¤Г Г« Г±ГЇГ°Г ГўГЄГі ГЇГ Г¶ГЁГҐГ­ГІГі Гў Г°ГіГЄГЁ")
 		wait(3000)
-		sampSendChat("/do Протянут правая рука со справкой.")
+		sampSendChat("/do ГЏГ°Г®ГІГїГ­ГіГІ ГЇГ°Г ГўГ Гї Г°ГіГЄГ  Г±Г® Г±ГЇГ°Г ГўГЄГ®Г©.")
 		wait(3000)
-		sampSendChat("Вот. Держите и проходите дальше")
+		sampSendChat("Г‚Г®ГІ. Г„ГҐГ°Г¦ГЁГІГҐ ГЁ ГЇГ°Г®ГµГ®Г¤ГЁГІГҐ Г¤Г Г«ГјГёГҐ")
 		end
 		end
       },
 	  {
-        title = '{80a4bf}» {ffffff} Не годен',
+        title = '{80a4bf}В» {ffffff} ГЌГҐ ГЈГ®Г¤ГҐГ­',
         onclick = function()
-		if cfg.main.male == false then --- Женская отыгровка
-		sampSendChat('/do На экране показан положительный результат теста крови '..sampGetPlayerNickname(id):gsub('_', ' ')..'')
+		if cfg.main.male == false then --- Г†ГҐГ­Г±ГЄГ Гї Г®ГІГ»ГЈГ°Г®ГўГЄГ 
+		sampSendChat('/do ГЌГ  ГЅГЄГ°Г Г­ГҐ ГЇГ®ГЄГ Г§Г Г­ ГЇГ®Г«Г®Г¦ГЁГІГҐГ«ГјГ­Г»Г© Г°ГҐГ§ГіГ«ГјГІГ ГІ ГІГҐГ±ГІГ  ГЄГ°Г®ГўГЁ '..sampGetPlayerNickname(id):gsub('_', ' ')..'')
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("Вы имеете наркозависимость. Пройдите сеанс от зависимости у Нарколога.")
+        sampSendChat("Г‚Г» ГЁГ¬ГҐГҐГІГҐ Г­Г Г°ГЄГ®Г§Г ГўГЁГ±ГЁГ¬Г®Г±ГІГј. ГЏГ°Г®Г©Г¤ГЁГІГҐ Г±ГҐГ Г­Г± Г®ГІ Г§Г ГўГЁГ±ГЁГ¬Г®Г±ГІГЁ Гі ГЌГ Г°ГЄГ®Г«Г®ГЈГ .")
 	    wait(cfg.commands.zaderjka * 1000)
-		sampSendChat("/me поставила печать 'Не годен' на мед.карту призывника")
+		sampSendChat("/me ГЇГ®Г±ГІГ ГўГЁГ«Г  ГЇГҐГ·Г ГІГј 'ГЌГҐ ГЈГ®Г¤ГҐГ­' Г­Г  Г¬ГҐГ¤.ГЄГ Г°ГІГі ГЇГ°ГЁГ§Г»ГўГ­ГЁГЄГ ")
 		end
-		if cfg.main.male == true then --- Мужская отыгровка
-		sampSendChat('/do На экране показан положительный результат теста крови '..sampGetPlayerNickname(id):gsub('_', ' ')..'')
+		if cfg.main.male == true then --- ГЊГіГ¦Г±ГЄГ Гї Г®ГІГ»ГЈГ°Г®ГўГЄГ 
+		sampSendChat('/do ГЌГ  ГЅГЄГ°Г Г­ГҐ ГЇГ®ГЄГ Г§Г Г­ ГЇГ®Г«Г®Г¦ГЁГІГҐГ«ГјГ­Г»Г© Г°ГҐГ§ГіГ«ГјГІГ ГІ ГІГҐГ±ГІГ  ГЄГ°Г®ГўГЁ '..sampGetPlayerNickname(id):gsub('_', ' ')..'')
 	    wait(cfg.commands.zaderjka * 1000)
-        sampSendChat("Вы имеете наркозависимость. Пройдите сеанс от зависимости у Нарколога.")
+        sampSendChat("Г‚Г» ГЁГ¬ГҐГҐГІГҐ Г­Г Г°ГЄГ®Г§Г ГўГЁГ±ГЁГ¬Г®Г±ГІГј. ГЏГ°Г®Г©Г¤ГЁГІГҐ Г±ГҐГ Г­Г± Г®ГІ Г§Г ГўГЁГ±ГЁГ¬Г®Г±ГІГЁ Гі ГЌГ Г°ГЄГ®Г«Г®ГЈГ .")
 	    wait(cfg.commands.zaderjka * 1000)
-		sampSendChat("/me поставил печать 'Не годен' на мед.карту призывника")
+		sampSendChat("/me ГЇГ®Г±ГІГ ГўГЁГ« ГЇГҐГ·Г ГІГј 'ГЌГҐ ГЈГ®Г¤ГҐГ­' Г­Г  Г¬ГҐГ¤.ГЄГ Г°ГІГі ГЇГ°ГЁГ§Г»ГўГ­ГЁГЄГ ")
 		end
 		end
       }
@@ -4020,108 +4020,108 @@ end
 
 function getFraktionBySkin(playerid)
     fraks = {
-        [0] = 'Гражданский',
-        [1] = 'Гражданский',
-        [2] = 'Гражданский',
-        [3] = 'Гражданский',
-        [4] = 'Гражданский',
-        [5] = 'Гражданский',
-        [6] = 'Гражданский',
-        [7] = 'Гражданский',
-        [8] = 'Гражданский',
-        [9] = 'Гражданский',
-        [10] = 'Гражданский',
-        [11] = 'Гражданский',
-        [12] = 'Гражданский',
-        [13] = 'Гражданский',
-        [14] = 'Гражданский',
-        [15] = 'Гражданский',
-        [16] = 'Гражданский',
-        [17] = 'Гражданский',
-        [18] = 'Гражданский',
-        [19] = 'Гражданский',
-        [20] = 'Гражданский',
+        [0] = 'ГѓГ°Г Г¦Г¤Г Г­Г±ГЄГЁГ©',
+        [1] = 'ГѓГ°Г Г¦Г¤Г Г­Г±ГЄГЁГ©',
+        [2] = 'ГѓГ°Г Г¦Г¤Г Г­Г±ГЄГЁГ©',
+        [3] = 'ГѓГ°Г Г¦Г¤Г Г­Г±ГЄГЁГ©',
+        [4] = 'ГѓГ°Г Г¦Г¤Г Г­Г±ГЄГЁГ©',
+        [5] = 'ГѓГ°Г Г¦Г¤Г Г­Г±ГЄГЁГ©',
+        [6] = 'ГѓГ°Г Г¦Г¤Г Г­Г±ГЄГЁГ©',
+        [7] = 'ГѓГ°Г Г¦Г¤Г Г­Г±ГЄГЁГ©',
+        [8] = 'ГѓГ°Г Г¦Г¤Г Г­Г±ГЄГЁГ©',
+        [9] = 'ГѓГ°Г Г¦Г¤Г Г­Г±ГЄГЁГ©',
+        [10] = 'ГѓГ°Г Г¦Г¤Г Г­Г±ГЄГЁГ©',
+        [11] = 'ГѓГ°Г Г¦Г¤Г Г­Г±ГЄГЁГ©',
+        [12] = 'ГѓГ°Г Г¦Г¤Г Г­Г±ГЄГЁГ©',
+        [13] = 'ГѓГ°Г Г¦Г¤Г Г­Г±ГЄГЁГ©',
+        [14] = 'ГѓГ°Г Г¦Г¤Г Г­Г±ГЄГЁГ©',
+        [15] = 'ГѓГ°Г Г¦Г¤Г Г­Г±ГЄГЁГ©',
+        [16] = 'ГѓГ°Г Г¦Г¤Г Г­Г±ГЄГЁГ©',
+        [17] = 'ГѓГ°Г Г¦Г¤Г Г­Г±ГЄГЁГ©',
+        [18] = 'ГѓГ°Г Г¦Г¤Г Г­Г±ГЄГЁГ©',
+        [19] = 'ГѓГ°Г Г¦Г¤Г Г­Г±ГЄГЁГ©',
+        [20] = 'ГѓГ°Г Г¦Г¤Г Г­Г±ГЄГЁГ©',
         [21] = 'Ballas',
-        [22] = 'Гражданский',
-        [23] = 'Гражданский',
-        [24] = 'Гражданский',
-        [25] = 'Гражданский',
-        [26] = 'Гражданский',
-        [27] = 'Гражданский',
-        [28] = 'Гражданский',
-        [29] = 'Гражданский',
+        [22] = 'ГѓГ°Г Г¦Г¤Г Г­Г±ГЄГЁГ©',
+        [23] = 'ГѓГ°Г Г¦Г¤Г Г­Г±ГЄГЁГ©',
+        [24] = 'ГѓГ°Г Г¦Г¤Г Г­Г±ГЄГЁГ©',
+        [25] = 'ГѓГ°Г Г¦Г¤Г Г­Г±ГЄГЁГ©',
+        [26] = 'ГѓГ°Г Г¦Г¤Г Г­Г±ГЄГЁГ©',
+        [27] = 'ГѓГ°Г Г¦Г¤Г Г­Г±ГЄГЁГ©',
+        [28] = 'ГѓГ°Г Г¦Г¤Г Г­Г±ГЄГЁГ©',
+        [29] = 'ГѓГ°Г Г¦Г¤Г Г­Г±ГЄГЁГ©',
         [30] = 'Rifa',
-        [31] = 'Гражданский',
-        [32] = 'Гражданский',
-        [33] = 'Гражданский',
-        [34] = 'Гражданский',
-        [35] = 'Гражданский',
-        [36] = 'Гражданский',
-        [37] = 'Гражданский',
-        [38] = 'Гражданский',
-        [39] = 'Гражданский',
-        [40] = 'Гражданский',
+        [31] = 'ГѓГ°Г Г¦Г¤Г Г­Г±ГЄГЁГ©',
+        [32] = 'ГѓГ°Г Г¦Г¤Г Г­Г±ГЄГЁГ©',
+        [33] = 'ГѓГ°Г Г¦Г¤Г Г­Г±ГЄГЁГ©',
+        [34] = 'ГѓГ°Г Г¦Г¤Г Г­Г±ГЄГЁГ©',
+        [35] = 'ГѓГ°Г Г¦Г¤Г Г­Г±ГЄГЁГ©',
+        [36] = 'ГѓГ°Г Г¦Г¤Г Г­Г±ГЄГЁГ©',
+        [37] = 'ГѓГ°Г Г¦Г¤Г Г­Г±ГЄГЁГ©',
+        [38] = 'ГѓГ°Г Г¦Г¤Г Г­Г±ГЄГЁГ©',
+        [39] = 'ГѓГ°Г Г¦Г¤Г Г­Г±ГЄГЁГ©',
+        [40] = 'ГѓГ°Г Г¦Г¤Г Г­Г±ГЄГЁГ©',
         [41] = 'Aztec',
-        [42] = 'Гражданский',
-        [43] = 'Гражданский',
+        [42] = 'ГѓГ°Г Г¦Г¤Г Г­Г±ГЄГЁГ©',
+        [43] = 'ГѓГ°Г Г¦Г¤Г Г­Г±ГЄГЁГ©',
         [44] = 'Aztec',
-        [45] = 'Гражданский',
-        [46] = 'Гражданский',
+        [45] = 'ГѓГ°Г Г¦Г¤Г Г­Г±ГЄГЁГ©',
+        [46] = 'ГѓГ°Г Г¦Г¤Г Г­Г±ГЄГЁГ©',
         [47] = 'Vagos',
         [48] = 'Aztec',
-        [49] = 'Гражданский',
-        [50] = 'Гражданский',
-        [51] = 'Гражданский',
-        [52] = 'Гражданский',
-        [53] = 'Гражданский',
-        [54] = 'Гражданский',
-        [55] = 'Гражданский',
+        [49] = 'ГѓГ°Г Г¦Г¤Г Г­Г±ГЄГЁГ©',
+        [50] = 'ГѓГ°Г Г¦Г¤Г Г­Г±ГЄГЁГ©',
+        [51] = 'ГѓГ°Г Г¦Г¤Г Г­Г±ГЄГЁГ©',
+        [52] = 'ГѓГ°Г Г¦Г¤Г Г­Г±ГЄГЁГ©',
+        [53] = 'ГѓГ°Г Г¦Г¤Г Г­Г±ГЄГЁГ©',
+        [54] = 'ГѓГ°Г Г¦Г¤Г Г­Г±ГЄГЁГ©',
+        [55] = 'ГѓГ°Г Г¦Г¤Г Г­Г±ГЄГЁГ©',
         [56] = 'Grove',
-        [57] = 'Мэрия',
-        [58] = 'Гражданский',
-        [59] = 'Автошкола',
-        [60] = 'Гражданский',
-        [61] = 'Армия',
-        [62] = 'Гражданский',
-        [63] = 'Гражданский',
-        [64] = 'Гражданский',
-        [65] = 'Гражданский', -- над подумать
-        [66] = 'Гражданский',
-        [67] = 'Гражданский',
-        [68] = 'Гражданский',
-        [69] = 'Гражданский',
-        [70] = 'МОН',
-        [71] = 'Гражданский',
-        [72] = 'Гражданский',
+        [57] = 'ГЊГЅГ°ГЁГї',
+        [58] = 'ГѓГ°Г Г¦Г¤Г Г­Г±ГЄГЁГ©',
+        [59] = 'ГЂГўГІГ®ГёГЄГ®Г«Г ',
+        [60] = 'ГѓГ°Г Г¦Г¤Г Г­Г±ГЄГЁГ©',
+        [61] = 'ГЂГ°Г¬ГЁГї',
+        [62] = 'ГѓГ°Г Г¦Г¤Г Г­Г±ГЄГЁГ©',
+        [63] = 'ГѓГ°Г Г¦Г¤Г Г­Г±ГЄГЁГ©',
+        [64] = 'ГѓГ°Г Г¦Г¤Г Г­Г±ГЄГЁГ©',
+        [65] = 'ГѓГ°Г Г¦Г¤Г Г­Г±ГЄГЁГ©', -- Г­Г Г¤ ГЇГ®Г¤ГіГ¬Г ГІГј
+        [66] = 'ГѓГ°Г Г¦Г¤Г Г­Г±ГЄГЁГ©',
+        [67] = 'ГѓГ°Г Г¦Г¤Г Г­Г±ГЄГЁГ©',
+        [68] = 'ГѓГ°Г Г¦Г¤Г Г­Г±ГЄГЁГ©',
+        [69] = 'ГѓГ°Г Г¦Г¤Г Г­Г±ГЄГЁГ©',
+        [70] = 'ГЊГЋГЌ',
+        [71] = 'ГѓГ°Г Г¦Г¤Г Г­Г±ГЄГЁГ©',
+        [72] = 'ГѓГ°Г Г¦Г¤Г Г­Г±ГЄГЁГ©',
         [73] = 'Army',
-        [74] = 'Гражданский',
-        [75] = 'Гражданский',
-        [76] = 'Гражданский',
-        [77] = 'Гражданский',
-        [78] = 'Гражданский',
-        [79] = 'Гражданский',
-        [80] = 'Гражданский',
-        [81] = 'Гражданский',
-        [82] = 'Гражданский',
-        [83] = 'Гражданский',
-        [84] = 'Гражданский',
-        [85] = 'Гражданский',
+        [74] = 'ГѓГ°Г Г¦Г¤Г Г­Г±ГЄГЁГ©',
+        [75] = 'ГѓГ°Г Г¦Г¤Г Г­Г±ГЄГЁГ©',
+        [76] = 'ГѓГ°Г Г¦Г¤Г Г­Г±ГЄГЁГ©',
+        [77] = 'ГѓГ°Г Г¦Г¤Г Г­Г±ГЄГЁГ©',
+        [78] = 'ГѓГ°Г Г¦Г¤Г Г­Г±ГЄГЁГ©',
+        [79] = 'ГѓГ°Г Г¦Г¤Г Г­Г±ГЄГЁГ©',
+        [80] = 'ГѓГ°Г Г¦Г¤Г Г­Г±ГЄГЁГ©',
+        [81] = 'ГѓГ°Г Г¦Г¤Г Г­Г±ГЄГЁГ©',
+        [82] = 'ГѓГ°Г Г¦Г¤Г Г­Г±ГЄГЁГ©',
+        [83] = 'ГѓГ°Г Г¦Г¤Г Г­Г±ГЄГЁГ©',
+        [84] = 'ГѓГ°Г Г¦Г¤Г Г­Г±ГЄГЁГ©',
+        [85] = 'ГѓГ°Г Г¦Г¤Г Г­Г±ГЄГЁГ©',
         [86] = 'Grove',
-        [87] = 'Гражданский',
-        [88] = 'Гражданский',
-        [89] = 'Гражданский',
-        [90] = 'Гражданский',
-        [91] = 'Гражданский', -- под вопросом
-        [92] = 'Гражданский',
-        [93] = 'Гражданский',
-        [94] = 'Гражданский',
-        [95] = 'Гражданский',
-        [96] = 'Гражданский',
-        [97] = 'Гражданский',
-        [98] = 'Мэрия',
-        [99] = 'Гражданский',
-        [100] = 'Байкер',
-        [101] = 'Гражданский',
+        [87] = 'ГѓГ°Г Г¦Г¤Г Г­Г±ГЄГЁГ©',
+        [88] = 'ГѓГ°Г Г¦Г¤Г Г­Г±ГЄГЁГ©',
+        [89] = 'ГѓГ°Г Г¦Г¤Г Г­Г±ГЄГЁГ©',
+        [90] = 'ГѓГ°Г Г¦Г¤Г Г­Г±ГЄГЁГ©',
+        [91] = 'ГѓГ°Г Г¦Г¤Г Г­Г±ГЄГЁГ©', -- ГЇГ®Г¤ ГўГ®ГЇГ°Г®Г±Г®Г¬
+        [92] = 'ГѓГ°Г Г¦Г¤Г Г­Г±ГЄГЁГ©',
+        [93] = 'ГѓГ°Г Г¦Г¤Г Г­Г±ГЄГЁГ©',
+        [94] = 'ГѓГ°Г Г¦Г¤Г Г­Г±ГЄГЁГ©',
+        [95] = 'ГѓГ°Г Г¦Г¤Г Г­Г±ГЄГЁГ©',
+        [96] = 'ГѓГ°Г Г¦Г¤Г Г­Г±ГЄГЁГ©',
+        [97] = 'ГѓГ°Г Г¦Г¤Г Г­Г±ГЄГЁГ©',
+        [98] = 'ГЊГЅГ°ГЁГї',
+        [99] = 'ГѓГ°Г Г¦Г¤Г Г­Г±ГЄГЁГ©',
+        [100] = 'ГЃГ Г©ГЄГҐГ°',
+        [101] = 'ГѓГ°Г Г¦Г¤Г Г­Г±ГЄГЁГ©',
         [102] = 'Ballas',
         [103] = 'Ballas',
         [104] = 'Ballas',
@@ -4141,197 +4141,197 @@ function getFraktionBySkin(playerid)
         [118] = 'Yakuza',
         [119] = 'Rifa',
         [120] = 'Yakuza',
-        [121] = 'Гражданский',
-        [122] = 'Гражданский',
+        [121] = 'ГѓГ°Г Г¦Г¤Г Г­Г±ГЄГЁГ©',
+        [122] = 'ГѓГ°Г Г¦Г¤Г Г­Г±ГЄГЁГ©',
         [123] = 'Yakuza',
         [124] = 'LCN',
         [125] = 'RM',
         [126] = 'RM',
         [127] = 'LCN',
-        [128] = 'Гражданский',
-        [129] = 'Гражданский',
-        [130] = 'Гражданский',
-        [131] = 'Гражданский',
-        [132] = 'Гражданский',
-        [133] = 'Гражданский',
-        [134] = 'Гражданский',
-        [135] = 'Гражданский',
-        [136] = 'Гражданский',
-        [137] = 'Гражданский',
-        [138] = 'Гражданский',
-        [139] = 'Гражданский',
-        [140] = 'Гражданский',
+        [128] = 'ГѓГ°Г Г¦Г¤Г Г­Г±ГЄГЁГ©',
+        [129] = 'ГѓГ°Г Г¦Г¤Г Г­Г±ГЄГЁГ©',
+        [130] = 'ГѓГ°Г Г¦Г¤Г Г­Г±ГЄГЁГ©',
+        [131] = 'ГѓГ°Г Г¦Г¤Г Г­Г±ГЄГЁГ©',
+        [132] = 'ГѓГ°Г Г¦Г¤Г Г­Г±ГЄГЁГ©',
+        [133] = 'ГѓГ°Г Г¦Г¤Г Г­Г±ГЄГЁГ©',
+        [134] = 'ГѓГ°Г Г¦Г¤Г Г­Г±ГЄГЁГ©',
+        [135] = 'ГѓГ°Г Г¦Г¤Г Г­Г±ГЄГЁГ©',
+        [136] = 'ГѓГ°Г Г¦Г¤Г Г­Г±ГЄГЁГ©',
+        [137] = 'ГѓГ°Г Г¦Г¤Г Г­Г±ГЄГЁГ©',
+        [138] = 'ГѓГ°Г Г¦Г¤Г Г­Г±ГЄГЁГ©',
+        [139] = 'ГѓГ°Г Г¦Г¤Г Г­Г±ГЄГЁГ©',
+        [140] = 'ГѓГ°Г Г¦Г¤Г Г­Г±ГЄГЁГ©',
         [141] = 'FBI',
-        [142] = 'Гражданский',
-        [143] = 'Гражданский',
-        [144] = 'Гражданский',
-        [145] = 'Гражданский',
-        [146] = 'Гражданский',
-        [147] = 'Мэрия',
-        [148] = 'Гражданский',
+        [142] = 'ГѓГ°Г Г¦Г¤Г Г­Г±ГЄГЁГ©',
+        [143] = 'ГѓГ°Г Г¦Г¤Г Г­Г±ГЄГЁГ©',
+        [144] = 'ГѓГ°Г Г¦Г¤Г Г­Г±ГЄГЁГ©',
+        [145] = 'ГѓГ°Г Г¦Г¤Г Г­Г±ГЄГЁГ©',
+        [146] = 'ГѓГ°Г Г¦Г¤Г Г­Г±ГЄГЁГ©',
+        [147] = 'ГЊГЅГ°ГЁГї',
+        [148] = 'ГѓГ°Г Г¦Г¤Г Г­Г±ГЄГЁГ©',
         [149] = 'Grove',
-        [150] = 'Мэрия',
-        [151] = 'Гражданский',
-        [152] = 'Гражданский',
-        [153] = 'Гражданский',
-        [154] = 'Гражданский',
-        [155] = 'Гражданский',
-        [156] = 'Гражданский',
-        [157] = 'Гражданский',
-        [158] = 'Гражданский',
-        [159] = 'Гражданский',
-        [160] = 'Гражданский',
-        [161] = 'Гражданский',
-        [162] = 'Гражданский',
+        [150] = 'ГЊГЅГ°ГЁГї',
+        [151] = 'ГѓГ°Г Г¦Г¤Г Г­Г±ГЄГЁГ©',
+        [152] = 'ГѓГ°Г Г¦Г¤Г Г­Г±ГЄГЁГ©',
+        [153] = 'ГѓГ°Г Г¦Г¤Г Г­Г±ГЄГЁГ©',
+        [154] = 'ГѓГ°Г Г¦Г¤Г Г­Г±ГЄГЁГ©',
+        [155] = 'ГѓГ°Г Г¦Г¤Г Г­Г±ГЄГЁГ©',
+        [156] = 'ГѓГ°Г Г¦Г¤Г Г­Г±ГЄГЁГ©',
+        [157] = 'ГѓГ°Г Г¦Г¤Г Г­Г±ГЄГЁГ©',
+        [158] = 'ГѓГ°Г Г¦Г¤Г Г­Г±ГЄГЁГ©',
+        [159] = 'ГѓГ°Г Г¦Г¤Г Г­Г±ГЄГЁГ©',
+        [160] = 'ГѓГ°Г Г¦Г¤Г Г­Г±ГЄГЁГ©',
+        [161] = 'ГѓГ°Г Г¦Г¤Г Г­Г±ГЄГЁГ©',
+        [162] = 'ГѓГ°Г Г¦Г¤Г Г­Г±ГЄГЁГ©',
         [163] = 'FBI',
         [164] = 'FBI',
         [165] = 'FBI',
         [166] = 'FBI',
-        [167] = 'Гражданский',
-        [168] = 'Гражданский',
+        [167] = 'ГѓГ°Г Г¦Г¤Г Г­Г±ГЄГЁГ©',
+        [168] = 'ГѓГ°Г Г¦Г¤Г Г­Г±ГЄГЁГ©',
         [169] = 'Yakuza',
-        [170] = 'Гражданский',
-        [171] = 'Гражданский',
-        [172] = 'Гражданский',
+        [170] = 'ГѓГ°Г Г¦Г¤Г Г­Г±ГЄГЁГ©',
+        [171] = 'ГѓГ°Г Г¦Г¤Г Г­Г±ГЄГЁГ©',
+        [172] = 'ГѓГ°Г Г¦Г¤Г Г­Г±ГЄГЁГ©',
         [173] = 'Rifa',
         [174] = 'Rifa',
         [175] = 'Rifa',
-        [176] = 'Гражданский',
-        [177] = 'Гражданский',
-        [178] = 'Гражданский',
+        [176] = 'ГѓГ°Г Г¦Г¤Г Г­Г±ГЄГЁГ©',
+        [177] = 'ГѓГ°Г Г¦Г¤Г Г­Г±ГЄГЁГ©',
+        [178] = 'ГѓГ°Г Г¦Г¤Г Г­Г±ГЄГЁГ©',
         [179] = 'Army',
-        [180] = 'Гражданский',
-        [181] = 'Байкер',
-        [182] = 'Гражданский',
-        [183] = 'Гражданский',
-        [184] = 'Гражданский',
-        [185] = 'Гражданский',
+        [180] = 'ГѓГ°Г Г¦Г¤Г Г­Г±ГЄГЁГ©',
+        [181] = 'ГЃГ Г©ГЄГҐГ°',
+        [182] = 'ГѓГ°Г Г¦Г¤Г Г­Г±ГЄГЁГ©',
+        [183] = 'ГѓГ°Г Г¦Г¤Г Г­Г±ГЄГЁГ©',
+        [184] = 'ГѓГ°Г Г¦Г¤Г Г­Г±ГЄГЁГ©',
+        [185] = 'ГѓГ°Г Г¦Г¤Г Г­Г±ГЄГЁГ©',
         [186] = 'Yakuza',
-        [187] = 'Мэрия',
-        [188] = 'СМИ',
-        [189] = 'Гражданский',
+        [187] = 'ГЊГЅГ°ГЁГї',
+        [188] = 'Г‘ГЊГ€',
+        [189] = 'ГѓГ°Г Г¦Г¤Г Г­Г±ГЄГЁГ©',
         [190] = 'Vagos',
         [191] = 'Army',
-        [192] = 'Гражданский',
+        [192] = 'ГѓГ°Г Г¦Г¤Г Г­Г±ГЄГЁГ©',
         [193] = 'Aztec',
-        [194] = 'Гражданский',
+        [194] = 'ГѓГ°Г Г¦Г¤Г Г­Г±ГЄГЁГ©',
         [195] = 'Ballas',
-        [196] = 'Гражданский',
-        [197] = 'Гражданский',
-        [198] = 'Гражданский',
-        [199] = 'Гражданский',
-        [200] = 'Гражданский',
-        [201] = 'Гражданский',
-        [202] = 'Гражданский',
-        [203] = 'Гражданский',
-        [204] = 'Гражданский',
-        [205] = 'Гражданский',
-        [206] = 'Гражданский',
-        [207] = 'Гражданский',
+        [196] = 'ГѓГ°Г Г¦Г¤Г Г­Г±ГЄГЁГ©',
+        [197] = 'ГѓГ°Г Г¦Г¤Г Г­Г±ГЄГЁГ©',
+        [198] = 'ГѓГ°Г Г¦Г¤Г Г­Г±ГЄГЁГ©',
+        [199] = 'ГѓГ°Г Г¦Г¤Г Г­Г±ГЄГЁГ©',
+        [200] = 'ГѓГ°Г Г¦Г¤Г Г­Г±ГЄГЁГ©',
+        [201] = 'ГѓГ°Г Г¦Г¤Г Г­Г±ГЄГЁГ©',
+        [202] = 'ГѓГ°Г Г¦Г¤Г Г­Г±ГЄГЁГ©',
+        [203] = 'ГѓГ°Г Г¦Г¤Г Г­Г±ГЄГЁГ©',
+        [204] = 'ГѓГ°Г Г¦Г¤Г Г­Г±ГЄГЁГ©',
+        [205] = 'ГѓГ°Г Г¦Г¤Г Г­Г±ГЄГЁГ©',
+        [206] = 'ГѓГ°Г Г¦Г¤Г Г­Г±ГЄГЁГ©',
+        [207] = 'ГѓГ°Г Г¦Г¤Г Г­Г±ГЄГЁГ©',
         [208] = 'Yakuza',
-        [209] = 'Гражданский',
-        [210] = 'Гражданский',
-        [211] = 'СМИ',
-        [212] = 'Гражданский',
-        [213] = 'Гражданский',
+        [209] = 'ГѓГ°Г Г¦Г¤Г Г­Г±ГЄГЁГ©',
+        [210] = 'ГѓГ°Г Г¦Г¤Г Г­Г±ГЄГЁГ©',
+        [211] = 'Г‘ГЊГ€',
+        [212] = 'ГѓГ°Г Г¦Г¤Г Г­Г±ГЄГЁГ©',
+        [213] = 'ГѓГ°Г Г¦Г¤Г Г­Г±ГЄГЁГ©',
         [214] = 'LCN',
-        [215] = 'Гражданский',
-        [216] = 'Гражданский',
-        [217] = 'СМИ',
-        [218] = 'Гражданский',
-        [219] = 'МОН',
-        [220] = 'Гражданский',
-        [221] = 'Гражданский',
-        [222] = 'Гражданский',
+        [215] = 'ГѓГ°Г Г¦Г¤Г Г­Г±ГЄГЁГ©',
+        [216] = 'ГѓГ°Г Г¦Г¤Г Г­Г±ГЄГЁГ©',
+        [217] = 'Г‘ГЊГ€',
+        [218] = 'ГѓГ°Г Г¦Г¤Г Г­Г±ГЄГЁГ©',
+        [219] = 'ГЊГЋГЌ',
+        [220] = 'ГѓГ°Г Г¦Г¤Г Г­Г±ГЄГЁГ©',
+        [221] = 'ГѓГ°Г Г¦Г¤Г Г­Г±ГЄГЁГ©',
+        [222] = 'ГѓГ°Г Г¦Г¤Г Г­Г±ГЄГЁГ©',
         [223] = 'LCN',
-        [224] = 'Гражданский',
-        [225] = 'Гражданский',
+        [224] = 'ГѓГ°Г Г¦Г¤Г Г­Г±ГЄГЁГ©',
+        [225] = 'ГѓГ°Г Г¦Г¤Г Г­Г±ГЄГЁГ©',
         [226] = 'Rifa',
-        [227] = 'Мэрия',
-        [228] = 'Гражданский',
-        [229] = 'Гражданский',
-        [230] = 'Гражданский',
-        [231] = 'Гражданский',
-        [232] = 'Гражданский',
-        [233] = 'Гражданский',
-        [234] = 'Гражданский',
-        [235] = 'Гражданский',
-        [236] = 'Гражданский',
-        [237] = 'Гражданский',
-        [238] = 'Гражданский',
-        [239] = 'Гражданский',
-        [240] = 'Автошкола',
-        [241] = 'Гражданский',
-        [242] = 'Гражданский',
-        [243] = 'Гражданский',
-        [244] = 'Гражданский',
-        [245] = 'Гражданский',
-        [246] = 'Байкер',
-        [247] = 'Байкер',
-        [248] = 'Байкер',
-        [249] = 'Гражданский',
-        [250] = 'СМИ',
-        [251] = 'Гражданский',
+        [227] = 'ГЊГЅГ°ГЁГї',
+        [228] = 'ГѓГ°Г Г¦Г¤Г Г­Г±ГЄГЁГ©',
+        [229] = 'ГѓГ°Г Г¦Г¤Г Г­Г±ГЄГЁГ©',
+        [230] = 'ГѓГ°Г Г¦Г¤Г Г­Г±ГЄГЁГ©',
+        [231] = 'ГѓГ°Г Г¦Г¤Г Г­Г±ГЄГЁГ©',
+        [232] = 'ГѓГ°Г Г¦Г¤Г Г­Г±ГЄГЁГ©',
+        [233] = 'ГѓГ°Г Г¦Г¤Г Г­Г±ГЄГЁГ©',
+        [234] = 'ГѓГ°Г Г¦Г¤Г Г­Г±ГЄГЁГ©',
+        [235] = 'ГѓГ°Г Г¦Г¤Г Г­Г±ГЄГЁГ©',
+        [236] = 'ГѓГ°Г Г¦Г¤Г Г­Г±ГЄГЁГ©',
+        [237] = 'ГѓГ°Г Г¦Г¤Г Г­Г±ГЄГЁГ©',
+        [238] = 'ГѓГ°Г Г¦Г¤Г Г­Г±ГЄГЁГ©',
+        [239] = 'ГѓГ°Г Г¦Г¤Г Г­Г±ГЄГЁГ©',
+        [240] = 'ГЂГўГІГ®ГёГЄГ®Г«Г ',
+        [241] = 'ГѓГ°Г Г¦Г¤Г Г­Г±ГЄГЁГ©',
+        [242] = 'ГѓГ°Г Г¦Г¤Г Г­Г±ГЄГЁГ©',
+        [243] = 'ГѓГ°Г Г¦Г¤Г Г­Г±ГЄГЁГ©',
+        [244] = 'ГѓГ°Г Г¦Г¤Г Г­Г±ГЄГЁГ©',
+        [245] = 'ГѓГ°Г Г¦Г¤Г Г­Г±ГЄГЁГ©',
+        [246] = 'ГЃГ Г©ГЄГҐГ°',
+        [247] = 'ГЃГ Г©ГЄГҐГ°',
+        [248] = 'ГЃГ Г©ГЄГҐГ°',
+        [249] = 'ГѓГ°Г Г¦Г¤Г Г­Г±ГЄГЁГ©',
+        [250] = 'Г‘ГЊГ€',
+        [251] = 'ГѓГ°Г Г¦Г¤Г Г­Г±ГЄГЁГ©',
         [252] = 'Army',
-        [253] = 'Гражданский',
-        [254] = 'Байкер',
+        [253] = 'ГѓГ°Г Г¦Г¤Г Г­Г±ГЄГЁГ©',
+        [254] = 'ГЃГ Г©ГЄГҐГ°',
         [255] = 'Army',
-        [256] = 'Гражданский',
-        [257] = 'Гражданский',
-        [258] = 'Гражданский',
-        [259] = 'Гражданский',
-        [260] = 'Гражданский',
-        [261] = 'СМИ',
-        [262] = 'Гражданский',
-        [263] = 'Гражданский',
-        [264] = 'Гражданский',
-        [265] = 'Полиция',
-        [266] = 'Полиция',
-        [267] = 'Полиция',
-        [268] = 'Гражданский',
+        [256] = 'ГѓГ°Г Г¦Г¤Г Г­Г±ГЄГЁГ©',
+        [257] = 'ГѓГ°Г Г¦Г¤Г Г­Г±ГЄГЁГ©',
+        [258] = 'ГѓГ°Г Г¦Г¤Г Г­Г±ГЄГЁГ©',
+        [259] = 'ГѓГ°Г Г¦Г¤Г Г­Г±ГЄГЁГ©',
+        [260] = 'ГѓГ°Г Г¦Г¤Г Г­Г±ГЄГЁГ©',
+        [261] = 'Г‘ГЊГ€',
+        [262] = 'ГѓГ°Г Г¦Г¤Г Г­Г±ГЄГЁГ©',
+        [263] = 'ГѓГ°Г Г¦Г¤Г Г­Г±ГЄГЁГ©',
+        [264] = 'ГѓГ°Г Г¦Г¤Г Г­Г±ГЄГЁГ©',
+        [265] = 'ГЏГ®Г«ГЁГ¶ГЁГї',
+        [266] = 'ГЏГ®Г«ГЁГ¶ГЁГї',
+        [267] = 'ГЏГ®Г«ГЁГ¶ГЁГї',
+        [268] = 'ГѓГ°Г Г¦Г¤Г Г­Г±ГЄГЁГ©',
         [269] = 'Grove',
         [270] = 'Grove',
         [271] = 'Grove',
         [272] = 'RM',
-        [273] = 'Гражданский', -- надо подумать
-        [274] = 'МОН',
-        [275] = 'МОН',
-        [276] = 'МОН',
-        [277] = 'Гражданский',
-        [278] = 'Гражданский',
-        [279] = 'Гражданский',
-        [280] = 'Полиция',
-        [281] = 'Полиция',
-        [282] = 'Полиция',
-        [283] = 'Полиция',
-        [284] = 'Полиция',
-        [285] = 'Полиция',
+        [273] = 'ГѓГ°Г Г¦Г¤Г Г­Г±ГЄГЁГ©', -- Г­Г Г¤Г® ГЇГ®Г¤ГіГ¬Г ГІГј
+        [274] = 'ГЊГЋГЌ',
+        [275] = 'ГЊГЋГЌ',
+        [276] = 'ГЊГЋГЌ',
+        [277] = 'ГѓГ°Г Г¦Г¤Г Г­Г±ГЄГЁГ©',
+        [278] = 'ГѓГ°Г Г¦Г¤Г Г­Г±ГЄГЁГ©',
+        [279] = 'ГѓГ°Г Г¦Г¤Г Г­Г±ГЄГЁГ©',
+        [280] = 'ГЏГ®Г«ГЁГ¶ГЁГї',
+        [281] = 'ГЏГ®Г«ГЁГ¶ГЁГї',
+        [282] = 'ГЏГ®Г«ГЁГ¶ГЁГї',
+        [283] = 'ГЏГ®Г«ГЁГ¶ГЁГї',
+        [284] = 'ГЏГ®Г«ГЁГ¶ГЁГї',
+        [285] = 'ГЏГ®Г«ГЁГ¶ГЁГї',
         [286] = 'FBI',
         [287] = 'Army',
-        [288] = 'Полиция',
-        [289] = 'Гражданский',
-        [290] = 'Гражданский',
-        [291] = 'Гражданский',
+        [288] = 'ГЏГ®Г«ГЁГ¶ГЁГї',
+        [289] = 'ГѓГ°Г Г¦Г¤Г Г­Г±ГЄГЁГ©',
+        [290] = 'ГѓГ°Г Г¦Г¤Г Г­Г±ГЄГЁГ©',
+        [291] = 'ГѓГ°Г Г¦Г¤Г Г­Г±ГЄГЁГ©',
         [292] = 'Aztec',
-        [293] = 'Гражданский',
-        [294] = 'Гражданский',
-        [295] = 'Гражданский',
-        [296] = 'Гражданский',
+        [293] = 'ГѓГ°Г Г¦Г¤Г Г­Г±ГЄГЁГ©',
+        [294] = 'ГѓГ°Г Г¦Г¤Г Г­Г±ГЄГЁГ©',
+        [295] = 'ГѓГ°Г Г¦Г¤Г Г­Г±ГЄГЁГ©',
+        [296] = 'ГѓГ°Г Г¦Г¤Г Г­Г±ГЄГЁГ©',
         [297] = 'Grove',
-        [298] = 'Гражданский',
-        [299] = 'Гражданский',
-        [300] = 'Полиция',
-        [301] = 'Полиция',
-        [302] = 'Полиция',
-        [303] = 'Полиция',
-        [304] = 'Полиция',
-        [305] = 'Полиция',
-        [306] = 'Полиция',
-        [307] = 'Полиция',
-        [308] = 'МОН',
-        [309] = 'Полиция',
-        [310] = 'Полиция',
-        [311] = 'Полиция'
+        [298] = 'ГѓГ°Г Г¦Г¤Г Г­Г±ГЄГЁГ©',
+        [299] = 'ГѓГ°Г Г¦Г¤Г Г­Г±ГЄГЁГ©',
+        [300] = 'ГЏГ®Г«ГЁГ¶ГЁГї',
+        [301] = 'ГЏГ®Г«ГЁГ¶ГЁГї',
+        [302] = 'ГЏГ®Г«ГЁГ¶ГЁГї',
+        [303] = 'ГЏГ®Г«ГЁГ¶ГЁГї',
+        [304] = 'ГЏГ®Г«ГЁГ¶ГЁГї',
+        [305] = 'ГЏГ®Г«ГЁГ¶ГЁГї',
+        [306] = 'ГЏГ®Г«ГЁГ¶ГЁГї',
+        [307] = 'ГЏГ®Г«ГЁГ¶ГЁГї',
+        [308] = 'ГЊГЋГЌ',
+        [309] = 'ГЏГ®Г«ГЁГ¶ГЁГї',
+        [310] = 'ГЏГ®Г«ГЁГ¶ГЁГї',
+        [311] = 'ГЏГ®Г«ГЁГ¶ГЁГї'
     }
     if sampIsPlayerConnected(playerid) then
         local result, handle = sampGetCharHandleBySampPlayerId(playerid)
@@ -4341,15 +4341,15 @@ function getFraktionBySkin(playerid)
 end
 
 function a.onSendClickPlayer(id)
-	if rank == 'Стажер' or rank == 'Консультант' or rank == 'Мл.Инструктор' or rank == 'Инструктор' or rank == 'Доктор' or rank == 'Психолог' or rank == 'Хирург' or rank == 'Зам.Глав.Врача' or rank == 'Глав.Врач' then
+	if rank == 'Г‘ГІГ Г¦ГҐГ°' or rank == 'ГЉГ®Г­Г±ГіГ«ГјГІГ Г­ГІ' or rank == 'ГЊГ«.Г€Г­Г±ГІГ°ГіГЄГІГ®Г°' or rank == 'Г€Г­Г±ГІГ°ГіГЄГІГ®Г°' or rank == 'Г„Г®ГЄГІГ®Г°' or rank == 'ГЏГ±ГЁГµГ®Г«Г®ГЈ' or rank == 'Г•ГЁГ°ГіГ°ГЈ' or rank == 'Г‡Г Г¬.ГѓГ«Г Гў.Г‚Г°Г Г·Г ' or rank == 'ГѓГ«Г Гў.Г‚Г°Г Г·' then
     setClipboardText(sampGetPlayerNickname(id))
-	ftext('Ник скопирован в буфер обмена.')
+	ftext('ГЌГЁГЄ Г±ГЄГ®ГЇГЁГ°Г®ГўГ Г­ Гў ГЎГіГґГҐГ° Г®ГЎГ¬ГҐГ­Г .')
 	else
 	end
 end
 
 function smsjob()
-  if rank == 'Доктор' or rank == 'Психолог' or rank == 'Хирург' or rank == 'Зам.Глав.Врача' or  rank == 'Глав.Врач' then
+  if rank == 'Г„Г®ГЄГІГ®Г°' or rank == 'ГЏГ±ГЁГµГ®Г«Г®ГЈ' or rank == 'Г•ГЁГ°ГіГ°ГЈ' or rank == 'Г‡Г Г¬.ГѓГ«Г Гў.Г‚Г°Г Г·Г ' or  rank == 'ГѓГ«Г Гў.Г‚Г°Г Г·' then
     lua_thread.create(function()
         vixodid = {}
 		status = true
@@ -4357,22 +4357,22 @@ function smsjob()
         while not gotovo do wait(0) end
         wait(1200)
         for k, v in pairs(vixodid) do
-            sampSendChat('/sms '..v..' Приветствую, явитесь на работу, у вас 15 минут. Как приняли?')
+            sampSendChat('/sms '..v..' ГЏГ°ГЁГўГҐГІГ±ГІГўГіГѕ, ГїГўГЁГІГҐГ±Гј Г­Г  Г°Г ГЎГ®ГІГі, Гі ГўГ Г± 15 Г¬ГЁГ­ГіГІ. ГЉГ ГЄ ГЇГ°ГЁГ­ГїГ«ГЁ?')
             wait(1200)
         end
-        players2 = {'{ffffff}Ник\t{ffffff}Ранг\t{ffffff}Статус'}
-		players1 = {'{ffffff}Ник\t{ffffff}Ранг'}
+        players2 = {'{ffffff}ГЌГЁГЄ\t{ffffff}ГђГ Г­ГЈ\t{ffffff}Г‘ГІГ ГІГіГ±'}
+		players1 = {'{ffffff}ГЌГЁГЄ\t{ffffff}ГђГ Г­ГЈ'}
 		gotovo = false
         status = false
         vixodid = {}
 	end)
 	else
-	ftext('Данная команда доступна с должности Психолог.')
+	ftext('Г„Г Г­Г­Г Гї ГЄГ®Г¬Г Г­Г¤Г  Г¤Г®Г±ГІГіГЇГ­Г  Г± Г¤Г®Г«Г¦Г­Г®Г±ГІГЁ ГЏГ±ГЁГµГ®Г«Г®ГЈ.')
 	end
 end
 
 function goupdate()
-    ftext('Началось скачивание обновления. Скрипт перезагрузится через пару секунд.', -1)
+    ftext('ГЌГ Г·Г Г«Г®Г±Гј Г±ГЄГ Г·ГЁГўГ Г­ГЁГҐ Г®ГЎГ­Г®ГўГ«ГҐГ­ГЁГї. Г‘ГЄГ°ГЁГЇГІ ГЇГҐГ°ГҐГ§Г ГЈГ°ГіГ§ГЁГІГ±Гї Г·ГҐГ°ГҐГ§ ГЇГ Г°Гі Г±ГҐГЄГіГ­Г¤.', -1)
     wait(300)
     downloadUrlToFile(updatelink, thisScript().path, function(id3, status1, p13, p23)
     if status1 == dlstatus.STATUS_ENDDOWNLOADDATA then
@@ -4396,10 +4396,10 @@ function update()
 			    if info and info.latest then
                     version = tonumber(info.latest)
                     if version > tonumber(thisScript().version) then
-                        ftext('Обнаружено обновление до версии '..updversion..'.')
+                        ftext('ГЋГЎГ­Г Г°ГіГ¦ГҐГ­Г® Г®ГЎГ­Г®ГўГ«ГҐГ­ГЁГҐ Г¤Г® ГўГҐГ°Г±ГЁГЁ '..updversion..'.')
 					    updwindows.v = true
                     else
-                        ftext('Обновлений скрипта не обнаружено. Приятной игры.', -1)
+                        ftext('ГЋГЎГ­Г®ГўГ«ГҐГ­ГЁГ© Г±ГЄГ°ГЁГЇГІГ  Г­ГҐ Г®ГЎГ­Г Г°ГіГ¦ГҐГ­Г®. ГЏГ°ГЁГїГІГ­Г®Г© ГЁГЈГ°Г».', -1)
                         update = false
 				    end
 			    end
@@ -4411,39 +4411,39 @@ end
 function getcolor(id)
 local colors =
         {
-		[1] = 'Зелёный',
-		[2] = 'Светло-зелёный',
-		[3] = 'Ярко-зелёный',
-		[4] = 'Бирюзовый',
-		[5] = 'Жёлто-зелёный',
-		[6] = 'Темно-зелёный',
-		[7] = 'Серо-зелёный',
-		[8] = 'Красный',
-		[9] = 'Ярко-красный',
-		[10] = 'Оранжевый',
-		[11] = 'Коричневый',
-		[12] = 'Тёмно-красный',
-		[13] = 'Серо-красный',
-		[14] = 'Жёлто-оранжевый',
-		[15] = 'Малиновый',
-		[16] = 'Розовый',
-		[17] = 'Синий',
-		[18] = 'Голубой',
-		[19] = 'Синяя сталь',
-		[20] = 'Сине-зелёный',
-		[21] = 'Тёмно-синий',
-		[22] = 'Фиолетовый',
-		[23] = 'Индиго',
-		[24] = 'Серо-синий',
-		[25] = 'Жёлтый',
-		[26] = 'Кукурузный',
-		[27] = 'Золотой',
-		[28] = 'Старое золото',
-		[29] = 'Оливковый',
-		[30] = 'Серый',
-		[31] = 'Серебро',
-		[32] = 'Черный',
-		[33] = 'Белый',
+		[1] = 'Г‡ГҐГ«ВёГ­Г»Г©',
+		[2] = 'Г‘ГўГҐГІГ«Г®-Г§ГҐГ«ВёГ­Г»Г©',
+		[3] = 'ГџГ°ГЄГ®-Г§ГҐГ«ВёГ­Г»Г©',
+		[4] = 'ГЃГЁГ°ГѕГ§Г®ГўГ»Г©',
+		[5] = 'Г†ВёГ«ГІГ®-Г§ГҐГ«ВёГ­Г»Г©',
+		[6] = 'Г’ГҐГ¬Г­Г®-Г§ГҐГ«ВёГ­Г»Г©',
+		[7] = 'Г‘ГҐГ°Г®-Г§ГҐГ«ВёГ­Г»Г©',
+		[8] = 'ГЉГ°Г Г±Г­Г»Г©',
+		[9] = 'ГџГ°ГЄГ®-ГЄГ°Г Г±Г­Г»Г©',
+		[10] = 'ГЋГ°Г Г­Г¦ГҐГўГ»Г©',
+		[11] = 'ГЉГ®Г°ГЁГ·Г­ГҐГўГ»Г©',
+		[12] = 'Г’ВёГ¬Г­Г®-ГЄГ°Г Г±Г­Г»Г©',
+		[13] = 'Г‘ГҐГ°Г®-ГЄГ°Г Г±Г­Г»Г©',
+		[14] = 'Г†ВёГ«ГІГ®-Г®Г°Г Г­Г¦ГҐГўГ»Г©',
+		[15] = 'ГЊГ Г«ГЁГ­Г®ГўГ»Г©',
+		[16] = 'ГђГ®Г§Г®ГўГ»Г©',
+		[17] = 'Г‘ГЁГ­ГЁГ©',
+		[18] = 'ГѓГ®Г«ГіГЎГ®Г©',
+		[19] = 'Г‘ГЁГ­ГїГї Г±ГІГ Г«Гј',
+		[20] = 'Г‘ГЁГ­ГҐ-Г§ГҐГ«ВёГ­Г»Г©',
+		[21] = 'Г’ВёГ¬Г­Г®-Г±ГЁГ­ГЁГ©',
+		[22] = 'Г”ГЁГ®Г«ГҐГІГ®ГўГ»Г©',
+		[23] = 'Г€Г­Г¤ГЁГЈГ®',
+		[24] = 'Г‘ГҐГ°Г®-Г±ГЁГ­ГЁГ©',
+		[25] = 'Г†ВёГ«ГІГ»Г©',
+		[26] = 'ГЉГіГЄГіГ°ГіГ§Г­Г»Г©',
+		[27] = 'Г‡Г®Г«Г®ГІГ®Г©',
+		[28] = 'Г‘ГІГ Г°Г®ГҐ Г§Г®Г«Г®ГІГ®',
+		[29] = 'ГЋГ«ГЁГўГЄГ®ГўГ»Г©',
+		[30] = 'Г‘ГҐГ°Г»Г©',
+		[31] = 'Г‘ГҐГ°ГҐГЎГ°Г®',
+		[32] = 'Г—ГҐГ°Г­Г»Г©',
+		[33] = 'ГЃГҐГ«Г»Г©',
 		}
 	return colors[id]
 end
@@ -4457,14 +4457,14 @@ function sampev.onSendSpawn()
 			local _, myid = sampGetPlayerIdByCharHandle(PLAYER_PED)
 			local color = ("%06X"):format(bit.band(sampGetPlayerColor(myid), 0xFFFFFF))
 			colors = getcolor(cfg.main.clist)
-            ftext('Цвет ника сменен на: {'..color..'}'..cfg.main.clist..' ['..colors..']')
+            ftext('Г–ГўГҐГІ Г­ГЁГЄГ  Г±Г¬ГҐГ­ГҐГ­ Г­Г : {'..color..'}'..cfg.main.clist..' ['..colors..']')
         end)
     end
 end
--- Тест dmb n
--- Тест dmb z
+-- Г’ГҐГ±ГІ dmb n
+-- Г’ГҐГ±ГІ dmb z
 function sampev.onServerMessage(color, text)
-        if text:find('Рабочий день начат') and color ~= -1 then
+        if text:find('ГђГ ГЎГ®Г·ГЁГ© Г¤ГҐГ­Гј Г­Г Г·Г ГІ') and color ~= -1 then
         if cfg.main.clistb then
 		if rabden == false then
             lua_thread.create(function()
@@ -4474,53 +4474,53 @@ function sampev.onServerMessage(color, text)
                 local _, myid = sampGetPlayerIdByCharHandle(PLAYER_PED)
 			    local color = ("%06X"):format(bit.band(sampGetPlayerColor(myid), 0xFFFFFF))
                 colors = getcolor(cfg.main.clist)
-                ftext('Цвет ника сменен на: {'..color..'}'..cfg.main.clist..' ['..colors..']')
+                ftext('Г–ГўГҐГІ Г­ГЁГЄГ  Г±Г¬ГҐГ­ГҐГ­ Г­Г : {'..color..'}'..cfg.main.clist..' ['..colors..']')
                 rabden = true
 				wait(1000)
 				if cfg.main.clisto then
 				local _, myid = sampGetPlayerIdByCharHandle(PLAYER_PED)
                 local myname = sampGetPlayerNickname(myid)
 				if cfg.main.male == true then
-				sampSendChat("/me открыл шкафчик")
+				sampSendChat("/me Г®ГІГЄГ°Г»Г« ГёГЄГ ГґГ·ГЁГЄ")
         	    wait(cfg.commands.zaderjka * 1000)
-                sampSendChat("/me снял свою одежду, после чего сложил ее в шкаф")
+                sampSendChat("/me Г±Г­ГїГ« Г±ГўГ®Гѕ Г®Г¤ГҐГ¦Г¤Гі, ГЇГ®Г±Г«ГҐ Г·ГҐГЈГ® Г±Г«Г®Г¦ГЁГ« ГҐГҐ Гў ГёГЄГ Гґ")
         	    wait(cfg.commands.zaderjka * 1000)
-                sampSendChat("/me взял рабочую одежду, затем переоделся в нее")
+                sampSendChat("/me ГўГ§ГїГ« Г°Г ГЎГ®Г·ГіГѕ Г®Г¤ГҐГ¦Г¤Гі, Г§Г ГІГҐГ¬ ГЇГҐГ°ГҐГ®Г¤ГҐГ«Г±Гї Гў Г­ГҐГҐ")
         	    wait(cfg.commands.zaderjka * 1000)
-                sampSendChat("/me нацепил бейджик на рубашку")
+                sampSendChat("/me Г­Г Г¶ГҐГЇГЁГ« ГЎГҐГ©Г¤Г¦ГЁГЄ Г­Г  Г°ГіГЎГ ГёГЄГі")
         	    wait(cfg.commands.zaderjka * 1000)
-                sampSendChat('/do На рубашке бейджик с надписью "'..rank..' | '..myname:gsub('_', ' ')..'".')
+                sampSendChat('/do ГЌГ  Г°ГіГЎГ ГёГЄГҐ ГЎГҐГ©Г¤Г¦ГЁГЄ Г± Г­Г Г¤ГЇГЁГ±ГјГѕ "'..rank..' | '..myname:gsub('_', ' ')..'".')
 				end
 				if cfg.main.male == false then
-				sampSendChat("/me открыла шкафчик")
+				sampSendChat("/me Г®ГІГЄГ°Г»Г«Г  ГёГЄГ ГґГ·ГЁГЄ")
         	    wait(cfg.commands.zaderjka * 1000)
-                sampSendChat("/me сняла свою одежду, после чего сложила ее в шкаф")
+                sampSendChat("/me Г±Г­ГїГ«Г  Г±ГўГ®Гѕ Г®Г¤ГҐГ¦Г¤Гі, ГЇГ®Г±Г«ГҐ Г·ГҐГЈГ® Г±Г«Г®Г¦ГЁГ«Г  ГҐГҐ Гў ГёГЄГ Гґ")
         	    wait(cfg.commands.zaderjka * 1000)
-                sampSendChat("/me взяла рабочую одежду, затем переоделась в нее")
+                sampSendChat("/me ГўГ§ГїГ«Г  Г°Г ГЎГ®Г·ГіГѕ Г®Г¤ГҐГ¦Г¤Гі, Г§Г ГІГҐГ¬ ГЇГҐГ°ГҐГ®Г¤ГҐГ«Г Г±Гј Гў Г­ГҐГҐ")
         	    wait(cfg.commands.zaderjka * 1000)
-                sampSendChat("/me нацепила бейджик на рубашку")
+                sampSendChat("/me Г­Г Г¶ГҐГЇГЁГ«Г  ГЎГҐГ©Г¤Г¦ГЁГЄ Г­Г  Г°ГіГЎГ ГёГЄГі")
         	    wait(cfg.commands.zaderjka * 1000)
-                sampSendChat('/do На рубашке бейджик с надписью "'..rank..' | '..myname:gsub('_', ' ')..'".')
+                sampSendChat('/do ГЌГ  Г°ГіГЎГ ГёГЄГҐ ГЎГҐГ©Г¤Г¦ГЁГЄ Г± Г­Г Г¤ГЇГЁГ±ГјГѕ "'..rank..' | '..myname:gsub('_', ' ')..'".')
 				end
 			end
             end)
         end
 	  end
     end
-	if text:find('SMS:') and text:find('Отправитель:') then
-		wordsSMS, nickSMS = string.match(text, 'SMS: (.+) Отправитель: (.+)');
+	if text:find('SMS:') and text:find('ГЋГІГЇГ°Г ГўГЁГІГҐГ«Гј:') then
+		wordsSMS, nickSMS = string.match(text, 'SMS: (.+) ГЋГІГЇГ°Г ГўГЁГІГҐГ«Гј: (.+)');
 		local idsms = nickSMS:match('.+%[(%d+)%]')
 		lastnumber = idsms
 	end
-    if text:find('Рабочий день окончен') and color ~= -1 then
+    if text:find('ГђГ ГЎГ®Г·ГЁГ© Г¤ГҐГ­Гј Г®ГЄГ®Г­Г·ГҐГ­') and color ~= -1 then
         rabden = false
     end
-	if text:find('Вы вылечили') then
-        local Nicks = text:match('Вы вылечили игрока (.+).')
+	if text:find('Г‚Г» ГўГ»Г«ГҐГ·ГЁГ«ГЁ') then
+        local Nicks = text:match('Г‚Г» ГўГ»Г«ГҐГ·ГЁГ«ГЁ ГЁГЈГ°Г®ГЄГ  (.+).')
 		health = health + 1
    end
-   	if text:find('Сеанс лечения от наркозависимости') then
-        local Nicks = text:match('Вы вылечили игрока (.+) от наркозависимости.')
+   	if text:find('Г‘ГҐГ Г­Г± Г«ГҐГ·ГҐГ­ГЁГї Г®ГІ Г­Г Г°ГЄГ®Г§Г ГўГЁГ±ГЁГ¬Г®Г±ГІГЁ') then
+        local Nicks = text:match('Г‚Г» ГўГ»Г«ГҐГ·ГЁГ«ГЁ ГЁГЈГ°Г®ГЄГ  (.+) Г®ГІ Г­Г Г°ГЄГ®Г§Г ГўГЁГ±ГЁГ¬Г®Г±ГІГЁ.')
 		narkoh = narkoh + 1
    end
 	if color == -8224086 then
@@ -4531,7 +4531,7 @@ function sampev.onServerMessage(color, text)
             local colors = ("{%06X}"):format(bit.rshift(color, 8))
             table.insert(radio, os.date(colors.."[%H:%M:%S] ") .. text)
         end
-	if color == -65366 and (text:match('SMS%: .+. Отправитель%: .+') or text:match('SMS%: .+. Получатель%: .+')) then
+	if color == -65366 and (text:match('SMS%: .+. ГЋГІГЇГ°Г ГўГЁГІГҐГ«Гј%: .+') or text:match('SMS%: .+. ГЏГ®Г«ГіГ·Г ГІГҐГ«Гј%: .+')) then
             local colors = ("{%06X}"):format(bit.rshift(color, 8))
             table.insert(smslogs, os.date(colors.."[%H:%M:%S] ") .. text)
         end
@@ -4561,8 +4561,8 @@ function sampev.onServerMessage(color, text)
 		end
 		end
 		end
-		if text:match('Всего: %d+ человек') then
-			local count = text:match('Всего: (%d+) человек')
+		if text:match('Г‚Г±ГҐГЈГ®: %d+ Г·ГҐГ«Г®ГўГҐГЄ') then
+			local count = text:match('Г‚Г±ГҐГЈГ®: (%d+) Г·ГҐГ«Г®ГўГҐГЄ')
 			gcount = count
 			gotovo = true
 			return false
@@ -4587,14 +4587,14 @@ function sampev.onServerMessage(color, text)
 			local id, data, nick, rang, stat = text:match('ID: (%d+) | (.+) | (.+): (.+) %- (.+)')
 			local color = ("%06X"):format(bit.band(sampGetPlayerColor(id), 0xFFFFFF))
 			local nmrang = rang:match('.+%[(%d+)%]')
-            if stat:find('Выходной') and tonumber(nmrang) < 7 then
+            if stat:find('Г‚Г»ГµГ®Г¤Г­Г®Г©') and tonumber(nmrang) < 7 then
                 table.insert(vixodid, id)
             end
 			table.insert(players2, string.format('{ffffff}%s\t {'..color..'}%s[%s]{ffffff}\t%s\t%s', data, nick, id, rang, stat))
 			return false
 		end
-		if text:match('Всего: %d+ человек') then
-			local count = text:match('Всего: (%d+) человек')
+		if text:match('Г‚Г±ГҐГЈГ®: %d+ Г·ГҐГ«Г®ГўГҐГЄ') then
+			local count = text:match('Г‚Г±ГҐГЈГ®: (%d+) Г·ГҐГ«Г®ГўГҐГЄ')
 			gcount = count
 			gotovo = true
 			return false
@@ -4795,35 +4795,35 @@ function getZones(zone)
       ['WWE'] = 'Whitewood Estates',
       ['LDT'] = 'Downtown Los Santos'
     }
-    if names[zone] == nil then return 'Не определено' end
+    if names[zone] == nil then return 'ГЌГҐ Г®ГЇГ°ГҐГ¤ГҐГ«ГҐГ­Г®' end
     return names[zone]
 end
 function kvadrat()
     local KV = {
-        [1] = "А",
-        [2] = "Б",
-        [3] = "В",
-        [4] = "Г",
-        [5] = "Д",
-        [6] = "Ж",
-        [7] = "З",
-        [8] = "И",
-        [9] = "К",
-        [10] = "Л",
-        [11] = "М",
-        [12] = "Н",
-        [13] = "О",
-        [14] = "П",
-        [15] = "Р",
-        [16] = "С",
-        [17] = "Т",
-        [18] = "У",
-        [19] = "Ф",
-        [20] = "Х",
-        [21] = "Ц",
-        [22] = "Ч",
-        [23] = "Ш",
-        [24] = "Я",
+        [1] = "ГЂ",
+        [2] = "ГЃ",
+        [3] = "Г‚",
+        [4] = "Гѓ",
+        [5] = "Г„",
+        [6] = "Г†",
+        [7] = "Г‡",
+        [8] = "Г€",
+        [9] = "ГЉ",
+        [10] = "Г‹",
+        [11] = "ГЊ",
+        [12] = "ГЌ",
+        [13] = "ГЋ",
+        [14] = "ГЏ",
+        [15] = "Гђ",
+        [16] = "Г‘",
+        [17] = "Г’",
+        [18] = "Г“",
+        [19] = "Г”",
+        [20] = "Г•",
+        [21] = "Г–",
+        [22] = "Г—",
+        [23] = "Г",
+        [24] = "Гџ",
     }
     local X, Y, Z = getCharCoordinates(playerPed)
     X = math.ceil((X + 3000) / 250)
