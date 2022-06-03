@@ -2,7 +2,6 @@ script_name('Medick Helper') -- UPDATE TEST 1
 script_author('Src303')
 script_version '2.0.1'
 local dlstatus = require "moonloader".download_status
-script_author('Mark_King')
 local sf = require 'sampfuncs'
 local key = require "vkeys"
 local inicfg = require 'inicfg'
@@ -20,7 +19,6 @@ local bMainWindow = imgui.ImBool(false)
 local sInputEdit = imgui.ImBuffer(128)
 local bIsEnterEdit = imgui.ImBool(false)
 local ystwindow = imgui.ImBool(false)
-local updwindows = imgui.ImBool(false)
 local helps = imgui.ImBool(false)
 local obnova = imgui.ImBool(false)
 local infbar = imgui.ImBool(false)
